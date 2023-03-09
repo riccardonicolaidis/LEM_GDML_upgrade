@@ -1,0 +1,32 @@
+/gps/verbose 0
+/gps/pos/type Plane
+/gps/pos/shape Circle
+
+/gps/pos/centre 0 0 9.7 cm
+/gps/pos/radius 3 cm
+
+/gps/ang/type iso
+/gps/ene/type Lin
+/gps/ene/gradient 0
+/gps/ene/intercept 1
+/gps/ang/maxtheta 90 deg
+/gps/ang/mintheta 0 deg
+
+
+/NameOfFile/NameOfFile ../DST_08032023/ELECTRON_08032023
+/gps/particle e-
+/gps/ene/min 0.001 MeV
+/gps/ene/max 10 MeV
+/run/beamOn 5000000
+
+/NameOfFile/NameOfFile ../DST_08032023/PROTON_08032023
+/gps/particle proton
+/gps/ene/min 0.001 MeV
+/gps/ene/max 90 MeV
+/run/beamOn 5000000
+
+/NameOfFile/NameOfFile ../DST_08032023/ALPHA_08032023
+/gps/particle alpha
+/gps/ene/min 0.001 MeV
+/gps/ene/max 300 MeV
+/run/beamOn 5000000
