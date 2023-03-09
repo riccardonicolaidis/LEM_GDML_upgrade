@@ -7,6 +7,10 @@
 ## Brief description
 This repository contains the source code for the Geant4 simulation of the Low Energy Module, a submodule fo the Zire` detector onboard teh NUSES platform.
 
+
+<img src="./docs/LEM.png" width = 80%>
+
+
 This simulation is inherited by the Geant4 example **G04** [Link to the G04 example](https://gitlab.cern.ch/geant4/geant4/-/tree/v11.1.1/examples/extended/persistency/gdml/G04).
 
 
