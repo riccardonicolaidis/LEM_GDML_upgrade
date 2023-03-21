@@ -119,23 +119,24 @@ int ParsingTree()
         {
             tp[i] -> GetEntry(j);
             AtLeastOne = false;
+            NumberID = -2;
             for(int k = 0; k < 7; ++k)
             {
-                if((EdThin[k] > 0.005) && (EdThick[k] > 0.005) && (~AtLeastOne))
+                if((EdThin[k] > 0.000) && (EdThick[k] > 0.000) && (~AtLeastOne))
                 {
                     AtLeastOne = true;
                     NumberID = k;
                 }
-
-                if(!AtLeastOne)
+                else if((EdThin[k] > EdThin[NumberID]) && (EdThick[k] > EdThick[NumberID]) && (AtLeastOne))
                 {
-                    NumberID = -1;
+                    cout << "Number ID Changed from " << NumberID << " to " << k << endl;
+                    NumberID = k;
                 }
             }
             branchNumberID -> Fill();
         }
 
-        branchNumberID -> Write();
+        //branchNumberID -> Write();
         fp[i] -> Write();
         //fp[i] -> Close();
 

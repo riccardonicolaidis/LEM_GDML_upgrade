@@ -41,12 +41,15 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector, G04PrimaryGenerato
 
 
     const G4GDMLAuxMapType* auxmap = fParser.GetAuxMap();
+    G4bool SensDetSet = false;
     for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin(); iter!=auxmap->end(); iter++) 
     {
+        SensDetSet = false;
         for (G4GDMLAuxListType::const_iterator vit=(*iter).second.begin(); vit!=(*iter).second.end(); vit++)
         {
-            if((*vit).type == "SensDet")
+            if(((*vit).type == "SensDet") && (!SensDetSet))
             {
+                SensDetSet = true;
                 sensitiveDetFile << iter -> first -> GetName() << " " << vit->type << " " << (*vit).value << G4endl;
 
                 G4String ColumnName = "Ed_" +(iter -> first -> GetName());

@@ -32,7 +32,7 @@
 /vis/set/textColour    # Revert to default text colour (blue)
 
 
-/vis/scene/add/axes 0 0 0 13 cm # Simple axes: x=red, y=green, z=blue.
+#/vis/scene/add/axes 0 0 0 13 cm # Simple axes: x=red, y=green, z=blue.
 #/vis/scene/add/axes 0 0 0 10 cm
 
 # Frame
@@ -73,3 +73,7 @@
 #/vis/viewer/set/viewpointVector 0 1 0
 #/vis/viewer/set/viewpointThetaPhi 90 180 deg
 #/vis/viewer/set/lightsVector 0 1 0
+
+#/vis/viewer/addCutawayPlane 0 0 0 m 1 0 0
+/vis/viewer/set/lightsVector -1 0 0
+/vis/viewer/set/viewpointVector -1 0 0

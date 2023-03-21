@@ -29,6 +29,7 @@
  
 
 #include "G04DetectorConstruction.hh"
+#include "G4AffineTransform.hh"
 
 
 
@@ -79,11 +80,13 @@ void G04DetectorConstruction::ConstructSDandField()
   G4String materialfilename   = "../OutputText/GDML_MaterialInfo.txt";
   G4String solidnamesfilename = "../OutputText/GDML_SolidNames.txt";
   G4String sensitiveDetFilename = "../OutputText/GDML_SD_DetectorConstruction.txt";
+  G4String SiliconPositionFilename = "../OutputText/GDML_SiliconPosition.txt";
   
   std::ofstream auxfile(auxfilename);
   std::ofstream materialfile(materialfilename);
   std::ofstream solidnamesfile(solidnamesfilename);
   std::ofstream sensitiveDetFile(sensitiveDetFilename);
+  std::ofstream SiliconPositionFile(SiliconPositionFilename);
 
   const G4GDMLAuxMapType* auxmap = fParser.GetAuxMap();
   
@@ -91,6 +94,7 @@ void G04DetectorConstruction::ConstructSDandField()
   auxfile        << "Found " << auxmap->size() << " volume(s) with auxiliary information."  << G4endl << G4endl;
   materialfile   << "Found " << auxmap->size() << " volume(s) with auxiliary information." << G4endl << G4endl;
   solidnamesfile << "Found " << auxmap->size() << " volume(s) with auxiliary information." << G4endl << G4endl;
+
 
   G4double TotalMass = 0.0;
 
@@ -100,6 +104,8 @@ void G04DetectorConstruction::ConstructSDandField()
     auxfile << "Volume " << ((*iter).first)->GetName() << " has the following list of auxiliary information: " << G4endl;
 
     G4LogicalVolume* logvol = (*iter).first;
+
+
     G4Material*      mat    = logvol->GetMaterial();
     G4String         matname= mat->GetName();
     G4double         mass = logvol -> GetMass() / g;
@@ -142,6 +148,7 @@ void G04DetectorConstruction::ConstructSDandField()
 
         G4VisAttributes* visAtt = new G4VisAttributes(G4Colour(redDec/255.0, greenDec/255.0, blueDec/255.0));
 
+
         logvol->SetVisAttributes(visAtt);
       }
       else if((*vit).type == "SensDet")
@@ -166,8 +173,11 @@ void G04DetectorConstruction::ConstructSDandField()
   // The same as above, but now we are looking for
   // sensitive detectors setting them for the volumes
 
+  G4bool SensDetSet = false;
+
   for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin(); iter!=auxmap->end(); iter++) 
   {
+    SensDetSet = false;
     G4cout << "Volume " << ((*iter).first)->GetName() << " has the following list of auxiliary information: " << G4endl;
     auxfile << "Volume " << ((*iter).first)->GetName() << " has the following list of auxiliary information: " << G4endl;
 
@@ -179,8 +189,9 @@ void G04DetectorConstruction::ConstructSDandField()
         G4cout  << "Attaching sensitive detector " << (*vit).value << " to volume " << ((*iter).first)->GetName() << G4endl;
         auxfile << "Attaching sensitive detector " << (*vit).value << " to volume " << ((*iter).first)->GetName() << G4endl;
 
-        if(((*vit).value == "Silicon") || ((*vit).value == "PlasticScintillator"))
+        if((((*vit).value == "Silicon") || ((*vit).value == "PlasticScintillator")) && (!SensDetSet))
         {
+          SensDetSet = true;
           G4LogicalVolume* logvol = (*iter).first;
           G04SensitiveDetector* DetectorSD = new G04SensitiveDetector(logvol->GetName(), logvol->GetName());
           SDman -> AddNewDetector(DetectorSD);

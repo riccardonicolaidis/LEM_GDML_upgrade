@@ -42,7 +42,7 @@ void AngleResolutionDescoped()
     TString FileName[Nfiles];
     
     // Read the FileNames.txt and for each line of the file fill the TString FileName[]
-    ifstream FileNames("pFileNames.txt");
+    ifstream FileNames("FileNames.txt");
     if(!FileNames.is_open())
     {
         cout << "FileNames.txt not found" << endl;
@@ -111,17 +111,7 @@ void AngleResolutionDescoped()
     int j;
 
 
-    /* -------------------------------------------------------------------------- */
-    /*                           GEOMETRICAL DEFINITIONS                          */
-    /* -------------------------------------------------------------------------- */
 
-
-    double ThetaDir[Ntot];
-    double PhiDir[Ntot];
-    double xHole[Ntot];
-    double yHole[Ntot];
-    TMarker *markerPositionHole[Ntot];
-    TMarker *markerProjDir[Ntot];
 
    
 
@@ -164,57 +154,40 @@ void AngleResolutionDescoped()
     j = 9;
     for(int i = 0; i < N_plastic; ++i)
     {
-        BranchName[9 + i] = Form("Ed_Veto%d",i);
+        BranchName[9 + i] = Form("Ed_LV_P%d",i+1);
         ++j;
     }
     
-    BranchName[j++] = "Ed_DrilledVeto";
-    BranchName[j++] = "Ed_BottomVeto";
+    BranchName[j++] = "Ed_LV_V1";
+    BranchName[j++] = "Ed_LV_V2";
 
     int IndexStartSensors = j;
 
 
-    int CopyNumber = 0;
     for(int i = 0; i < Ntot; ++i)
     {
-        BranchName[j]        = Form("Thin_%d_ID%d",i,CopyNumber);
-        BranchName[j + Ntot] = Form("Thick_%d_ID%d",i,CopyNumber);
-            if (CopyNumber == 0)
-            {
-                ThinTot  = Form("(%s)", BranchName[j].Data());
-                ThickTot = Form("(%s)", BranchName[j + Ntot].Data());
+        if(i == 0)
+        {
+            BranchName[IndexStartSensors + i]        = Form("Ed_LV_THIN");
+            BranchName[IndexStartSensors + i + Ntot] = Form("Ed_LV_THICK");
+        }
+        else
+        {
+            BranchName[IndexStartSensors + i]        = Form("Ed_LV_THIN00%d", i);
+            BranchName[IndexStartSensors + i + Ntot] = Form("Ed_LV_THICK00%d", i);
+        }
 
-                xHole[CopyNumber]              = 0.;
-                yHole[CopyNumber]              = 0.;
-                PhiDir[CopyNumber]             = 0.;
-                ThetaDir[CopyNumber]           = 0.;
-            }
-            else
-            {
-                ThinTot  = Form("(%s + %s)",ThinTot.Data(), BranchName[j].Data());
-                ThickTot = Form("(%s + %s)",ThickTot.Data(), BranchName[j + Ntot].Data());
-                
-                double phi = 2*TMath::Pi()*(CopyNumber-1)/(Ntot-1);
-                double theta = 37 * TMath::Pi() / 180.;
-                double RadiusEptagon = 2.2 + sqrt(150/TMath::Pi());
-                
-                xHole[CopyNumber]  = RadiusEptagon * std::cos(phi);
-                yHole[CopyNumber]  = RadiusEptagon * std::sin(phi);
 
-                PhiDir[CopyNumber]             = phi;
-                ThetaDir[CopyNumber]           = theta;
-            }
-
-            markerPositionHole[CopyNumber] = new TMarker(xHole[CopyNumber],yHole[CopyNumber],20);
-            markerPositionHole[CopyNumber] -> SetMarkerColor(kRed);
-            markerPositionHole[CopyNumber] -> SetMarkerSize(1.2);
-
-            markerProjDir[CopyNumber]      = new TMarker(TMath::Cos(PhiDir[CopyNumber])*ThetaDir[CopyNumber],TMath::Sin(PhiDir[CopyNumber])*ThetaDir[CopyNumber],20);
-            markerProjDir[CopyNumber]      -> SetMarkerColor(kRed);
-            markerProjDir[CopyNumber]      -> SetMarkerSize(1.2);
-
-            ++j;
-            ++CopyNumber;
+        if (i == 0)
+        {
+            ThinTot  = Form("(%s)", BranchName[IndexStartSensors + i].Data());
+            ThickTot = Form("(%s)", BranchName[IndexStartSensors + i + Ntot].Data());
+        }
+        else
+        {
+            ThinTot  = Form("(%s + %s)",ThinTot.Data(), BranchName[IndexStartSensors + i].Data());
+            ThickTot = Form("(%s + %s)",ThickTot.Data(), BranchName[IndexStartSensors + i + Ntot].Data());                
+        }
     }
 
 
@@ -225,7 +198,7 @@ void AngleResolutionDescoped()
     }
 
 
-/* -------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------- */
     /*                              Alias definitions                             */
     /* -------------------------------------------------------------------------- */
 
@@ -243,54 +216,57 @@ void AngleResolutionDescoped()
         {
             Edep[i] -> SetAlias(Form("wnorm%d",9+k),"(sin(2 *pi*rndm)*sqrt(-2*log(rndm)))");
             Edep[i] -> SetAlias(Form("g%s",BranchName[9+k].Data()), Form("((%s)*(1 + (wnorm%d * %f)))",BranchName[k+9].Data(),k+9,ResPlastic));
+            cout << Form("Alias: g%s",BranchName[9+k].Data()) << endl;
         }
 
 
-        for(int k = IndexStartSensors; k < (12+Ntot*2); ++k)
+        for(int k = 0; k < 2*Ntot; ++k)
         {
             Edep[i] -> SetAlias(Form("wnorm%d",k),"(sin(2 *pi*rndm)*sqrt(-2*log(rndm)))");
-            Edep[i] -> SetAlias(Form("g%s",BranchName[k].Data()), Form("((%s)*(1 + (wnorm%d * %f)))",BranchName[k].Data(),k,ResSilicon));
+            Edep[i] -> SetAlias(Form("g%s",BranchName[IndexStartSensors + k].Data()), Form("((%s)*(1 + (wnorm%d * %f)))",BranchName[IndexStartSensors + k].Data(),k,ResSilicon));
+            cout << Form("Alias: g%s",BranchName[IndexStartSensors + k].Data()) << endl;
         }
 
         /* ------------------- Incident direction of the particle ------------------- */
 
         Edep[i] -> SetAlias("NormP", Form("(TMath::Sqrt(TMath::Power(%s,2) + TMath::Power(%s,2) + TMath::Power(%s,2)))", BranchName[6].Data(), BranchName[7].Data(), BranchName[8].Data()));
-        for(int k = 6; k <= 7; ++k)
+        for(int k = 6; k <= 8; ++k)
         {
-            Edep[i] -> SetAlias(DirName[k-6].Data(), Form("((%s)/(NormP))", BranchName[k].Data()));
+            Edep[i] -> SetAlias(DirName[k-6].Data(), Form("((-%s)/(NormP))", BranchName[k].Data()));
+            cout << Form("Alias: %s",DirName[k-6].Data()) << endl;
         }
-        Edep[i] -> SetAlias(DirName[2].Data(), Form("(-(%s)/(NormP))", BranchName[8].Data()));
 
         // Legend
         // [0] : Theta
         // [1] : Phi
-        Edep[i] -> SetAlias(PolarAngle[0].Data()   , Form("((TMath::ACos(%s)))", DirName[2].Data())); // *(180/3.415927))
-        Edep[i] -> SetAlias(PolarAngle[1].Data()   , Form("(TMath::ATan2(%s,%s))", DirName[1].Data(), DirName[0].Data())); // *(180/3.415927))
+        Edep[i] -> SetAlias(PolarAngle[0].Data()   , Form("((TMath::ACos(-%s)))", DirName[2].Data())); // *(180/3.415927))
+        Edep[i] -> SetAlias(PolarAngle[1].Data()   , Form("(TMath::ATan2(-%s,-%s))", DirName[1].Data(), DirName[0].Data())); // *(180/3.415927))
         Edep[i] -> SetAlias(NewPolarAngle[1].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Cos(%s)),(TMath::Cos(%s))))",              PolarAngle[0].Data(), PolarAngle[0].Data(), PolarAngle[1].Data() )); // *(180/3.415927))
         Edep[i] -> SetAlias(NewPolarAngle[0].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Sin(%s)*TMath::Sin(%s)),TMath::Cos(%s)))", PolarAngle[0].Data(), PolarAngle[1].Data(), NewPolarAngle[1].Data(), PolarAngle[0].Data())); // *(180/3.415927))
         
+        cout << Form("Alias: %s",PolarAngle[0].Data()) << endl;
+        cout << Form("Alias: %s",PolarAngle[1].Data()) << endl;
+        cout << Form("Alias: %s",NewPolarAngle[0].Data()) << endl;
+        cout << Form("Alias: %s",NewPolarAngle[1].Data()) << endl;
+
         /* -------------------- Particle identification parameter ------------------- */
 
-        j = IndexStartSensors;
-        CopyNumber = 0;
         cout << "Defining total energy in File " << i << " : " << FileName[i].Data() << endl;
         
         for(int k = 0; k < Ntot; ++k)
         {
-            TotEnergyName[CopyNumber] = Form("Tot_%d_ID%d",k,CopyNumber);
-            PIDName[CopyNumber] = Form("PID_%d_ID%d",k,CopyNumber);
-            TotEnergyCondition[CopyNumber]  = Form("(%s + %s",BranchName[j].Data(), BranchName[j + Ntot].Data());
+            TotEnergyName[k] = Form("Tot%d",k);
+            PIDName[k] = Form("PID%d",k);
+            TotEnergyCondition[k]  = Form("(%s + %s",BranchName[IndexStartSensors+k].Data(), BranchName[IndexStartSensors + Ntot + k].Data());
 
             for(int l = 0 ; l < N_plastic ; ++l)
             {
-                TotEnergyCondition[CopyNumber] += Form("+ (g%s)*(g%s > %g)", BranchName[9+l].Data(), BranchName[9+l].Data(),E_th_plastic);
+                TotEnergyCondition[k] += Form("+ (g%s)*(g%s > %g)", BranchName[9+l].Data(), BranchName[9+l].Data(),E_th_plastic);
             }
-            TotEnergyCondition[CopyNumber] += ")";
-            Edep[i] -> SetAlias(TotEnergyName[CopyNumber], TotEnergyCondition[CopyNumber]);
-            Edep[i] -> SetAlias(PIDName[CopyNumber], Form("(TMath::Log10(g%s * %s))",BranchName[j].Data(), TotEnergyName[CopyNumber].Data()));
+            TotEnergyCondition[k] += ")";
+            Edep[i] -> SetAlias(TotEnergyName[k], TotEnergyCondition[k]);
+            Edep[i] -> SetAlias(PIDName[k], Form("(TMath::Log10(g%s * %s))",BranchName[IndexStartSensors + k].Data(), TotEnergyName[k].Data()));
             ++j;
-            ++CopyNumber;
-            cout << Form("i= %d CopyNumber= %d",k, CopyNumber) << endl;
         }
                 
         
@@ -326,9 +302,8 @@ void AngleResolutionDescoped()
         }
     }
 
-    E_th_Vetoed = 0.01;
+    E_th_Vetoed = 0.00000001;
     ConditionDrilledVeto       = Form("(%s <= %g)", BranchName[9+N_plastic].Data(), E_th_Vetoed);
-    //ConditionEnergyDispersion  = Form("((%s) - (%s) - (%s) - (%s) - (%s) - (%s) - (%s)) < %g", BranchName[1].Data(), ThinTot.Data(), ThickTot.Data(), BranchName[9].Data(),BranchName[43].Data(), BranchName[44].Data(), BranchName[45].Data(), E_th_Vetoed);
     ConditionEnergyDispersion  = Form("((%s)" , BranchName[1].Data());
     ConditionEnergyDispersion += Form("- (%s)", ThinTot.Data());
     ConditionEnergyDispersion += Form("- (%s)", ThickTot.Data());
@@ -353,29 +328,12 @@ void AngleResolutionDescoped()
     TCanvas *cAngles[Nfiles];
     TH2D *hAngles[Nfiles];
 
-    TString ChipSelectionMask;
-    TString MaskTotalChip;
-
     int ChipList[Ntot];
     for(int i = 0; i < Ntot; ++i)
     {
         ChipList[i] = i;
     }
 
-    for(int i = 0; i < Ntot; ++i)
-    {
-        if(i == 0)
-        {
-            ChipSelectionMask = Form("(%s == %i)", BranchName[0].Data(), ChipList[i]);
-            cout << ChipSelectionMask.Data() << endl;
-        } 
-        else
-        {
-            ChipSelectionMask = Form("%s || (%s == %i)", ChipSelectionMask.Data(), BranchName[0].Data(), ChipList[i]);
-            cout << ChipSelectionMask.Data() << endl;
-        }
-    }
-    MaskTotalChip = Form("(%s) && (%s)", ChipSelectionMask.Data(), ConditionGoodEvents.Data());
 
     //return;
 
@@ -390,7 +348,7 @@ void AngleResolutionDescoped()
     TFile *tProjFile[Nfiles];
     TTree *tProj[Nfiles];
     TCanvas *cAngleGraphs[3];
-    int ColorsPlot[8] = {kRed,kRed,kBlue,kYellow,kYellow,kBlack,kBlue};
+    int ColorsPlot[8] = {kBlack,kBlue,kRed,kBlue,kRed,kBlue,kRed};
 
 
 
@@ -430,8 +388,8 @@ void AngleResolutionDescoped()
         {
             Edep[i] -> GetEntry(k);
             Norm= TMath::Sqrt(pDirX*pDirX + pDirY*pDirY + pDirZ*pDirZ);
-            nDirX = pDirX/Norm;
-            nDirY = pDirY/Norm;
+            nDirX = -pDirX/Norm;
+            nDirY = -pDirY/Norm;
             nDirZ = -pDirZ/Norm;
 
             Theta = TMath::ACos(nDirZ);
@@ -449,23 +407,23 @@ void AngleResolutionDescoped()
 
         cout << Form("Particle %d", i) << endl;
         cout << "Copy No \t Std X \t Std Y \t # Events " << endl;
-        for(CopyNumber = 0 ; CopyNumber < Ntot; ++CopyNumber)
+        for(int k = 0 ; k < Ntot; ++k)
         {
             
-            Edep[i] -> Draw("ProjY:ProjX", ConditionGoodEventsSinglePair[CopyNumber].Data(), "");
-            gAngles[i][CopyNumber] = new TGraph(Edep[i]->GetSelectedRows(), Edep[i]->GetV2(), Edep[i]->GetV1());
-            gAngles[i][CopyNumber] -> SetMarkerColor(ColorsPlot[CopyNumber]);
-            gAngles[i][CopyNumber] -> SetMarkerStyle(8);
-            gAngles[i][CopyNumber] -> SetMarkerSize(1.);
+            Edep[i] -> Draw("ProjY:ProjX", ConditionGoodEventsSinglePair[k].Data(), "");
+            gAngles[i][k] = new TGraph(Edep[i]->GetSelectedRows(), Edep[i]->GetV2(), Edep[i]->GetV1());
+            gAngles[i][k] -> SetMarkerColor(ColorsPlot[k]);
+            gAngles[i][k] -> SetMarkerStyle(8);
+            gAngles[i][k] -> SetMarkerSize(0.6);
 
-            gAngles[i][CopyNumber] -> Print();
+            gAngles[i][k] -> Print();
 
             //gAngles[i][CopyNumber] -> Print();
-            cout << Form("%d \t%g \t%g", CopyNumber, gAngles[i][CopyNumber]-> GetRMS(1), gAngles[i][CopyNumber]-> GetRMS(2)) << " " << Edep[i]->GetSelectedRows()<< endl;
-            mgAngles[i] -> Add(gAngles[i][CopyNumber]);
+            cout << Form("%d \t%g \t%g", k, gAngles[i][k]-> GetRMS(1), gAngles[i][k]-> GetRMS(2)) << " " << Edep[i]->GetSelectedRows()<< endl;
+            mgAngles[i] -> Add(gAngles[i][k]);
             if(i > 0)
             {
-                mgAnglesProtonsAlpha -> Add(gAngles[i][CopyNumber]);
+                mgAnglesProtonsAlpha -> Add(gAngles[i][k]);
             }
         }
 
@@ -473,8 +431,8 @@ void AngleResolutionDescoped()
         mgAngles[i] -> GetXaxis() -> SetTitle("Angle projection X [deg]");
         mgAngles[i] -> GetYaxis() -> SetTitle("Angle projection Y [deg]");
 
-        mgAngles[i] -> GetXaxis() -> SetRangeUser(-200, 200);
-        mgAngles[i] -> GetYaxis() -> SetRangeUser(-200, 200);
+        mgAngles[i] -> GetXaxis() -> SetRangeUser(-180, 180);
+        mgAngles[i] -> GetYaxis() -> SetRangeUser(-180, 180);
 
         mgAngles[i] -> Draw("AP");
 
@@ -492,8 +450,8 @@ void AngleResolutionDescoped()
     mgAnglesProtonsAlpha -> GetXaxis() -> SetTitle("Angle projection X [deg]");
     mgAnglesProtonsAlpha -> GetYaxis() -> SetTitle("Angle projection Y [deg]");
 
-    mgAnglesProtonsAlpha -> GetXaxis() -> SetRangeUser(-200, 200);
-    mgAnglesProtonsAlpha -> GetYaxis() -> SetRangeUser(-200, 200);
+    mgAnglesProtonsAlpha -> GetXaxis() -> SetRangeUser(-180, 180);
+    mgAnglesProtonsAlpha -> GetYaxis() -> SetRangeUser(-180, 180);
 
     mgAnglesProtonsAlpha -> Draw("AP");
     gPad -> SetGrid();

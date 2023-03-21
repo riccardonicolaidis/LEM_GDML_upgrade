@@ -40,6 +40,31 @@ Here the list of softwares and tools I used for the realisation of this reposito
 
 
 
+## FreeCAD GDML Workbench commands
+Here some useful commands for the utilization of the FreeCAD  Python console with the GDML workbench 
+- ` FreeCAD.getDocument('Unnamed').getObject('GDMLBox_WorldBox').material = u"G4_Galactic"` : Assegnazione del materiale G4_Galactic al volume worldVol
+- `Gui.activateWorkbench("GDML_Workbench")` : Command for the activation of the Workbench GDML
+
+1. `Gui.runCommand('BoxCommand',0)` : Command for the creation of a G4Box for the world volume 
+2. `Gui.Selection.addSelection('Unnamed','LV_Box')` : Select the part containing the world volume
+3. `Gui.Selection.addSelection('Unnamed','LV_Box','GDMLBox_Box.')` Select the GDML Box object under the respective part
+4. `FreeCAD.getDocument('Unnamed').getObject('GDMLBox_Box').material = u"G4_Galactic"` : Change the material of the G4Box
+5. `FreeCAD.getDocument('Unnamed').getObject('LV_Box').Label = "worldVol"` : rename the object label
+6. `Gui.activeView().setActiveObject('part', App.activeDocument().Part)` Generate a part inside the document
+7. Change the link between the parts. Move the created part under the world volume part
+```
+App.getDocument('Unnamed').getObject('Part').adjustRelativeLinks(App.getDocument('Unnamed').getObject('LV_Box'))
+
+App.getDocument("Unnamed").getObject("LV_Box").addObject(App.getDocument("Unnamed").getObject("Part"))
+```
+8. `FreeCAD.getDocument('Unnamed').getObject('Part').Label = "LEM_Assembly"` Rename the part under the world volume to "LEM_Assembly". Here we have to put the solids from the step file
+
+
+
+
+
+
+
 
 ## Run the simulation
 ### With visualization

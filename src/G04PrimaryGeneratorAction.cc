@@ -64,13 +64,15 @@ void G04PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
 
   G4AnalysisManager* man = G4AnalysisManager::Instance();
-  man -> FillNtupleDColumn(0,0, fGeneralParticleSource->GetParticleEnergy());
+
+  fGeneralParticleSource->GeneratePrimaryVertex(anEvent);
   G4ThreeVector pos = fGeneralParticleSource->GetParticlePosition();
+  G4ThreeVector momentum = fGeneralParticleSource -> GetParticleMomentumDirection();
+
+  man -> FillNtupleDColumn(0,0, fGeneralParticleSource->GetParticleEnergy());
   man -> FillNtupleDColumn(0,1, pos.getX());
   man -> FillNtupleDColumn(0,2, pos.getY());
   man -> FillNtupleDColumn(0,3, pos.getZ());
-
-  G4ThreeVector momentum = fGeneralParticleSource -> GetParticleMomentumDirection();
   man -> FillNtupleDColumn(0,4, momentum.getX());
   man -> FillNtupleDColumn(0,5, momentum.getY());
   man -> FillNtupleDColumn(0,6, momentum.getZ());
@@ -80,7 +82,6 @@ void G04PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
 
 
 
-  fGeneralParticleSource->GeneratePrimaryVertex(anEvent);
    
 
 
