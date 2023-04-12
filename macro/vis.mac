@@ -5,6 +5,10 @@
 #/run/initialize
 
 /vis/open OGL 600x600-0+0
+# DAWN File
+#/vis/open DAWNFILE
+
+
 /vis/viewer/set/viewpointThetaPhi 180. 0.
 /vis/viewer/zoom 1.2
 /vis/drawVolume
@@ -52,8 +56,6 @@
 
 
 /vis/scene/add/hits
-#/vis/scene/add/scale  10 cm
-#/vis/scene/add/eventID
 /vis/scene/endOfEventAction accumulate 10
 /vis/ogl/set/displayListLimit 10000000
 /vis/viewer/set/autoRefresh true
@@ -63,17 +65,12 @@
 /vis/viewer/set/globalMarkerScale 1
 /vis/viewer/set/globalLineWidthScale 1
 
+/vis/viewer/set/upVector 0 0 1
 
-#/vis/viewer/set/rotationStyle freeRotation
-/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/set/viewpointVector 1 1 1
 #/vis/viewer/set/viewpointThetaPhi 90 180 deg
-/vis/viewer/set/lightsVector -1 0 0
-#/vis/viewer/addCutawayPlane 0 0 0 m 1 0 0
+/vis/viewer/set/lightsVector 1 1 1
+#/vis/viewer/addCutawayPlane 0 0 0 m -1 -1 0
 
-#/vis/viewer/set/viewpointVector 0 1 0
-#/vis/viewer/set/viewpointThetaPhi 90 180 deg
-#/vis/viewer/set/lightsVector 0 1 0
 
-#/vis/viewer/addCutawayPlane 0 0 0 m 1 0 0
-/vis/viewer/set/lightsVector -1 0 0
-/vis/viewer/set/viewpointVector -1 0 0
+/vis/viewer/flush

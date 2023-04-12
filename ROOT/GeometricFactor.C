@@ -460,19 +460,12 @@ void GeometricFactor()
         hFinal2[i] -> Draw("Esame");        
     }
 
-    TGraph *gDEMETER = new TGraph("../ROOT_macros/DEMETER.csv", "%lg %lg");
-    gDEMETER -> SetLineColor(kBlack);
-    gDEMETER -> SetLineWidth(2);
-    gDEMETER -> SetMarkerColor(kBlack);
-    gDEMETER -> SetMarkerStyle(8);
-    gDEMETER -> SetMarkerSize(0.8);
-    //gDEMETER -> Draw("PLsame");
 
     TLegend  *legend = new TLegend(0.1, 0.1, 0.3, 0.3);
     legend -> AddEntry(hFinal2[0], "electrons", "lep");
     legend -> AddEntry(hFinal2[1], "protons", "lep");
     legend -> AddEntry(hFinal2[2], "alpha", "lep");
-    legend -> AddEntry(gDEMETER, "DEMETER", "lp");
+    //legend -> AddEntry(gDEMETER, "DEMETER", "lp");
     //legend -> AddEntry(gHEPPL, "HEPP-L : narrow", "f");
     //legend -> AddEntry(gHEPPL2, "HEPP-L : wide", "f");
     legend -> Draw();
@@ -480,10 +473,6 @@ void GeometricFactor()
     gPad -> SetGrid();
     gPad -> SetLogy();
     gPad -> SetLogx();
-
-
-
-
 
 
 
