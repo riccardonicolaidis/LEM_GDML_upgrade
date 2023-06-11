@@ -22,14 +22,16 @@ def Geant4Simulation():
     gps_ene_gradient = 0
     gps_ene_intercept = 1
     gps_ene_min = [0.08, 2       , 20     , 10e-3  , 10e3]
-    gps_ene_max = [20  , 100     , 500    , 10     , 10e3]
+    gps_ene_max = [20  , 100     , 500    , 10     , 100e3]
+    # Pos Tipes : Point, Plane, Volume
     gps_pos_type = "Plane"
     gps_pos_shape = "Circle"
-    gps_pos_centre_cm = [0, 0, 11]
-    gps_pos_radius_cm = 40
+    gps_pos_centre_cm = [0, 0, 14]
+    gps_pos_radius_cm = 8
     gps_ang_type = "iso"
+    gps_ang_direction = [0, 0, -1]
     gps_ang_mintheta_deg = 0
-    gps_ang_maxtheta_deg = 90
+    gps_ang_maxtheta_deg = 5
     run_beamOn = 100000
 
 
@@ -74,6 +76,7 @@ def Geant4Simulation():
     # Mi sposto nella directory di output
     os.chdir(RunDir)
     print("Directory created: ", RunDir)
+    RunDir_global = os.getcwd()
 
     # Voglio strutturare la directory come segue:
     # - Dir: GDML Files for history
@@ -109,17 +112,24 @@ def Geant4Simulation():
         out_DST_paths.append(os.path.join(out_DST_path, "GDML_file_"+str(index)))
 
         # Create the macro file inside the macro directory
+        # Check if the file already exists
+        if os.path.exists(os.path.join(start_macro_path, "macro_"+str(index)+".mac")):
+            os.remove(os.path.join(start_macro_path, "macro_"+str(index)+".mac"))
+        
+            
         macro_file = open(os.path.join(start_macro_path, "macro_"+str(index)+".mac"), "w")
         macro_file.write("# Date of creation: "+ str(Date) +" UNIX Time :"+ str(time.time) +"\n")
         macro_file.write("/control/verbose 0\n")
         
         macro_file.write("/gps/pos/type " + gps_pos_type + "\n")
         macro_file.write("/gps/pos/shape " + gps_pos_shape + "\n")
+        #macro_file.write("/gps/position " + str(gps_pos_centre_cm[0]) + " " + str(gps_pos_centre_cm[1]) + " " + str(gps_pos_centre_cm[2]) + " cm\n")
         macro_file.write("/gps/pos/centre " + str(gps_pos_centre_cm[0]) + " " + str(gps_pos_centre_cm[1]) + " " + str(gps_pos_centre_cm[2]) + " cm\n")
         macro_file.write("/gps/pos/radius " + str(gps_pos_radius_cm) + " cm\n")        
         macro_file.write("/gps/ang/type " + gps_ang_type + "\n")
         macro_file.write("/gps/ang/mintheta " + str(gps_ang_mintheta_deg) + " deg\n")
         macro_file.write("/gps/ang/maxtheta " + str(gps_ang_maxtheta_deg) + " deg\n")
+        #macro_file.write("/gps/direction " + str(gps_ang_direction[0]) + " " + str(gps_ang_direction[1]) + " " + str(gps_ang_direction[2]) + "\n")
 
         for i in range(len(gps_particle)):
             NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i])
@@ -142,14 +152,20 @@ def Geant4Simulation():
     os.system("cmake ..")
     os.system("make -j4")
 
+    # Open a file in the out_GDML_path directory
+    
+    report_file = open(os.path.join(RunDir_global, "report.txt"), "w")
+
     for index, file in enumerate(os.listdir(out_GDML_path)):
         os.system("./gdml_det " + os.path.join(out_GDML_path, file) + " " + os.path.join(out_Geant_macros_path, "macro_"+str(index)+".mac"))
+        report_file.write("GDML file " + str(index) + ' : ' + file + "\n")
         os.chdir(HomeDirectorySimulation)   
         # Move folder OutputText to the right place
         for textfile in os.listdir(os.path.join(HomeDirectorySimulation, "OutputText")):
             shutil.copy(os.path.join(HomeDirectorySimulation, "OutputText",textfile), out_Text_paths[index])
         os.chdir("build")
     os.chdir(HomeDirectorySimulation)
+    report_file.close()
 
 
 
