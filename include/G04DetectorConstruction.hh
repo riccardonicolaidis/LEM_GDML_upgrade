@@ -39,6 +39,7 @@
 #include "G4Colour.hh"
 #include "G4VisAttributes.hh"
 #include "G4VSolid.hh"
+#include "G4GenericMessenger.hh"
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -47,6 +48,7 @@
 #include "G4SystemOfUnits.hh"
 
 #include "G04SensitiveDetector.hh"
+#include "G04SteeringClass.hh"
 
 
 class G4GDMLParser;
@@ -56,18 +58,21 @@ class G4GDMLParser;
 class G04DetectorConstruction : public G4VUserDetectorConstruction
 {
   public: 
-    G04DetectorConstruction(const G4GDMLParser& parser);
+    G04DetectorConstruction(const G4GDMLParser& parser, G04SteeringClass* steering);
 
     virtual G4VPhysicalVolume *Construct();  
     virtual void ConstructSDandField();
 
     const G4GDMLParser& GetParser() const { return fParser; }
+    const G04SteeringClass* GetSteering() const { return fSteering; }
 
     G4int GetNumberOfSensitiveDetectors() const { return NumberOfSensitiveDetectors; }
   
   private:
     const G4GDMLParser& fParser;
+    G04SteeringClass *fSteering;
     G4int NumberOfSensitiveDetectors;
+    G4String OutputTextFolder;
 };
 
 #endif

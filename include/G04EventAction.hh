@@ -14,13 +14,18 @@
 #include "G04RunAction.hh"
 #include "G04HitClass.hh"
 #include "G04DetectorConstruction.hh"
+#include "G04SteeringClass.hh"
 
 
 
 class G04EventAction : public G4UserEventAction
 {
 public:
-        G04EventAction(G4int NumberSD, const G04DetectorConstruction *detector, G04PrimaryGeneratorAction *generator);
+        G04EventAction(G4int NumberSD, 
+                       const G04DetectorConstruction *detector, 
+                       G04PrimaryGeneratorAction *generator,
+                       G04SteeringClass *steering
+                       );
         ~G04EventAction();
 
         virtual void BeginOfEventAction(const G4Event*);
@@ -31,6 +36,9 @@ private:
         const G04DetectorConstruction *fDetector;
         G04PrimaryGeneratorAction *fPrimary;
         const G4GDMLParser &fParser;
+        G4String OutputTextFolder;
+
+        G04SteeringClass *fSteering;
 
         G4double NTupleData[1000];
         const G4int StartingNTuple = 7;

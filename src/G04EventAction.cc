@@ -4,11 +4,33 @@
 
 
 
-G04EventAction::G04EventAction(G4int NumberSD, const G04DetectorConstruction *detector, G04PrimaryGeneratorAction *generation): fNumberSD(NumberSD), fDetector(detector), fPrimary(generation),fParser(detector->GetParser())
+G04EventAction::G04EventAction(G4int NumberSD, 
+                               const G04DetectorConstruction *detector, 
+                               G04PrimaryGeneratorAction *generation,
+                               G04SteeringClass *steering): 
+                               fNumberSD(NumberSD), 
+                               fDetector(detector), 
+                               fPrimary(generation),
+                               fParser(detector->GetParser()),
+                               fSteering(steering)
 {
-    G4String sensitiveDetFilename = "../OutputText/GDML_SD_EventAction.txt";
+    OutputTextFolder = fSteering -> GetOutputTextFolder();
+    G4String sensitiveDetFilename = OutputTextFolder + "/GDML_SD_EventAction.txt";
     std::ofstream sensitiveDetFile(sensitiveDetFilename);
 
+
+    for(int i = 0; i < 10; ++i)
+    {
+        G4cout << "###############" << G4endl;
+    }
+
+    G4cout << sensitiveDetFilename << G4endl;
+
+    for(int i = 0; i < 100; ++i)
+    {
+        G4cout << "###############" << G4endl;
+    }
+    
     const G4GDMLAuxMapType* auxmap = fParser.GetAuxMap();
     for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin(); iter!=auxmap->end(); iter++) 
     {

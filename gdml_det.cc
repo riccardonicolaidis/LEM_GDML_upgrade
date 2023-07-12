@@ -35,6 +35,10 @@
 // --------------------------------------------------------------
 
 #include <vector>
+#include <string>
+#include <sstream>
+#include <fstream>
+
 
 #include "G04ActionInitialization.hh"
 #include "G04DetectorConstruction.hh"
@@ -46,6 +50,11 @@
 #include "G4VisExecutive.hh"
 #include "G4UIExecutive.hh"
 #include "G4GDMLParser.hh"
+
+#include "G4SystemOfUnits.hh"
+#include "G04SteeringClass.hh"
+
+
 
 int main(int argc,char **argv)
 {
@@ -64,24 +73,55 @@ int main(int argc,char **argv)
    // Detect interactive mode (if only one argument) and define UI session
    //
    G4UIExecutive* ui = 0;
-   if ( argc == 2 ) {
+   if ( argc == 3 || argc == 2 ) {
      ui = new G4UIExecutive(argc, argv);
    }
 
    G4GDMLParser parser;
    parser.Read(argv[1]);
 
+   // arg[3] is a steering file
+  std::ifstream steeringFile(argv[3]);
+  std::string line;
+
+  G04SteeringClass* steering = new G04SteeringClass();
+
+  // Loop until end of file is reached
+  while (std::getline(steeringFile, line))
+  {
+    // Ignore empty lines and lines starting with #
+    if (line.empty() || line[0] == '#')
+      continue;
+    
+    // Split line into words separated by whitespace
+    std::stringstream ss(line);
+    std::vector<std::string> words;
+    std::string word;
+
+    while(std::getline(ss, word, ' '))
+    {
+      words.push_back(word);
+    }
+
+    if(words[0] == "OUT_TEXT")
+    {
+      steering->SetOutputTextFolder(words[1]);
+      G4cout << "Output text folder set to: " << steering->GetOutputTextFolder() << G4endl;
+    }
+  }
+
+
    auto* runManager = G4RunManagerFactory::CreateRunManager();
    runManager->SetNumberOfThreads(1);
 
-   G04DetectorConstruction* detector = new G04DetectorConstruction(parser);
+   G04DetectorConstruction* detector = new G04DetectorConstruction(parser, steering);
 
 
    runManager->SetUserInitialization(detector);
    runManager->SetUserInitialization(new FTFP_BERT);
 
    // User action initialization
-   runManager->SetUserInitialization(new G04ActionInitialization(detector));
+   runManager->SetUserInitialization(new G04ActionInitialization(detector, steering));
    runManager->Initialize();
 
    // Initialize visualization

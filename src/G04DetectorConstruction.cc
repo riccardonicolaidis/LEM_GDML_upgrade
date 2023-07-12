@@ -38,9 +38,10 @@ using namespace std;
  
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G04DetectorConstruction::G04DetectorConstruction(const G4GDMLParser& parser)
+G04DetectorConstruction::G04DetectorConstruction(const G4GDMLParser& parser,G04SteeringClass* steering)
  : G4VUserDetectorConstruction(),
-   fParser(parser)
+   fParser(parser),
+   fSteering(steering)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -76,11 +77,14 @@ void G04DetectorConstruction::ConstructSDandField()
   // Define a text file name to store the auxiliary information
   // If the file exists, it will be overwritten
 
-  G4String auxfilename        = "../OutputText/GDML_AuxiliaryInfo.txt";
-  G4String materialfilename   = "../OutputText/GDML_MaterialInfo.txt";
-  G4String solidnamesfilename = "../OutputText/GDML_SolidNames.txt";
-  G4String sensitiveDetFilename = "../OutputText/GDML_SD_DetectorConstruction.txt";
-  G4String SiliconPositionFilename = "../OutputText/GDML_SiliconPosition.txt";
+
+  OutputTextFolder = fSteering -> GetOutputTextFolder();
+
+  G4String auxfilename        = OutputTextFolder+"/GDML_AuxiliaryInfo.txt";
+  G4String materialfilename   = OutputTextFolder+"/GDML_MaterialInfo.txt";
+  G4String solidnamesfilename = OutputTextFolder+"/GDML_SolidNames.txt";
+  G4String sensitiveDetFilename = OutputTextFolder+"/GDML_SD_DetectorConstruction.txt";
+  G4String SiliconPositionFilename = OutputTextFolder+"/GDML_SiliconPosition.txt";
   
   std::ofstream auxfile(auxfilename);
   std::ofstream materialfile(materialfilename);

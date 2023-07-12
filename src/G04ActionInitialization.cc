@@ -31,8 +31,9 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G04ActionInitialization::G04ActionInitialization(G04DetectorConstruction* detConstruction)
- : G4VUserActionInitialization(), fDetConstruction(detConstruction)
+G04ActionInitialization::G04ActionInitialization(G04DetectorConstruction* detConstruction,
+                                                 G04SteeringClass* steering)
+ : G4VUserActionInitialization(), fDetConstruction(detConstruction), fSteeringClass(steering)
 {}
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
@@ -57,10 +58,10 @@ void G04ActionInitialization::Build() const
   G04PrimaryGeneratorAction* primary = new G04PrimaryGeneratorAction();
   SetUserAction(primary);
 
-  G04RunAction* runAction = new G04RunAction(fDetConstruction, primary);
+  G04RunAction* runAction = new G04RunAction(fDetConstruction, primary, fSteeringClass);
   SetUserAction(runAction);
 
-  G04EventAction* eventAction = new G04EventAction(fDetConstruction->GetNumberOfSensitiveDetectors(), fDetConstruction, primary);
+  G04EventAction* eventAction = new G04EventAction(fDetConstruction->GetNumberOfSensitiveDetectors(), fDetConstruction, primary, fSteeringClass);
   SetUserAction(eventAction);
 
   G04TrackingAction* trackingAction = new G04TrackingAction(fDetConstruction);

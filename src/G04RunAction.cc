@@ -1,8 +1,14 @@
 #include "G04RunAction.hh"
 
 
-G04RunAction::G04RunAction(G04DetectorConstruction* detector, G04PrimaryGeneratorAction* primary):
-    G4UserRunAction(),  fDetector(detector), fPrimary(primary), fParser(detector->GetParser())
+G04RunAction::G04RunAction(G04DetectorConstruction* detector, 
+                           G04PrimaryGeneratorAction* primary,
+                           G04SteeringClass *steering):
+                           G4UserRunAction(),  
+                           fDetector(detector), 
+                           fPrimary(primary), 
+                           fParser(detector->GetParser()),
+                           fSteering(steering)
 {
 
     G4AnalysisManager* man = G4AnalysisManager::Instance();
@@ -11,7 +17,9 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector, G04PrimaryGenerato
     fMessenger = new G4GenericMessenger(this, "/NameOfFile/","Name of the file to save data");
     fMessenger -> DeclareProperty("NameOfFile", TotalFileName, "Name of the file to save data");
 
-    G4String ReportFileName = "../OutputText/NTupleInfo.txt";
+
+    OutputTextFolder = fSteering -> GetOutputTextFolder();
+    G4String ReportFileName = OutputTextFolder+"/NTupleInfo.txt";
     std::ofstream ReportFile(ReportFileName);
     G4int NTupleID = 0;
     G4int NTupleColumnID = 0;
@@ -36,7 +44,7 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector, G04PrimaryGenerato
     man -> CreateNtupleDColumn("pDirZ");            // 6
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "pDirZ" << G4endl;
 
-    G4String sensitiveDetFilename = "../OutputText/GDML_SD_RunAction.txt";
+    G4String sensitiveDetFilename = OutputTextFolder+"/GDML_SD_RunAction.txt";
     std::ofstream sensitiveDetFile(sensitiveDetFilename);
 
 

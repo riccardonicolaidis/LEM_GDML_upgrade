@@ -39,13 +39,14 @@
 #include "G04EventAction.hh"
 #include "G04DetectorConstruction.hh"
 #include "G04TrackingAction.hh"
+#include "G04SteeringClass.hh"
 
 /// Action initialization class.
 
 class G04ActionInitialization : public G4VUserActionInitialization
 {
   public:
-    G04ActionInitialization( G04DetectorConstruction* detConstruction);
+    G04ActionInitialization( G04DetectorConstruction* detConstruction, G04SteeringClass* steeringClass);
     virtual ~G04ActionInitialization();
 
     virtual void BuildForMaster() const;
@@ -54,6 +55,7 @@ class G04ActionInitialization : public G4VUserActionInitialization
 
   private:
     G04DetectorConstruction* fDetConstruction;
+    G04SteeringClass* fSteeringClass;
 };
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
