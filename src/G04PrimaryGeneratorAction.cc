@@ -70,6 +70,7 @@ void G04PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   G4ThreeVector momentum = fGeneralParticleSource -> GetParticleMomentumDirection();
 
   man -> FillNtupleDColumn(0,0, fGeneralParticleSource->GetParticleEnergy());
+  MCEnergy = fGeneralParticleSource->GetParticleEnergy();
   man -> FillNtupleDColumn(0,1, pos.getX());
   man -> FillNtupleDColumn(0,2, pos.getY());
   man -> FillNtupleDColumn(0,3, pos.getZ());

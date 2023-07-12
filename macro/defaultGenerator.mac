@@ -1,9 +1,10 @@
-/gps/verbose 0
-#/gps/pos/type Plane
-#/gps/pos/shape Circle
+#/gps/verbose 0
+/gps/pos/type Plane
+/gps/pos/shape Circle
 
-/gps/pos/centre 0 0 11 cm
-/gps/pos/radius 10 cm
+/gps/pos/centre 0 0 11.4 cm
+/gps/pos/centre 0 0 11.5 cm
+/gps/pos/radius 5 cm
 
 /gps/ang/type iso
 /gps/ene/type Lin
@@ -12,6 +13,23 @@
 /gps/ang/maxtheta 90 deg
 /gps/ang/mintheta 0 deg
 
-/gps/particle mu-
-/gps/ene/min 10 GeV
-/gps/ene/max 100 GeV
+/gps/particle e-
+/gps/ene/type Lin
+/gps/ene/min 0.1 MeV
+/gps/ene/max 1.0 MeV
+#/gps/ene/type Mono
+#/gps/ene/mono 1.0 MeV
+#/gps/position 0.15 0 15 cm
+#/gps/direction 0 0 -1
+
+/gps/position 0 0 11 cm
+/gps/ang/type iso
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 40 deg
+
+/gps/particle proton
+/gps/ene/type Lin
+/gps/ene/gradient 0
+/gps/ene/intercept 1
+/gps/ene/min 1 MeV
+/gps/ene/max 200 MeV

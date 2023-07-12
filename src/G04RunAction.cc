@@ -59,6 +59,8 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector, G04PrimaryGenerato
         }
     }
 
+    man -> CreateNtupleIColumn("EventID");          // 7
+
     man ->FinishNtuple();
 
     ReportFile.close();

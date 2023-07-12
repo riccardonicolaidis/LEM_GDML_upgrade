@@ -58,6 +58,8 @@ class G04PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
    ~G04PrimaryGeneratorAction();
 
    virtual void GeneratePrimaries(G4Event* anEvent);
+  
+   G4double GetMCEnergy(){return MCEnergy;};
 
   private:
 
@@ -65,6 +67,8 @@ class G04PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
     G4GeneralParticleSource *fGeneralParticleSource;
     G4int                    ParticleNumber;
     G4GenericMessenger      *fMessenger;
+
+    G4double MCEnergy;
 
 
 

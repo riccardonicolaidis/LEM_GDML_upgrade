@@ -15,20 +15,90 @@
 #include "TMath.h"
 #include "TColor.h"
 #include "TLegend.h"
+#include "THStack.h"
+
+#include "TH1DLog.h"
 
 using namespace std;
 
-void GeometricFactor()
+void GeometricFactor(
+        TString filename_e,
+        TString filename_e_noExt,
+        TString filename_p,
+        TString filename_p_noExt,
+        TString filename_alpha,
+        TString filename_alpha_noExt,
+        double Emin_e = 0.0,
+        double Emax_e = 0.0,
+        double Emin_p = 0.0,
+        double Emax_p = 0.0,
+        double Emin_alpha = 0.0,
+        double Emax_alpha = 0.0,
+        TString destination = "",
+        int NumberPairsSensors = 5,
+        double ResSilicon = 0.03,
+        double ResPlastic = 0.03,
+        double E_thr_Thin = 0.03,
+        double E_thr_Thick = 0.03,
+        double E_thr_Plastic = 0.1
+)
 {
+    
+    TString FileName[3] = {filename_e, filename_p, filename_alpha};
+    TString FileName_noExt[3] = {filename_e_noExt, filename_p_noExt, filename_alpha_noExt};
+    double Emins[3] = {Emin_e, Emin_p, Emin_alpha};
+    double Emaxs[3] = {Emax_e, Emax_p, Emax_alpha};
 
-    // Definitions for the Geometrical Factor part
-    TH1D    *hAcceptance[3];
-    TH1D    *hFinal[3];
-    TH1D    *hIncident[3];
+    int Nfiles = 3;
+
+
+        int NumberBranches = 7 + 3 + 2*NumberPairsSensors;
+    std::cout << "NumberBranches = " << NumberBranches << endl;
+
+
+    TString BranchName[NumberBranches];
+
+    int iBranch = 0;
+    BranchName[iBranch++] = "RandEnergy";
+    BranchName[iBranch++] = "Xgen";
+    BranchName[iBranch++] = "Ygen";
+    BranchName[iBranch++] = "Zgen";
+    int iBranchDir = iBranch;
+    BranchName[iBranch++] = "pDirX";
+    BranchName[iBranch++] = "pDirY";
+    BranchName[iBranch++] = "pDirZ";
+
+    int iBranchEnergies = iBranch;
+    BranchName[iBranch++] = "Ed_LV_Veto_bottom";
+    BranchName[iBranch++] = "Ed_LV_Veto_top";
+    int iBranchEnergies_Calo = iBranch;
+    BranchName[iBranch++] = "Ed_LV_Plastic_calo";
+
+    int iStartSensors = iBranch;
+    int iStartSensors_Thin = iStartSensors;
+    int iStartSensors_Thick = iStartSensors + NumberPairsSensors;
+
+    for(int iPair = 0; iPair < NumberPairsSensors; iPair++)
+    {
+        BranchName[iBranch] = "Ed_LV_Silicon_Thin_" + to_string(iPair);
+        BranchName[iBranch+NumberPairsSensors] = "Ed_LV_Silicon_Thick_" + to_string(iPair);
+        iBranch++;
+    }
+
+    for(int i = 0; i < NumberBranches; i++)
+    {
+        std::cout << "BranchName[" << i << "] = " << BranchName[i] << endl;
+    }
+
+
+    // 
+    
+
+
+    /* -------------------------------------------------------------------------- */
     TCanvas *cFinal[3];
     double ERange[3][2];
     double ERangeGen[3][2];
-    double dNdEGen;
     double NgenCalibrated;
     double Area;
     double Radius;
@@ -38,55 +108,42 @@ void GeometricFactor()
     //           GEOMETRICAL FACTOR SETTINGS
     // ********************************************
     // Range of energy generated (see in run_..._.mac)
-    ERangeGen[0][0] = 0.001;
-    ERangeGen[0][1] = 10.;
-    ERangeGen[1][0] = 0.001;
-    ERangeGen[1][1] = 90.;
-    ERangeGen[2][0] = 0.001;
-    ERangeGen[2][1] = 300.;
+    ERangeGen[0][0] = Emin_e;
+    ERangeGen[0][1] = Emax_e;
+    ERangeGen[1][0] = Emin_p;
+    ERangeGen[1][1] = Emax_p;
+    ERangeGen[2][0] = Emin_alpha;
+    ERangeGen[2][1] = Emax_alpha;
     // Range of energy of the plots
-    ERange[0][0] = 0.001;
-    ERange[0][1] = 10.;
-    ERange[1][0] = 0.001;
-    ERange[1][1] = 90.;
-    ERange[2][0] = 0.001;
-    ERange[2][1] = 300.;
+    ERange[0][0] = Emin_e;
+    ERange[0][1] = Emax_e;
+    ERange[1][0] = Emin_p;
+    ERange[1][1] = Emax_p;
+    ERange[2][0] = Emin_alpha;
+    ERange[2][1] = Emax_alpha;
     // Number of bins
-    int Nbins[3] = {70, 100, 100};
-    Area = TMath::Pi() * 1.8 * 1.8;
-    NGen = 50000000;
+    int Nbins[3] = {100, 100, 100};
+    Radius = 1.3;
+    Area = TMath::Pi() * Radius * Radius;
+    NGen = 5000000;
+
+    double dNdE_Gen[3];
+    for(int i = 0; i < 3; ++i)
+    {
+        dNdE_Gen[i] = NGen / (ERangeGen[i][1] - ERangeGen[i][0]);
+    }
+
     // ********************************************
     // ********************************************
-/* -------------------------------------------------------------------------- */
+    /* -------------------------------------------------------------------------- */
     /*                                   OPTIONS                                  */
     /* -------------------------------------------------------------------------- */
 
-    int Nfiles = 3;
-
-
-    cout << "Nfiles = " << Nfiles << endl;
 
 
     /* -------------------------------------------------------------------------- */
     /*                                 /FILE NAMES                                */
     /* -------------------------------------------------------------------------- */
-
-    TString FileName[Nfiles];
-    
-    // Read the FileNames.txt and for each line of the file fill the TString FileName[]
-    ifstream FileNames("FileNames.txt");
-    if(!FileNames.is_open())
-    {
-        cout << "FileNames.txt not found" << endl;
-        return;
-    }
-    else
-    {
-        for(int i = 0; i < Nfiles; i++)
-        {
-            FileNames >> FileName[i];
-        }
-    }
 
 
     for(int i = 0; i < Nfiles; i++)
@@ -106,342 +163,221 @@ void GeometricFactor()
     }
 
 
-
-    /* -------------------------------------------------------------------------- */
-    /*                                BRANCH NAMES                                */
-    /* -------------------------------------------------------------------------- */
-
-
-
-
-    int Ntot = 7;
-    int N_plastic = 2;
-    int NumberOfBranches = 11 + 2*Ntot + N_plastic;
-
-
-    TString BranchName[11+2*Ntot+N_plastic];
-    TString TotEnergyName[Ntot];
-    TString TotEnergyCondition[Ntot];
-    TString PIDName[Ntot];
-    TString DirName[3];
-    TString PolarAngle[2];
-    TString NewPolarAngle[2];
-    TString AliasETot = "ETot";
-
-    TString ThinTot;
-    TString ThickTot;
-
-    DirName[0] = "DirX";
-    DirName[1] = "DirY";
-    DirName[2] = "DirZ";
-
-    PolarAngle[0] = "dirTheta";
-    PolarAngle[1] = "dirPhi";
-
-    NewPolarAngle[0] = "dirThetaNew";
-    NewPolarAngle[1] = "dirPhiNew";
-
-    int j;
-
-
-
-
-   
-
-    /* -------------------------------------------------------------------------- */
-    /*                             PLOTTING PARAMETERS                            */
-    /* -------------------------------------------------------------------------- */
-
-    double ResSilicon  = 0.01;
-    double ResCZT      = 0.05;
-    double ResPlastic  = 0.3;
-    double E_min_thin  = 0.01;  // Thick layer
-    double E_min_thick = 0.03; // Thin layer
-    double E_th_Vetoed = 0.2;  // Energy dispersion (Veto threshold)
-    double E_th_plastic = 0.2;
-
-
-    double Emaxx = log10(500);
-    double Emaxy = log10(400);
-    double Eminx = log10(0.08);
-    double Eminy = log10(0.0004);
-    double Nbinsx = 600;
-    double Nbinsy = 600;
-
-
-/* -------------------------------------------------------------------------- */
-/*               Constructiong the Branch names to read the tree              */
-/* -------------------------------------------------------------------------- */
-
-
-    BranchName[0] = "NumberID";
-    BranchName[1] = "RandEnergy";
-    BranchName[2] = "RandNumber";
-    BranchName[3] = "Xgen";
-    BranchName[4] = "Ygen";
-    BranchName[5] = "Zgen";
-    BranchName[6] = "pDirX";
-    BranchName[7] = "pDirY";
-    BranchName[8] = "pDirZ";
-
-    j = 9;
-    for(int i = 0; i < N_plastic; ++i)
-    {
-        BranchName[9 + i] = Form("Ed_LV_P%d",i+1);
-        ++j;
-    }
-    
-    BranchName[j++] = "Ed_LV_V1";
-    BranchName[j++] = "Ed_LV_V2";
-
-    int IndexStartSensors = j;
-
-
-    for(int i = 0; i < Ntot; ++i)
-    {
-        if(i == 0)
-        {
-            BranchName[IndexStartSensors + i]        = Form("Ed_LV_THIN");
-            BranchName[IndexStartSensors + i + Ntot] = Form("Ed_LV_THICK");
-        }
-        else
-        {
-            BranchName[IndexStartSensors + i]        = Form("Ed_LV_THIN00%d", i);
-            BranchName[IndexStartSensors + i + Ntot] = Form("Ed_LV_THICK00%d", i);
-        }
-
-
-        if (i == 0)
-        {
-            ThinTot  = Form("(%s)", BranchName[IndexStartSensors + i].Data());
-            ThickTot = Form("(%s)", BranchName[IndexStartSensors + i + Ntot].Data());
-        }
-        else
-        {
-            ThinTot  = Form("(%s + %s)",ThinTot.Data(), BranchName[IndexStartSensors + i].Data());
-            ThickTot = Form("(%s + %s)",ThickTot.Data(), BranchName[IndexStartSensors + i + Ntot].Data());                
-        }
-    }
-
-
-    cout << "Branches Names : \n############################" << endl;
-    for(int i = 0; i < NumberOfBranches; ++i)
-    {
-        cout << i << " " << BranchName[i].Data() << endl;
-    }
-
-
-    /* -------------------------------------------------------------------------- */
-    /*                              Alias definitions                             */
-    /* -------------------------------------------------------------------------- */
-
-    /* -------------------------------------------------------------------------- */
-    /*                              ALIAS DEFINITIONS                             */
-    /* -------------------------------------------------------------------------- */
-
-    for(int i = 0; i < Nfiles ; ++i)
-    {
-        cout << "Setting alias in File " << i << " : " << FileName[i].Data() << endl;
-        /* -------------------------------- SMEARING -------------------------------- */
-        /* ------------------------ YOU ONLY NEED TO ADD A g ------------------------ */
-
-        for(int k = 0; k < N_plastic+2; ++k)
-        {
-            Edep[i] -> SetAlias(Form("wnorm%d",9+k),"(sin(2 *pi*rndm)*sqrt(-2*log(rndm)))");
-            Edep[i] -> SetAlias(Form("g%s",BranchName[9+k].Data()), Form("((%s)*(1 + (wnorm%d * %f)))",BranchName[k+9].Data(),k+9,ResPlastic));
-            cout << Form("Alias: g%s",BranchName[9+k].Data()) << endl;
-        }
-
-
-        for(int k = 0; k < 2*Ntot; ++k)
-        {
-            Edep[i] -> SetAlias(Form("wnorm%d",k),"(sin(2 *pi*rndm)*sqrt(-2*log(rndm)))");
-            Edep[i] -> SetAlias(Form("g%s",BranchName[IndexStartSensors + k].Data()), Form("((%s)*(1 + (wnorm%d * %f)))",BranchName[IndexStartSensors + k].Data(),k,ResSilicon));
-            cout << Form("Alias: g%s",BranchName[IndexStartSensors + k].Data()) << endl;
-        }
-
-        /* ------------------- Incident direction of the particle ------------------- */
-
-        Edep[i] -> SetAlias("NormP", Form("(TMath::Sqrt(TMath::Power(%s,2) + TMath::Power(%s,2) + TMath::Power(%s,2)))", BranchName[6].Data(), BranchName[7].Data(), BranchName[8].Data()));
-        for(int k = 6; k <= 8; ++k)
-        {
-            Edep[i] -> SetAlias(DirName[k-6].Data(), Form("((-%s)/(NormP))", BranchName[k].Data()));
-            cout << Form("Alias: %s",DirName[k-6].Data()) << endl;
-        }
-
-        // Legend
-        // [0] : Theta
-        // [1] : Phi
-        Edep[i] -> SetAlias(PolarAngle[0].Data()   , Form("((TMath::ACos(-%s)))", DirName[2].Data())); // *(180/3.415927))
-        Edep[i] -> SetAlias(PolarAngle[1].Data()   , Form("(TMath::ATan2(-%s,-%s))", DirName[1].Data(), DirName[0].Data())); // *(180/3.415927))
-        Edep[i] -> SetAlias(NewPolarAngle[1].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Cos(%s)),(TMath::Cos(%s))))",              PolarAngle[0].Data(), PolarAngle[0].Data(), PolarAngle[1].Data() )); // *(180/3.415927))
-        Edep[i] -> SetAlias(NewPolarAngle[0].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Sin(%s)*TMath::Sin(%s)),TMath::Cos(%s)))", PolarAngle[0].Data(), PolarAngle[1].Data(), NewPolarAngle[1].Data(), PolarAngle[0].Data())); // *(180/3.415927))
-        
-        cout << Form("Alias: %s",PolarAngle[0].Data()) << endl;
-        cout << Form("Alias: %s",PolarAngle[1].Data()) << endl;
-        cout << Form("Alias: %s",NewPolarAngle[0].Data()) << endl;
-        cout << Form("Alias: %s",NewPolarAngle[1].Data()) << endl;
-
-        /* -------------------- Particle identification parameter ------------------- */
-
-        cout << "Defining total energy in File " << i << " : " << FileName[i].Data() << endl;
-        
-        for(int k = 0; k < Ntot; ++k)
-        {
-            TotEnergyName[k] = Form("Tot%d",k);
-            PIDName[k] = Form("PID%d",k);
-            TotEnergyCondition[k]  = Form("(%s + %s",BranchName[IndexStartSensors+k].Data(), BranchName[IndexStartSensors + Ntot + k].Data());
-
-            for(int l = 0 ; l < N_plastic ; ++l)
-            {
-                TotEnergyCondition[k] += Form("+ (g%s)*(g%s > %g)", BranchName[9+l].Data(), BranchName[9+l].Data(),E_th_plastic);
-            }
-            TotEnergyCondition[k] += ")";
-            Edep[i] -> SetAlias(TotEnergyName[k], TotEnergyCondition[k]);
-            Edep[i] -> SetAlias(PIDName[k], Form("(TMath::Log10(g%s * %s))",BranchName[IndexStartSensors + k].Data(), TotEnergyName[k].Data()));
-            ++j;
-        }
-                
-        
-        /* ------------------------------- Total Thin ------------------------------- */
-        /* ------------------------------- Total Thick ------------------------------ */
-    }
-
-
     /* -------------------------------------------------------------------------- */
     /*                   Definition of the SELECTION conditions                   */
     /* -------------------------------------------------------------------------- */
 
-    TString ConditionPairSilicon[Ntot];
+    TString ConditionPairSilicon[NumberPairsSensors];
     TString ConditionPairSiliconAll;
-    TString ConditionEnergyDispersion;
-    TString ConditionDrilledVeto;
+    TString ConditionVetoedEvents;
     TString ConditionGoodEvents;
-    TString ConditionGoodEventsSinglePair[Ntot];
+    TString ConditionGoodEventsSinglePair[NumberPairsSensors];
 
-
-    for(int i = 0; i< Ntot; ++i)
+    for(int i = 0; i< NumberPairsSensors; ++i)
     {
-        cout << "Defining good events for pair" << BranchName[IndexStartSensors+i].Data() << " & " <<BranchName[IndexStartSensors+ Ntot+i].Data() << endl;
-        ConditionPairSilicon[i] = Form("((%s > %g) && (%s > %g))", BranchName[IndexStartSensors+i].Data(), E_min_thin, BranchName[IndexStartSensors + Ntot + i].Data(), E_min_thick);
+        cout << "Defining good events for pair" << BranchName[iStartSensors+i].Data() << " & " <<BranchName[iStartSensors+ NumberPairsSensors+i].Data() << endl;
+        ConditionPairSilicon[i] = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
         cout << "ConditionPairSilicon[" << i << "] = " << ConditionPairSilicon[i].Data() << endl;
         if(i == 0)
         {
-            ConditionPairSiliconAll = Form("((%s > %g) && (%s > %g))", BranchName[IndexStartSensors+i].Data(), E_min_thin, BranchName[IndexStartSensors + Ntot + i].Data(), E_min_thick);
+            ConditionPairSiliconAll = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
         }
         else 
         {
-            ConditionPairSiliconAll += Form("|| ((%s > %g) && (%s > %g))", BranchName[IndexStartSensors+i].Data(), E_min_thin, BranchName[IndexStartSensors + Ntot + i].Data(), E_min_thick);
+            ConditionPairSiliconAll += Form("|| ((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
         }
     }
 
-    E_th_Vetoed = 0.00000001;
-    ConditionDrilledVeto       = Form("(%s <= %g)", BranchName[9+N_plastic].Data(), E_th_Vetoed);
-    ConditionEnergyDispersion  = Form("((%s)" , BranchName[1].Data());
-    ConditionEnergyDispersion += Form("- (%s)", ThinTot.Data());
-    ConditionEnergyDispersion += Form("- (%s)", ThickTot.Data());
-    for(int i = 0; i < N_plastic; ++i)
+    ConditionVetoedEvents = Form("(%s < %g) && (%s < %g)", BranchName[iBranchEnergies].Data(), E_thr_Plastic, BranchName[iBranchEnergies + 1].Data(), E_thr_Plastic);
+
+    ConditionGoodEvents = Form("(%s) && (%s)", ConditionPairSiliconAll.Data(), ConditionVetoedEvents.Data());
+    
+    TString ConditionGoodEvents_Ch0 = Form("(%s) && (%s)", ConditionPairSilicon[0].Data(), ConditionVetoedEvents.Data());
+    TString ConditionGoodEvents_ChOther = "(";
+    for(int i = 1; i < NumberPairsSensors; ++i)
     {
-        ConditionEnergyDispersion += Form("- (%s)", BranchName[9+i].Data());
+        if(i == 1)
+        {
+            ConditionGoodEvents_ChOther += Form("(%s)", ConditionPairSilicon[i].Data());
+        }
+        else
+        {
+            ConditionGoodEvents_ChOther += Form("|| (%s)", ConditionPairSilicon[i].Data());
+        }
     }
-    ConditionEnergyDispersion += Form(") < %g", E_th_Vetoed);
-    ConditionGoodEvents        = Form("(%s) && (%s) && (%s)", ConditionPairSiliconAll.Data(), ConditionDrilledVeto.Data(), ConditionEnergyDispersion.Data());
-    for(int i = 0; i < Ntot; ++i)
+    ConditionGoodEvents_ChOther += ")";
+    ConditionGoodEvents_ChOther += "&&";
+    ConditionGoodEvents_ChOther += Form("(%s)", ConditionVetoedEvents.Data());
+    
+    cout << "ConditionGoodEvents_Ch0 = " << ConditionGoodEvents_Ch0.Data() << endl;
+    cout << "ConditionGoodEvents_ChOther = " << ConditionGoodEvents_ChOther.Data() << endl;
+    
+    for(int i = 0; i < NumberPairsSensors; ++i)
     {
-        cout << "Defining good events for pair" << BranchName[IndexStartSensors+i].Data() << " & " <<BranchName[IndexStartSensors+ Ntot+i].Data() << endl;
-        ConditionGoodEventsSinglePair[i] = Form("(%s) && (%s) && (%s)", ConditionPairSilicon[i].Data(), ConditionDrilledVeto.Data(), ConditionEnergyDispersion.Data());
+        cout << "Defining good events for pair" << BranchName[iStartSensors_Thin+i].Data() << " & " <<BranchName[iStartSensors_Thick+i].Data() << endl;
+        ConditionGoodEventsSinglePair[i] = Form("(%s) && (%s)", ConditionPairSilicon[i].Data(), ConditionVetoedEvents.Data());
     }
 
 
 
+    TH1DLog *hAccepted_Log[Nfiles];
+    TH1D *hAccepted[Nfiles];
+    TCanvas *cAccepted[Nfiles];
 
-    for(int i = 0 ; i < 3 ; ++i)
+    for(int i = 0; i < Nfiles; ++i)
     {
-        cFinal[i] = new TCanvas(Form("cFinal_%d", i), Form("Final energy %d", i), 900, 700);
+        hAccepted_Log[i] = new TH1DLog();
+        hAccepted_Log[i] -> SetName(Form("hAccepted_Log_%d", i));
+        hAccepted_Log[i] -> SetTitle("");
+        hAccepted_Log[i] -> SetXAxis(ERangeGen[i][0], ERangeGen[i][1], Nbins[i]);
+        hAccepted_Log[i] -> SetXTitle("E_{gen} [MeV]");
+        hAccepted_Log[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");
+        hAccepted_Log[i] -> GenerateHistogram();
+        hAccepted[i] = hAccepted_Log[i] -> GetHistogram();
+
+        cAccepted[i] = new TCanvas(Form("cAccepted_%d", i), Form("cAccepted_%d", i));
+        cAccepted[i] -> cd();
+        Edep[i] -> Draw(Form("%s >> hAccepted_Log_%d", BranchName[0].Data(), i), ConditionGoodEvents.Data(), "E");
         
-        hIncident[i]   = new TH1D(Form("hIncident_%d", i), Form("Incident energy %d", i), Nbins[i], ERange[i][0], ERange[i][1]);
-        hIncident[i] -> SetTitle(Form("Incident energy %d: Log10(E[MeV]): Counts", i));
-        hAcceptance[i] = new TH1D(Form("hAcceptance_%d", i), Form("Acceptance %d", i), Nbins[i], ERange[i][0], ERange[i][1]);        
-        hAcceptance[i] -> SetTitle(Form("Accepted events %d: Log10(E[MeV]): Counts", i));
-        Edep[i] -> Draw(Form("%s>>hIncident_%d", BranchName[1].Data(), i), "", "");
-        Edep[i] -> Draw(Form("%s>>hAcceptance_%d", BranchName[1].Data(), i), ConditionGoodEvents.Data(), "");
-        
-        NgenCalibrated = NGen * (ERange[i][1] - ERange[i][0])/ (ERangeGen[i][1] - ERangeGen[i][0]);;
-        dNdEGen = NGen * (hAcceptance[i] -> GetBinWidth(1))/ (ERangeGen[i][1] - ERangeGen[i][0]);
-        
-        hFinal[i] = (TH1D*) hAcceptance[i] -> Clone(Form("hFinal_%d", i));
-        hFinal[i] -> Scale(TMath::Pi() * Area / dNdEGen);
-        hFinal[i] -> SetTitle(Form(" ; Energy [MeV]; Geometrical Factor [cm^2 rad]"));
-        hFinal[i] -> SetStats(0);
-        hFinal[i] -> SetMarkerStyle(8);
-        hFinal[i] -> SetMarkerSize(0.8);
-        hFinal[i] -> SetMarkerColor(kBlue);
-        hFinal[i] -> SetLineWidth(2);
-        hFinal[i] -> Draw();
-        gPad -> SetGrid();
+
+        int NumberOfBins = hAccepted[i] -> GetNbinsX();
+        // loop on all bins
+
+        for(int j = 0; j < NumberOfBins; ++j)
+        {
+            double BinWidth = hAccepted[i] -> GetBinWidth(j+1);
+            double NGenCalibrated = dNdE_Gen[i] * BinWidth;
+            double NAccepted = hAccepted[i] -> GetBinContent(j+1);
+            hAccepted[i] -> SetBinContent(j+1, NAccepted * TMath::Pi()*Area / NGenCalibrated);
+            // Set Bin Error
+            hAccepted[i] -> SetBinError(j+1, TMath::Sqrt(NAccepted) * TMath::Pi()*Area / NGenCalibrated);
+        }
+        hAccepted[i] -> Sumw2();
+        hAccepted[i] -> SetLineColor(kBlue);
+        hAccepted[i] -> SetLineWidth(2);
+        hAccepted[i] -> SetMarkerColor(kBlue);
+        hAccepted[i] -> SetMarkerStyle(20);
+        hAccepted[i] -> SetMarkerSize(0.5);
+
+
+        // Multiply the histogram by the acceptance of the aperture defined at the beginning of the script
+        hAccepted[i] -> Draw();
+
+        gPad -> SetLogx();
         gPad -> SetLogy();
-        cFinal[i] -> Update();
-        cFinal[i] -> Draw();
-        cout << "#############################" << endl;
-        cout << "Geometrical factor " << i << ": " << endl;
-        cout << TMath::Pi() * Area * (hAcceptance[i] -> GetEntries()) / NgenCalibrated << endl;
+        gPad -> SetGrid();
 
-        // Save image in all possible formats
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.png",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.pdf",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.root",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.C",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.eps",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.ps",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.jpg",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.gif",i));
-        cFinal[i] -> SaveAs(Form("../docs/assets/GeometricalFactor/Acceptance%d.jpeg",i));
+
+        // Save the histogram in a file
+        cAccepted[i] -> SaveAs(Form("%s/Acceptances_%s.pdf", destination.Data(), FileName_noExt[i].Data()));
+
     }
 
 
-    /* -------------------------------------------------------------------------- */
-    /*                                New Settings                                */
-    /* -------------------------------------------------------------------------- */
-
-    TH1D    *hAcceptance2[3];
-    TH1D    *hFinal2[3];
-    TH1D    *hIncident2[3];
-    double Xmin = 0.09;
-    double Xmax = 400.0;
-    // Number of bins
-    int Nbins2[3] = {4000, 800, 600};
-
-    
-    TCanvas *c1 = new TCanvas("c1", "Geometrical factor", 1000, 600);
-
-    
+    TH1DLog *hAccepted_Ch0_Log[Nfiles];
+    TH1D *hAccepted_Ch0[Nfiles];
+    TH1DLog *hAccepted_ChOther_Log[Nfiles];
+    TH1D *hAccepted_ChOther[Nfiles];
+    THStack *hAccepted_Stack[Nfiles];
+    TLegend *lAccepted[Nfiles];
 
 
-    for(int i = 0 ; i < 3 ; ++i)
+
+    for(int i = 0 ; i < Nfiles ; ++i)
     {
-        c1 -> cd();
-        hIncident2[i]   = new TH1D(Form("hIncident2_%d", i), Form("Incident energy %d", i), Nbins2[i], Xmin, Xmax);
-        hIncident2[i] -> SetTitle(Form("Incident energy %d: Log10(E[MeV]): Counts", i));
-        hAcceptance2[i] = new TH1D(Form("hAcceptance2_%d", i), Form("Acceptance %d", i), Nbins2[i], Xmin, Xmax);        
-        hAcceptance2[i] -> SetTitle(Form("Accepted events %d: Log10(E[MeV]): Counts", i));
-        Edep[i] -> Draw(Form("%s>>hIncident2_%d", BranchName[1].Data(), i), "", "");
-        Edep[i] -> Draw(Form("%s>>hAcceptance2_%d", BranchName[1].Data(), i), ConditionGoodEvents.Data(), "");
-        
-        dNdEGen = NGen * (hAcceptance2[i] -> GetBinWidth(1))/ (ERangeGen[i][1] - ERangeGen[i][0]);
-        
-        hFinal2[i] = (TH1D*) hAcceptance2[i] -> Clone(Form("hFinal2_%d", i));
-        hFinal2[i] -> Scale(TMath::Pi() * Area / dNdEGen);
-        hFinal2[i] -> SetTitle(Form(" ; Energy [MeV]; Geometrical Factor [cm^2 sr]"));
-        hFinal2[i] -> SetStats(0);
-        hFinal2[i] -> SetMarkerStyle(8);
-        hFinal2[i] -> SetMarkerSize(0.8);
-        hFinal2[i] -> SetLineWidth(2);
+        hAccepted_Ch0_Log[i] = new TH1DLog();
+        hAccepted_Ch0_Log[i] -> SetName(Form("hAccepted_Ch0_Log_%d", i));
+        hAccepted_Ch0_Log[i] -> SetTitle("");
+        hAccepted_Ch0_Log[i] -> SetXAxis(ERangeGen[i][0], ERangeGen[i][1], Nbins[i]);
+        hAccepted_Ch0_Log[i] -> SetXTitle("E_{gen} [MeV]");
+        hAccepted_Ch0_Log[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");
+        hAccepted_Ch0_Log[i] -> GenerateHistogram();
+        hAccepted_Ch0[i] = hAccepted_Ch0_Log[i] -> GetHistogram();
+
+        hAccepted_ChOther_Log[i] = new TH1DLog();
+        hAccepted_ChOther_Log[i] -> SetName(Form("hAccepted_ChOther_Log_%d", i));
+        hAccepted_ChOther_Log[i] -> SetTitle("");
+        hAccepted_ChOther_Log[i] -> SetXAxis(ERangeGen[i][0], ERangeGen[i][1], Nbins[i]);
+        hAccepted_ChOther_Log[i] -> SetXTitle("E_{gen} [MeV]");
+        hAccepted_ChOther_Log[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");
+        hAccepted_ChOther_Log[i] -> GenerateHistogram();
+        hAccepted_ChOther[i] = hAccepted_ChOther_Log[i] -> GetHistogram();
+
+
+        hAccepted_Stack[i] = new THStack(Form("hAccepted_Stack_%d", i), Form("hAccepted_Stack_%d", i));
+        Edep[i] -> Draw(Form("%s >> hAccepted_Ch0_Log_%d", BranchName[0].Data(), i), ConditionGoodEvents_Ch0.Data(), "E");
+        Edep[i] -> Draw(Form("%s >> hAccepted_ChOther_Log_%d", BranchName[0].Data(), i), ConditionGoodEvents_ChOther.Data(), "E");
+
+        int NumberOfBins = hAccepted_Ch0[i] -> GetNbinsX();
+        // loop on all bins
+        for(int j = 0; j < NumberOfBins; ++j)
+        {
+            double BinWidth = hAccepted_Ch0[i] -> GetBinWidth(j+1);
+            double NGenCalibrated = dNdE_Gen[i] * BinWidth;
+            double NAccepted_Ch0 = hAccepted_Ch0[i] -> GetBinContent(j+1);
+            double NAccepted_ChOther = hAccepted_ChOther[i] -> GetBinContent(j+1);
+            hAccepted_Ch0[i] -> SetBinContent(j+1, NAccepted_Ch0 * TMath::Pi()*Area / NGenCalibrated);
+            hAccepted_ChOther[i] -> SetBinContent(j+1, NAccepted_ChOther * TMath::Pi()*Area / NGenCalibrated);
+            // Set Bin Error
+            hAccepted_Ch0[i] -> SetBinError(j+1, TMath::Sqrt(NAccepted_Ch0) * TMath::Pi()*Area / NGenCalibrated);
+            hAccepted_ChOther[i] -> SetBinError(j+1, TMath::Sqrt(NAccepted_ChOther) * TMath::Pi()*Area / NGenCalibrated);
+        }
+
+        hAccepted_Ch0[i] -> Sumw2();
+        hAccepted_ChOther[i] -> Sumw2();
+
+        hAccepted_Ch0[i] -> SetLineColor(kRed);
+        hAccepted_Ch0[i] -> SetLineWidth(2);
+        hAccepted_Ch0[i] -> SetMarkerColor(kRed);
+        hAccepted_Ch0[i] -> SetMarkerStyle(20);
+        hAccepted_Ch0[i] -> SetMarkerSize(0.5);
+
+        hAccepted_ChOther[i] -> SetLineColor(kBlue);
+        hAccepted_ChOther[i] -> SetLineWidth(2);
+        hAccepted_ChOther[i] -> SetMarkerColor(kBlue);
+        hAccepted_ChOther[i] -> SetMarkerStyle(20);
+        hAccepted_ChOther[i] -> SetMarkerSize(0.5);
+
+
+        hAccepted_Ch0[i] -> Scale(TMath::Pi()*Area);
+        hAccepted_ChOther[i] -> Scale(TMath::Pi()*Area);
+
+        hAccepted_Ch0[i] -> SetMarkerColor(kRed);
+        hAccepted_Ch0[i] -> SetLineColor(kRed);
+
+        hAccepted_ChOther[i] -> SetMarkerColor(kBlue);
+        hAccepted_ChOther[i] -> SetLineColor(kBlue);
+
+        hAccepted_Stack[i] -> Add(hAccepted_Ch0[i]);
+        hAccepted_Stack[i] -> Add(hAccepted_ChOther[i]);
+
+        lAccepted[i] = new TLegend(0.1, 0.1, 0.4, 0.3);
+        lAccepted[i] -> AddEntry(hAccepted_Ch0[i], "Geometric Factor Ch0", "l");
+        lAccepted[i] -> AddEntry(hAccepted_ChOther[i], "Geometric Factor Ch: 1 2 3 4", "l");
+
+        TCanvas *cChannelGeomFactor = new TCanvas(Form("cChannelGeomFactor_%d", i), Form("cChannelGeomFactor_%d", i), 1200, 600);
+        hAccepted_Stack[i] -> Draw("nostack");
+        lAccepted[i] -> Draw("same");
+        gPad -> SetLogx();
+        gPad -> SetLogy();
+        gPad -> SetGrid();
+        cChannelGeomFactor -> SaveAs(Form("%s/ChannelGeomFactor_%s.pdf", destination.Data(), FileName_noExt[i].Data()));
     }
-    delete c1;
-
-    TCanvas *cGeomAll = new TCanvas("cGeomAll", "Geometrical factor", 1200, 600);
 
 
+
+
+
+
+
+
+
+
+    THStack *hGeomAll_Stack = new THStack("hGeomAll_Stack", "hGeomAll_Stack");
+    TH1DLog *hGeomAll[3];
+    TH1D *hGeomAll_Log[3];
+    TLegend *lGeomAll = new TLegend(0.1, 0.1, 0.4, 0.3);
+    TString LegendName[3] = {"electrons", "protons", "alpha"};
 
     TColor *color[3];
     color[0] = new TColor(1756, 242./255., 53./255, 141./255);
@@ -449,30 +385,62 @@ void GeometricFactor()
     color[2] = new TColor(1758, 242./255., 152./255, 73./255);
 
 
-
-    for(int i = 0 ; i < 3 ; ++i)
+    double Emin = Emins[0]; // Electron minimum
+    double Emax = Emaxs[2]; // Alpha maximum
+    int NbinAll = 120;
+    for(int i = 0; i < Nfiles; ++i)
     {
-        hFinal2[i] -> GetYaxis() -> SetRangeUser(1e-4,1.3);
-        hFinal2[i] -> GetXaxis() -> SetRangeUser(1e-2,300.);
-        hFinal2[i] -> SetLineColor(color[i] -> GetNumber());
-        hFinal2[i] -> SetMarkerColor(color[i] -> GetNumber());
+        hGeomAll[i] = new TH1DLog();
+        hGeomAll[i] -> SetName(Form("hGeomAll_%d", i));
+        hGeomAll[i] -> SetTitle("");
+        hGeomAll[i] -> SetXAxis(Emin, Emax, NbinAll);
+        hGeomAll[i] -> SetXTitle("E_{kin} [MeV]");
+        hGeomAll[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");   
+        hGeomAll[i] -> GenerateHistogram();
+        hGeomAll_Log[i] = hGeomAll[i] -> GetHistogram();
 
-        hFinal2[i] -> Draw("Esame");        
+        Edep[i] -> Draw(Form("%s >> hGeomAll_%d", BranchName[0].Data(), i), ConditionGoodEvents.Data(), "E");
+
+        int NumberOfBins = hGeomAll_Log[i] -> GetNbinsX();
+        for(int j = 0; j < NumberOfBins; ++j)
+        {
+            double BinWidth = hGeomAll_Log[i] -> GetBinWidth(j+1);
+            double NGenCalibrated = dNdE_Gen[i] * BinWidth;
+            double NAccepted = hGeomAll_Log[i] -> GetBinContent(j+1);
+            hGeomAll_Log[i] -> SetBinContent(j+1, NAccepted / NGenCalibrated);
+            hGeomAll_Log[i] -> SetBinError(j+1, TMath::Sqrt(NAccepted) / NGenCalibrated);
+        }
+
+        hGeomAll_Log[i] -> Sumw2();
+        hGeomAll_Log[i] -> Scale(TMath::Pi()*Area);
+        hGeomAll_Log[i] -> SetMarkerColor(color[i] -> GetNumber());
+        hGeomAll_Log[i] -> SetLineColor(color[i] -> GetNumber());
+        hGeomAll_Log[i] -> SetLineWidth(2);
+        hGeomAll_Log[i] -> SetMarkerStyle(20);
+        hGeomAll_Log[i] -> SetMarkerSize(0.5);
+        hGeomAll_Stack -> Add(hGeomAll_Log[i]);
+
+        lGeomAll -> AddEntry(hGeomAll_Log[i], LegendName[i].Data(), "l");
+
     }
 
+    TCanvas *cGeomAll = new TCanvas("cGeomAll", "Geometrical factor", 1200, 600);
+    hGeomAll_Stack -> Draw("nostack");
+    hGeomAll_Stack -> SetTitle("");
+    hGeomAll_Stack -> GetXaxis() -> SetTitle("E_{kin} [MeV]");
+    hGeomAll_Stack -> GetYaxis() -> SetTitle("Geometric Factor [cm^{2} sr]");
 
-    TLegend  *legend = new TLegend(0.1, 0.1, 0.3, 0.3);
-    legend -> AddEntry(hFinal2[0], "electrons", "lep");
-    legend -> AddEntry(hFinal2[1], "protons", "lep");
-    legend -> AddEntry(hFinal2[2], "alpha", "lep");
-    //legend -> AddEntry(gDEMETER, "DEMETER", "lp");
-    //legend -> AddEntry(gHEPPL, "HEPP-L : narrow", "f");
-    //legend -> AddEntry(gHEPPL2, "HEPP-L : wide", "f");
-    legend -> Draw();
+    lGeomAll -> Draw("same");
 
-    gPad -> SetGrid();
-    gPad -> SetLogy();
     gPad -> SetLogx();
+    gPad -> SetLogy();
+    gPad -> SetGrid();
+    cGeomAll -> SaveAs(Form("%s/GeomAll.pdf", destination.Data()));
+    //cGeomAll -> SaveAs(Form("%s/GeomAll.root", destination.Data()));
+
+
+
+
 
 
 
