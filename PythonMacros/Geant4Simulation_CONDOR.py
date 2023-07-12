@@ -17,6 +17,9 @@ def Geant4Simulation():
     print("RunName: ", RunName)
     print("Date: ", Date)
 
+    N_jobs = 10
+    N_evjob = 10000000
+
     # Run directory for the run
     RunDir = "Output_" + RunName + "_" + Date
 
@@ -36,11 +39,11 @@ def Geant4Simulation():
     gps_pos_type = "Plane"
     gps_pos_shape = "Circle"
     gps_pos_centre_cm = [0, 0, 12]
-    gps_pos_radius_cm = 3.
+    gps_pos_radius_cm = 50
     gps_ang_type = "iso"
     gps_ang_mintheta_deg = 0
     gps_ang_maxtheta_deg = 90
-    run_beamOn = 1000
+    run_beamOn = N_evjob
 
 
     
@@ -137,7 +140,7 @@ def Geant4Simulation():
     
     print("Found ", len(os.listdir(out_paths["GDML"])), " gdml files")
 
-
+    report_file = open(os.path.join(proj_paths["RunDir"], "report.txt"), "w")
 
     for index, file in enumerate(os.listdir(out_paths["GDML"])):
         os.makedirs(os.path.join(out_paths["Text_output"], "GDML_file_"+str(index)))
@@ -145,41 +148,71 @@ def Geant4Simulation():
         os.makedirs(os.path.join(out_paths["DST"], "GDML_file_"+str(index)))
         out_DST_paths.append(os.path.join(out_paths["DST"], "GDML_file_"+str(index)))
 
-        macro_file_name = os.path.join(out_paths["Geant_macros"], "macro_"+str(index)+".mac")
-        steering_file_name = os.path.join(out_paths["Geant_macros"], "steering_"+str(index)+".txt")
-        
-        macro_file = open(macro_file_name, "w")
-        steering_file = open(steering_file_name, "w")
-        steering_file.write("OUT_TEXT " + os.path.join(out_paths["Text_output"], "GDML_file_"+str(index))+"\n")
-        steering_file.close()
-                
-        macro_file.write("# Date of creation: "+ str(Date) +" UNIX Time :"+ str(time.time) +"\n")
-        macro_file.write("# File GDML : "+ str(file) +"\n")
-        
-        macro_file.write("/run/initialize\n")
-        macro_file.write("/control/verbose 0\n")
-        macro_file.write("/gps/pos/type " + gps_pos_type + "\n")
-        macro_file.write("/gps/pos/shape " + gps_pos_shape + "\n")
+        # Create the macro file inside the macro directory
+        # Check if the file already exists
 
-        macro_file.write("/gps/pos/centre " + str(gps_pos_centre_cm[0]) + " " + str(gps_pos_centre_cm[1]) + " " + str(gps_pos_centre_cm[2]) + " cm\n")
-        macro_file.write("/gps/pos/radius " + str(gps_pos_radius_cm) + " cm\n")        
-        macro_file.write("/gps/ang/type " + gps_ang_type + "\n")
-        macro_file.write("/gps/ang/mintheta " + str(gps_ang_mintheta_deg) + " deg\n")
-        macro_file.write("/gps/ang/maxtheta " + str(gps_ang_maxtheta_deg) + " deg\n")
         
-        for i in range(len(gps_particle)):
-            NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i])
-            macro_file.write("/NameOfFile/NameOfFile " + NameOfFileWithPath + "\n")
-            macro_file.write("/gps/particle " + gps_particle[i] + "\n")
-            macro_file.write("/gps/ene/type " + gps_ene_type + "\n")
-            macro_file.write("/gps/ene/gradient " + str(gps_ene_gradient) + "\n")
-            macro_file.write("/gps/ene/intercept " + str(gps_ene_intercept) + "\n")
-            macro_file.write("/gps/ene/min " + str(gps_ene_min[i]) + " MeV\n")
-            macro_file.write("/gps/ene/max " + str(gps_ene_max[i]) + " MeV\n")
-            macro_file.write("/run/beamOn " + str(run_beamOn) + "\n")
-
-        macro_file.close()
-
+        for n in range(N_jobs):    
+            
+            macro_file_name = os.path.join(out_paths["Geant_macros"], "macro_f"+str(index)+"_j"+str(n)+".mac")
+            steering_file_name = os.path.join(out_paths["Geant_macros"], "steering_f"+str(index)+"_j"+str(n)+".txt")
+        
+            report_file.write("File "+ str(index) + " Job "+ str(n) + "\n")
+            report_file.write(file + "\n")
+            report_file.write("Macro file: " + macro_file_name + "\n")
+            report_file.write("Steering file: " + steering_file_name + "\n")
+        
+            macro_file = open(macro_file_name, "w")
+            steering_file = open(steering_file_name, "w")
+            steering_file.write("OUT_TEXT " + os.path.join(out_paths["Text_output"], "GDML_file_"+str(index))+"\n")
+            steering_file.close()
+            
+            
+            macro_file.write("# Date of creation: "+ str(Date) +" UNIX Time :"+ str(time.time()) +"\n")
+            macro_file.write("# File GDML : "+ str(file) +"\n\n\n")
+            macro_file.write("/control/verbose 0\n")
+            macro_file.write("/run/verbose 1\n")
+            macro_file.write("/event/verbose 0\n\n\n")
+            macro_file.write("/run/initialize\n\n\n")
+            macro_file.write("/random/SetSeed " + str(n) + str(n) + "\n\n\n")
+            
+            macro_file.write("/gps/pos/type " + gps_pos_type + "\n")
+            macro_file.write("/gps/pos/shape " + gps_pos_shape + "\n")
+            macro_file.write("/gps/pos/centre " + str(gps_pos_centre_cm[0]) + " " + str(gps_pos_centre_cm[1]) + " " + str(gps_pos_centre_cm[2]) + " cm\n")
+            macro_file.write("/gps/pos/radius " + str(gps_pos_radius_cm) + " cm\n")        
+            macro_file.write("/gps/ang/type " + gps_ang_type + "\n")
+            macro_file.write("/gps/ang/mintheta " + str(gps_ang_mintheta_deg) + " deg\n")
+            macro_file.write("/gps/ang/maxtheta " + str(gps_ang_maxtheta_deg) + " deg\n\n\n\n")
+            
+            for i in range(len(gps_particle)):
+                NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i], "_j"+str(n))
+                report_file.write("Particle: " + gps_particle[i] + "\n")
+                report_file.write("Energy: " + str(gps_ene_min[i]) + " - " + str(gps_ene_max[i]) + " MeV\n")
+                report_file.write("Output file: " + NameOfFileWithPath + "\n")
+                macro_file.write("/NameOfFile/NameOfFile " + NameOfFileWithPath + "\n")
+                macro_file.write("/gps/particle " + gps_particle[i] + "\n")
+                macro_file.write("/gps/ene/type " + gps_ene_type + "\n")
+                macro_file.write("/gps/ene/gradient " + str(gps_ene_gradient) + "\n")
+                macro_file.write("/gps/ene/intercept " + str(gps_ene_intercept) + "\n")
+                macro_file.write("/gps/ene/min " + str(gps_ene_min[i]) + " MeV\n")
+                macro_file.write("/gps/ene/max " + str(gps_ene_max[i]) + " MeV\n")
+                macro_file.write("/run/beamOn " + str(run_beamOn) + "\n")
+            report_file.write("\n\n")
+            macro_file.close()
+            
+            condor_file_name = os.path.join(out_paths["Geant_macros"], "condor_f"+str(index)+"_j"+str(n)+".sub")
+            
+            condor_file = open(condor_file_name, "w")
+            # Write a condor configuration file for submitting job
+            condor_file.write("universe = vanilla\n")
+            condor_file.write("getenv = True\n")
+            condor_file.write("executable = " + os.path.join(HomeDirectorySimulation, "build", "gdml_det") + "\n")
+            Arguments = [macro_file_name, steering_file_name]
+            condor_file.write("arguments = " + " ".join(Arguments) + "\n")
+    
+    
+    report_file.close()        
+            
     os.chdir(HomeDirectorySimulation)
     os.system("rm -rf build")
     os.system("mkdir build")
@@ -187,23 +220,16 @@ def Geant4Simulation():
     os.system("cmake ..")
     os.system("make -j4")
 
-    # Open a file in the out_paths["GDML"] directory
-    
-    report_file = open(os.path.join(proj_paths["RunDir"], "report.txt"), "w")
+    CondorSubmtFiles = []
+    for files in os.listdir(out_paths["Geant_macros"]):
+        if files.endswith(".sub"):
+            CondorSubmtFiles.append(files)
 
-    for index, file in enumerate(os.listdir(out_paths["GDML"])):
-        # Sostituire con sottomissione condor + generazione dello script di condor
-        CMD = "./gdml_det "
-        CMD+= os.path.join(out_paths["GDML"], file) + " "
-        CMD+= os.path.join(out_paths["Geant_macros"], "macro_"+str(index)+".mac") + " "
-        CMD+= os.path.join(out_paths["Geant_macros"], "steering_"+str(index)+".txt")
+    for files in CondorSubmtFiles:
+        os.system("condor_submit " + files)
+        #sleep(0.1)
+        os.system("sleep 0.1")    
 
-
-        report_file.write("GDML file " + str(index) + ' : ' + file + "\n")
-        report_file.write("CMD : " + CMD + "\n")
-        os.system(CMD)
-
-    report_file.close()
 
 
 
