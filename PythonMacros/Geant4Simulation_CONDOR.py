@@ -18,7 +18,7 @@ def Geant4Simulation():
     print("Date: ", Date)
 
     N_jobs = 10
-    N_evjob = 10000000
+    N_evjob = 1000
 
     # Run directory for the run
     RunDir = "Output_" + RunName + "_" + Date
@@ -120,13 +120,15 @@ def Geant4Simulation():
     os.makedirs("GDML_src")
     os.makedirs("Text_output")
     os.makedirs("DST")
-    os.makedirs("Geant_macros")    
+    os.makedirs("Geant_macros")
+    os.makedirs("log")
     
     out_paths = {
         "GDML": os.path.join(os.getcwd(), "GDML_src"),
         "Text_output": os.path.join(os.getcwd(), "Text_output"),
         "DST": os.path.join(os.getcwd(), "DST"),
-        "Geant_macros": os.path.join(os.getcwd(), "Geant_macros")
+        "Geant_macros": os.path.join(os.getcwd(), "Geant_macros"),
+        "log": os.path.join(os.getcwd(), "log")
     }
     
     out_Text_paths = []
@@ -141,6 +143,7 @@ def Geant4Simulation():
     print("Found ", len(os.listdir(out_paths["GDML"])), " gdml files")
 
     report_file = open(os.path.join(proj_paths["RunDir"], "report.txt"), "w")
+    
 
     for index, file in enumerate(os.listdir(out_paths["GDML"])):
         os.makedirs(os.path.join(out_paths["Text_output"], "GDML_file_"+str(index)))
@@ -174,7 +177,7 @@ def Geant4Simulation():
             macro_file.write("/run/verbose 1\n")
             macro_file.write("/event/verbose 0\n\n\n")
             macro_file.write("/run/initialize\n\n\n")
-            macro_file.write("/random/SetSeed " + str(n) + str(n) + "\n\n\n")
+            macro_file.write("/random/setSeeds " + str(n) + " " + str(n) + "\n\n\n")
             
             macro_file.write("/gps/pos/type " + gps_pos_type + "\n")
             macro_file.write("/gps/pos/shape " + gps_pos_shape + "\n")
@@ -185,7 +188,7 @@ def Geant4Simulation():
             macro_file.write("/gps/ang/maxtheta " + str(gps_ang_maxtheta_deg) + " deg\n\n\n\n")
             
             for i in range(len(gps_particle)):
-                NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i], "_j"+str(n))
+                NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i]+ "_j"+str(n))
                 report_file.write("Particle: " + gps_particle[i] + "\n")
                 report_file.write("Energy: " + str(gps_ene_min[i]) + " - " + str(gps_ene_max[i]) + " MeV\n")
                 report_file.write("Output file: " + NameOfFileWithPath + "\n")
@@ -207,9 +210,19 @@ def Geant4Simulation():
             condor_file.write("universe = vanilla\n")
             condor_file.write("getenv = True\n")
             condor_file.write("executable = " + os.path.join(HomeDirectorySimulation, "build", "gdml_det") + "\n")
-            Arguments = [macro_file_name, steering_file_name]
+            Arguments = [ 
+                os.path.join(out_paths["GDML"], file),
+                macro_file_name, 
+                steering_file_name]
+            
             condor_file.write("arguments = " + " ".join(Arguments) + "\n")
-    
+            
+            condor_file.write("output = " + os.path.join(out_paths["log"], "out_f"+str(index)+"_j"+str(n)+".log") + "\n")
+            condor_file.write("error = " + os.path.join(out_paths["log"], "err_f"+str(index)+"_j"+str(n)+".log") + "\n")
+            condor_file.write("log = " + os.path.join(out_paths["log"], "log_f"+str(index)+"_j"+str(n)+".log") + "\n")
+            condor_file.write("ShouldTransferFiles = YES\n")
+            condor_file.write("whenToTransferOutput = ON_EXIT\n")
+            condor_file.write("queue 1\n")
     
     report_file.close()        
             
@@ -223,7 +236,7 @@ def Geant4Simulation():
     CondorSubmtFiles = []
     for files in os.listdir(out_paths["Geant_macros"]):
         if files.endswith(".sub"):
-            CondorSubmtFiles.append(files)
+            CondorSubmtFiles.append(os.path.join(out_paths["Geant_macros"],files))
 
     for files in CondorSubmtFiles:
         os.system("condor_submit " + files)
