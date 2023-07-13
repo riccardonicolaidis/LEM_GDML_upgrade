@@ -167,7 +167,7 @@ def Geant4Simulation():
         
             macro_file = open(macro_file_name, "w")
             steering_file = open(steering_file_name, "w")
-            steering_file.write("OUT_TEXT " + os.path.join(out_paths["Text_output"], "GDML_file_"+str(index))+"\n")
+            steering_file.write("OUT_TEXT " + os.path.join(out_paths["Text_output"],"GDML_file_"+str(index),"OutText_f"+str(index)+"_j"+str(n)) + "\n")
             steering_file.close()
             
             
@@ -189,6 +189,7 @@ def Geant4Simulation():
             
             for i in range(len(gps_particle)):
                 NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i]+ "_j"+str(n))
+                #NameOfFileWithPath = gps_particle[i]+"_f"+str(index)+"_j"+str(n)
                 report_file.write("Particle: " + gps_particle[i] + "\n")
                 report_file.write("Energy: " + str(gps_ene_min[i]) + " - " + str(gps_ene_max[i]) + " MeV\n")
                 report_file.write("Output file: " + NameOfFileWithPath + "\n")
@@ -220,8 +221,8 @@ def Geant4Simulation():
             condor_file.write("output = " + os.path.join(out_paths["log"], "out_f"+str(index)+"_j"+str(n)+".log") + "\n")
             condor_file.write("error = " + os.path.join(out_paths["log"], "err_f"+str(index)+"_j"+str(n)+".log") + "\n")
             condor_file.write("log = " + os.path.join(out_paths["log"], "log_f"+str(index)+"_j"+str(n)+".log") + "\n")
-            condor_file.write("ShouldTransferFiles = YES\n")
-            condor_file.write("whenToTransferOutput = ON_EXIT\n")
+            condor_file.write("ShouldTransferFiles = NO\n")
+            #condor_file.write("whenToTransferOutput = ON_EXIT\n")
             condor_file.write("queue 1\n")
     
     report_file.close()        
