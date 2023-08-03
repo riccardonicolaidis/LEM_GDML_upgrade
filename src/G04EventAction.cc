@@ -15,7 +15,7 @@ G04EventAction::G04EventAction(G4int NumberSD,
                                fSteering(steering)
 {
     OutputTextFolder = fSteering -> GetOutputTextFolder();
-    G4String sensitiveDetFilename = OutputTextFolder + "/GDML_SD_EventAction.txt";
+    G4String sensitiveDetFilename = OutputTextFolder + "_GDML_SD_EventAction.txt";
     std::ofstream sensitiveDetFile(sensitiveDetFilename);
 
 

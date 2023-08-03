@@ -19,7 +19,7 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector,
 
 
     OutputTextFolder = fSteering -> GetOutputTextFolder();
-    G4String ReportFileName = OutputTextFolder+"/NTupleInfo.txt";
+    G4String ReportFileName = OutputTextFolder+"_NTupleInfo.txt";
     std::ofstream ReportFile(ReportFileName);
     G4int NTupleID = 0;
     G4int NTupleColumnID = 0;
@@ -44,7 +44,7 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector,
     man -> CreateNtupleDColumn("pDirZ");            // 6
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "pDirZ" << G4endl;
 
-    G4String sensitiveDetFilename = OutputTextFolder+"/GDML_SD_RunAction.txt";
+    G4String sensitiveDetFilename = OutputTextFolder+"_GDML_SD_RunAction.txt";
     std::ofstream sensitiveDetFile(sensitiveDetFilename);
 
 

@@ -1,0 +1,19 @@
+universe=vanilla
+
+output=output
+error=output
+log=running.log
+executable=file_example.py
+# this is what turns this feature on
+should_transfer_files=yes
+# you can specify if you want to transfer when the program finishes successful, 
+# or even if it only partially runs (ON_EXIT_OR_EVICT)
+WhenToTransferOutput=on_exit
+
+# You need to list what input files you want to send
+# condor will copy the output
+transfer_input_files=example.condor
+# you can limit which files to copy out if you want
+# transfer_output_files=output.file
+
+queue

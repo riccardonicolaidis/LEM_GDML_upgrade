@@ -60,8 +60,11 @@ int PID(
         {
             getline(fileNames, textline);
             FileNames[i] = textline;
+            cout << "FileNames[" << i << "] = " << FileNames[i] << endl;
             FileNames_noExt[i] = FileNames[i];
+            cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
             FileNames_noExt[i].ReplaceAll(".root", "");
+            cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
         }
     }
     else

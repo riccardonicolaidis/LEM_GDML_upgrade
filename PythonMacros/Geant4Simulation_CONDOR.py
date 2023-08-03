@@ -12,16 +12,22 @@ def Geant4Simulation():
     #                       RUN SETTINGS                       #
     # ######################################################## #
     
+    
+    IsTest = True
+    
     RunName = "Geant4Simulation"
     Date = time.strftime("%Y%m%d")
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 10
+    N_jobs = 5
     N_evjob = 1000
 
     # Run directory for the run
-    RunDir = "Output_" + RunName + "_" + Date
+    if IsTest:
+        RunDir = "Output_" + RunName + "_" + Date + "_test"
+    else:
+        RunDir = "Output_" + RunName + "_" + Date
 
 
     # ######################################################## #
@@ -39,10 +45,19 @@ def Geant4Simulation():
     gps_pos_type = "Plane"
     gps_pos_shape = "Circle"
     gps_pos_centre_cm = [0, 0, 12]
-    gps_pos_radius_cm = 50
+    
+    if IsTest:
+        gps_pos_radius_cm = 0.5
+    else:
+        gps_pos_radius_cm = 50
     gps_ang_type = "iso"
     gps_ang_mintheta_deg = 0
-    gps_ang_maxtheta_deg = 90
+    
+    if IsTest:
+        gps_ang_maxtheta_deg = 5
+    else:
+        gps_ang_maxtheta_deg = 90
+    
     run_beamOn = N_evjob
 
 
@@ -121,6 +136,9 @@ def Geant4Simulation():
     os.makedirs("Text_output")
     os.makedirs("DST")
     os.makedirs("Geant_macros")
+    os.makedirs("condor_scripts")
+    os.makedirs("bash_scripts")
+    os.makedirs("steering_files")
     os.makedirs("log")
     
     out_paths = {
@@ -128,7 +146,10 @@ def Geant4Simulation():
         "Text_output": os.path.join(os.getcwd(), "Text_output"),
         "DST": os.path.join(os.getcwd(), "DST"),
         "Geant_macros": os.path.join(os.getcwd(), "Geant_macros"),
-        "log": os.path.join(os.getcwd(), "log")
+        "log": os.path.join(os.getcwd(), "log"),
+        "bash_scripts": os.path.join(os.getcwd(), "bash_scripts"),
+        "condor_scripts": os.path.join(os.getcwd(), "condor_scripts"),
+        "steering_files": os.path.join(os.getcwd(), "steering_files")
     }
     
     out_Text_paths = []
@@ -155,10 +176,15 @@ def Geant4Simulation():
         # Check if the file already exists
 
         
-        for n in range(N_jobs):    
+        for n in range(N_jobs):   
+            print("File ", index, " Job ", n) 
             
             macro_file_name = os.path.join(out_paths["Geant_macros"], "macro_f"+str(index)+"_j"+str(n)+".mac")
-            steering_file_name = os.path.join(out_paths["Geant_macros"], "steering_f"+str(index)+"_j"+str(n)+".txt")
+            steering_file_name = os.path.join(out_paths["steering_files"], "steering_f"+str(index)+"_j"+str(n)+".txt")
+            condor_file_name = os.path.join(out_paths["condor_scripts"], "condor_f"+str(index)+"_j"+str(n)+".sub")
+            bash_script_name = os.path.join(out_paths["bash_scripts"], "launch_f"+str(index)+"_j"+str(n)+".sh")
+        
+        
         
             report_file.write("File "+ str(index) + " Job "+ str(n) + "\n")
             report_file.write(file + "\n")
@@ -188,7 +214,7 @@ def Geant4Simulation():
             macro_file.write("/gps/ang/maxtheta " + str(gps_ang_maxtheta_deg) + " deg\n\n\n\n")
             
             for i in range(len(gps_particle)):
-                NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i]+ "_j"+str(n))
+                NameOfFileWithPath = os.path.join(out_DST_paths[index], gps_particle[i] +"_j"+str(n))
                 #NameOfFileWithPath = gps_particle[i]+"_f"+str(index)+"_j"+str(n)
                 report_file.write("Particle: " + gps_particle[i] + "\n")
                 report_file.write("Energy: " + str(gps_ene_min[i]) + " - " + str(gps_ene_max[i]) + " MeV\n")
@@ -204,40 +230,71 @@ def Geant4Simulation():
             report_file.write("\n\n")
             macro_file.close()
             
-            condor_file_name = os.path.join(out_paths["Geant_macros"], "condor_f"+str(index)+"_j"+str(n)+".sub")
+            
             
             condor_file = open(condor_file_name, "w")
+            
+            
+            bash_script = open(bash_script_name, "w")
+            bash_script.write("#! /bin/bash\n")
+            bash_script.write('cd /data1/home/rnicolai\n')
+            #bash_script.write('source /cvmfs/sft.cern.ch//lcg/views/LCG_99/x86_64-centos7-gcc10-opt/setup.sh\n')
+            #bash_script.write("source /data1/home/rnicolai/GEANT/geant4-11.1.0-install/bin/geant4.sh\n")
+            bash_script.write("source /cvmfs/geant4.cern.ch/geant4/11.1.ref07/x86_64-centos7-gcc10-optdeb/bin/geant4.sh\n")
+            bash_script.write("source /cvmfs/geant4.cern.ch/geant4/11.1.ref07/x86_64-centos7-gcc10-optdeb/CMake-setup.sh\n")
+            bash_script.write('cd /data1/home/rnicolai/LEM_GDML_upgrade\n')
+            # bash_script.write('pip3 install matplotlib --user\n')
+            # bash_script.write('pip3 install numpy --user\n')
+            # bash_script.write('pip3 install scipy --user\n')
+            # bash_script.write('pip3 install pandas --user\n')
+            # bash_script.write('pip3 install seaborn --user\n\n\n')
+            
+            bash_script.write("rm -rf " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            bash_script.write("mkdir " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            bash_script.write("cd " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            bash_script.write("cmake .. \n")
+            bash_script.write("make -j4 \n")
+            bash_script.write("chmod -R 777 " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            bash_script.write('echo "Version of Geant"\ngeant4-config --version\necho "Prefix"\ngeant4-config --prefix\n')
+            for jj in range(10):
+                bash_script.write("echo  \n")
+            
+            
+            bash_script.write("./gdml_det " + os.path.join(out_paths["GDML"], file) + " " + macro_file_name + " " + steering_file_name + "\n")
+            bash_script.close()
+            
             # Write a condor configuration file for submitting job
             condor_file.write("universe = vanilla\n")
             condor_file.write("getenv = True\n")
-            condor_file.write("executable = " + os.path.join(HomeDirectorySimulation, "build", "gdml_det") + "\n")
-            Arguments = [ 
-                os.path.join(out_paths["GDML"], file),
-                macro_file_name, 
-                steering_file_name]
-            
-            condor_file.write("arguments = " + " ".join(Arguments) + "\n")
-            
+            condor_file.write("stream_output = True\n")
+            condor_file.write("stream_error = True\n")
+            condor_file.write("executable = " + bash_script_name + "\n")
             condor_file.write("output = " + os.path.join(out_paths["log"], "out_f"+str(index)+"_j"+str(n)+".log") + "\n")
             condor_file.write("error = " + os.path.join(out_paths["log"], "err_f"+str(index)+"_j"+str(n)+".log") + "\n")
             condor_file.write("log = " + os.path.join(out_paths["log"], "log_f"+str(index)+"_j"+str(n)+".log") + "\n")
-            condor_file.write("ShouldTransferFiles = NO\n")
+            #condor_file.write("ShouldTransferFiles = NO\n")
             #condor_file.write("whenToTransferOutput = ON_EXIT\n")
+            
+            #condor_file.write("request_memory = 32 GB\n")
+            #condor_file.write("request_disk = 200 GB\n")
+            #condor_file.write("request_cpus = 4\n")
             condor_file.write("queue 1\n")
+            condor_file.close()
     
     report_file.close()        
-            
-    os.chdir(HomeDirectorySimulation)
-    os.system("rm -rf build")
-    os.system("mkdir build")
-    os.chdir("build")
-    os.system("cmake ..")
-    os.system("make -j4")
+          
+    # Change permission chmod 777 to Output Directory
+    os.system("chmod -R 777 " + proj_paths["RunDir"])
+
+    print("Chan ged permission to 777 for directory: \n"+ proj_paths["RunDir"])
+    os.system("sleep 1")
 
     CondorSubmtFiles = []
-    for files in os.listdir(out_paths["Geant_macros"]):
+    for files in os.listdir(out_paths["condor_scripts"]):
         if files.endswith(".sub"):
-            CondorSubmtFiles.append(os.path.join(out_paths["Geant_macros"],files))
+            CondorSubmtFiles.append(os.path.join(out_paths["condor_scripts"],files))
+            print("Added file: ", files)
+            print("Path: ", os.path.join(out_paths["condor_scripts"],files))
 
     for files in CondorSubmtFiles:
         os.system("condor_submit " + files)

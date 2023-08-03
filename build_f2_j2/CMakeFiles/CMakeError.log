@@ -1,0 +1,43 @@
+Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
+Change Dir: /data1/home/rnicolai/LEM_GDML_upgrade/build_f2_j2/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/gmake cmTC_69464/fast && /usr/bin/gmake  -f CMakeFiles/cmTC_69464.dir/build.make CMakeFiles/cmTC_69464.dir/build
+gmake[1]: Entering directory `/.autofs/data1/home/rnicolai/LEM_GDML_upgrade/build_f2_j2/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_69464.dir/src.c.o
+/cvmfs/sft.cern.ch/lcg/releases/gcc/10.1.0-6f386/x86_64-centos7/bin/gcc   -DCMAKE_HAVE_LIBC_PTHREAD -o CMakeFiles/cmTC_69464.dir/src.c.o -c /data1/home/rnicolai/LEM_GDML_upgrade/build_f2_j2/CMakeFiles/CMakeTmp/src.c
+Linking C executable cmTC_69464
+/cvmfs/sft.cern.ch/lcg/releases/CMake/3.18.4-2ffec/x86_64-centos7-gcc10-opt/bin/cmake -E cmake_link_script CMakeFiles/cmTC_69464.dir/link.txt --verbose=1
+/cvmfs/sft.cern.ch/lcg/releases/gcc/10.1.0-6f386/x86_64-centos7/bin/gcc  -DCMAKE_HAVE_LIBC_PTHREAD CMakeFiles/cmTC_69464.dir/src.c.o -o cmTC_69464 
+/cvmfs/sft.cern.ch/lcg/releases/binutils/2.34-990b2/x86_64-centos7/bin/ld: CMakeFiles/cmTC_69464.dir/src.c.o: in function `main':
+src.c:(.text+0x2d): undefined reference to `pthread_create'
+/cvmfs/sft.cern.ch/lcg/releases/binutils/2.34-990b2/x86_64-centos7/bin/ld: src.c:(.text+0x39): undefined reference to `pthread_detach'
+/cvmfs/sft.cern.ch/lcg/releases/binutils/2.34-990b2/x86_64-centos7/bin/ld: src.c:(.text+0x45): undefined reference to `pthread_cancel'
+/cvmfs/sft.cern.ch/lcg/releases/binutils/2.34-990b2/x86_64-centos7/bin/ld: src.c:(.text+0x56): undefined reference to `pthread_join'
+/cvmfs/sft.cern.ch/lcg/releases/binutils/2.34-990b2/x86_64-centos7/bin/ld: src.c:(.text+0x6a): undefined reference to `pthread_atfork'
+collect2: error: ld returned 1 exit status
+gmake[1]: *** [cmTC_69464] Error 1
+gmake[1]: Leaving directory `/.autofs/data1/home/rnicolai/LEM_GDML_upgrade/build_f2_j2/CMakeFiles/CMakeTmp'
+gmake: *** [cmTC_69464/fast] Error 2
+
+
+Source file was:
+#include <pthread.h>
+
+void* test_func(void* data)
+{
+  return data;
+}
+
+int main(void)
+{
+  pthread_t thread;
+  pthread_create(&thread, NULL, test_func, NULL);
+  pthread_detach(thread);
+  pthread_cancel(thread);
+  pthread_join(thread, NULL);
+  pthread_atfork(NULL, NULL, NULL);
+  pthread_exit(NULL);
+
+  return 0;
+}
+

@@ -191,7 +191,7 @@ class LatexDocumentClass:
 
     def CompileLatexDocument(self):
         os.chdir(self.OutputDirectory)
-        subprocess.call(["pdflatex", self.NameOfTheDocument + ".tex"])
+        os.system("pdflatex " + self.NameOfTheDocument + ".tex" + " -interaction=nonstopmode")
         os.chdir("..")
 
     def CleanFromGarbage(self):

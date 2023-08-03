@@ -80,11 +80,11 @@ void G04DetectorConstruction::ConstructSDandField()
 
   OutputTextFolder = fSteering -> GetOutputTextFolder();
 
-  G4String auxfilename        = OutputTextFolder+"/GDML_AuxiliaryInfo.txt";
-  G4String materialfilename   = OutputTextFolder+"/GDML_MaterialInfo.txt";
-  G4String solidnamesfilename = OutputTextFolder+"/GDML_SolidNames.txt";
-  G4String sensitiveDetFilename = OutputTextFolder+"/GDML_SD_DetectorConstruction.txt";
-  G4String SiliconPositionFilename = OutputTextFolder+"/GDML_SiliconPosition.txt";
+  G4String auxfilename        = OutputTextFolder+"_GDML_AuxiliaryInfo.txt";
+  G4String materialfilename   = OutputTextFolder+"_GDML_MaterialInfo.txt";
+  G4String solidnamesfilename = OutputTextFolder+"_GDML_SolidNames.txt";
+  G4String sensitiveDetFilename = OutputTextFolder+"_GDML_SD_DetectorConstruction.txt";
+  G4String SiliconPositionFilename = OutputTextFolder+"_GDML_SiliconPosition.txt";
   
   std::ofstream auxfile(auxfilename);
   std::ofstream materialfile(materialfilename);
