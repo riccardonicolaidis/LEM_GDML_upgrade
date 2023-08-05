@@ -23,7 +23,10 @@
 #include "./TH1DLog.h"
 #include "./TH2DLog.h"
 #include "./TH2DLogX.h"
-
+#include "TList.h"
+#include "TKey.h"
+#include "TObject.h"
+#include "TObjArray.h"
 
 
 using namespace std;
@@ -40,7 +43,12 @@ void SetAliases(TString filename,
                 double ResSilicon = 0.01,
                 double ResPlastic = 0.2)
 {
+
+    ofstream Log;
+    Log.open(destination+"/"+"Log_"+filename_noExt+".txt");
+
     std::cout << "Setting aliases for " << filename << endl;
+    Log << "Setting aliases for " << filename << endl;
 
     TString NameFile = filename_noExt;
     TString DirName[3] = {"DirX", "DirY", "DirZ"};
@@ -50,7 +58,7 @@ void SetAliases(TString filename,
     /* Number of branches */
     int NumberBranches = 7 + 3 + 2*NumberPairsSensors;
     std::cout << "NumberBranches = " << NumberBranches << endl;
-
+    Log << "NumberBranches = " << NumberBranches << endl;
     /* Definition of Branches Names*/
     TString BranchName[NumberBranches];
 
@@ -83,14 +91,37 @@ void SetAliases(TString filename,
     for(int i = 0; i < NumberBranches; i++)
     {
         std::cout << "BranchName[" << i << "] = " << BranchName[i] << endl;
+        Log << "BranchName[" << i << "] = " << BranchName[i] << endl;
     }
 
     /* Open the file to be read */
     TFile *file = new TFile(filename, "READ");
+    Log << "File " << filename << " opened" << endl;
+
+    // Print the file structure in the log file
+    Log << "File structure:" << endl;
+    TList *list = file -> GetListOfKeys();
+    for(int i = 0; i < list -> GetSize(); ++i)
+    {
+        Log << "Key " << i << " = " << list -> At(i) -> GetName() << endl;
+    }
+
+    
+
     /* Open the file with new trees where we are going to define aliases */
     TFile *file_alias = new TFile(destination +"/" + filename_noExt + "_alias.root", "RECREATE");
     /* Old tree without aliases */
     TTree *Edep_old = (TTree*) (file -> Get("Edep"));
+
+    // Print the file structure in the log file
+    Log << "TTree structure:" << endl;
+    TObjArray *list2 = Edep_old -> GetListOfBranches();
+    for(int i = 0; i < list2 -> GetSize(); ++i)
+    {
+        Log << "Branch " << i << " = " << list2 -> At(i) -> GetName() << endl;
+    }
+
+    Log.close();
 
     file_alias -> cd();
     /* New tree with aliases */
@@ -347,7 +378,7 @@ void SetAliases(TString filename,
         gAngles[k] -> SetMarkerStyle(8);
         gAngles[k] -> SetMarkerSize(0.6);
 
-        gAngles[k] -> Print();
+        //gAngles[k] -> Print();
 
         //gAngles[CopyNumber] -> Print();
         cout << Form("%d \t%g \t%g", k, gAngles[k]-> GetRMS(1), gAngles[k]-> GetRMS(2)) << " " << Edep->GetSelectedRows()<< endl;

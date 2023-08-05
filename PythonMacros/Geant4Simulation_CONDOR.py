@@ -20,8 +20,8 @@ def Geant4Simulation():
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 5
-    N_evjob = 1000
+    N_jobs = 6
+    N_evjob = 100000
 
     # Run directory for the run
     if IsTest:
@@ -238,10 +238,6 @@ def Geant4Simulation():
             bash_script = open(bash_script_name, "w")
             bash_script.write("#! /bin/bash\n")
             bash_script.write('cd /data1/home/rnicolai\n')
-            #bash_script.write('source /cvmfs/sft.cern.ch//lcg/views/LCG_99/x86_64-centos7-gcc10-opt/setup.sh\n')
-            #bash_script.write("source /data1/home/rnicolai/GEANT/geant4-11.1.0-install/bin/geant4.sh\n")
-            bash_script.write("source /cvmfs/geant4.cern.ch/geant4/11.1.ref07/x86_64-centos7-gcc10-optdeb/bin/geant4.sh\n")
-            bash_script.write("source /cvmfs/geant4.cern.ch/geant4/11.1.ref07/x86_64-centos7-gcc10-optdeb/CMake-setup.sh\n")
             bash_script.write('cd /data1/home/rnicolai/LEM_GDML_upgrade\n')
             # bash_script.write('pip3 install matplotlib --user\n')
             # bash_script.write('pip3 install numpy --user\n')
@@ -253,7 +249,7 @@ def Geant4Simulation():
             bash_script.write("mkdir " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
             bash_script.write("cd " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
             bash_script.write("cmake .. \n")
-            bash_script.write("make -j4 \n")
+            bash_script.write("make -j10 \n")
             bash_script.write("chmod -R 777 " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
             bash_script.write('echo "Version of Geant"\ngeant4-config --version\necho "Prefix"\ngeant4-config --prefix\n')
             for jj in range(10):

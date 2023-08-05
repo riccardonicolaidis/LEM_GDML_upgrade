@@ -17,7 +17,7 @@ import re
 
 
 
-def Analysis(input_dir):
+def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
     
     E_thr_Thin = 0.04
     E_thr_Thick = 0.04
@@ -111,20 +111,37 @@ def Analysis(input_dir):
     # GDML_file_N where N is the number of files in the GDML_ForSimulation directory, copied in the GDML_src
     
     if not os.path.exists(os.path.join(global_input_dir, 'Analysis_output')):
-        os.makedirs(os.path.join(global_input_dir, 'Analysis_output'))
-    else:
-        input_answer = 'y'
-        #input_answer = input('The Analysis_output directory already exists' + '\n' + 'Do you want to overwrite it? [y/n]')
-        if input_answer == 'y':
-            shutil.rmtree(os.path.join(global_input_dir, 'Analysis_output'))
-            os.makedirs(os.path.join(global_input_dir, 'Analysis_output'))
-        else: 
+        if OnlyLatex:
+            print('The Analysis_output directory does not exist. Please run the script without the -L option')
             sys.exit()
+        else:
+            os.makedirs(os.path.join(global_input_dir, 'Analysis_output'))
+    else:
+        if not OnlyLatex:
+            print("OnlyLatex is False: I need to re run the ROOT processing. I need to clean the Analysis_output directory")
+            input_answer = ''
+            if BypassRemoval:
+                input_answer = 'y'
+            else:
+                while (input_answer != 'y') and (input_answer != 'n'):
+                    input_answer = input('The Analysis_output directory already exists' + '\n' + 'Do you want to overwrite it? [y/n]')
+                    if input_answer != 'y' and input_answer != 'n':
+                        print('Please insert only y or n')
         
+        
+            if input_answer == 'y':
+                shutil.rmtree(os.path.join(global_input_dir, 'Analysis_output'))
+                os.makedirs(os.path.join(global_input_dir, 'Analysis_output'))
+            else: 
+                sys.exit()
+        else:
+            print("OnlyLatex is True: I don't need to re run the ROOT processing. I don't need to clean the Analysis_output directory")        
         
     # Create subdirectories for each GDML file
-    for i in range(Number_of_files):
-        os.makedirs(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(i)))
+    if not OnlyLatex:
+        for i in range(Number_of_files):
+            os.makedirs(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(i)))
+
 
     # From the config.txt file retrieve how many particles do I expect to analyze
     f_config = open(os.path.join(global_input_dir, 'config.txt'), 'r')
@@ -145,6 +162,11 @@ def Analysis(input_dir):
     Emax_plots = np.array(Emax).max()
     
     
+    #  Change permissions of the files
+    os.system('chmod 777 -R ' + global_input_dir)
+    os.system('chmod 777 -R ' + dst_dir)
+    os.system('chmod 777 -R ' + gdml_src_dir)
+    os.system('chmod 777 -R ' + os.path.join(global_input_dir, 'Analysis_output'))
     
     # ######################################################## #
     #                  HADD OF THE ROOT FILES                  #
@@ -153,96 +175,106 @@ def Analysis(input_dir):
     
     HADD_to_apply = False
     
-    for root, dirs, files in os.walk(dst_dir):
-        
-        HADD_to_apply = False
-        if 'GDML_file_' in root:
-            
-            # Look if there are files such as: particle_j0_t0.root particle_j1_t0.root
-            for file in files:
-                if '_j' in file:
-                    HADD_to_apply = True
-                    print('Filse processed by Cluter\nMerging files...')
-                    break
-            
-            
-            f_FileNames = open(os.path.join(root, 'FileNames.txt'), 'w')
-            f_EnergyGen = open(os.path.join(root, 'EnergyGen.txt'), 'w')
-            for ii in range(len(Emin)):
-                f_EnergyGen.write(str(Emin[ii]) + ' ' + str(Emax[ii]) + '\n')
-            f_EnergyGen.close()
-            
-            for particle in ParticleName:
-                TargetName = os.path.join(root, particle + '_t0.root')
-                f_FileNames.write(TargetName + '\n')
+    if not OnlyLatex:
+        for root, dirs, files in os.walk(dst_dir):
+            HADD_to_apply = False
+            if 'GDML_file_' in root:
+                # Look if there are files such as: particle_j0_t0.root particle_j1_t0.root
+                for file in files:
+                    if '_j' in file:
+                        HADD_to_apply = True
+                        print('Filse processed by Cluter\nMerging files...')
+                        break
+                    
+                f_FileNames = open(os.path.join(root, 'FileNames.txt'), 'w')
+                f_EnergyGen = open(os.path.join(root, 'EnergyGen.txt'), 'w')
+                for ii in range(len(Emin)):
+                    f_EnergyGen.write(str(Emin[ii]) + ' ' + str(Emax[ii]) + '\n')
+                f_EnergyGen.close()
                 
-                if HADD_to_apply:
-                    FilesToMerge = []
-                    for file in files:
-                        if particle in file:
-                            FilesToMerge.append(os.path.join(root, file))
-                    if len(FilesToMerge) > 0:
-                        CMD_TO_EXECUTE = 'hadd -f ' + os.path.join(root, TargetName)
-                        for file in FilesToMerge:
-                            CMD_TO_EXECUTE += ' ' + os.path.join(root, file)
-                        print(CMD_TO_EXECUTE)
-                        os.system(CMD_TO_EXECUTE)
-            f_FileNames.close()
+                for particle in ParticleName:
+                    TargetName = os.path.join(root, particle + '_t0.root')
+                    f_FileNames.write(TargetName + '\n')
+                    
+                    if HADD_to_apply:
+                        FilesToMerge = []
+                        for file in files:
+                            if particle in file and '_j' in file and file.endswith(".root"):
+                                FilesToMerge.append(os.path.join(root, file))
+                        if len(FilesToMerge) > 0:
+                            CMD_TO_EXECUTE = 'hadd -f ' + os.path.join(root, TargetName)
+                            for file in FilesToMerge:
+                                CMD_TO_EXECUTE += ' ' + os.path.join(root, file)
+                            print(CMD_TO_EXECUTE)
+                            os.system(CMD_TO_EXECUTE)
+                f_FileNames.close()
 
 
     os.system('chmod 777 -R ' + global_input_dir)
 
 
-
-    for root, dirs, files in os.walk(dst_dir):
-        
-        for dir in dirs:
-            pattern = r"/GDML_file_(\d+)"
-            match = re.search(pattern, os.path.join(root, dir))
-            if match is not None:
-                number = int(match.group(1))
-            else:
-                number = -1
-            
-            
-            Command = ''
-            ROOT_MacroName = os.path.join(root_dir, 'SetAliases.C')
-            ArgVect = []
-
-            PrefixRootFiles = os.path.join(dst_dir,'GDML_file_' + str(number))
-            PrefixRootFilesAlias = os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_' + str(number))
-            
-
-            ListOfRootFiles = []
-            # open file FileNames.txt
-            with open(os.path.join(PrefixRootFiles, 'FileNames.txt'), 'r') as f:
-                for line in f:
-                    ListOfRootFiles.append(line.rstrip('\n'))
-                    print(line.rstrip('\n'))
-            
-            fNamesAlias = open(os.path.join(PrefixRootFilesAlias, 'FileNames.txt'), 'w')
-
-            for rootFileName in ListOfRootFiles:
-                if rootFileName.endswith(".root"):
-                    baseName = rootFileName.split('/')[-1]
-                    aliasName = baseName.replace(".root", "_alias.root")
-                    fNamesAlias.write(os.path.join(PrefixRootFilesAlias, aliasName) + '\n')
-                    print(os.path.join(PrefixRootFilesAlias, aliasName))
-            fNamesAlias.close()
-            
-
-            
-            
-            for index, file in enumerate(ListOfRootFiles):
-                print("Processing file: {}".format(file))
+    if not OnlyLatex:
+        for root, dirs, files in os.walk(dst_dir):
+            for dir in dirs:
+                pattern = r"/GDML_file_(\d+)"
+                match = re.search(pattern, os.path.join(root, dir))
+                if match is not None:
+                    number = int(match.group(1))
+                else:
+                    number = -1
+                
+                
+                Command = ''
+                ROOT_MacroName = os.path.join(root_dir, 'SetAliases.C')
                 ArgVect = []
-                ArgVect.append(os.path.join(root, dir ,file.split('/')[-1]))
-                ArgVect.append(file.split('/')[-1].replace(".root", ""))
-                ArgVect.append(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number)))
+
+                PrefixRootFiles = os.path.join(dst_dir,'GDML_file_' + str(number))
+                PrefixRootFilesAlias = os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_' + str(number))
+                
+
+                ListOfRootFiles = []
+                # open file FileNames.txt
+                with open(os.path.join(PrefixRootFiles, 'FileNames.txt'), 'r') as f:
+                    for line in f:
+                        ListOfRootFiles.append(line.rstrip('\n'))
+                        print(line.rstrip('\n'))
+                
+                fNamesAlias = open(os.path.join(PrefixRootFilesAlias, 'FileNames.txt'), 'w')
+
+                for rootFileName in ListOfRootFiles:
+                    if rootFileName.endswith(".root"):
+                        baseName = rootFileName.split('/')[-1]
+                        aliasName = baseName.replace(".root", "_alias.root")
+                        fNamesAlias.write(os.path.join(PrefixRootFilesAlias, aliasName) + '\n')
+                        print(os.path.join(PrefixRootFilesAlias, aliasName))
+                fNamesAlias.close()
+            
+                for index, file in enumerate(ListOfRootFiles):
+                    print("Processing file: {}".format(file))
+                    ArgVect = []
+                    ArgVect.append(os.path.join(root, dir ,file.split('/')[-1]))
+                    ArgVect.append(file.split('/')[-1].replace(".root", ""))
+                    ArgVect.append(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number)))
+                    ArgVect.append(E_thr_Thin)
+                    ArgVect.append(E_thr_Thick)
+                    ArgVect.append(E_thr_Plastic)
+                    Command = ROOT_CMD(ROOT_MacroName, ArgVect)
+                    print(Command)
+                    os.system(Command)
+                
+                Command = ''
+                ROOT_MacroName = os.path.join(root_dir, 'PID.C')
+                ArgVect = []
+                ArgVect.append(NFiles)
+                ArgVect.append(os.path.join(PrefixRootFilesAlias, 'FileNames.txt'))
+                ArgVect.append(os.path.join(PrefixRootFiles, 'EnergyGen.txt'))
+                ArgVect.append(PrefixRootFilesAlias)
+                ArgVect.append(Emin_plots)
+                ArgVect.append(Emax_plots)
                 ArgVect.append(E_thr_Thin)
                 ArgVect.append(E_thr_Thick)
                 ArgVect.append(E_thr_Plastic)
-                Command = ROOT_CMD(ROOT_MacroName, ArgVect)
+                Command = ROOT_CMD(ROOT_MacroName, ArgVect)            
                 print(Command)
                 os.system(Command)
                 
@@ -251,159 +283,125 @@ def Analysis(input_dir):
             
             
             
-            Command = ''
-            ROOT_MacroName = os.path.join(root_dir, 'PID.C')
-            ArgVect = []
-            ArgVect.append(NFiles)
-            ArgVect.append(os.path.join(PrefixRootFilesAlias, 'FileNames.txt'))
-            ArgVect.append(os.path.join(PrefixRootFiles, 'EnergyGen.txt'))
-            ArgVect.append(PrefixRootFilesAlias)
-            ArgVect.append(Emin_plots)
-            ArgVect.append(Emax_plots)
-            ArgVect.append(E_thr_Thin)
-            ArgVect.append(E_thr_Thick)
-            ArgVect.append(E_thr_Plastic)
-            Command = ROOT_CMD(ROOT_MacroName, ArgVect)            
-            print(Command)
-            os.system(Command)
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-        # Macro root for PID is the following
-            #int PID(
-            # TString filename_e,
-            # TString filename_e_noExt,
-            # TString filename_p,
-            # TString filename_p_noExt,
-            # TString filename_alpha,
-            # TString filename_alpha_noExt,
-            # double Emin_e = 0.0,
-            # double Emax_e = 0.0,
-            # double Emin_p = 0.0,
-            # double Emax_p = 0.0,
-            # double Emin_alpha = 0.0,
-            # double Emax_alpha = 0.0,
-            # TString destination,
-            # int NumberPairsSensors = 5,
-            # double ResSilicon = 0.03,
-            # double ResPlastic = 0.03,
-            # double E_thr_Thin = 0.04,
-            # double E_thr_Thick = 0.04,
-            # double E_thr_Plastic = 0.04
-            # )
-            
-            
-    # ######################################################## #
-    #                   LATEX REPORT CREATION                  #
-    # ######################################################## #
-
-            # File Names without extension
-            fNames_noExt = []
-            for items in ListOfRootFiles:
-                fNames_noExt.append(items.split('/')[-1].replace(".root", ""))
-
-            LatexReportDir = os.path.join(global_input_dir, 'LatexReport', 'GDML_file_{}'.format(number))
-            PDF_images_dir = os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number))
-            
-            if not os.path.exists(LatexReportDir):
-                os.makedirs(LatexReportDir)
-            else:
-                shutil.rmtree(LatexReportDir)
-                os.makedirs(LatexReportDir)
-                
-            # Creazione del report
-            Report = LatexDocumentClass()
-            #Settings
-            Report.SetNameOfTheDocument('Simulation Report')
-            Report.SetTitle('GEANT4 Simulation Report')
-            Report.SetAuthor("Riccardo Nicolaidis")
-            Report.SetEmail("riccardo.nicolaidis@unitn.it")
-            Report.SetOutputDirectory(LatexReportDir)
-            
-            for index, file in enumerate(fNames_noExt):
-                Report.BeginSlide("MC quantities for " + file)
-                for mcfile in os.listdir(PDF_images_dir):
-                    if ("Montecarlo" in mcfile) and (file.replace(".root", "") in mcfile):
-                        Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "MC quantities", 0.8)
-                        print("Inserted figure: {}".format(mcfile))
-                Report.EndSlide()
-                
-                Report.BeginSlide("Energies distribution for {}".format(ParticleName[index]))
-                for mcfile in os.listdir(PDF_images_dir):
-                    if ("Energies" in mcfile) and (file.replace(".root", "") in mcfile):
-                        Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Detected energies", 0.8)
-                        print("Inserted figure: {}".format(mcfile))
-                Report.EndSlide()
-                
-                Report.BeginSlide("Angles distribution accepted for {}".format(ParticleName[index]))                
-                for mcfile in os.listdir(PDF_images_dir):
-                    if ("Angles" in mcfile) and (file.replace(".root", "") in mcfile):
-                        Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Angles distribution", 0.8)
-                        print("Inserted figure: {}".format(mcfile))
-                Report.EndSlide()
-                
-                
-                name_histo2D = []
-                name_PositionGen = []
-                
-                
-                for imgHisto2D in os.listdir(PDF_images_dir):
-                    if  ("2DAngHistoFigure_" in imgHisto2D) and (file.replace(".root", "") in imgHisto2D):
-                        name_histo2D.append(imgHisto2D)
-                    if  ("GenPosition_" in imgHisto2D) and (file.replace(".root", "") in imgHisto2D):
-                        name_PositionGen.append(imgHisto2D)
-                
-                
-                for index_img, name_img  in enumerate(name_histo2D):
-                    for j in range(len(name_histo2D)):
-                        if ("2DAngHistoFigure_{}".format(j) ) in name_img:
-                            Report.BeginSlide("Angles distribution accepted for {}".format(ParticleName[index]))
-                            Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Angles distribution", 0.8)
-                            Report.EndSlide()
+    if not OnlyRoot:   
+        for root, dirs, files in os.walk(os.path.join(global_input_dir, 'Analysis_output')):
+            for dir in dirs:
+                pattern = r"/GDML_file_(\d+)"
+                match = re.search(pattern, os.path.join(root, dir))
+                if match is not None:
+                    number = int(match.group(1))
+                else:
+                    number = -1
                     
-                            
-                for index_img, name_img  in enumerate(name_PositionGen):
-                    for j in range(len(name_PositionGen)):
-                        if ("GenPosition_{}".format(j) ) in name_img:
-                            Report.BeginSlide("Generation Position distribution accepted for {}".format(ParticleName[index]))
-                            Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Generation Position", 0.8)
-                            Report.EndSlide()
-                
-                
-            #     Report.BeginSlide("Geometric factors for {}".format(ParticleName[index]))
-            #     for mcfile in os.listdir(PDF_images_dir):
-            #         print(mcfile)
-            #         if ("Acceptances" in mcfile) and (file.replace(".root", "") in mcfile):
-            #             Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)
-            #             print("Inserted figure: {}".format(mcfile))                
-            #     Report.EndSlide()
-                
-                
-            #     Report.BeginSlide("Geometric factors for {}".format(ParticleName[index]))
-            #     for mcfile in os.listdir(PDF_images_dir):
-            #         print(mcfile)
-            #         if "ChannelGeomFactor" in mcfile and file.replace(".root", "") in mcfile:
-            #             Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)
-            #             print("Inserted figure: {}".format(mcfile))
-            #     Report.EndSlide()
-                
-                
-            # Report.BeginSlide("Geometric factors for all particles")
-            # for mcfile in os.listdir(PDF_images_dir):
-            #     if "GeomAll" in mcfile:
-            #         Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)                         
-            # Report.EndSlide()
-            Report.Compile()
-                
+                PDF_images_dir = os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number))
+                if not os.path.exists(PDF_images_dir):
+                    # Skip the directory
+                    continue
+                LatexReportDir = os.path.join(global_input_dir, 'LatexReport', 'GDML_file_{}'.format(number))
+                if not os.path.exists(LatexReportDir):
+                    os.makedirs(LatexReportDir)
+                else:
+                    shutil.rmtree(LatexReportDir)
+                    os.makedirs(LatexReportDir)
+                        
+                # File Names without extension
+                fNames_noExt = []
+                for items in ListOfRootFiles:
+                    fNames_noExt.append(items.split('/')[-1].replace(".root", ""))
+
                     
+                # Creazione del report
+                Report = LatexDocumentClass()
+                #Settings
+                Report.SetNameOfTheDocument('Simulation_Report')
+                Report.SetTitle('GEANT4 Simulation Report')
+                Report.SetAuthor("Riccardo Nicolaidis")
+                Report.SetEmail("riccardo.nicolaidis@unitn.it")
+                Report.SetOutputDirectory(LatexReportDir)
+                Report.SetDocumentClass("beamer")
+                
+                for index, file in enumerate(fNames_noExt):
+                    Report.BeginSlide("MC quantities for " + file)
+                    for mcfile in os.listdir(PDF_images_dir):
+                        if ("Montecarlo" in mcfile) and (file.replace(".root", "") in mcfile):
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "MC quantities", 0.8)
+                            print("Inserted figure: {}".format(mcfile))
+                    Report.EndSlide()
+                    
+                    Report.BeginSlide("Energies distribution for {}".format(ParticleName[index]))
+                    for mcfile in os.listdir(PDF_images_dir):
+                        if ("Energies" in mcfile) and (file.replace(".root", "") in mcfile):
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Detected energies", 0.8)
+                            print("Inserted figure: {}".format(mcfile))
+                    Report.EndSlide()
+                    
+                    Report.BeginSlide("Angles distribution accepted for {}".format(ParticleName[index]))                
+                    for mcfile in os.listdir(PDF_images_dir):
+                        if ("Angles" in mcfile) and (file.replace(".root", "") in mcfile):
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Angles distribution", 0.8)
+                            print("Inserted figure: {}".format(mcfile))
+                    Report.EndSlide()
+                    
+                    print("Histograms for {}".format(ParticleName[index]))
+                    name_histo2D = []
+                    name_PositionGen = []
+                    
+                    
+                    for imgHisto2D in os.listdir(PDF_images_dir):
+                        if  ("2DAngHistoFigure_" in imgHisto2D) and (file.replace(".root", "") in imgHisto2D):
+                            name_histo2D.append(imgHisto2D)
+                            print(imgHisto2D)
+                        if  ("GenPosition_" in imgHisto2D) and (file.replace(".root", "") in imgHisto2D):
+                            name_PositionGen.append(imgHisto2D)
+                            print(imgHisto2D)
+                    
+                    print("Inserting the slides for the 2D histograms")
+                    for index_img, name_img  in enumerate(name_histo2D):
+                        for j in range(len(name_histo2D)):
+                            if ("2DAngHistoFigure_{}".format(j) ) in name_img:
+                                print("Inserting the slide for the 2D histogram {}".format(name_img))
+                                Report.BeginSlide("Angles distribution accepted for {}".format(ParticleName[index]))
+                                Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Angles distribution", 0.8)
+                                Report.EndSlide()
+                        
+                    print("Inserting the slides for the generation position")            
+                    for index_img, name_img  in enumerate(name_PositionGen):
+                        for j in range(len(name_PositionGen)):
+                            if ("GenPosition_{}".format(j) ) in name_img:
+                                print("Inserting the slide for the generation position {}".format(name_img))
+                                Report.BeginSlide("Generation Position distribution accepted for {}".format(ParticleName[index]))
+                                Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Generation Position", 0.8)
+                                Report.EndSlide()
+                    
+                    
+                #     Report.BeginSlide("Geometric factors for {}".format(ParticleName[index]))
+                #     for mcfile in os.listdir(PDF_images_dir):
+                #         print(mcfile)
+                #         if ("Acceptances" in mcfile) and (file.replace(".root", "") in mcfile):
+                #             Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)
+                #             print("Inserted figure: {}".format(mcfile))                
+                #     Report.EndSlide()
+                    
+                    
+                #     Report.BeginSlide("Geometric factors for {}".format(ParticleName[index]))
+                #     for mcfile in os.listdir(PDF_images_dir):
+                #         print(mcfile)
+                #         if "ChannelGeomFactor" in mcfile and file.replace(".root", "") in mcfile:
+                #             Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)
+                #             print("Inserted figure: {}".format(mcfile))
+                #     Report.EndSlide()
+                    
+                    
+                # Report.BeginSlide("Geometric factors for all particles")
+                # for mcfile in os.listdir(PDF_images_dir):
+                #     if "GeomAll" in mcfile:
+                #         Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)                         
+                # Report.EndSlide()
+                print("Now compiling the report")
+                Report.Compile()
+                    
+                        
                     
                 
             
@@ -417,17 +415,30 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser(description='Script for the analysis of the simulation data of the Geant4 simulation for the Low Energy Module LEM')
     parser.add_argument('-i', '--input-dir', type=str, help='Input directory of the simulation data')
+    parser.add_argument('-L', '--latex-only', action='store_true', help='Only the latex report is generated')
+    parser.add_argument('-R', '--root-only', action='store_true', help='Only the root files are analyzed')
+    parser.add_argument('-b', '--bypass-removal', action='store_true', help='Bypass the removal of the Analysis_output directory')
+
 
     args = parser.parse_args()
     actual_dir = os.getcwd()
+
+    OnlyLatex = args.latex_only
+    OnlyRoot = args.root_only
+    BypassRemoval = args.bypass_removal
+
     
+    if OnlyLatex and OnlyRoot:
+        print('You cannot select both -L and -R options')
+        sys.exit()
+        
     os.chdir(args.input_dir)
     input_dir = os.getcwd()
     os.chdir(actual_dir)
     
-    input_dir = "/data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_PID_20230702"
+    #input_dir = "/data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_PID_20230702"
     
     print('Input directory: ' + input_dir)
         
     
-    Analysis(input_dir)
+    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval)

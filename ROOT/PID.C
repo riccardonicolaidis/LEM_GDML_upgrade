@@ -24,6 +24,7 @@
 #include "TLine.h"
 #include "TLegend.h"
 #include "TMultiGraph.h"
+#include "TList.h"
 
 
 using namespace std;
@@ -47,10 +48,17 @@ int PID(
     ifstream fileNames(pathFileNames.Data());
     
     
-    TString FileNames[NFiles];
-    TString FileNames_noExt[NFiles];
-    double Emins[NFiles];
-    double Emaxs[NFiles];
+
+    vector<TString> FileNames;
+    vector<TString> FileNames_noExt;
+    vector<double> Emins;
+    vector<double> Emaxs;
+    FileNames.resize(NFiles);
+    FileNames_noExt.resize(NFiles);
+    Emins.resize(NFiles);
+    Emaxs.resize(NFiles);
+
+
 
     string textline;
 
@@ -74,7 +82,8 @@ int PID(
     }
 
 
-    TString ParticleNames[NFiles];
+    vector<TString> ParticleNames;
+    ParticleNames.resize(NFiles);
 
     for(int i = 0; i < NFiles; i++)
     {
@@ -107,13 +116,26 @@ int PID(
     double Xmax = Emax_plots;
 
 
-    TFile *file[NFiles];
-    TTree *Edep[NFiles];
+    vector<TFile*> file;
+    vector<TTree*> Edep;
+    file.resize(NFiles);
+    Edep.resize(NFiles);
 
     for(int i = 0; i < NFiles; i++)
     {
         file[i] = new TFile(FileNames[i], "READ");
         Edep[i] = (TTree*)file[i]->Get("Edep");
+
+        // Get List Of Aliases
+
+        TList *listOfAliases = Edep[i] -> GetListOfAliases();
+        for(int j = 0; j < listOfAliases -> GetEntries(); ++j)
+        {
+            TString AliasName = listOfAliases -> At(j) -> GetName();
+            TString AliasDefinition = listOfAliases -> At(j) -> GetTitle();
+            cout << "AliasName = " << AliasName << endl;
+            cout << "AliasDefinition = " << AliasDefinition << endl;
+        }
     }
 
 
@@ -129,7 +151,8 @@ int PID(
     std::cout << "NumberBranches = " << NumberBranches << endl;
 
 
-    TString BranchName[NumberBranches];
+    vector<TString> BranchName;
+    BranchName.resize(NumberBranches);
 
     int iBranch = 0;
     BranchName[iBranch++] = "RandEnergy";
@@ -165,11 +188,13 @@ int PID(
 
 
 
-    TString ConditionPairSilicon[NumberPairsSensors];
+    vector<TString> ConditionPairSilicon;
+    ConditionPairSilicon.resize(NumberPairsSensors);
     TString ConditionPairSiliconAll;
     TString ConditionDrilledVeto;
     TString ConditionGoodEvents;
-    TString ConditionGoodEventsSinglePair[NumberPairsSensors];
+    vector<TString> ConditionGoodEventsSinglePair;
+    ConditionGoodEventsSinglePair.resize(NumberPairsSensors);
     TString ConditionNoCalo;
     TString NumberPairsHit = "(";
 
@@ -222,7 +247,7 @@ int PID(
     // Index 2: PID Thin + Thick NO Calo
     // Index 3: PID gThin + gThick NO Calo
 
-    for(int i = 0; i < NFiles; ++i)
+    for(int i = 0; i < 4; ++i)
     {
         hPID_log[i] = new TH2DLogX();
         hPID_log[i] -> SetName(Form("hPID_%d", i));
@@ -232,7 +257,7 @@ int PID(
         hPID_log[i] -> SetXAxis(Xmin, Xmax, 300);
         hPID_log[i] -> SetYAxis(-3., +3.2, 300);
         hPID_log[i] -> GenerateHistogram();
-        hPID[i] = hPID_log[i] -> GetHistogram();
+        hPID[i] = (TH2D*) hPID_log[i] -> GetHistogram();
 
         hPID2_log[i] = new TH2DLogX();
         hPID2_log[i] -> SetName(Form("hPID2_%d", i));
@@ -242,7 +267,7 @@ int PID(
         hPID2_log[i] -> SetXAxis(Xmin, Xmax, 300);
         hPID2_log[i] -> SetYAxis(-3., +3.2, 300);
         hPID2_log[i] -> GenerateHistogram();
-        hPID2[i] = hPID2_log[i] -> GetHistogram();
+        hPID2[i] = (TH2D*) hPID2_log[i] -> GetHistogram();
     }
 
 
@@ -305,7 +330,7 @@ int PID(
         hPID_single -> SetYAxis(-3., +3.2, 200);
         hPID_single -> GenerateHistogram();
 
-        hPIDlog_single = hPID_single -> GetHistogram();
+        hPIDlog_single = (TH2D*) hPID_single -> GetHistogram();
         
         Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)>>hPID_single", ConditionGoodEvents.Data(), "colz");
         cPID_single = new TCanvas("cPID_single", "cPID_single", 600, 600);
@@ -324,14 +349,16 @@ int PID(
         cout << "########################" << endl;
     }
 
-    TGraph *grPID[NFiles];
+    vector<TGraph*> grPID;
+    grPID.resize(NFiles);
+
     TMultiGraph *mgrPID = new TMultiGraph("mgrPID", "mgrPID");
     TLegend *legPID = new TLegend(0.1, 0.7, 0.4, 0.9);
     for(int i = 0; i < NFiles; ++i)
     {
         Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)", Form("(%s) && (!(%s))", ConditionGoodEvents.Data(), ConditionGoodEventsSinglePair[0].Data()), "colz"); // Form("(%s) && (TotThick > 0.0) && (TotThin > 0.0)",ConditionGoodEvents.Data())
         grPID[i] = new TGraph(Edep[i] -> GetSelectedRows(), Edep[i] -> GetV2(), Edep[i] -> GetV1());
-        grPID[i] -> Print();
+        //grPID[i] -> Print();
         grPID[i] -> SetName(ParticleNames[i].Data());
         grPID[i] -> SetMarkerStyle(20);
         grPID[i] -> SetMarkerSize(0.5);
@@ -360,7 +387,7 @@ int PID(
     {
         Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)", ConditionGoodEventsSinglePair[0].Data(), "colz"); // Form("(%s) && (TotThick > 0.0) && (TotThin > 0.0)",ConditionGoodEvents.Data())
         grPID[i] = new TGraph(Edep[i] -> GetSelectedRows(), Edep[i] -> GetV2(), Edep[i] -> GetV1());
-        grPID[i] -> Print();
+        //grPID[i] -> Print();
         grPID[i] -> SetName(ParticleNames[i].Data());
         grPID[i] -> SetMarkerStyle(20);
         grPID[i] -> SetMarkerSize(0.5);
@@ -414,7 +441,10 @@ int PID(
     gPad -> SetGridy();
     cPID_NoCalo -> SaveAs(destination_PID + "/PID_NoCalo.pdf");
     cPID_NoCalo -> SaveAs(destination_PID + "/PID_NoCalo.root");
+
+    cout << "Plotting PID2" << endl << endl << endl;
     cgPID_NoCalo = new TCanvas("cgPID_NoCalo", "cgPID_NoCalo", 600, 600);
+    cout << hPID[3] -> GetEntries() << endl;
     hPID[3] -> Draw("colz");
     hPID[3] -> SetStats(0);
     gPad -> SetLogx();
@@ -521,11 +551,17 @@ int PID(
     cDeltaE_E -> SaveAs(destination_PID + "/DeltaE_E.pdf");
 
 
-    TH1DLog *hYield[NFiles];
-    TH1D *hYield_Log[NFiles];
 
-    TH1DLog *hGen[NFiles];
-    TH1D *hGen_Log[NFiles];
+    vector<TH1DLog*> hYield;
+    vector<TH1D*> hYield_Log;
+    hYield.resize(NFiles);
+    hYield_Log.resize(NFiles);
+
+
+    vector<TH1DLog*> hGen;
+    vector<TH1D*> hGen_Log;
+    hGen.resize(NFiles);
+    hGen_Log.resize(NFiles);
 
 
     for(int i =0 ; i < NFiles; ++i)
