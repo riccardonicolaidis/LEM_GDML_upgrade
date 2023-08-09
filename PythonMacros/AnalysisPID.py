@@ -172,7 +172,24 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
     #                  HADD OF THE ROOT FILES                  #
     # ######################################################## #
 
-    
+    # Prepare the FileNames.txt file for each GDML_file_N directory
+    # Prepare the EnergyGen.txt file for each GDML_file_N directory
+    # This part is common to the ROOT processing and to the latex report generation
+    for root, dirs, files in os.walk(dst_dir):
+        if 'GDML_file_' in root:
+            f_FileNames = open(os.path.join(root, 'FileNames.txt'), 'w')
+            f_EnergyGen = open(os.path.join(root, 'EnergyGen.txt'), 'w')
+            for ii in range(len(Emin)):
+                f_EnergyGen.write(str(Emin[ii]) + ' ' + str(Emax[ii]) + '\n')
+            f_EnergyGen.close()
+            
+            for particle in ParticleName:
+                TargetName = os.path.join(root, particle + '_t0.root')
+                f_FileNames.write(TargetName + '\n')
+            f_FileNames.close()
+
+
+
     HADD_to_apply = False
     
     if not OnlyLatex:
@@ -185,17 +202,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                         HADD_to_apply = True
                         print('Filse processed by Cluter\nMerging files...')
                         break
-                    
-                f_FileNames = open(os.path.join(root, 'FileNames.txt'), 'w')
-                f_EnergyGen = open(os.path.join(root, 'EnergyGen.txt'), 'w')
-                for ii in range(len(Emin)):
-                    f_EnergyGen.write(str(Emin[ii]) + ' ' + str(Emax[ii]) + '\n')
-                f_EnergyGen.close()
-                
-                for particle in ParticleName:
-                    TargetName = os.path.join(root, particle + '_t0.root')
-                    f_FileNames.write(TargetName + '\n')
-                    
+                                        
                     if HADD_to_apply:
                         FilesToMerge = []
                         for file in files:
@@ -207,7 +214,6 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                                 CMD_TO_EXECUTE += ' ' + os.path.join(root, file)
                             print(CMD_TO_EXECUTE)
                             os.system(CMD_TO_EXECUTE)
-                f_FileNames.close()
 
 
     os.system('chmod 777 -R ' + global_input_dir)
@@ -298,12 +304,36 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 if not os.path.exists(PDF_images_dir):
                     # Skip the directory
                     continue
+                
                 LatexReportDir = os.path.join(global_input_dir, 'LatexReport', 'GDML_file_{}'.format(number))
                 if not os.path.exists(LatexReportDir):
                     os.makedirs(LatexReportDir)
                 else:
                     shutil.rmtree(LatexReportDir)
                     os.makedirs(LatexReportDir)
+                
+                
+                # Retrieve the list of root files
+                PrefixRootFiles = os.path.join(dst_dir,'GDML_file_' + str(number))
+                PrefixRootFilesAlias = os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_' + str(number))
+                
+                ListOfRootFiles = []
+                # open file FileNames.txt
+                with open(os.path.join(PrefixRootFiles, 'FileNames.txt'), 'r') as f:
+                    for line in f:
+                        ListOfRootFiles.append(line.rstrip('\n'))
+                        print(line.rstrip('\n'))
+                
+                fNamesAlias = open(os.path.join(PrefixRootFilesAlias, 'FileNames.txt'), 'w')
+
+                for rootFileName in ListOfRootFiles:
+                    if rootFileName.endswith(".root"):
+                        baseName = rootFileName.split('/')[-1]
+                        aliasName = baseName.replace(".root", "_alias.root")
+                        fNamesAlias.write(os.path.join(PrefixRootFilesAlias, aliasName) + '\n')
+                        print(os.path.join(PrefixRootFilesAlias, aliasName))
+                fNamesAlias.close()
+
                         
                 # File Names without extension
                 fNames_noExt = []
