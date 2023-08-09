@@ -358,7 +358,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the Energy reconstructed."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -367,7 +367,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID_NoCalo.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the Energy reconstructed, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -376,7 +376,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID2.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the MC Energy."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -385,7 +385,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID2_NoCalo.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the MC Energy, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -397,7 +397,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the Energy reconstructed."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -406,7 +406,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID_NoCalo.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the Energy reconstructed, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -415,7 +415,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID2.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the MC Energy."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -424,7 +424,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID2_NoCalo.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the MC Energy, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -434,7 +434,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "graph_PID_center.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the Energy reconstructed, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
