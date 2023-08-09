@@ -353,7 +353,6 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 
                 
                 print("Inserting Slide With PID performances")
-                Report.BeginSlide("PID performances")
                 
                 Report.BeginSlide("PID")
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
@@ -389,6 +388,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                         Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.8)
                         print("Inserted figure: {}".format(pictures))
                         break
+                Report.EndSlide()
                 
                 # Now all the plots with gaussian smearing.
                 # gPID.pdf, gPID_NoCalo.pdf and so on.
