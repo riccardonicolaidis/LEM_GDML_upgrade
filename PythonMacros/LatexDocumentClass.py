@@ -244,7 +244,7 @@ class LatexDocumentClass:
         os.chdir(self.OutputDirectory)
         print("Compiling Latex Document")
         print(os.getcwd())
-        #os.system("pdflatex "+self.NameOfTheDocument+".tex")
+        os.system("pdflatex "+self.NameOfTheDocument+".tex")
         os.chdir("..")
         
         
