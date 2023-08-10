@@ -95,4 +95,5 @@ void G04RunAction::EndOfRunAction(const G4Run* )
     G4AnalysisManager *man = G4AnalysisManager::Instance();
     man -> Write();
     man -> CloseFile(TotalFileNameFinal);
+    fPrimary -> ResetParticleNumber();
 }

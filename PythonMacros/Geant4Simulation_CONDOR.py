@@ -20,7 +20,7 @@ def Geant4Simulation():
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 6
+    N_jobs = 3
     N_evjob = 100000
 
     # Run directory for the run
@@ -87,7 +87,6 @@ def Geant4Simulation():
         "GDML": os.path.join(HomeDirectorySimulation, "GDML_ForSimulation"),
         "macro": os.path.join(HomeDirectorySimulation, "macro"),
         "PythonMacros": os.path.join(HomeDirectorySimulation, "PythonMacros"),
-        "OutputText": os.path.join(HomeDirectorySimulation, "OutputText")
     }
     
 
@@ -140,6 +139,7 @@ def Geant4Simulation():
     os.makedirs("bash_scripts")
     os.makedirs("steering_files")
     os.makedirs("log")
+    os.makedirs("Progress_monitoring")
     
     out_paths = {
         "GDML": os.path.join(os.getcwd(), "GDML_src"),
@@ -149,11 +149,15 @@ def Geant4Simulation():
         "log": os.path.join(os.getcwd(), "log"),
         "bash_scripts": os.path.join(os.getcwd(), "bash_scripts"),
         "condor_scripts": os.path.join(os.getcwd(), "condor_scripts"),
-        "steering_files": os.path.join(os.getcwd(), "steering_files")
+        "steering_files": os.path.join(os.getcwd(), "steering_files"),
+        "Progress_monitoring": os.path.join(os.getcwd(), "Progress_monitoring")
     }
     
     out_Text_paths = []
     out_DST_paths = []
+    
+    
+    
 
     # Copi i files gdml nella directory di output
     for file in os.listdir(proj_paths["GDML"]):
@@ -162,6 +166,52 @@ def Geant4Simulation():
             print("Copied file: ", file)
     
     print("Found ", len(os.listdir(out_paths["GDML"])), " gdml files")
+
+
+    # Launch the monitoring script with a higher job priority
+    # Write a bash script 
+    # Write a condor configuration file for submitting job
+    
+    # ######################################################## #
+    
+    monitoring_sh = open(os.path.join(out_paths["bash_scripts"], "monitoring.sh"), "w")
+    monitoring_sh.write("#! /bin/bash\n")
+    monitoring_sh.write('python3.6 ' + os.path.join(proj_paths["PythonMacros"], "Monitoring_G4.py"))
+    monitoring_sh.write(" --n-jobs " + str(N_jobs))
+    monitoring_sh.write(" --n-events-per-job " + str(N_evjob))
+    monitoring_sh.write(" --n-files " + str(len(os.listdir(out_paths["GDML"]))))
+    
+    ParticleString = ""
+    for index in range(len(gps_particle)):
+        if index == 0:
+            ParticleString = gps_particle[index]
+        else:
+            ParticleString = ParticleString + "," + gps_particle[index]
+            
+    monitoring_sh.write(" --particles " + "\""+ ParticleString+ "\"")
+    monitoring_sh.write(" --directory " + os.path.join(out_paths["Progress_monitoring"]))
+    monitoring_sh.write("\n")
+    monitoring_sh.close()
+    
+    monitoring_condor = open(os.path.join(out_paths["condor_scripts"], "monitoring.sub"), "w")
+    monitoring_condor.write("universe = vanilla\n")
+    monitoring_condor.write("getenv = True\n")
+    monitoring_condor.write("stream_output = True\n")
+    monitoring_condor.write("stream_error = True\n")
+    monitoring_condor.write("executable = " + os.path.join(out_paths["bash_scripts"], "monitoring.sh") + "\n")
+    monitoring_condor.write("output = " + os.path.join(out_paths["log"], "out_monitoring.log") + "\n")
+    monitoring_condor.write("error = " + os.path.join(out_paths["log"], "err_monitoring.log") + "\n")
+    monitoring_condor.write("log = " + os.path.join(out_paths["log"], "log_monitoring.log") + "\n")
+    monitoring_condor.write("priority = 10\n")
+    monitoring_condor.write("queue 1\n")
+    monitoring_condor.close()
+    
+    os.system("chmod -R 777 " + out_paths["Progress_monitoring"])
+    os.system("condor_submit " + os.path.join(out_paths["condor_scripts"], "monitoring.sub"))
+    
+
+
+
 
     report_file = open(os.path.join(proj_paths["RunDir"], "report.txt"), "w")
     
@@ -194,6 +244,10 @@ def Geant4Simulation():
             macro_file = open(macro_file_name, "w")
             steering_file = open(steering_file_name, "w")
             steering_file.write("OUT_TEXT " + os.path.join(out_paths["Text_output"],"GDML_file_"+str(index),"OutText_f"+str(index)+"_j"+str(n)) + "\n")
+            steering_file.write("OUT_MONITORING_FLD " + os.path.join(out_paths["Progress_monitoring"]) + "\n")
+            steering_file.write("NJOB " + str(n) + "\n")
+            steering_file.write("NFILE " + str(index) + "\n")
+            steering_file.write("UPDATE_FREQUENCY " + str(10000) + "\n")
             steering_file.close()
             
             
@@ -268,12 +322,7 @@ def Geant4Simulation():
             condor_file.write("output = " + os.path.join(out_paths["log"], "out_f"+str(index)+"_j"+str(n)+".log") + "\n")
             condor_file.write("error = " + os.path.join(out_paths["log"], "err_f"+str(index)+"_j"+str(n)+".log") + "\n")
             condor_file.write("log = " + os.path.join(out_paths["log"], "log_f"+str(index)+"_j"+str(n)+".log") + "\n")
-            #condor_file.write("ShouldTransferFiles = NO\n")
-            #condor_file.write("whenToTransferOutput = ON_EXIT\n")
-            
-            #condor_file.write("request_memory = 32 GB\n")
-            #condor_file.write("request_disk = 200 GB\n")
-            #condor_file.write("request_cpus = 4\n")
+            condor_file.write("priority = 5\n")
             condor_file.write("queue 1\n")
             condor_file.close()
     

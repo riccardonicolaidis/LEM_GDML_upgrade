@@ -1,3 +1,6 @@
-cd /data1/home/rnicolai/LEM_GDML_upgrade/
-rm -rf BUILD/
+cd /data1/home/rnicolai/
+ls
+chmod a+rwx .local
+cd .local/
+chmod -R 777 *
 exit

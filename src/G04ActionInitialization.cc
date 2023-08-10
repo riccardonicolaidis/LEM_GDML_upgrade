@@ -55,7 +55,7 @@ void G04ActionInitialization::BuildForMaster() const
 void G04ActionInitialization::Build() const
 {
 
-  G04PrimaryGeneratorAction* primary = new G04PrimaryGeneratorAction();
+  G04PrimaryGeneratorAction* primary = new G04PrimaryGeneratorAction(fSteeringClass);
   SetUserAction(primary);
 
   G04RunAction* runAction = new G04RunAction(fDetConstruction, primary, fSteeringClass);

@@ -34,11 +34,12 @@
 
 //....oooOO0OOooo........oooOO0OOooo........oooOO0OOooo........oooOO0OOooo......
 
-G04PrimaryGeneratorAction::G04PrimaryGeneratorAction()
+G04PrimaryGeneratorAction::G04PrimaryGeneratorAction(G04SteeringClass* steering)
  : G4VUserPrimaryGeneratorAction(), 
  fParticleTable(0),
  fGeneralParticleSource(0),
- fMessenger(0)
+ fMessenger(0),
+ fSteering(steering)
 {
 
   
@@ -79,15 +80,38 @@ void G04PrimaryGeneratorAction::GeneratePrimaries(G4Event* anEvent)
   man -> FillNtupleDColumn(0,6, momentum.getZ());
 
 
-
-
-
-
-   
-
-
-
   ++ParticleNumber;
+
+  G4String monitoringFolder = fSteering -> GetOutputMonitoringFolder();
+  int monitoringFrequency = fSteering -> GetUpdateFrequency();
+  int nJob = fSteering -> GetJobNumber();
+  int nFile = fSteering -> GetFileNumber();
+  G4String ActualParticle = fGeneralParticleSource -> GetParticleDefinition() -> GetParticleName();
+
+  G4String fileName = monitoringFolder + "/" + "monitoring_f" + std::to_string(nFile) + "_j" + std::to_string(nJob) + ".txt";
+  G4String lockName = monitoringFolder + "/" + "monitoring_f" + std::to_string(nFile) + "_j" + std::to_string(nJob) + ".lock";
+
+
+  // The file has to contain the following columns:
+  // 1. Particle name
+  // 2. Event number (ParticleNumber)
+
+  if(ParticleNumber % monitoringFrequency == 0)
+  {
+    std::ofstream lockFile;
+    lockFile.open(lockName);
+    lockFile.close();
+
+    std::ofstream monitoringFile;
+    monitoringFile.open(fileName,std::ofstream::out | std::ofstream::trunc);
+    monitoringFile << ActualParticle << " " << ParticleNumber << std::endl;
+    monitoringFile.close();
+
+    remove(lockName);
+  }
+
+
+
   if(ParticleNumber % 1000 == 0)
   {
     G4cout << "Event N: " << ParticleNumber << G4endl;

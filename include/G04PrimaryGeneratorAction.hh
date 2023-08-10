@@ -41,6 +41,7 @@
 #include "G4GeneralParticleSource.hh"
 #include "G4GenericMessenger.hh"
 #include "G4AnalysisManager.hh"
+#include "G04SteeringClass.hh"
 #include "G4ThreeVector.hh"
 
 #include "globals.hh"
@@ -54,8 +55,9 @@ class G04PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 {
   public:
 
-    G04PrimaryGeneratorAction();
+    G04PrimaryGeneratorAction(G04SteeringClass*);
    ~G04PrimaryGeneratorAction();
+   void ResetParticleNumber(){ParticleNumber=0;};
 
    virtual void GeneratePrimaries(G4Event* anEvent);
   
@@ -63,6 +65,7 @@ class G04PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
   private:
 
+    G04SteeringClass        *fSteering;
     G4ParticleTable         *fParticleTable;
     G4GeneralParticleSource *fGeneralParticleSource;
     G4int                    ParticleNumber;

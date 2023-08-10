@@ -80,35 +80,9 @@ int main(int argc,char **argv)
    G4GDMLParser parser;
    parser.Read(argv[1]);
 
-   // arg[3] is a steering file
-  std::ifstream steeringFile(argv[3]);
-  std::string line;
 
   G04SteeringClass* steering = new G04SteeringClass();
-
-  // Loop until end of file is reached
-  while (std::getline(steeringFile, line))
-  {
-    // Ignore empty lines and lines starting with #
-    if (line.empty() || line[0] == '#')
-      continue;
-    
-    // Split line into words separated by whitespace
-    std::stringstream ss(line);
-    std::vector<std::string> words;
-    std::string word;
-
-    while(std::getline(ss, word, ' '))
-    {
-      words.push_back(word);
-    }
-
-    if(words[0] == "OUT_TEXT")
-    {
-      steering->SetOutputTextFolder(words[1]);
-      G4cout << "Output text folder set to: " << steering->GetOutputTextFolder() << G4endl;
-    }
-  }
+  steering -> UploadSteeringFile(argv[3]);
 
 
    auto* runManager = G4RunManagerFactory::CreateRunManager();
