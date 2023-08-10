@@ -163,24 +163,22 @@ int PID(
     BranchName[iBranch++] = "pDirX";
     BranchName[iBranch++] = "pDirY";
     BranchName[iBranch++] = "pDirZ";
-
     int iBranchEnergies = iBranch;
-    BranchName[iBranch++] = "Ed_LV_Veto_bottom";
-    BranchName[iBranch++] = "Ed_LV_Veto_top";
+    BranchName[iBranch++] = "Ed_LV_PlasticVetoBottom";
+    BranchName[iBranch++] = "Ed_LV_PlasticVetoTop";
     int iBranchEnergies_Calo = iBranch;
-    BranchName[iBranch++] = "Ed_LV_Plastic_calo";
-
+    BranchName[iBranch++] = "Ed_LV_Calo";
     int iStartSensors = iBranch;
     int iStartSensors_Thin = iStartSensors;
     int iStartSensors_Thick = iStartSensors + NumberPairsSensors;
 
     for(int iPair = 0; iPair < NumberPairsSensors; iPair++)
     {
-        BranchName[iBranch] = "Ed_LV_Silicon_Thin_" + to_string(iPair);
-        BranchName[iBranch+NumberPairsSensors] = "Ed_LV_Silicon_Thick_" + to_string(iPair);
+        BranchName[iBranch] = "Ed_LV_SiliconDetector_Thin_" + to_string(iPair);
+        BranchName[iBranch+NumberPairsSensors] = "Ed_LV_SiliconDetector_Thick_" + to_string(iPair);
         iBranch++;
     }
-
+    
     for(int i = 0; i < NumberBranches; i++)
     {
         std::cout << "BranchName[" << i << "] = " << BranchName[i] << endl;
