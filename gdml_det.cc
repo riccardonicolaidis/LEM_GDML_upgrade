@@ -72,17 +72,29 @@ int main(int argc,char **argv)
 
    // Detect interactive mode (if only one argument) and define UI session
    //
+
+  G04SteeringClass* steering = new G04SteeringClass();
    G4UIExecutive* ui = 0;
    if ( argc == 3 || argc == 2 ) {
      ui = new G4UIExecutive(argc, argv);
+     if( argc == 3)
+     {
+        steering -> UploadSteeringFile(argv[2]);
+     }
+     else
+     {
+        steering -> UploadSteeringFile("../macro/default.steering");
+     }
+   }
+   else
+   {
+      steering -> UploadSteeringFile(argv[3]);
    }
 
    G4GDMLParser parser;
    parser.Read(argv[1]);
 
 
-  G04SteeringClass* steering = new G04SteeringClass();
-  steering -> UploadSteeringFile(argv[3]);
 
 
    auto* runManager = G4RunManagerFactory::CreateRunManager();

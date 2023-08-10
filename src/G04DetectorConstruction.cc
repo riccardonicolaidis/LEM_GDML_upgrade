@@ -193,7 +193,7 @@ void G04DetectorConstruction::ConstructSDandField()
         G4cout  << "Attaching sensitive detector " << (*vit).value << " to volume " << ((*iter).first)->GetName() << G4endl;
         auxfile << "Attaching sensitive detector " << (*vit).value << " to volume " << ((*iter).first)->GetName() << G4endl;
 
-        if((((*vit).value == "Silicon") || ((*vit).value == "PlasticScintillator")) && (!SensDetSet))
+        if(((*vit).value == "Calorimeter") && (!SensDetSet))
         {
           SensDetSet = true;
           G4LogicalVolume* logvol = (*iter).first;
