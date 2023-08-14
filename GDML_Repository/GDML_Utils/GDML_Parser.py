@@ -275,17 +275,21 @@ def GDML_Parser(input_file, dummy_materials):
             f_GDML_Parsed.write(lineName)
         elif "materialref" in line:
             if "LV_Calo" in lineName:
+                SetSensDet = True
                 if "GAGG" in FileName_GDML:
                     lineMat = Build_MaterialRefLine("GAGG")
-                    SetSensDet = True
                 else:
                     lineMat = Build_MaterialRefLine("G4_PLASTIC_SC_VINYLTOLUENE")
             else:
+                FoundCorrespondence = False
                 for MatTuple in MaterialCorrespondence:
                     if MatTuple[0] in lineName:
                         SetSensDet = MatTuple[2]
                         lineMat = Build_MaterialRefLine(MatTuple[1])
+                        FoundCorrespondence = True
                         break
+                if not FoundCorrespondence:
+                    lineMat = Build_MaterialRefLine("G4_Galactic")
                     
             if (not SetSensDet) and dummy_materials:
                 lineMat = Build_MaterialRefLine("G4_Galactic")

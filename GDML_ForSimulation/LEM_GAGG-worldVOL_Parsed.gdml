@@ -25230,9 +25230,10 @@
 			<auxiliary auxtype="Color" auxvalue="#33ff33cc"/>
     </volume>
 			<volume name="LV_Calo">
-			<materialref ref="G4_PLASTIC_SC_VINYLTOLUENE"/>
+			<materialref ref="GAGG"/>
       <solidref ref="Calo"/>
 			<auxiliary auxtype="Color" auxvalue="#3333ffff"/>
+			<auxiliary auxtype="SensDet" auxvalue="Calorimeter"/>
     </volume>
 			<volume name="LV_PlasticVetoTop">
 			<materialref ref="G4_PLASTIC_SC_VINYLTOLUENE"/>
@@ -25531,7 +25532,7 @@
       </physvol>
     </assembly>
 			<volume name="worldVOL">
-			<materialref ref="G4_Al"/>
+			<materialref ref="G4_Galactic"/>
       <solidref ref="WorldBox"/>
       <physvol name="PV-LEM_Assembly">
 			<volumeref ref="LEM_Assembly"/>

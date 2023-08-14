@@ -163,10 +163,10 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
     
     
     #  Change permissions of the files
-    os.system('chmod 777 -R ' + global_input_dir)
-    os.system('chmod 777 -R ' + dst_dir)
-    os.system('chmod 777 -R ' + gdml_src_dir)
-    os.system('chmod 777 -R ' + os.path.join(global_input_dir, 'Analysis_output'))
+    # os.system('chmod 777 -R ' + global_input_dir)
+    # os.system('chmod 777 -R ' + dst_dir)
+    # os.system('chmod 777 -R ' + gdml_src_dir)
+    # os.system('chmod 777 -R ' + os.path.join(global_input_dir, 'Analysis_output'))
     
     # ######################################################## #
     #                  HADD OF THE ROOT FILES                  #
@@ -196,6 +196,13 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
         for root, dirs, files in os.walk(dst_dir):
             HADD_to_apply = False
             if 'GDML_file_' in root:
+                pattern = r"/GDML_file_(\d+)"
+                match = re.search(pattern, os.path.join(root, dir))
+                if match is not None:
+                    number = int(match.group(1))
+                else:
+                    number = -1
+
                 # Look if there are files such as: particle_j0_t0.root particle_j1_t0.root
                 for file in files:
                     if '_j' in file:
@@ -203,20 +210,23 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                         print('Filse processed by Cluter\nMerging files...')
                         break
                                         
-                    if HADD_to_apply:
+                if HADD_to_apply:
+                    for particle in ParticleName:            
                         FilesToMerge = []
                         for file in files:
                             if particle in file and '_j' in file and file.endswith(".root"):
                                 FilesToMerge.append(os.path.join(root, file))
                         if len(FilesToMerge) > 0:
+                            TargetName = os.path.join(root, particle + '_t0.root')
                             CMD_TO_EXECUTE = 'hadd -f ' + os.path.join(root, TargetName)
                             for file in FilesToMerge:
                                 CMD_TO_EXECUTE += ' ' + os.path.join(root, file)
                             print(CMD_TO_EXECUTE)
                             os.system(CMD_TO_EXECUTE)
+                            #input('Press enter to continue')
 
 
-    os.system('chmod 777 -R ' + global_input_dir)
+    # os.system('chmod 777 -R ' + global_input_dir)
 
 
     if not OnlyLatex:

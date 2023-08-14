@@ -3,6 +3,7 @@ import sys
 import time
 
 import numpy as np
+import matplotlib.pyplot as plt
 
 import argparse
 
@@ -31,7 +32,22 @@ def SendMessage(message):
     chatID = '-1001921335158'
     apiURL = 'https://api.telegram.org/bot{}/sendMessage'.format(TOKEN_global)
     try:
-        response = requests.post(apiURL, json={'chat_id': chatID, 'text': message})
+        response = requests.post(apiURL, json={'chat_id': chatID, 'text': message, 'parse_mode': 'HTML'})
+        print(response.text)
+    except Exception as e:
+        print(e)
+
+
+
+def SendPhoto(photo_path):
+    chatID = '-1001921335158'        
+    apiURL = 'https://api.telegram.org/bot{}/sendPhoto'.format(TOKEN_global)
+    print(apiURL)
+    
+    try:
+        params = {'chat_id': chatID}
+        files = {'photo': open(photo_path, 'rb')}
+        response = requests.post(apiURL, params=params, files=files)
         print(response.text)
     except Exception as e:
         print(e)
@@ -40,6 +56,16 @@ def SendMessage(message):
 def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
     
     print('Entering in Monitoring')
+    start_time = time.time()
+    Checkpoint_Message = start_time
+    Checkpoint_Plot = start_time
+    Checkpoint_Sampling = start_time
+    
+    UpdateFreq_Message = 10.0 # seconds
+    UpdateFreq_Plot = 10.0 # seconds
+    UpdateFreq_Sampling = 1.0 # seconds
+    
+    
     Particles = Particles.split(',')
     TotNumberEvents_computed = N_Jobs*N_EventsPerJob*len(Particles)*N_Files
     print('TotNumberEvents_computed', TotNumberEvents_computed)
@@ -51,24 +77,39 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
     SubVector_Jobs = [SubVector_Particles for i in range(N_Jobs)]
     SubVector_Files = [SubVector_Jobs for i in range(N_Files)]
     
+    t = np.array([])
+    evts = np.array([])
+    
+    
     
     Total_Percentage = 0.0
     while Total_Percentage < (100.0-1e-6):
-        print('TotNumberEvents_monitored', TotNumberEvents_monitored)
+        MessageString = "" 
         for i in range(N_Files):
+            if i > 0:
+                MessageString += "\n\n"
+            MessageString += "F"+str(i)+": "
             for j in range(N_Jobs):
                 NameFile =  os.path.join(DirectoryToMonitor, 'monitoring_f'+str(i)+'_j'+str(j)+'.txt')
                 NameLock =  os.path.join(DirectoryToMonitor, 'monitoring_f'+str(i)+'_j'+str(j)+'.lock')
+                
                 # check if .lock file exists else wait unitil it disappear
                 while os.path.exists(NameLock):
                     # wait 1 millisecond
+                    #print('Waiting for lock file to disappear')
                     time.sleep(0.001)
                 if os.path.exists(NameFile):
                     f = open(NameFile, 'r')
                     for line in f:
                         line_split = line.split(' ')
                         particle_name = line_split[0]
+                        #print(particle_name)
                         EventNumber = int(line_split[1])
+                        #print(EventNumber)
+                        # Add the percentage to the string with no decimals
+                        MessageString += ' ' + str(int(100 * EventNumber/N_EventsPerJob)) + particle_name[0]+'% '
+                        #print('F'+str(i)+ " J"+str(j) + " " + particle_name + ' ' + str(EventNumber))
+                        #MessageStrings.append("F"+str(i)+ " J"+str(j) + " " + particle_name + ' ' + str(EventNumber))
                         # Find the index of the particle in the Particles vector of strings
                         # use enumerate
                         particle_index = 0
@@ -77,31 +118,84 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
                                 particle_index = k
                                 break
                         SubVector_Files[i][j][particle_index] = EventNumber
-                        for k in range(particle_index):
-                            SubVector_Files[i][j][k] = N_EventsPerJob
-    
+                    f.close()
+                else:
+                    #print('File does not exist')
+                    MessageString += ' - '
+                    SubVector_Files[i][j] = [0 for i in range(len(Particles))]
+                        
+        #print(SubVector_Files)
+        
         # Sum all the elements in the SubVector_Files
         TotalNumberEvents_monitored = np.sum(SubVector_Files)
         Total_Percentage = 100*TotalNumberEvents_monitored/TotNumberEvents_computed
-        Message = "Events processed "+str(TotalNumberEvents_monitored)+" / "+str(TotNumberEvents_computed)+"\n\n"
-        
-        for i in range(N_Files):
-            for j in range(N_Jobs):
-                Message += "File "+str(i)+" Job "+str(j)+"\n"
-                for k in range(len(Particles)):
-                    Message += "\t" + Particles[k]+" \t"+str(SubVector_Files[i][j][k])+" : \t"+ str(100*SubVector_Files[i][j][k]/N_EventsPerJob)+"\n"
-                Message += "\n"
-            Message += "\n"
-        
-        Message += "\n"
-        Message += "Tot Percentage: " + str(100*TotalNumberEvents_monitored/TotNumberEvents_computed)
-        
-        SendMessage(Message)
-        print(Message)
-        print(TOKEN_global)
-        # Sleep 5 seconds
-        time.sleep(20)
 
+
+        if time.time() - Checkpoint_Sampling > UpdateFreq_Sampling:
+            Checkpoint_Sampling = time.time()
+            t = np.append(t, time.time() - start_time)
+            evts = np.append(evts, TotalNumberEvents_monitored)
+
+
+        
+        if time.time() - Checkpoint_Message > UpdateFreq_Message:
+            Checkpoint_Message = time.time()
+
+        
+            Message = "<b>Statistics</b>\n"
+            Message += "<b>Events processed</b>\n"+str(TotalNumberEvents_monitored)+" / "+str(TotNumberEvents_computed)+"\n<b>.ooo00ooo..ooo00ooo.</b>\n"
+            
+            Message += MessageString + "\n"
+            
+            Message += "\n<b>.ooo00ooo..ooo00ooo.</b>\n"
+            Message += "<b>Tot Percentage</b>: " + str(100*TotalNumberEvents_monitored/TotNumberEvents_computed) + "\n"
+            Message += "<b>Time elapsed</b>: " + str(time.time() - start_time) + " seconds\n"
+            SendMessage(Message)
+            print(Message)
+
+            
+        if time.time() - Checkpoint_Plot > UpdateFreq_Plot:
+            Checkpoint_Plot = time.time()
+            plt.figure(figsize=(10, 6), dpi = 200)
+            plt.plot(t, evts)
+            plt.xlabel('Time [s]')
+            plt.ylabel('Events processed')
+            plt.title('Events processed over time')
+            plt.grid()
+            plt.savefig(os.path.join(DirectoryToMonitor,'Monitoring.png'))
+            plt.close()
+
+            # Now I want to define Delta_n = 10 and then plot evts[i+Delta_n] - evts[i] / t[i+Delta_n] - t[i] versus the time at the middle
+            Delta_n = 5
+            t_middle = np.array([])
+            evts_middle = np.array([])
+            for i in range(len(t)-Delta_n):
+                t_middle = np.append(t_middle, t[i+int(Delta_n/2)])
+                evts_middle = np.append(evts_middle, (evts[i+Delta_n] - evts[i]) / (t[i+Delta_n] - t[i]))
+            
+            # Plot only the last 50 points only if there are more than 50 points
+            if len(t_middle) > 100:
+                t_middle = t_middle[-100:]
+                evts_middle = evts_middle[-100:]
+            else:
+                t_middle = t_middle[:]
+                evts_middle = evts_middle[:]
+
+
+            plt.figure(figsize=(10, 6), dpi = 200)
+            plt.plot(t_middle, evts_middle)
+            plt.xlabel('Time [s]')
+            plt.ylabel('Events processed per second')
+            plt.title('Events processed per second over time')
+            plt.grid()
+            plt.savefig(os.path.join(DirectoryToMonitor,'Monitoring_per_second.png'))
+            plt.close()
+            
+            SendPhoto(os.path.join(DirectoryToMonitor,'Monitoring_per_second.png'))
+            
+            
+            
+            
     SendMessage("Finished")
 
 
@@ -114,4 +208,6 @@ if __name__ == '__main__':
     parser.add_argument('-d', '--directory', type=str, required=True, help='Directory to monitor')
     args = parser.parse_args()
     
+    
+    print("Ciao! I'm monitoring")
     Monitoring(args.n_jobs, args.n_events_per_job, args.n_files,args.particles, args.directory)

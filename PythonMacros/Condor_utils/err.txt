@@ -1,0 +1,15 @@
+/home/spool/lib/condor/execute/dir_45607/condor_exec.exe: line 9: /data1/home/rnicolai/GEANT/geant4-11.1.0-install/bin/geant4.sh: No such file or directory
+Traceback (most recent call last):
+  File "/data1/home/rnicolai/LEM_GDML_upgrade/PythonMacros/AnalysisPID.py", line 579, in <module>
+    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval)
+  File "/data1/home/rnicolai/LEM_GDML_upgrade/PythonMacros/AnalysisPID.py", line 133, in Analysis
+    shutil.rmtree(os.path.join(global_input_dir, 'Analysis_output'))
+  File "/cvmfs/sft.cern.ch/lcg/releases/Python/3.8.6-3199b/x86_64-centos7-gcc10-opt/lib/python3.8/shutil.py", line 715, in rmtree
+    _rmtree_safe_fd(fd, path, onerror)
+  File "/cvmfs/sft.cern.ch/lcg/releases/Python/3.8.6-3199b/x86_64-centos7-gcc10-opt/lib/python3.8/shutil.py", line 652, in _rmtree_safe_fd
+    _rmtree_safe_fd(dirfd, fullname, onerror)
+  File "/cvmfs/sft.cern.ch/lcg/releases/Python/3.8.6-3199b/x86_64-centos7-gcc10-opt/lib/python3.8/shutil.py", line 672, in _rmtree_safe_fd
+    onerror(os.unlink, fullname, sys.exc_info())
+  File "/cvmfs/sft.cern.ch/lcg/releases/Python/3.8.6-3199b/x86_64-centos7-gcc10-opt/lib/python3.8/shutil.py", line 670, in _rmtree_safe_fd
+    os.unlink(entry.name, dir_fd=topfd)
+PermissionError: [Errno 13] Permission denied: 'FileNames.txt'

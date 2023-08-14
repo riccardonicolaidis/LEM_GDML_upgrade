@@ -13,15 +13,15 @@ def Geant4Simulation():
     # ######################################################## #
     
     
-    IsTest = True
+    IsTest = False
     
     RunName = "Geant4Simulation"
     Date = time.strftime("%Y%m%d")
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 3
-    N_evjob = 100000
+    N_jobs = 100
+    N_evjob = 1000000
 
     # Run directory for the run
     if IsTest:
@@ -49,7 +49,7 @@ def Geant4Simulation():
     if IsTest:
         gps_pos_radius_cm = 0.5
     else:
-        gps_pos_radius_cm = 50
+        gps_pos_radius_cm = 3
     gps_ang_type = "iso"
     gps_ang_mintheta_deg = 0
     
@@ -78,6 +78,20 @@ def Geant4Simulation():
 
     print("ActualDir: ", ActualDir)
     HomeDirectorySimulation = ActualDir
+    
+    
+    
+    
+    # Compiling the G4 executable
+    if os.path.exists(os.path.join(HomeDirectorySimulation, "build")):
+        shutil.rmtree(os.path.join(HomeDirectorySimulation, "build"))
+    os.makedirs(os.path.join(HomeDirectorySimulation, "build"))
+    os.chdir(os.path.join(HomeDirectorySimulation, "build"))
+    os.system("cmake ../")
+    os.system("make -j10")
+    os.chdir(HomeDirectorySimulation)
+    
+    ExecutablePath = os.path.join(HomeDirectorySimulation, "build", "gdml_det")
     
     # ######################################################## #
     #                       PROJECT PATHS                      #
@@ -209,6 +223,10 @@ def Geant4Simulation():
     os.system("chmod -R 777 " + out_paths["Progress_monitoring"])
     os.system("condor_submit " + os.path.join(out_paths["condor_scripts"], "monitoring.sub"))
     
+    print("Launched monitoring script\nSleeping for 15 seconds")
+    for i in range(5):
+        print(15-i)
+        os.system("sleep 1")    
 
 
 
@@ -299,18 +317,22 @@ def Geant4Simulation():
             # bash_script.write('pip3 install pandas --user\n')
             # bash_script.write('pip3 install seaborn --user\n\n\n')
             
-            bash_script.write("rm -rf " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            bash_script.write("mkdir " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            bash_script.write("cd " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            bash_script.write("cmake .. \n")
-            bash_script.write("make -j10 \n")
-            bash_script.write("chmod -R 777 " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            bash_script.write('echo "Version of Geant"\ngeant4-config --version\necho "Prefix"\ngeant4-config --prefix\n')
-            for jj in range(10):
-                bash_script.write("echo  \n")
+            # bash_script.write("rm -rf " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            # bash_script.write("mkdir " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            # bash_script.write("chmod -R 777 " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            # bash_script.write("cd " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
+            # bash_script.write("sleep 0.5 \n")
+            # bash_script.write("cmake .. \n")
+            # bash_script.write("sleep 0.5 \n")
+            # bash_script.write("make -j1 \n")
+            # bash_script.write("sleep 0.5 \n")
+            # bash_script.write("chmod -R 777 . \n")
+            # bash_script.write('echo "Version of Geant"\ngeant4-config --version\necho "Prefix"\ngeant4-config --prefix\n')
+            # for jj in range(10):
+            #     bash_script.write("echo  \n")
             
             
-            bash_script.write("./gdml_det " + os.path.join(out_paths["GDML"], file) + " " + macro_file_name + " " + steering_file_name + "\n")
+            bash_script.write(ExecutablePath + " " + os.path.join(out_paths["GDML"], file) + " " + macro_file_name + " " + steering_file_name + "\n")
             bash_script.close()
             
             # Write a condor configuration file for submitting job
@@ -344,7 +366,7 @@ def Geant4Simulation():
     for files in CondorSubmtFiles:
         os.system("condor_submit " + files)
         #sleep(0.1)
-        os.system("sleep 0.1")    
+        #os.system("sleep 0.001")    
 
 
 

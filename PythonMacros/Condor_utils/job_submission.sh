@@ -16,4 +16,4 @@ pip3.8 install scipy --user
 pip3.8 install pandas --user
 pip3.8 install sklearn --user
 
-python3.8 /data1/home/rnicolai/LEM_GDML_upgrade/PythonMacros/AnalysisPID.py -i "/data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230802"
+python3.8 /data1/home/rnicolai/LEM_GDML_upgrade/PythonMacros/AnalysisPID.py -i "/data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230810" -R -b

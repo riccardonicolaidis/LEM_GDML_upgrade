@@ -273,8 +273,8 @@ int PID(
     {
         if(i == 0)
         {
-            Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)>>hPID_0", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Plastic_calo)>>hPID_1", ConditionGoodEvents.Data(), "colz");
+            Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_0", ConditionGoodEvents.Data(), "colz");
+            Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>hPID_1", ConditionGoodEvents.Data(), "colz");
             Edep[i] -> Draw("PID:(TotThick + TotThin)>>hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
             Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
         
@@ -286,8 +286,8 @@ int PID(
         }
         else
         {
-            Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)>>+hPID_0", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Plastic_calo)>>+hPID_1", ConditionGoodEvents.Data(), "colz");
+            Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>+hPID_0", ConditionGoodEvents.Data(), "colz");
+            Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>+hPID_1", ConditionGoodEvents.Data(), "colz");
             Edep[i] -> Draw("PID:(TotThick + TotThin)>>+hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
             Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>+hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
         
@@ -330,7 +330,7 @@ int PID(
 
         hPIDlog_single = (TH2D*) hPID_single -> GetHistogram();
         
-        Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)>>hPID_single", ConditionGoodEvents.Data(), "colz");
+        Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_single", ConditionGoodEvents.Data(), "colz");
         cPID_single = new TCanvas("cPID_single", "cPID_single", 600, 600);
 
         hPIDlog_single -> Draw("colz");
@@ -354,7 +354,7 @@ int PID(
     TLegend *legPID = new TLegend(0.1, 0.7, 0.4, 0.9);
     for(int i = 0; i < NFiles; ++i)
     {
-        Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)", Form("(%s) && (!(%s))", ConditionGoodEvents.Data(), ConditionGoodEventsSinglePair[0].Data()), "colz"); // Form("(%s) && (TotThick > 0.0) && (TotThin > 0.0)",ConditionGoodEvents.Data())
+        Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s) && (!(%s))", ConditionGoodEvents.Data(), ConditionGoodEventsSinglePair[0].Data()), "colz"); // Form("(%s) && (TotThick > 0.0) && (TotThin > 0.0)",ConditionGoodEvents.Data())
         grPID[i] = new TGraph(Edep[i] -> GetSelectedRows(), Edep[i] -> GetV2(), Edep[i] -> GetV1());
         //grPID[i] -> Print();
         grPID[i] -> SetName(ParticleNames[i].Data());
@@ -383,7 +383,7 @@ int PID(
     legPID = new TLegend(0.1, 0.7, 0.4, 0.9);
     for(int i = 0; i < NFiles; ++i)
     {
-        Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Plastic_calo)", ConditionGoodEventsSinglePair[0].Data(), "colz"); // Form("(%s) && (TotThick > 0.0) && (TotThin > 0.0)",ConditionGoodEvents.Data())
+        Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)", ConditionGoodEventsSinglePair[0].Data(), "colz"); // Form("(%s) && (TotThick > 0.0) && (TotThin > 0.0)",ConditionGoodEvents.Data())
         grPID[i] = new TGraph(Edep[i] -> GetSelectedRows(), Edep[i] -> GetV2(), Edep[i] -> GetV1());
         //grPID[i] -> Print();
         grPID[i] -> SetName(ParticleNames[i].Data());
@@ -495,14 +495,14 @@ int PID(
     for(int i = 0; i < NFiles; ++i)
     {
 
-        TString ConditionGoodEvents_PID2 = Form("(%s) && (Ed_LV_Plastic_calo > %g)", ConditionGoodEvents.Data(), E_thr_Plastic);
+        TString ConditionGoodEvents_PID2 = Form("(%s) && (Ed_LV_Calo > %g)", ConditionGoodEvents.Data(), E_thr_Plastic);
         if(i == 0)
         {
-            Edep[i] -> Draw("PID:(TMath::Log10(TotThick * (TotThick + Ed_LV_Plastic_calo)))>>hDisentangle", ConditionGoodEvents_PID2.Data(), "colz");
+            Edep[i] -> Draw("PID:(TMath::Log10(TotThick * (TotThick + Ed_LV_Calo)))>>hDisentangle", ConditionGoodEvents_PID2.Data(), "colz");
         }
         else
         {
-            Edep[i] -> Draw("PID:(TMath::Log10(TotThick * (TotThick + Ed_LV_Plastic_calo)))>>+hDisentangle", ConditionGoodEvents_PID2.Data(), "colz");
+            Edep[i] -> Draw("PID:(TMath::Log10(TotThick * (TotThick + Ed_LV_Calo)))>>+hDisentangle", ConditionGoodEvents_PID2.Data(), "colz");
         }
     }
     hDisentangle -> SetStats(0);

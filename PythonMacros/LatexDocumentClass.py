@@ -7,7 +7,6 @@ import subprocess
 
 
 sys.path.append("~rnicolai/PYTHON_PKG")
-from pdflatex import PDFLaTeX
 
 class LatexDocumentClass:
     def __init__(self):
