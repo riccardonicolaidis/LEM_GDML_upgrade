@@ -1,0 +1,4890 @@
+
+Usage: gdml_det <intput_gdml_file:mandatory>
+
+Output text folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/Text_output/GDML_file_4/OutText_f4_j6
+Output monitoring folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/Progress_monitoring
+Job number set to: 6
+Update frequency set to: 10000
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/GDML_src/LEM_Plastic_Mirion_Ametek-worldVOL_Parsed.gdml'...
+G4GDML: VALIDATION ERROR! element 'materials' is not allowed for content model '(define,materials,solids,structure,userinfo?,setup+)' at line: 26539
+G4GDML: VALIDATION ERROR! ID attribute 'G4_PLASTIC_SC_VINYLTOLUENE' is referenced but was never declared at line: 26539
+G4GDML: VALIDATION ERROR! ID attribute 'G4_BAKELITE' is referenced but was never declared at line: 26539
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Galactic' is referenced but was never declared at line: 26539
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Al' is referenced but was never declared at line: 26539
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Si' is referenced but was never declared at line: 26539
+G4GDML: Reading definitions...
+G4GDML: Reading materials...
+G4GDML: Reading materials...
+G4GDML: Reading solids...
+G4GDML: Reading structure...
+G4GDML: Reading setup...
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/GDML_src/LEM_Plastic_Mirion_Ametek-worldVOL_Parsed.gdml' done!
+Stripping off GDML names of materials, solids and volumes ...
+
+
+          ################################
+          !!! G4Backtrace is activated !!!
+          ################################
+
+
+**************************************************************
+ Geant4 version Name: geant4-11-00-patch-03 [MT]   (16-September-2022)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+<<< Geant4 Physics List simulation engine: FTFP_BERT
+
+Found 45 volume(s) with auxiliary information.
+
+Volume LV_AlTop has the following list of auxiliary information: 
+	Type: Color Value: #7f7f7f99
+Volume LV_BakeliteCable_1 has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_BakeliteCable_3 has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_BakeliteCable has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_BakeliteCable_4 has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_AlScrew_Thick_2 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
+	Type: Color Value: #3333ffff
+Volume LV_AlCoverLower has the following list of auxiliary information: 
+	Type: Color Value: #ff00ffb2
+Volume LV_Calo has the following list of auxiliary information: 
+	Type: Color Value: #3333ffff
+	Type: SensDet Value: Calorimeter
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+	Type: Color Value: #ffcc99b2
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_AlCoverUpper has the following list of auxiliary information: 
+	Type: Color Value: #ff00ffb2
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_2 has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlBottom has the following list of auxiliary information: 
+	Type: Color Value: #7f7f7f99
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+	Type: Color Value: #33ff33cc
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+	Type: Color Value: #ffcc99b2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_AlScrew has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
+	Type: Color Value: #00ffffb2
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+	Type: Color Value: #ffff00ff
+
+Volume LV_AlTop has the following list of auxiliary information: 
+Volume LV_BakeliteCable_1 has the following list of auxiliary information: 
+Volume LV_BakeliteCable_3 has the following list of auxiliary information: 
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+Volume LV_BakeliteCable has the following list of auxiliary information: 
+Volume LV_BakeliteCable_4 has the following list of auxiliary information: 
+Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+Volume LV_AlScrew_Thick_2 has the following list of auxiliary information: 
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
+Volume LV_AlCoverLower has the following list of auxiliary information: 
+Volume LV_Calo has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_Calo
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoTop
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_4
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
+Volume LV_AlCoverUpper has the following list of auxiliary information: 
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_1
+Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_2
+Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
+Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_0
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_3
+Volume LV_BakeliteCable_2 has the following list of auxiliary information: 
+Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_3
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_1
+Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_2
+Volume LV_AlBottom has the following list of auxiliary information: 
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoBottom
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+Volume LV_AlScrew has the following list of auxiliary information: 
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_4
+Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_0
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+
+ hInelastic FTFP_BERT : threshold between BERT and FTFP is over the interval 
+ for pions :   3 to 6 GeV
+ for kaons :   3 to 6 GeV
+ for proton :  3 to 6 GeV
+ for neutron : 3 to 6 GeV
+
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+=======================================================================
+======                 Electromagnetic Physics Parameters      ========
+=======================================================================
+LPM effect enabled                                 1
+Enable creation and use of sampling tables         0
+Apply cuts on all EM processes                     0
+Use general process                                0
+Enable linear polarisation for gamma               0
+Enable sampling of quantum entanglement            0
+X-section factor for integral approach             0.8
+Min kinetic energy for tables                      100 eV 
+Max kinetic energy for tables                      100 TeV
+Number of bins per decade of a table               7
+Verbose level                                      1
+Verbose level for worker thread                    0
+Bremsstrahlung energy threshold above which 
+  primary e+- is added to the list of secondary    100 TeV
+Bremsstrahlung energy threshold above which primary
+  muon/hadron is added to the list of secondary    100 TeV
+Lowest triplet kinetic energy                      1 MeV
+Enable sampling of gamma linear polarisation       0
+5D gamma conversion model type                     0
+5D gamma conversion model on isolated ion          0
+Livermore data directory                           livermore
+=======================================================================
+======                 Ionisation Parameters                   ========
+=======================================================================
+Step function for e+-                              (0.2, 1 mm)
+Step function for muons/hadrons                    (0.2, 0.1 mm)
+Step function for light ions                       (0.2, 0.1 mm)
+Step function for general ions                     (0.2, 0.1 mm)
+Lowest e+e- kinetic energy                         1 keV
+Lowest muon/hadron kinetic energy                  1 keV
+Fluctuations of dE/dx are enabled                  1
+Use ICRU90 data                                    0
+Use built-in Birks satuaration                     0
+Build CSDA range enabled                           0
+Use cut as a final range enabled                   0
+Enable angular generator interface                 0
+Max kinetic energy for CSDA tables                 1 GeV
+Max kinetic energy for NIEL computation            0 eV 
+Linear loss limit                                  0.01
+Read data from file for e+e- pair production by mu 0
+=======================================================================
+======                 Multiple Scattering Parameters          ========
+=======================================================================
+Type of msc step limit algorithm for e+-           1
+Type of msc step limit algorithm for muons/hadrons 0
+Msc lateral displacement for e+- enabled           1
+Msc lateral displacement for muons and hadrons     0
+Urban msc model lateral displacement alg96         1
+Range factor for msc step limit for e+-            0.04
+Range factor for msc step limit for muons/hadrons  0.2
+Geometry factor for msc step limitation of e+-     2.5
+Safety factor for msc step limit for e+-           0.6
+Skin parameter for msc step limitation of e+-      1
+Lambda limit for msc step limit for e+-            1 mm
+Use Mott correction for e- scattering              0
+Factor used for dynamic computation of angular 
+  limit between single and multiple scattering     1
+Fixed angular limit between single 
+  and multiple scattering                          3.1416 rad
+Upper energy limit for e+- multiple scattering     100 MeV
+Type of electron single scattering model           0
+Type of nuclear form-factor                        1
+Screening factor                                   1
+=======================================================================
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 61 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 56 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina : Emin=    0 eV  Emax=  100 TeV
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 18 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+     BetheHeitlerLPM : Emin=    0 eV  Emax=  100 TeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 100 TeV in 63 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  100 TeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 MeV Nbins=42 100 eV  - 100 MeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=42 100 MeV - 100 TeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e-  XStype:4  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+CoulombScat:  for e- XStype:1 SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 MeV Nbins=42 100 eV  - 100 MeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=42 100 MeV - 100 TeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e+  XStype:4  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+annihil:  for e+ XStype:2 SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for e+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for proton  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+hBrems:  for proton  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for proton  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for proton XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for GenericIon  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+ionIoni:  for GenericIon  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      Stopping Power data for 17 ion/material pairs
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+msc:  for alpha  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+ionIoni:  for alpha  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV
+
+msc:  for anti_proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for anti_proton  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+hBrems:  for anti_proton  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for anti_proton  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for anti_proton XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for kaon+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+hBrems:  for kaon+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for kaon+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for kaon+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for kaon-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+hBrems:  for kaon-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for kaon-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for kaon- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of kaon+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+muIoni:  for mu+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for mu+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+muIoni:  for mu-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for mu- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of mu+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for pi+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+hBrems:  for pi+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for pi+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for pi+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for pi-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+hBrems:  for pi-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for pi-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for pi- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of pi+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+====================================================================
+                  HADRONIC PROCESSES SUMMARY (verbose level 1)
+
+---------------------------------------------------
+                           Hadronic Processes for neutron
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronElasticXS: 0 eV  ---> 100 TeV
+
+  Process: neutronInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:      G4NeutronInelasticXS: 0 eV  ---> 100 TeV
+
+  Process: nCapture
+        Model:               nRadCapture: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronCaptureXS: 0 eV  ---> 100 TeV
+
+  Process: nKiller
+
+---------------------------------------------------
+                           Hadronic Processes for B-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: B-Inelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for D-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: D-Inelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for GenericIon
+
+  Process: ionInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: He3Inelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: alphaInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_He3Inelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_alphaInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_deuteronInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: anti_lambdaInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_neutron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_neutronInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_proton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_protonInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_tritonInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: dInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for e+
+
+  Process: positronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e-
+
+  Process: electronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for gamma
+
+  Process: photonNuclear
+        Model:               GammaNPreco: 0 eV  ---> 200 MeV
+        Model:            BertiniCascade: 199 MeV ---> 6 GeV
+        Model:           TheoFSGenerator: 3 GeV ---> 100 TeV
+     Cr_sctns:            GammaNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: kaon+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: kaon-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: lambdaInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu+
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu-
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+  Process: muMinusCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for pi+
+
+  Process: hadElastic
+        Model:           hElasticGlauber: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: pi+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for pi-
+
+  Process: hadElastic
+        Model:           hElasticGlauber: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: pi-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for proton
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: protonInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for sigma-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: sigma-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: tInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+================================================================
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Pre-compound model active                           1
+Pre-compound excitation low energy (MeV)            0.1
+Pre-compound excitation high energy (MeV)           30
+Type of de-excitation inverse x-section             3
+Type of de-excitation factory                       Evaporation+GEM
+Number of de-excitation channels                    68
+Min excitation energy (keV)                         0.01
+Min energy per nucleon for multifragmentation (MeV) 2e+05
+Limit excitation energy for Fermi BreakUp (MeV)     20
+Level density (1/MeV)                               0.075
+Use simple level density model                      1
+Use discrete excitation energy of the residual      0
+Time limit for long lived isomeres (ns)             1
+Isomer production flag                              1
+Internal e- conversion flag                         1
+Store e- internal conversion data                   0
+Correlated gamma emission flag                      0
+Max 2J for sampling of angular correlations         10
+=======================================================================
+
+=========================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Initializing workers...
+=========================================================================
+
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/Text_output/GDML_file_4/OutText_f4_j6_GDML_SD_EventAction.txt
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Registered graphics systems are:
+  ASCIITree (ATree)
+  DAWNFILE (DAWNFILE)
+  G4HepRepFile (HepRepFile)
+  RayTracer (RayTracer)
+  VRML2FILE (VRML2FILE)
+  gMocrenFile (gMocrenFile)
+  OpenGLImmediateQt (OGLIQt, OGLI)
+  OpenGLStoredQt (OGLSQt, OGL, OGLS)
+  OpenGLImmediateXm (OGLIXm, OGLIQt_FALLBACK)
+  OpenGLStoredXm (OGLSXm, OGLSQt_FALLBACK)
+  OpenGLImmediateX (OGLIX, OGLIQt_FALLBACK, OGLIXm_FALLBACK)
+  OpenGLStoredX (OGLSX, OGLSQt_FALLBACK, OGLSXm_FALLBACK)
+
+Registering model factories...
+
+You have successfully registered the following model factories.
+Registered model factories:
+  generic
+  drawByAttribute
+  drawByCharge
+  drawByOriginVolume
+  drawByParticleID
+  drawByEncounteredVolume
+
+Registered models:
+  None
+
+Registered filter factories:
+  attributeFilter
+  chargeFilter
+  originVolumeFilter
+  particleFilter
+  encounteredVolumeFilter
+
+Registered filters:
+  None
+
+You have successfully registered the following user vis actions.
+Run Duration User Vis Actions: none
+End of Event User Vis Actions: none
+End of Run User Vis Actions: none
+
+Some /vis commands (optionally) take a string to specify colour.
+"/vis/list" to see available colours.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+G4VisManager: Using G4TrajectoryDrawByCharge as fallback trajectory model.
+See commands in /vis/modeling/trajectories/ for other options.
+### Run 0 starts.
+
+==============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 1000 tasks with 1000 events/task...
+==============================================================================================
+
+G4WT0 > ### Run 0 starts on worker thread 0.
+G4WT0 > ... set ntuple merging row mode : row-wise - done
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/e-_j6_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/e-_j6.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/e-_j6.root - done
+G4WT0 > Event N: 1000
+G4WT0 > Event N: 2000
+G4WT0 > Event N: 3000
+G4WT0 > Event N: 4000
+G4WT0 > Event N: 5000
+G4WT0 > Event N: 6000
+G4WT0 > Event N: 7000
+G4WT0 > Event N: 8000
+G4WT0 > Event N: 9000
+G4WT0 > Event N: 10000
+G4WT0 > Event N: 11000
+G4WT0 > Event N: 12000
+G4WT0 > Event N: 13000
+G4WT0 > 13525	7.92607	0.50343	0.781798	0.0492574	0.454172	0	0
+G4WT0 > Event N: 14000
+G4WT0 > Event N: 15000
+G4WT0 > Event N: 16000
+G4WT0 > Event N: 17000
+G4WT0 > Event N: 18000
+G4WT0 > Event N: 19000
+G4WT0 > Event N: 20000
+G4WT0 > Event N: 21000
+G4WT0 > Event N: 22000
+G4WT0 > Event N: 23000
+G4WT0 > Event N: 24000
+G4WT0 > Event N: 25000
+G4WT0 > Event N: 26000
+G4WT0 > Event N: 27000
+G4WT0 > Event N: 28000
+G4WT0 > Event N: 29000
+G4WT0 > Event N: 30000
+G4WT0 > 30665	3.63846	0.204958	0.909191	0.069005	0.135953	0	0
+G4WT0 > Event N: 31000
+G4WT0 > Event N: 32000
+G4WT0 > Event N: 33000
+G4WT0 > Event N: 34000
+G4WT0 > Event N: 35000
+G4WT0 > Event N: 36000
+G4WT0 > Event N: 37000
+G4WT0 > Event N: 38000
+G4WT0 > Event N: 39000
+G4WT0 > Event N: 40000
+G4WT0 > Event N: 41000
+G4WT0 > Event N: 42000
+G4WT0 > Event N: 43000
+G4WT0 > 43922	3.21621	0.191999	0.191999	0.0452521	0.146747	0	0
+G4WT0 > Event N: 44000
+G4WT0 > 44410	1.32901	0.386631	0.386631	0.0539164	0.332714	0	0
+G4WT0 > Event N: 45000
+G4WT0 > Event N: 46000
+G4WT0 > Event N: 47000
+G4WT0 > Event N: 48000
+G4WT0 > Event N: 49000
+G4WT0 > Event N: 50000
+G4WT0 > Event N: 51000
+G4WT0 > Event N: 52000
+G4WT0 > Event N: 53000
+G4WT0 > Event N: 54000
+G4WT0 > Event N: 55000
+G4WT0 > Event N: 56000
+G4WT0 > Event N: 57000
+G4WT0 > Event N: 58000
+G4WT0 > Event N: 59000
+G4WT0 > Event N: 60000
+G4WT0 > Event N: 61000
+G4WT0 > Event N: 62000
+G4WT0 > Event N: 63000
+G4WT0 > Event N: 64000
+G4WT0 > Event N: 65000
+G4WT0 > 65832	2.21358	0.166539	0.166539	0.040837	0.125702	0	0
+G4WT0 > Event N: 66000
+G4WT0 > Event N: 67000
+G4WT0 > Event N: 68000
+G4WT0 > Event N: 69000
+G4WT0 > Event N: 70000
+G4WT0 > Event N: 71000
+G4WT0 > Event N: 72000
+G4WT0 > Event N: 73000
+G4WT0 > Event N: 74000
+G4WT0 > Event N: 75000
+G4WT0 > Event N: 76000
+G4WT0 > Event N: 77000
+G4WT0 > Event N: 78000
+G4WT0 > Event N: 79000
+G4WT0 > Event N: 80000
+G4WT0 > Event N: 81000
+G4WT0 > Event N: 82000
+G4WT0 > Event N: 83000
+G4WT0 > Event N: 84000
+G4WT0 > Event N: 85000
+G4WT0 > Event N: 86000
+G4WT0 > Event N: 87000
+G4WT0 > Event N: 88000
+G4WT0 > Event N: 89000
+G4WT0 > Event N: 90000
+G4WT0 > Event N: 91000
+G4WT0 > Event N: 92000
+G4WT0 > Event N: 93000
+G4WT0 > Event N: 94000
+G4WT0 > Event N: 95000
+G4WT0 > Event N: 96000
+G4WT0 > Event N: 97000
+G4WT0 > 97268	2.55495	0.203095	0.203095	0.0710899	0.132005	0	0
+G4WT0 > Event N: 98000
+G4WT0 > Event N: 99000
+G4WT0 > Event N: 100000
+G4WT0 > Event N: 101000
+G4WT0 > 101014	1.726	0.191088	0.191088	0.040545	0.150543	0	0
+G4WT0 > Event N: 102000
+G4WT0 > Event N: 103000
+G4WT0 > Event N: 104000
+G4WT0 > Event N: 105000
+G4WT0 > Event N: 106000
+G4WT0 > Event N: 107000
+G4WT0 > Event N: 108000
+G4WT0 > Event N: 109000
+G4WT0 > Event N: 110000
+G4WT0 > 110295	19.2597	0.331481	1.44268	0.203073	0.128408	0	0
+G4WT0 > Event N: 111000
+G4WT0 > Event N: 112000
+G4WT0 > Event N: 113000
+G4WT0 > Event N: 114000
+G4WT0 > Event N: 115000
+G4WT0 > Event N: 116000
+G4WT0 > Event N: 117000
+G4WT0 > Event N: 118000
+G4WT0 > Event N: 119000
+G4WT0 > Event N: 120000
+G4WT0 > Event N: 121000
+G4WT0 > Event N: 122000
+G4WT0 > Event N: 123000
+G4WT0 > Event N: 124000
+G4WT0 > Event N: 125000
+G4WT0 > Event N: 126000
+G4WT0 > Event N: 127000
+G4WT0 > Event N: 128000
+G4WT0 > Event N: 129000
+G4WT0 > Event N: 130000
+G4WT0 > Event N: 131000
+G4WT0 > Event N: 132000
+G4WT0 > Event N: 133000
+G4WT0 > Event N: 134000
+G4WT0 > Event N: 135000
+G4WT0 > Event N: 136000
+G4WT0 > Event N: 137000
+G4WT0 > Event N: 138000
+G4WT0 > Event N: 139000
+G4WT0 > Event N: 140000
+G4WT0 > Event N: 141000
+G4WT0 > Event N: 142000
+G4WT0 > Event N: 143000
+G4WT0 > Event N: 144000
+G4WT0 > Event N: 145000
+G4WT0 > Event N: 146000
+G4WT0 > Event N: 147000
+G4WT0 > 147397	3.72169	0.154001	1.4225	0.0606778	0.0933229	0	0
+G4WT0 > Event N: 148000
+G4WT0 > Event N: 149000
+G4WT0 > 149107	4.46041	0.171026	0.171026	0.0501678	0.120859	0	0
+G4WT0 > Event N: 150000
+G4WT0 > Event N: 151000
+G4WT0 > Event N: 152000
+G4WT0 > Event N: 153000
+G4WT0 > Event N: 154000
+G4WT0 > Event N: 155000
+G4WT0 > Event N: 156000
+G4WT0 > Event N: 157000
+G4WT0 > Event N: 158000
+G4WT0 > Event N: 159000
+G4WT0 > Event N: 160000
+G4WT0 > Event N: 161000
+G4WT0 > Event N: 162000
+G4WT0 > Event N: 163000
+G4WT0 > Event N: 164000
+G4WT0 > Event N: 165000
+G4WT0 > Event N: 166000
+G4WT0 > Event N: 167000
+G4WT0 > Event N: 168000
+G4WT0 > Event N: 169000
+G4WT0 > Event N: 170000
+G4WT0 > Event N: 171000
+G4WT0 > Event N: 172000
+G4WT0 > Event N: 173000
+G4WT0 > Event N: 174000
+G4WT0 > Event N: 175000
+G4WT0 > Event N: 176000
+G4WT0 > Event N: 177000
+G4WT0 > 177946	2.79538	0.304722	0.304722	0.0630893	0.241633	0	0
+G4WT0 > Event N: 178000
+G4WT0 > Event N: 179000
+G4WT0 > Event N: 180000
+G4WT0 > 180792	19.1621	0.350875	0.350875	0.111497	0.239377	0	0
+G4WT0 > Event N: 181000
+G4WT0 > Event N: 182000
+G4WT0 > Event N: 183000
+G4WT0 > Event N: 184000
+G4WT0 > Event N: 185000
+G4WT0 > Event N: 186000
+G4WT0 > Event N: 187000
+G4WT0 > Event N: 188000
+G4WT0 > Event N: 189000
+G4WT0 > Event N: 190000
+G4WT0 > Event N: 191000
+G4WT0 > Event N: 192000
+G4WT0 > Event N: 193000
+G4WT0 > Event N: 194000
+G4WT0 > Event N: 195000
+G4WT0 > Event N: 196000
+G4WT0 > Event N: 197000
+G4WT0 > Event N: 198000
+G4WT0 > Event N: 199000
+G4WT0 > 199426	5.37341	0.196296	0.974505	0.0428165	0.15348	0	0
+G4WT0 > Event N: 200000
+G4WT0 > Event N: 201000
+G4WT0 > Event N: 202000
+G4WT0 > Event N: 203000
+G4WT0 > Event N: 204000
+G4WT0 > Event N: 205000
+G4WT0 > Event N: 206000
+G4WT0 > Event N: 207000
+G4WT0 > Event N: 208000
+G4WT0 > Event N: 209000
+G4WT0 > Event N: 210000
+G4WT0 > Event N: 211000
+G4WT0 > Event N: 212000
+G4WT0 > Event N: 213000
+G4WT0 > Event N: 214000
+G4WT0 > Event N: 215000
+G4WT0 > Event N: 216000
+G4WT0 > Event N: 217000
+G4WT0 > Event N: 218000
+G4WT0 > Event N: 219000
+G4WT0 > Event N: 220000
+G4WT0 > Event N: 221000
+G4WT0 > Event N: 222000
+G4WT0 > Event N: 223000
+G4WT0 > Event N: 224000
+G4WT0 > 224388	2.38573	0.781309	0.781309	0.0475932	0.733716	0	0
+G4WT0 > Event N: 225000
+G4WT0 > Event N: 226000
+G4WT0 > Event N: 227000
+G4WT0 > Event N: 228000
+G4WT0 > 228810	4.23414	0.145448	0.145448	0.0435875	0.101861	0	0
+G4WT0 > Event N: 229000
+G4WT0 > Event N: 230000
+G4WT0 > Event N: 231000
+G4WT0 > Event N: 232000
+G4WT0 > Event N: 233000
+G4WT0 > Event N: 234000
+G4WT0 > Event N: 235000
+G4WT0 > Event N: 236000
+G4WT0 > Event N: 237000
+G4WT0 > Event N: 238000
+G4WT0 > Event N: 239000
+G4WT0 > Event N: 240000
+G4WT0 > 240221	12.9782	0.267658	0.267658	0.04298	0.224678	0	0
+G4WT0 > Event N: 241000
+G4WT0 > Event N: 242000
+G4WT0 > Event N: 243000
+G4WT0 > Event N: 244000
+G4WT0 > Event N: 245000
+G4WT0 > Event N: 246000
+G4WT0 > Event N: 247000
+G4WT0 > Event N: 248000
+G4WT0 > Event N: 249000
+G4WT0 > Event N: 250000
+G4WT0 > Event N: 251000
+G4WT0 > Event N: 252000
+G4WT0 > Event N: 253000
+G4WT0 > Event N: 254000
+G4WT0 > Event N: 255000
+G4WT0 > Event N: 256000
+G4WT0 > 256695	2.6477	0.125162	0.125162	0.0460485	0.0791139	0	0
+G4WT0 > Event N: 257000
+G4WT0 > Event N: 258000
+G4WT0 > Event N: 259000
+G4WT0 > Event N: 260000
+G4WT0 > Event N: 261000
+G4WT0 > Event N: 262000
+G4WT0 > Event N: 263000
+G4WT0 > Event N: 264000
+G4WT0 > Event N: 265000
+G4WT0 > Event N: 266000
+G4WT0 > Event N: 267000
+G4WT0 > Event N: 268000
+G4WT0 > Event N: 269000
+G4WT0 > Event N: 270000
+G4WT0 > Event N: 271000
+G4WT0 > Event N: 272000
+G4WT0 > Event N: 273000
+G4WT0 > Event N: 274000
+G4WT0 > Event N: 275000
+G4WT0 > Event N: 276000
+G4WT0 > Event N: 277000
+G4WT0 > Event N: 278000
+G4WT0 > 278283	9.24994	0.18549	1.4744	0.0407878	0.144702	0	0
+G4WT0 > Event N: 279000
+G4WT0 > Event N: 280000
+G4WT0 > Event N: 281000
+G4WT0 > Event N: 282000
+G4WT0 > Event N: 283000
+G4WT0 > Event N: 284000
+G4WT0 > 284289	1.54676	0.140446	0.140446	0.0499475	0.0904982	0	0
+G4WT0 > Event N: 285000
+G4WT0 > Event N: 286000
+G4WT0 > Event N: 287000
+G4WT0 > Event N: 288000
+G4WT0 > Event N: 289000
+G4WT0 > Event N: 290000
+G4WT0 > Event N: 291000
+G4WT0 > Event N: 292000
+G4WT0 > Event N: 293000
+G4WT0 > Event N: 294000
+G4WT0 > Event N: 295000
+G4WT0 > Event N: 296000
+G4WT0 > Event N: 297000
+G4WT0 > Event N: 298000
+G4WT0 > Event N: 299000
+G4WT0 > Event N: 300000
+G4WT0 > Event N: 301000
+G4WT0 > Event N: 302000
+G4WT0 > Event N: 303000
+G4WT0 > Event N: 304000
+G4WT0 > Event N: 305000
+G4WT0 > Event N: 306000
+G4WT0 > Event N: 307000
+G4WT0 > Event N: 308000
+G4WT0 > Event N: 309000
+G4WT0 > Event N: 310000
+G4WT0 > Event N: 311000
+G4WT0 > Event N: 312000
+G4WT0 > Event N: 313000
+G4WT0 > Event N: 314000
+G4WT0 > Event N: 315000
+G4WT0 > Event N: 316000
+G4WT0 > Event N: 317000
+G4WT0 > Event N: 318000
+G4WT0 > Event N: 319000
+G4WT0 > Event N: 320000
+G4WT0 > Event N: 321000
+G4WT0 > Event N: 322000
+G4WT0 > Event N: 323000
+G4WT0 > 323697	4.064	0.260682	0.260682	0.0561386	0.204544	0	0
+G4WT0 > Event N: 324000
+G4WT0 > Event N: 325000
+G4WT0 > Event N: 326000
+G4WT0 > Event N: 327000
+G4WT0 > Event N: 328000
+G4WT0 > Event N: 329000
+G4WT0 > Event N: 330000
+G4WT0 > Event N: 331000
+G4WT0 > Event N: 332000
+G4WT0 > Event N: 333000
+G4WT0 > Event N: 334000
+G4WT0 > Event N: 335000
+G4WT0 > Event N: 336000
+G4WT0 > Event N: 337000
+G4WT0 > Event N: 338000
+G4WT0 > Event N: 339000
+G4WT0 > Event N: 340000
+G4WT0 > 340281	7.17877	0.365058	0.837276	0.0667565	0.298301	0	0
+G4WT0 > Event N: 341000
+G4WT0 > Event N: 342000
+G4WT0 > Event N: 343000
+G4WT0 > Event N: 344000
+G4WT0 > 344336	2.13171	0.170093	0.520574	0.0420014	0.128091	0	0
+G4WT0 > Event N: 345000
+G4WT0 > Event N: 346000
+G4WT0 > Event N: 347000
+G4WT0 > Event N: 348000
+G4WT0 > Event N: 349000
+G4WT0 > Event N: 350000
+G4WT0 > Event N: 351000
+G4WT0 > Event N: 352000
+G4WT0 > Event N: 353000
+G4WT0 > 353987	16.0288	0.145135	4.92792	0.0526519	0.092483	0	0
+G4WT0 > Event N: 354000
+G4WT0 > Event N: 355000
+G4WT0 > Event N: 356000
+G4WT0 > Event N: 357000
+G4WT0 > Event N: 358000
+G4WT0 > Event N: 359000
+G4WT0 > Event N: 360000
+G4WT0 > Event N: 361000
+G4WT0 > Event N: 362000
+G4WT0 > Event N: 363000
+G4WT0 > Event N: 364000
+G4WT0 > Event N: 365000
+G4WT0 > Event N: 366000
+G4WT0 > Event N: 367000
+G4WT0 > Event N: 368000
+G4WT0 > Event N: 369000
+G4WT0 > Event N: 370000
+G4WT0 > Event N: 371000
+G4WT0 > Event N: 372000
+G4WT0 > Event N: 373000
+G4WT0 > Event N: 374000
+G4WT0 > Event N: 375000
+G4WT0 > 375115	3.89396	0.267564	0.267564	0.0543785	0.213186	0	0
+G4WT0 > Event N: 376000
+G4WT0 > Event N: 377000
+G4WT0 > Event N: 378000
+G4WT0 > Event N: 379000
+G4WT0 > Event N: 380000
+G4WT0 > Event N: 381000
+G4WT0 > Event N: 382000
+G4WT0 > Event N: 383000
+G4WT0 > Event N: 384000
+G4WT0 > Event N: 385000
+G4WT0 > Event N: 386000
+G4WT0 > Event N: 387000
+G4WT0 > Event N: 388000
+G4WT0 > Event N: 389000
+G4WT0 > Event N: 390000
+G4WT0 > Event N: 391000
+G4WT0 > Event N: 392000
+G4WT0 > 392332	12.4766	0.154664	4.71067	0.0715312	0.0831325	0	0
+G4WT0 > Event N: 393000
+G4WT0 > Event N: 394000
+G4WT0 > Event N: 395000
+G4WT0 > Event N: 396000
+G4WT0 > Event N: 397000
+G4WT0 > Event N: 398000
+G4WT0 > Event N: 399000
+G4WT0 > Event N: 400000
+G4WT0 > Event N: 401000
+G4WT0 > Event N: 402000
+G4WT0 > Event N: 403000
+G4WT0 > Event N: 404000
+G4WT0 > Event N: 405000
+G4WT0 > Event N: 406000
+G4WT0 > Event N: 407000
+G4WT0 > Event N: 408000
+G4WT0 > Event N: 409000
+G4WT0 > Event N: 410000
+G4WT0 > Event N: 411000
+G4WT0 > Event N: 412000
+G4WT0 > Event N: 413000
+G4WT0 > Event N: 414000
+G4WT0 > Event N: 415000
+G4WT0 > Event N: 416000
+G4WT0 > Event N: 417000
+G4WT0 > Event N: 418000
+G4WT0 > Event N: 419000
+G4WT0 > Event N: 420000
+G4WT0 > Event N: 421000
+G4WT0 > Event N: 422000
+G4WT0 > Event N: 423000
+G4WT0 > Event N: 424000
+G4WT0 > Event N: 425000
+G4WT0 > Event N: 426000
+G4WT0 > Event N: 427000
+G4WT0 > Event N: 428000
+G4WT0 > Event N: 429000
+G4WT0 > Event N: 430000
+G4WT0 > Event N: 431000
+G4WT0 > Event N: 432000
+G4WT0 > Event N: 433000
+G4WT0 > Event N: 434000
+G4WT0 > Event N: 435000
+G4WT0 > 435287	3.95402	0.353255	0.353255	0.15416	0.199095	0	0
+G4WT0 > Event N: 436000
+G4WT0 > Event N: 437000
+G4WT0 > Event N: 438000
+G4WT0 > Event N: 439000
+G4WT0 > Event N: 440000
+G4WT0 > Event N: 441000
+G4WT0 > Event N: 442000
+G4WT0 > Event N: 443000
+G4WT0 > Event N: 444000
+G4WT0 > Event N: 445000
+G4WT0 > Event N: 446000
+G4WT0 > Event N: 447000
+G4WT0 > Event N: 448000
+G4WT0 > Event N: 449000
+G4WT0 > Event N: 450000
+G4WT0 > Event N: 451000
+G4WT0 > Event N: 452000
+G4WT0 > Event N: 453000
+G4WT0 > Event N: 454000
+G4WT0 > Event N: 455000
+G4WT0 > Event N: 456000
+G4WT0 > Event N: 457000
+G4WT0 > Event N: 458000
+G4WT0 > Event N: 459000
+G4WT0 > Event N: 460000
+G4WT0 > Event N: 461000
+G4WT0 > Event N: 462000
+G4WT0 > Event N: 463000
+G4WT0 > Event N: 464000
+G4WT0 > 464052	12.9074	0.235449	0.235449	0.0478222	0.187627	0	0
+G4WT0 > Event N: 465000
+G4WT0 > Event N: 466000
+G4WT0 > Event N: 467000
+G4WT0 > Event N: 468000
+G4WT0 > Event N: 469000
+G4WT0 > Event N: 470000
+G4WT0 > Event N: 471000
+G4WT0 > Event N: 472000
+G4WT0 > Event N: 473000
+G4WT0 > Event N: 474000
+G4WT0 > Event N: 475000
+G4WT0 > Event N: 476000
+G4WT0 > Event N: 477000
+G4WT0 > Event N: 478000
+G4WT0 > Event N: 479000
+G4WT0 > Event N: 480000
+G4WT0 > Event N: 481000
+G4WT0 > Event N: 482000
+G4WT0 > Event N: 483000
+G4WT0 > Event N: 484000
+G4WT0 > Event N: 485000
+G4WT0 > Event N: 486000
+G4WT0 > Event N: 487000
+G4WT0 > Event N: 488000
+G4WT0 > Event N: 489000
+G4WT0 > Event N: 490000
+G4WT0 > Event N: 491000
+G4WT0 > Event N: 492000
+G4WT0 > Event N: 493000
+G4WT0 > Event N: 494000
+G4WT0 > Event N: 495000
+G4WT0 > Event N: 496000
+G4WT0 > Event N: 497000
+G4WT0 > Event N: 498000
+G4WT0 > Event N: 499000
+G4WT0 > 499905	8.29327	0.180213	0.180213	0.0487224	0.131491	0	0
+G4WT0 > Event N: 500000
+G4WT0 > 500444	1.13178	0.211988	0.211988	0.0437223	0.168265	0	0
+G4WT0 > Event N: 501000
+G4WT0 > Event N: 502000
+G4WT0 > Event N: 503000
+G4WT0 > Event N: 504000
+G4WT0 > Event N: 505000
+G4WT0 > Event N: 506000
+G4WT0 > Event N: 507000
+G4WT0 > Event N: 508000
+G4WT0 > Event N: 509000
+G4WT0 > Event N: 510000
+G4WT0 > Event N: 511000
+G4WT0 > Event N: 512000
+G4WT0 > Event N: 513000
+G4WT0 > Event N: 514000
+G4WT0 > 514359	4.2308	0.205651	0.205651	0.0481958	0.157455	0	0
+G4WT0 > Event N: 515000
+G4WT0 > 515894	7.41838	0.179812	0.179812	0.0541936	0.125619	0	0
+G4WT0 > Event N: 516000
+G4WT0 > Event N: 517000
+G4WT0 > Event N: 518000
+G4WT0 > Event N: 519000
+G4WT0 > Event N: 520000
+G4WT0 > Event N: 521000
+G4WT0 > Event N: 522000
+G4WT0 > Event N: 523000
+G4WT0 > Event N: 524000
+G4WT0 > Event N: 525000
+G4WT0 > Event N: 526000
+G4WT0 > Event N: 527000
+G4WT0 > Event N: 528000
+G4WT0 > Event N: 529000
+G4WT0 > Event N: 530000
+G4WT0 > Event N: 531000
+G4WT0 > Event N: 532000
+G4WT0 > Event N: 533000
+G4WT0 > Event N: 534000
+G4WT0 > Event N: 535000
+G4WT0 > Event N: 536000
+G4WT0 > Event N: 537000
+G4WT0 > 537381	3.17934	0.33831	0.33831	0.1208	0.21751	0	0
+G4WT0 > Event N: 538000
+G4WT0 > Event N: 539000
+G4WT0 > Event N: 540000
+G4WT0 > Event N: 541000
+G4WT0 > Event N: 542000
+G4WT0 > Event N: 543000
+G4WT0 > Event N: 544000
+G4WT0 > Event N: 545000
+G4WT0 > Event N: 546000
+G4WT0 > Event N: 547000
+G4WT0 > Event N: 548000
+G4WT0 > Event N: 549000
+G4WT0 > Event N: 550000
+G4WT0 > Event N: 551000
+G4WT0 > Event N: 552000
+G4WT0 > Event N: 553000
+G4WT0 > Event N: 554000
+G4WT0 > Event N: 555000
+G4WT0 > Event N: 556000
+G4WT0 > Event N: 557000
+G4WT0 > Event N: 558000
+G4WT0 > Event N: 559000
+G4WT0 > Event N: 560000
+G4WT0 > Event N: 561000
+G4WT0 > Event N: 562000
+G4WT0 > 562471	5.4351	0.140422	2.63298	0.0530227	0.0873996	0	0
+G4WT0 > Event N: 563000
+G4WT0 > 563815	9.10321	0.136795	0.136795	0.0600536	0.0767412	0	0
+G4WT0 > Event N: 564000
+G4WT0 > Event N: 565000
+G4WT0 > Event N: 566000
+G4WT0 > Event N: 567000
+G4WT0 > Event N: 568000
+G4WT0 > Event N: 569000
+G4WT0 > Event N: 570000
+G4WT0 > Event N: 571000
+G4WT0 > Event N: 572000
+G4WT0 > 572617	2.3017	0.57751	0.57751	0.0507771	0.526732	0	0
+G4WT0 > Event N: 573000
+G4WT0 > Event N: 574000
+G4WT0 > Event N: 575000
+G4WT0 > Event N: 576000
+G4WT0 > Event N: 577000
+G4WT0 > Event N: 578000
+G4WT0 > Event N: 579000
+G4WT0 > Event N: 580000
+G4WT0 > 580136	5.17843	0.452628	0.452628	0.117367	0.33526	0	0
+G4WT0 > 580903	17.8267	0.0983624	0.0983624	0.0513048	0.0470576	0	0
+G4WT0 > Event N: 581000
+G4WT0 > Event N: 582000
+G4WT0 > Event N: 583000
+G4WT0 > Event N: 584000
+G4WT0 > Event N: 585000
+G4WT0 > Event N: 586000
+G4WT0 > Event N: 587000
+G4WT0 > Event N: 588000
+G4WT0 > Event N: 589000
+G4WT0 > Event N: 590000
+G4WT0 > Event N: 591000
+G4WT0 > Event N: 592000
+G4WT0 > Event N: 593000
+G4WT0 > Event N: 594000
+G4WT0 > Event N: 595000
+G4WT0 > Event N: 596000
+G4WT0 > Event N: 597000
+G4WT0 > Event N: 598000
+G4WT0 > Event N: 599000
+G4WT0 > Event N: 600000
+G4WT0 > Event N: 601000
+G4WT0 > Event N: 602000
+G4WT0 > Event N: 603000
+G4WT0 > Event N: 604000
+G4WT0 > Event N: 605000
+G4WT0 > Event N: 606000
+G4WT0 > Event N: 607000
+G4WT0 > Event N: 608000
+G4WT0 > Event N: 609000
+G4WT0 > Event N: 610000
+G4WT0 > 610188	4.90985	0.135146	0.135146	0.0485296	0.0866167	0	0
+G4WT0 > Event N: 611000
+G4WT0 > Event N: 612000
+G4WT0 > Event N: 613000
+G4WT0 > Event N: 614000
+G4WT0 > Event N: 615000
+G4WT0 > 615669	4.65325	0.264182	0.264182	0.0402156	0.223967	0	0
+G4WT0 > Event N: 616000
+G4WT0 > Event N: 617000
+G4WT0 > Event N: 618000
+G4WT0 > Event N: 619000
+G4WT0 > Event N: 620000
+G4WT0 > 620868	8.85948	0.228228	0.228228	0.0862164	0.142011	0	0
+G4WT0 > Event N: 621000
+G4WT0 > Event N: 622000
+G4WT0 > Event N: 623000
+G4WT0 > Event N: 624000
+G4WT0 > Event N: 625000
+G4WT0 > Event N: 626000
+G4WT0 > Event N: 627000
+G4WT0 > Event N: 628000
+G4WT0 > Event N: 629000
+G4WT0 > Event N: 630000
+G4WT0 > Event N: 631000
+G4WT0 > Event N: 632000
+G4WT0 > Event N: 633000
+G4WT0 > Event N: 634000
+G4WT0 > Event N: 635000
+G4WT0 > Event N: 636000
+G4WT0 > Event N: 637000
+G4WT0 > 637233	8.96082	0.127433	0.127433	0.0455458	0.081887	0	0
+G4WT0 > Event N: 638000
+G4WT0 > Event N: 639000
+G4WT0 > Event N: 640000
+G4WT0 > Event N: 641000
+G4WT0 > Event N: 642000
+G4WT0 > Event N: 643000
+G4WT0 > Event N: 644000
+G4WT0 > Event N: 645000
+G4WT0 > Event N: 646000
+G4WT0 > Event N: 647000
+G4WT0 > Event N: 648000
+G4WT0 > Event N: 649000
+G4WT0 > Event N: 650000
+G4WT0 > Event N: 651000
+G4WT0 > Event N: 652000
+G4WT0 > Event N: 653000
+G4WT0 > Event N: 654000
+G4WT0 > Event N: 655000
+G4WT0 > 655195	2.80719	0.352678	0.352678	0.0434398	0.309239	0	0
+G4WT0 > Event N: 656000
+G4WT0 > Event N: 657000
+G4WT0 > Event N: 658000
+G4WT0 > Event N: 659000
+G4WT0 > Event N: 660000
+G4WT0 > Event N: 661000
+G4WT0 > Event N: 662000
+G4WT0 > Event N: 663000
+G4WT0 > Event N: 664000
+G4WT0 > Event N: 665000
+G4WT0 > Event N: 666000
+G4WT0 > Event N: 667000
+G4WT0 > Event N: 668000
+G4WT0 > Event N: 669000
+G4WT0 > Event N: 670000
+G4WT0 > Event N: 671000
+G4WT0 > Event N: 672000
+G4WT0 > Event N: 673000
+G4WT0 > Event N: 674000
+G4WT0 > Event N: 675000
+G4WT0 > Event N: 676000
+G4WT0 > Event N: 677000
+G4WT0 > Event N: 678000
+G4WT0 > Event N: 679000
+G4WT0 > Event N: 680000
+G4WT0 > 680079	4.8222	0.12862	1.90196	0.0403313	0.0882888	0	0
+G4WT0 > Event N: 681000
+G4WT0 > Event N: 682000
+G4WT0 > Event N: 683000
+G4WT0 > Event N: 684000
+G4WT0 > Event N: 685000
+G4WT0 > Event N: 686000
+G4WT0 > 686941	2.00315	0.607979	0.607979	0.12443	0.48355	0	0
+G4WT0 > Event N: 687000
+G4WT0 > Event N: 688000
+G4WT0 > Event N: 689000
+G4WT0 > Event N: 690000
+G4WT0 > Event N: 691000
+G4WT0 > Event N: 692000
+G4WT0 > Event N: 693000
+G4WT0 > Event N: 694000
+G4WT0 > Event N: 695000
+G4WT0 > Event N: 696000
+G4WT0 > Event N: 697000
+G4WT0 > Event N: 698000
+G4WT0 > Event N: 699000
+G4WT0 > Event N: 700000
+G4WT0 > Event N: 701000
+G4WT0 > Event N: 702000
+G4WT0 > Event N: 703000
+G4WT0 > Event N: 704000
+G4WT0 > Event N: 705000
+G4WT0 > Event N: 706000
+G4WT0 > Event N: 707000
+G4WT0 > Event N: 708000
+G4WT0 > Event N: 709000
+G4WT0 > Event N: 710000
+G4WT0 > Event N: 711000
+G4WT0 > Event N: 712000
+G4WT0 > 712025	2.50179	0.230823	0.567151	0.0520677	0.178755	0	0
+G4WT0 > Event N: 713000
+G4WT0 > Event N: 714000
+G4WT0 > Event N: 715000
+G4WT0 > Event N: 716000
+G4WT0 > Event N: 717000
+G4WT0 > Event N: 718000
+G4WT0 > Event N: 719000
+G4WT0 > Event N: 720000
+G4WT0 > Event N: 721000
+G4WT0 > Event N: 722000
+G4WT0 > 722720	2.88127	0.535744	0.535744	0.106368	0.429376	0	0
+G4WT0 > Event N: 723000
+G4WT0 > Event N: 724000
+G4WT0 > Event N: 725000
+G4WT0 > Event N: 726000
+G4WT0 > Event N: 727000
+G4WT0 > Event N: 728000
+G4WT0 > Event N: 729000
+G4WT0 > Event N: 730000
+G4WT0 > Event N: 731000
+G4WT0 > Event N: 732000
+G4WT0 > Event N: 733000
+G4WT0 > Event N: 734000
+G4WT0 > Event N: 735000
+G4WT0 > Event N: 736000
+G4WT0 > Event N: 737000
+G4WT0 > Event N: 738000
+G4WT0 > Event N: 739000
+G4WT0 > Event N: 740000
+G4WT0 > Event N: 741000
+G4WT0 > Event N: 742000
+G4WT0 > Event N: 743000
+G4WT0 > Event N: 744000
+G4WT0 > Event N: 745000
+G4WT0 > Event N: 746000
+G4WT0 > 746480	2.25468	0.421403	0.421403	0.124522	0.296881	0	0
+G4WT0 > Event N: 747000
+G4WT0 > Event N: 748000
+G4WT0 > Event N: 749000
+G4WT0 > Event N: 750000
+G4WT0 > Event N: 751000
+G4WT0 > Event N: 752000
+G4WT0 > Event N: 753000
+G4WT0 > Event N: 754000
+G4WT0 > Event N: 755000
+G4WT0 > Event N: 756000
+G4WT0 > Event N: 757000
+G4WT0 > Event N: 758000
+G4WT0 > Event N: 759000
+G4WT0 > Event N: 760000
+G4WT0 > Event N: 761000
+G4WT0 > Event N: 762000
+G4WT0 > 762685	2.86485	0.174925	0.174925	0.0813505	0.093575	0	0
+G4WT0 > Event N: 763000
+G4WT0 > Event N: 764000
+G4WT0 > Event N: 765000
+G4WT0 > Event N: 766000
+G4WT0 > Event N: 767000
+G4WT0 > Event N: 768000
+G4WT0 > Event N: 769000
+G4WT0 > Event N: 770000
+G4WT0 > Event N: 771000
+G4WT0 > 771623	7.0044	0.61538	0.61538	0.041825	0.573555	0	0
+G4WT0 > 771766	13.3548	0.145601	4.78914	0.0415599	0.104041	0	0
+G4WT0 > Event N: 772000
+G4WT0 > Event N: 773000
+G4WT0 > Event N: 774000
+G4WT0 > Event N: 775000
+G4WT0 > Event N: 776000
+G4WT0 > Event N: 777000
+G4WT0 > Event N: 778000
+G4WT0 > Event N: 779000
+G4WT0 > Event N: 780000
+G4WT0 > Event N: 781000
+G4WT0 > Event N: 782000
+G4WT0 > Event N: 783000
+G4WT0 > Event N: 784000
+G4WT0 > Event N: 785000
+G4WT0 > Event N: 786000
+G4WT0 > Event N: 787000
+G4WT0 > Event N: 788000
+G4WT0 > Event N: 789000
+G4WT0 > Event N: 790000
+G4WT0 > Event N: 791000
+G4WT0 > Event N: 792000
+G4WT0 > Event N: 793000
+G4WT0 > Event N: 794000
+G4WT0 > Event N: 795000
+G4WT0 > Event N: 796000
+G4WT0 > 796291	3.9089	0.171228	1.81193	0.0777824	0.0934454	0	0
+G4WT0 > Event N: 797000
+G4WT0 > Event N: 798000
+G4WT0 > Event N: 799000
+G4WT0 > Event N: 800000
+G4WT0 > Event N: 801000
+G4WT0 > Event N: 802000
+G4WT0 > Event N: 803000
+G4WT0 > Event N: 804000
+G4WT0 > Event N: 805000
+G4WT0 > Event N: 806000
+G4WT0 > Event N: 807000
+G4WT0 > Event N: 808000
+G4WT0 > Event N: 809000
+G4WT0 > Event N: 810000
+G4WT0 > Event N: 811000
+G4WT0 > Event N: 812000
+G4WT0 > Event N: 813000
+G4WT0 > 813029	1.62201	0.70005	0.70005	0.0438735	0.656177	0	0
+G4WT0 > Event N: 814000
+G4WT0 > Event N: 815000
+G4WT0 > Event N: 816000
+G4WT0 > Event N: 817000
+G4WT0 > Event N: 818000
+G4WT0 > Event N: 819000
+G4WT0 > Event N: 820000
+G4WT0 > Event N: 821000
+G4WT0 > Event N: 822000
+G4WT0 > Event N: 823000
+G4WT0 > Event N: 824000
+G4WT0 > 824881	9.10029	0.286525	1.40348	0.104297	0.182228	0	0
+G4WT0 > Event N: 825000
+G4WT0 > Event N: 826000
+G4WT0 > Event N: 827000
+G4WT0 > Event N: 828000
+G4WT0 > Event N: 829000
+G4WT0 > Event N: 830000
+G4WT0 > Event N: 831000
+G4WT0 > Event N: 832000
+G4WT0 > Event N: 833000
+G4WT0 > Event N: 834000
+G4WT0 > Event N: 835000
+G4WT0 > Event N: 836000
+G4WT0 > Event N: 837000
+G4WT0 > Event N: 838000
+G4WT0 > Event N: 839000
+G4WT0 > Event N: 840000
+G4WT0 > Event N: 841000
+G4WT0 > Event N: 842000
+G4WT0 > Event N: 843000
+G4WT0 > Event N: 844000
+G4WT0 > Event N: 845000
+G4WT0 > Event N: 846000
+G4WT0 > Event N: 847000
+G4WT0 > Event N: 848000
+G4WT0 > Event N: 849000
+G4WT0 > Event N: 850000
+G4WT0 > Event N: 851000
+G4WT0 > Event N: 852000
+G4WT0 > Event N: 853000
+G4WT0 > Event N: 854000
+G4WT0 > Event N: 855000
+G4WT0 > Event N: 856000
+G4WT0 > Event N: 857000
+G4WT0 > Event N: 858000
+G4WT0 > Event N: 859000
+G4WT0 > Event N: 860000
+G4WT0 > 860904	6.63726	0.157912	0.157912	0.0610147	0.0968973	0	0
+G4WT0 > Event N: 861000
+G4WT0 > Event N: 862000
+G4WT0 > Event N: 863000
+G4WT0 > Event N: 864000
+G4WT0 > Event N: 865000
+G4WT0 > Event N: 866000
+G4WT0 > Event N: 867000
+G4WT0 > Event N: 868000
+G4WT0 > Event N: 869000
+G4WT0 > Event N: 870000
+G4WT0 > Event N: 871000
+G4WT0 > Event N: 872000
+G4WT0 > Event N: 873000
+G4WT0 > Event N: 874000
+G4WT0 > Event N: 875000
+G4WT0 > Event N: 876000
+G4WT0 > Event N: 877000
+G4WT0 > Event N: 878000
+G4WT0 > 878876	3.04469	0.321199	0.321199	0.104917	0.216282	0	0
+G4WT0 > Event N: 879000
+G4WT0 > Event N: 880000
+G4WT0 > Event N: 881000
+G4WT0 > Event N: 882000
+G4WT0 > Event N: 883000
+G4WT0 > Event N: 884000
+G4WT0 > Event N: 885000
+G4WT0 > Event N: 886000
+G4WT0 > Event N: 887000
+G4WT0 > Event N: 888000
+G4WT0 > Event N: 889000
+G4WT0 > Event N: 890000
+G4WT0 > Event N: 891000
+G4WT0 > Event N: 892000
+G4WT0 > Event N: 893000
+G4WT0 > Event N: 894000
+G4WT0 > Event N: 895000
+G4WT0 > Event N: 896000
+G4WT0 > 896708	9.40175	0.247218	0.247218	0.0716684	0.17555	0	0
+G4WT0 > Event N: 897000
+G4WT0 > Event N: 898000
+G4WT0 > Event N: 899000
+G4WT0 > Event N: 900000
+G4WT0 > Event N: 901000
+G4WT0 > Event N: 902000
+G4WT0 > Event N: 903000
+G4WT0 > Event N: 904000
+G4WT0 > Event N: 905000
+G4WT0 > Event N: 906000
+G4WT0 > Event N: 907000
+G4WT0 > Event N: 908000
+G4WT0 > Event N: 909000
+G4WT0 > Event N: 910000
+G4WT0 > Event N: 911000
+G4WT0 > Event N: 912000
+G4WT0 > Event N: 913000
+G4WT0 > Event N: 914000
+G4WT0 > Event N: 915000
+G4WT0 > Event N: 916000
+G4WT0 > Event N: 917000
+G4WT0 > Event N: 918000
+G4WT0 > 918602	0.887144	0.0894519	0.0894519	0.0424431	0.0470088	0	0
+G4WT0 > Event N: 919000
+G4WT0 > Event N: 920000
+G4WT0 > Event N: 921000
+G4WT0 > Event N: 922000
+G4WT0 > Event N: 923000
+G4WT0 > Event N: 924000
+G4WT0 > Event N: 925000
+G4WT0 > Event N: 926000
+G4WT0 > Event N: 927000
+G4WT0 > 927432	6.65004	0.189103	0.189103	0.0517875	0.137316	0	0
+G4WT0 > Event N: 928000
+G4WT0 > Event N: 929000
+G4WT0 > Event N: 930000
+G4WT0 > Event N: 931000
+G4WT0 > Event N: 932000
+G4WT0 > Event N: 933000
+G4WT0 > Event N: 934000
+G4WT0 > Event N: 935000
+G4WT0 > Event N: 936000
+G4WT0 > Event N: 937000
+G4WT0 > Event N: 938000
+G4WT0 > Event N: 939000
+G4WT0 > Event N: 940000
+G4WT0 > Event N: 941000
+G4WT0 > Event N: 942000
+G4WT0 > Event N: 943000
+G4WT0 > Event N: 944000
+G4WT0 > Event N: 945000
+G4WT0 > 945917	3.01039	0.4264	0.4264	0.051842	0.374558	0	0
+G4WT0 > Event N: 946000
+G4WT0 > Event N: 947000
+G4WT0 > Event N: 948000
+G4WT0 > Event N: 949000
+G4WT0 > Event N: 950000
+G4WT0 > Event N: 951000
+G4WT0 > Event N: 952000
+G4WT0 > Event N: 953000
+G4WT0 > Event N: 954000
+G4WT0 > Event N: 955000
+G4WT0 > Event N: 956000
+G4WT0 > Event N: 957000
+G4WT0 > Event N: 958000
+G4WT0 > Event N: 959000
+G4WT0 > Event N: 960000
+G4WT0 > Event N: 961000
+G4WT0 > Event N: 962000
+G4WT0 > Event N: 963000
+G4WT0 > Event N: 964000
+G4WT0 > Event N: 965000
+G4WT0 > Event N: 966000
+G4WT0 > Event N: 967000
+G4WT0 > Event N: 968000
+G4WT0 > Event N: 969000
+G4WT0 > Event N: 970000
+G4WT0 > Event N: 971000
+G4WT0 > Event N: 972000
+G4WT0 > Event N: 973000
+G4WT0 > Event N: 974000
+G4WT0 > Event N: 975000
+G4WT0 > Event N: 976000
+G4WT0 > 976134	0.863866	0.37694	0.37694	0.0470105	0.32993	0	0
+G4WT0 > Event N: 977000
+G4WT0 > Event N: 978000
+G4WT0 > Event N: 979000
+G4WT0 > Event N: 980000
+G4WT0 > Event N: 981000
+G4WT0 > Event N: 982000
+G4WT0 > Event N: 983000
+G4WT0 > Event N: 984000
+G4WT0 > Event N: 985000
+G4WT0 > Event N: 986000
+G4WT0 > Event N: 987000
+G4WT0 > Event N: 988000
+G4WT0 > Event N: 989000
+G4WT0 > Event N: 990000
+G4WT0 > Event N: 991000
+G4WT0 > Event N: 992000
+G4WT0 > Event N: 993000
+G4WT0 > Event N: 994000
+G4WT0 > Event N: 995000
+G4WT0 > Event N: 996000
+G4WT0 > 996141	2.88491	0.328942	0.975372	0.0916273	0.237314	0	0
+G4WT0 > Event N: 997000
+G4WT0 > Event N: 998000
+G4WT0 > Event N: 999000
+G4WT0 > Event N: 1000000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 1000000
+G4WT0 > [thread 0]   User=0.010000s Real=0.010776s Sys=0.000000s [Cpu=92.8%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/e-_j6_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/e-_j6_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 1000000
+  User=733.340000s Real=737.561948s Sys=0.380000s [Cpu=99.5%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+### Run 1 starts.
+
+==============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 1000 tasks with 1000 events/task...
+==============================================================================================
+
+G4WT0 > ### Run 1 starts on worker thread 0.
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/proton_j6_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/proton_j6.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/proton_j6.root - done
+G4WT0 > 197	37.826	6.88608	6.88608	0.630173	6.25591	0	0
+G4WT0 > Event N: 1000
+G4WT0 > Event N: 2000
+G4WT0 > Event N: 3000
+G4WT0 > Event N: 4000
+G4WT0 > Event N: 5000
+G4WT0 > Event N: 6000
+G4WT0 > Event N: 7000
+G4WT0 > 7087	29.1162	1.53068	1.53068	0.390644	1.14003	0	0
+G4WT0 > Event N: 8000
+G4WT0 > Event N: 9000
+G4WT0 > Event N: 10000
+G4WT0 > 10428	35.2602	3.60618	11.1807	0.622902	2.98328	0	0
+G4WT0 > Event N: 11000
+G4WT0 > Event N: 12000
+G4WT0 > Event N: 13000
+G4WT0 > Event N: 14000
+G4WT0 > Event N: 15000
+G4WT0 > 15825	26.884	2.02741	10.5918	0.41518	1.61223	0	0
+G4WT0 > Event N: 16000
+G4WT0 > 16543	20.7593	3.29344	3.29344	0.462675	2.83076	0	0
+G4WT0 > Event N: 17000
+G4WT0 > Event N: 18000
+G4WT0 > Event N: 19000
+G4WT0 > Event N: 20000
+G4WT0 > Event N: 21000
+G4WT0 > 21948	37.6443	1.48268	12.3381	0.373571	1.10911	0	0
+G4WT0 > Event N: 22000
+G4WT0 > Event N: 23000
+G4WT0 > Event N: 24000
+G4WT0 > Event N: 25000
+G4WT0 > Event N: 26000
+G4WT0 > Event N: 27000
+G4WT0 > 27753	30.7159	0.977902	0.977902	0.368256	0.609646	0	0
+G4WT0 > Event N: 28000
+G4WT0 > 28504	36.3782	2.98114	13.7386	0.758088	2.22305	0	0
+G4WT0 > Event N: 29000
+G4WT0 > Event N: 30000
+G4WT0 > Event N: 31000
+G4WT0 > Event N: 32000
+G4WT0 > Event N: 33000
+G4WT0 > Event N: 34000
+G4WT0 > Event N: 35000
+G4WT0 > Event N: 36000
+G4WT0 > Event N: 37000
+G4WT0 > Event N: 38000
+G4WT0 > Event N: 39000
+G4WT0 > 39651	40.0674	1.4138	16.7353	0.367611	1.04619	0	0
+G4WT0 > Event N: 40000
+G4WT0 > Event N: 41000
+G4WT0 > Event N: 42000
+G4WT0 > Event N: 43000
+G4WT0 > Event N: 44000
+G4WT0 > 44766	51.222	3.19974	3.19974	0.536879	2.66286	0	0
+G4WT0 > Event N: 45000
+G4WT0 > 45486	25.3349	2.96506	2.96506	0.430987	2.53408	0	0
+G4WT0 > 45852	66.3837	1.3339	1.3339	0.251929	1.08197	0	0
+G4WT0 > 45899	26.8694	2.62106	2.62106	0.295067	2.32599	0	0
+G4WT0 > Event N: 46000
+G4WT0 > Event N: 47000
+G4WT0 > 47945	50.8974	3.17306	14.027	0.522871	2.65019	0	0
+G4WT0 > Event N: 48000
+G4WT0 > Event N: 49000
+G4WT0 > Event N: 50000
+G4WT0 > 50198	21.7492	2.76184	2.76184	0.498225	2.26362	0	0
+G4WT0 > Event N: 51000
+G4WT0 > 51523	16.3507	1.56295	1.56295	0.569021	0.993928	0	0
+G4WT0 > Event N: 52000
+G4WT0 > Event N: 53000
+G4WT0 > 53039	33.2608	1.64444	8.57526	0.358925	1.28552	0	0
+G4WT0 > 53243	17.3122	4.98183	4.98183	0.625594	4.35623	0	0
+G4WT0 > Event N: 54000
+G4WT0 > 54831	38.3219	2.03739	2.03739	0.340405	1.69698	0	0
+G4WT0 > Event N: 55000
+G4WT0 > Event N: 56000
+G4WT0 > Event N: 57000
+G4WT0 > Event N: 58000
+G4WT0 > Event N: 59000
+G4WT0 > Event N: 60000
+G4WT0 > 60721	18.4089	4.57493	8.46952	0.559899	4.01503	0	0
+G4WT0 > Event N: 61000
+G4WT0 > Event N: 62000
+G4WT0 > Event N: 63000
+G4WT0 > Event N: 64000
+G4WT0 > Event N: 65000
+G4WT0 > Event N: 66000
+G4WT0 > Event N: 67000
+G4WT0 > Event N: 68000
+G4WT0 > Event N: 69000
+G4WT0 > 69216	54.2678	1.87896	24.2742	0.452491	1.42647	0	0
+G4WT0 > Event N: 70000
+G4WT0 > Event N: 71000
+G4WT0 > Event N: 72000
+G4WT0 > Event N: 73000
+G4WT0 > Event N: 74000
+G4WT0 > Event N: 75000
+G4WT0 > 75564	42.983	1.4143	11.8418	0.25052	1.16378	0	0
+G4WT0 > Event N: 76000
+G4WT0 > Event N: 77000
+G4WT0 > 77392	54.2267	1.31799	20.2608	0.274424	1.04356	0	0
+G4WT0 > Event N: 78000
+G4WT0 > Event N: 79000
+G4WT0 > Event N: 80000
+G4WT0 > 80878	55.4048	1.31223	26.5496	0.276996	1.03523	0	0
+G4WT0 > Event N: 81000
+G4WT0 > 81382	54.079	2.04376	23.4027	0.436332	1.60742	0	0
+G4WT0 > 81719	29.0099	1.93103	1.93103	0.39042	1.54061	0	0
+G4WT0 > Event N: 82000
+G4WT0 > Event N: 83000
+G4WT0 > Event N: 84000
+G4WT0 > Event N: 85000
+G4WT0 > Event N: 86000
+G4WT0 > Event N: 87000
+G4WT0 > 87985	30.4976	1.69033	1.69033	0.304964	1.38536	0	0
+G4WT0 > Event N: 88000
+G4WT0 > Event N: 89000
+G4WT0 > Event N: 90000
+G4WT0 > Event N: 91000
+G4WT0 > Event N: 92000
+G4WT0 > Event N: 93000
+G4WT0 > Event N: 94000
+G4WT0 > 94788	51.8087	1.44584	18.7239	0.302783	1.14306	0	0
+G4WT0 > Event N: 95000
+G4WT0 > Event N: 96000
+G4WT0 > Event N: 97000
+G4WT0 > 97812	15.8279	2.73648	2.73648	0.50735	2.22913	0	0
+G4WT0 > 97936	38.9772	2.32586	18.3579	0.405836	1.92002	0	0
+G4WT0 > Event N: 98000
+G4WT0 > Event N: 99000
+G4WT0 > Event N: 100000
+G4WT0 > Event N: 101000
+G4WT0 > 101839	44.9968	2.38362	15.9993	0.480423	1.90319	0	0
+G4WT0 > Event N: 102000
+G4WT0 > Event N: 103000
+G4WT0 > 103221	27.3219	2.48098	2.48098	0.364304	2.11668	0	0
+G4WT0 > Event N: 104000
+G4WT0 > Event N: 105000
+G4WT0 > 105805	18.4038	4.27626	8.74432	0.545528	3.73073	0	0
+G4WT0 > Event N: 106000
+G4WT0 > 106305	30.9744	1.73574	1.73574	0.334495	1.40125	0	0
+G4WT0 > Event N: 107000
+G4WT0 > 107745	62.8959	1.62473	1.62473	0.279411	1.34532	0	0
+G4WT0 > Event N: 108000
+G4WT0 > Event N: 109000
+G4WT0 > 109023	65.6715	1.48049	1.48049	0.27413	1.20636	0	0
+G4WT0 > Event N: 110000
+G4WT0 > Event N: 111000
+G4WT0 > Event N: 112000
+G4WT0 > Event N: 113000
+G4WT0 > Event N: 114000
+G4WT0 > Event N: 115000
+G4WT0 > Event N: 116000
+G4WT0 > Event N: 117000
+G4WT0 > Event N: 118000
+G4WT0 > Event N: 119000
+G4WT0 > Event N: 120000
+G4WT0 > Event N: 121000
+G4WT0 > Event N: 122000
+G4WT0 > 122902	42.8259	4.10903	10.0585	0.600801	3.50823	0	0
+G4WT0 > Event N: 123000
+G4WT0 > 123381	51.6405	2.23502	2.23502	0.45092	1.7841	0	0
+G4WT0 > Event N: 124000
+G4WT0 > Event N: 125000
+G4WT0 > Event N: 126000
+G4WT0 > 126695	24.377	3.65508	3.65508	0.448325	3.20675	0	0
+G4WT0 > Event N: 127000
+G4WT0 > Event N: 128000
+G4WT0 > Event N: 129000
+G4WT0 > Event N: 130000
+G4WT0 > Event N: 131000
+G4WT0 > Event N: 132000
+G4WT0 > Event N: 133000
+G4WT0 > Event N: 134000
+G4WT0 > 134009	28.0598	2.14638	2.14638	0.410751	1.73563	0	0
+G4WT0 > Event N: 135000
+G4WT0 > 135112	18.0313	5.04432	7.82868	0.527869	4.51645	0	0
+G4WT0 > Event N: 136000
+G4WT0 > Event N: 137000
+G4WT0 > Event N: 138000
+G4WT0 > Event N: 139000
+G4WT0 > Event N: 140000
+G4WT0 > Event N: 141000
+G4WT0 > Event N: 142000
+G4WT0 > Event N: 143000
+G4WT0 > Event N: 144000
+G4WT0 > Event N: 145000
+G4WT0 > 145603	90.5255	0.672159	0.672159	0.145136	0.527023	0	0
+G4WT0 > Event N: 146000
+G4WT0 > Event N: 147000
+G4WT0 > Event N: 148000
+G4WT0 > Event N: 149000
+G4WT0 > Event N: 150000
+G4WT0 > Event N: 151000
+G4WT0 > Event N: 152000
+G4WT0 > Event N: 153000
+G4WT0 > Event N: 154000
+G4WT0 > Event N: 155000
+G4WT0 > Event N: 156000
+G4WT0 > Event N: 157000
+G4WT0 > Event N: 158000
+G4WT0 > Event N: 159000
+G4WT0 > Event N: 160000
+G4WT0 > Event N: 161000
+G4WT0 > 161546	46.6167	1.95465	22.3833	0.436957	1.51769	0	0
+G4WT0 > 161996	54.3702	1.85495	23.0078	0.378378	1.47658	0	0
+G4WT0 > Event N: 162000
+G4WT0 > 162067	40.0301	3.45791	11.1189	0.499529	2.95838	0	0
+G4WT0 > Event N: 163000
+G4WT0 > Event N: 164000
+G4WT0 > Event N: 165000
+G4WT0 > Event N: 166000
+G4WT0 > Event N: 167000
+G4WT0 > 167916	42.8444	4.5201	4.5201	0.536025	3.98408	0	0
+G4WT0 > Event N: 168000
+G4WT0 > Event N: 169000
+G4WT0 > Event N: 170000
+G4WT0 > Event N: 171000
+G4WT0 > 171250	16.8888	6.09423	6.09423	0.51759	5.57664	0	0
+G4WT0 > Event N: 172000
+G4WT0 > Event N: 173000
+G4WT0 > Event N: 174000
+G4WT0 > Event N: 175000
+G4WT0 > Event N: 176000
+G4WT0 > Event N: 177000
+G4WT0 > Event N: 178000
+G4WT0 > 178684	20.3445	3.27587	3.27587	0.434874	2.841	0	0
+G4WT0 > Event N: 179000
+G4WT0 > Event N: 180000
+G4WT0 > Event N: 181000
+G4WT0 > Event N: 182000
+G4WT0 > Event N: 183000
+G4WT0 > 183072	22.1276	2.73856	10.4326	0.474014	2.26455	0	0
+G4WT0 > Event N: 184000
+G4WT0 > 184932	18.4518	6.12173	6.12173	0.538142	5.58359	0	0
+G4WT0 > Event N: 185000
+G4WT0 > 185830	21.5319	3.11319	3.11319	0.527236	2.58595	0	0
+G4WT0 > Event N: 186000
+G4WT0 > Event N: 187000
+G4WT0 > Event N: 188000
+G4WT0 > 188699	41.4012	1.81793	7.96541	0.414903	1.40302	0	0
+G4WT0 > Event N: 189000
+G4WT0 > 189754	18.7178	4.14376	9.25909	0.560588	3.58317	0	0
+G4WT0 > Event N: 190000
+G4WT0 > Event N: 191000
+G4WT0 > Event N: 192000
+G4WT0 > Event N: 193000
+G4WT0 > Event N: 194000
+G4WT0 > Event N: 195000
+G4WT0 > Event N: 196000
+G4WT0 > Event N: 197000
+G4WT0 > 197544	31.8595	1.52987	1.52987	0.299474	1.2304	0	0
+G4WT0 > Event N: 198000
+G4WT0 > Event N: 199000
+G4WT0 > Event N: 200000
+G4WT0 > Event N: 201000
+G4WT0 > Event N: 202000
+G4WT0 > 202873	30.5716	4.48273	9.26812	0.587183	3.89555	0	0
+G4WT0 > Event N: 203000
+G4WT0 > Event N: 204000
+G4WT0 > Event N: 205000
+G4WT0 > Event N: 206000
+G4WT0 > Event N: 207000
+G4WT0 > 207953	35.1704	1.78935	1.78935	0.431474	1.35788	0	0
+G4WT0 > Event N: 208000
+G4WT0 > Event N: 209000
+G4WT0 > Event N: 210000
+G4WT0 > 210079	21.0868	3.26662	3.26662	0.541619	2.725	0	0
+G4WT0 > Event N: 211000
+G4WT0 > Event N: 212000
+G4WT0 > Event N: 213000
+G4WT0 > Event N: 214000
+G4WT0 > Event N: 215000
+G4WT0 > Event N: 216000
+G4WT0 > 216258	32.0144	1.896	1.896	0.359226	1.53678	0	0
+G4WT0 > Event N: 217000
+G4WT0 > Event N: 218000
+G4WT0 > Event N: 219000
+G4WT0 > Event N: 220000
+G4WT0 > 220218	23.0813	2.33555	2.33555	0.392353	1.9432	0	0
+G4WT0 > Event N: 221000
+G4WT0 > Event N: 222000
+G4WT0 > Event N: 223000
+G4WT0 > Event N: 224000
+G4WT0 > Event N: 225000
+G4WT0 > Event N: 226000
+G4WT0 > 226042	31.6034	1.61237	1.61237	0.362792	1.24958	0	0
+G4WT0 > Event N: 227000
+G4WT0 > Event N: 228000
+G4WT0 > 228322	50.1802	3.01638	13.2037	0.506832	2.50955	0	0
+G4WT0 > Event N: 229000
+G4WT0 > Event N: 230000
+G4WT0 > Event N: 231000
+G4WT0 > 231013	17.4172	6.35017	6.35017	0.497348	5.85282	0	0
+G4WT0 > Event N: 232000
+G4WT0 > 232445	31.0544	1.63136	5.48869	0.318269	1.31309	0	0
+G4WT0 > Event N: 233000
+G4WT0 > Event N: 234000
+G4WT0 > Event N: 235000
+G4WT0 > 235041	53.4739	2.33101	20.4623	0.454521	1.87648	0	0
+G4WT0 > Event N: 236000
+G4WT0 > Event N: 237000
+G4WT0 > Event N: 238000
+G4WT0 > 238674	55.1573	1.9889	22.6722	0.450535	1.53837	0	0
+G4WT0 > Event N: 239000
+G4WT0 > Event N: 240000
+G4WT0 > Event N: 241000
+G4WT0 > Event N: 242000
+G4WT0 > Event N: 243000
+G4WT0 > Event N: 244000
+G4WT0 > Event N: 245000
+G4WT0 > Event N: 246000
+G4WT0 > Event N: 247000
+G4WT0 > Event N: 248000
+G4WT0 > Event N: 249000
+G4WT0 > Event N: 250000
+G4WT0 > 250950	41.1074	1.80164	1.80164	0.410375	1.39126	0	0
+G4WT0 > Event N: 251000
+G4WT0 > Event N: 252000
+G4WT0 > 252148	27.2272	1.96703	11.0511	0.461688	1.50535	0	0
+G4WT0 > Event N: 253000
+G4WT0 > Event N: 254000
+G4WT0 > Event N: 255000
+G4WT0 > Event N: 256000
+G4WT0 > 256816	40.5094	7.01163	7.01163	0.444393	6.56724	0	0
+G4WT0 > 256956	39.1899	4.20217	4.20217	0.520642	3.68152	0	0
+G4WT0 > Event N: 257000
+G4WT0 > Event N: 258000
+G4WT0 > Event N: 259000
+G4WT0 > Event N: 260000
+G4WT0 > Event N: 261000
+G4WT0 > Event N: 262000
+G4WT0 > 262038	70.1892	1.12047	34.3309	0.265531	0.854934	0	0
+G4WT0 > 262425	19.1125	3.30798	3.30798	0.585616	2.72237	0	0
+G4WT0 > 262460	50.3278	3.72646	3.72646	0.518449	3.20801	0	0
+G4WT0 > Event N: 263000
+G4WT0 > Event N: 264000
+G4WT0 > Event N: 265000
+G4WT0 > Event N: 266000
+G4WT0 > Event N: 267000
+G4WT0 > Event N: 268000
+G4WT0 > 268051	17.4106	5.58684	5.58684	0.609133	4.97771	0	0
+G4WT0 > 268159	36.1109	1.81075	1.81075	0.421513	1.38924	0	0
+G4WT0 > Event N: 269000
+G4WT0 > 269525	30.7037	1.64962	13.6117	0.348709	1.30091	0	0
+G4WT0 > Event N: 270000
+G4WT0 > Event N: 271000
+G4WT0 > Event N: 272000
+G4WT0 > Event N: 273000
+G4WT0 > Event N: 274000
+G4WT0 > Event N: 275000
+G4WT0 > Event N: 276000
+G4WT0 > Event N: 277000
+G4WT0 > Event N: 278000
+G4WT0 > Event N: 279000
+G4WT0 > Event N: 280000
+G4WT0 > Event N: 281000
+G4WT0 > Event N: 282000
+G4WT0 > Event N: 283000
+G4WT0 > Event N: 284000
+G4WT0 > 284323	34.2671	3.27631	11.3546	0.521821	2.75449	0	0
+G4WT0 > Event N: 285000
+G4WT0 > Event N: 286000
+G4WT0 > Event N: 287000
+G4WT0 > Event N: 288000
+G4WT0 > Event N: 289000
+G4WT0 > Event N: 290000
+G4WT0 > Event N: 291000
+G4WT0 > Event N: 292000
+G4WT0 > Event N: 293000
+G4WT0 > Event N: 294000
+G4WT0 > Event N: 295000
+G4WT0 > Event N: 296000
+G4WT0 > Event N: 297000
+G4WT0 > Event N: 298000
+G4WT0 > 298842	40.8842	1.8754	1.8754	0.372858	1.50254	0	0
+G4WT0 > Event N: 299000
+G4WT0 > Event N: 300000
+G4WT0 > 300381	51.8126	2.84957	8.54345	0.494598	2.35498	0	0
+G4WT0 > Event N: 301000
+G4WT0 > 301375	18.5849	4.43211	8.56345	0.465463	3.96665	0	0
+G4WT0 > Event N: 302000
+G4WT0 > Event N: 303000
+G4WT0 > Event N: 304000
+G4WT0 > Event N: 305000
+G4WT0 > Event N: 306000
+G4WT0 > 306582	52.7435	1.97271	21.3556	0.401227	1.57148	0	0
+G4WT0 > Event N: 307000
+G4WT0 > Event N: 308000
+G4WT0 > Event N: 309000
+G4WT0 > Event N: 310000
+G4WT0 > Event N: 311000
+G4WT0 > Event N: 312000
+G4WT0 > Event N: 313000
+G4WT0 > 313352	30.3473	1.70269	1.70269	0.322886	1.3798	0	0
+G4WT0 > Event N: 314000
+G4WT0 > Event N: 315000
+G4WT0 > 315309	49.6338	2.60997	2.60997	0.475205	2.13476	0	0
+G4WT0 > Event N: 316000
+G4WT0 > Event N: 317000
+G4WT0 > Event N: 318000
+G4WT0 > Event N: 319000
+G4WT0 > Event N: 320000
+G4WT0 > Event N: 321000
+G4WT0 > Event N: 322000
+G4WT0 > Event N: 323000
+G4WT0 > Event N: 324000
+G4WT0 > Event N: 325000
+G4WT0 > Event N: 326000
+G4WT0 > 326623	18.4355	5.37189	7.92028	0.516016	4.85588	0	0
+G4WT0 > Event N: 327000
+G4WT0 > 327774	18.5973	5.85225	5.85225	0.527464	5.32478	0	0
+G4WT0 > Event N: 328000
+G4WT0 > Event N: 329000
+G4WT0 > Event N: 330000
+G4WT0 > Event N: 331000
+G4WT0 > Event N: 332000
+G4WT0 > Event N: 333000
+G4WT0 > Event N: 334000
+G4WT0 > Event N: 335000
+G4WT0 > Event N: 336000
+G4WT0 > 336139	61.033	1.38631	17.8662	0.357405	1.0289	0	0
+G4WT0 > Event N: 337000
+G4WT0 > 337714	29.5101	3.18381	3.18381	0.477808	2.70601	0	0
+G4WT0 > Event N: 338000
+G4WT0 > Event N: 339000
+G4WT0 > Event N: 340000
+G4WT0 > 340275	54.5968	1.87989	24.0026	0.402361	1.47753	0	0
+G4WT0 > Event N: 341000
+G4WT0 > Event N: 342000
+G4WT0 > Event N: 343000
+G4WT0 > Event N: 344000
+G4WT0 > 344393	25.752	3.04842	3.04842	0.396011	2.65241	0	0
+G4WT0 > Event N: 345000
+G4WT0 > Event N: 346000
+G4WT0 > Event N: 347000
+G4WT0 > Event N: 348000
+G4WT0 > Event N: 349000
+G4WT0 > Event N: 350000
+G4WT0 > Event N: 351000
+G4WT0 > 351837	39.1417	1.42515	14.6458	0.305722	1.11943	0	0
+G4WT0 > Event N: 352000
+G4WT0 > Event N: 353000
+G4WT0 > Event N: 354000
+G4WT0 > Event N: 355000
+G4WT0 > Event N: 356000
+G4WT0 > Event N: 357000
+G4WT0 > 357828	55.4693	1.75351	26.8396	0.37208	1.38143	0	0
+G4WT0 > Event N: 358000
+G4WT0 > 358826	18.436	4.3451	8.42248	0.464986	3.88012	0	0
+G4WT0 > Event N: 359000
+G4WT0 > Event N: 360000
+G4WT0 > Event N: 361000
+G4WT0 > Event N: 362000
+G4WT0 > Event N: 363000
+G4WT0 > Event N: 364000
+G4WT0 > Event N: 365000
+G4WT0 > 365921	22.1286	2.08829	2.08829	0.411466	1.67683	0	0
+G4WT0 > Event N: 366000
+G4WT0 > Event N: 367000
+G4WT0 > Event N: 368000
+G4WT0 > 368309	17.7181	4.71154	7.7428	0.602811	4.10873	0	0
+G4WT0 > Event N: 369000
+G4WT0 > Event N: 370000
+G4WT0 > 370475	10.1455	3.73744	3.73744	0.855272	2.88217	0	0
+G4WT0 > Event N: 371000
+G4WT0 > Event N: 372000
+G4WT0 > 372794	25.0115	2.08457	2.08457	0.389195	1.69538	0	0
+G4WT0 > Event N: 373000
+G4WT0 > 373679	31.407	2.02165	2.02165	0.361045	1.6606	0	0
+G4WT0 > Event N: 374000
+G4WT0 > Event N: 375000
+G4WT0 > Event N: 376000
+G4WT0 > Event N: 377000
+G4WT0 > 377036	17.8369	4.96385	7.7989	0.517574	4.44628	0	0
+G4WT0 > 377978	55.7863	1.65493	27.0714	0.316101	1.33882	0	0
+G4WT0 > Event N: 378000
+G4WT0 > Event N: 379000
+G4WT0 > Event N: 380000
+G4WT0 > Event N: 381000
+G4WT0 > 381488	25.7433	2.43237	2.43237	0.370626	2.06174	0	0
+G4WT0 > Event N: 382000
+G4WT0 > Event N: 383000
+G4WT0 > Event N: 384000
+G4WT0 > 384087	71.2816	0.703043	15.8656	0.196293	0.506749	0	0
+G4WT0 > 384966	54.514	2.45868	17.8652	0.415971	2.04271	0	0
+G4WT0 > Event N: 385000
+G4WT0 > Event N: 386000
+G4WT0 > 386502	23.512	3.79283	3.79283	0.445043	3.34778	0	0
+G4WT0 > Event N: 387000
+G4WT0 > Event N: 388000
+G4WT0 > Event N: 389000
+G4WT0 > Event N: 390000
+G4WT0 > Event N: 391000
+G4WT0 > Event N: 392000
+G4WT0 > Event N: 393000
+G4WT0 > Event N: 394000
+G4WT0 > Event N: 395000
+G4WT0 > Event N: 396000
+G4WT0 > Event N: 397000
+G4WT0 > Event N: 398000
+G4WT0 > Event N: 399000
+G4WT0 > 399008	19.3509	3.70363	9.61343	0.513701	3.18993	0	0
+G4WT0 > 399570	32.5917	1.10196	1.10196	0.392356	0.709602	0	0
+G4WT0 > 399591	31.3289	1.82107	1.82107	0.3644	1.45667	0	0
+G4WT0 > Event N: 400000
+G4WT0 > Event N: 401000
+G4WT0 > Event N: 402000
+G4WT0 > 402082	40.3048	1.42785	8.36237	0.399153	1.02869	0	0
+G4WT0 > Event N: 403000
+G4WT0 > Event N: 404000
+G4WT0 > Event N: 405000
+G4WT0 > 405153	52.7031	2.43445	2.43445	0.458673	1.97578	0	0
+G4WT0 > Event N: 406000
+G4WT0 > Event N: 407000
+G4WT0 > Event N: 408000
+G4WT0 > Event N: 409000
+G4WT0 > Event N: 410000
+G4WT0 > 410965	18.2219	3.64653	9.1061	0.483816	3.16271	0	0
+G4WT0 > Event N: 411000
+G4WT0 > Event N: 412000
+G4WT0 > 412578	49.0958	2.19168	2.19168	0.361368	1.83031	0	0
+G4WT0 > Event N: 413000
+G4WT0 > Event N: 414000
+G4WT0 > Event N: 415000
+G4WT0 > Event N: 416000
+G4WT0 > 416687	17.6981	6.85568	6.85568	0.571735	6.28394	0	0
+G4WT0 > Event N: 417000
+G4WT0 > Event N: 418000
+G4WT0 > Event N: 419000
+G4WT0 > 419062	22.9246	2.62563	2.62563	0.609719	2.01591	0	0
+G4WT0 > Event N: 420000
+G4WT0 > 420369	41.0669	2.18501	18.552	0.397132	1.78788	0	0
+G4WT0 > Event N: 421000
+G4WT0 > 421660	35.9922	1.58851	1.58851	0.305857	1.28266	0	0
+G4WT0 > Event N: 422000
+G4WT0 > Event N: 423000
+G4WT0 > Event N: 424000
+G4WT0 > Event N: 425000
+G4WT0 > Event N: 426000
+G4WT0 > Event N: 427000
+G4WT0 > Event N: 428000
+G4WT0 > Event N: 429000
+G4WT0 > 429474	23.7408	4.51157	8.19045	0.5939	3.91767	0	0
+G4WT0 > Event N: 430000
+G4WT0 > Event N: 431000
+G4WT0 > Event N: 432000
+G4WT0 > 432561	30.9079	1.8644	1.8644	0.324492	1.53991	0	0
+G4WT0 > Event N: 433000
+G4WT0 > Event N: 434000
+G4WT0 > Event N: 435000
+G4WT0 > Event N: 436000
+G4WT0 > 436872	25.3817	3.24287	3.24287	0.431627	2.81125	0	0
+G4WT0 > Event N: 437000
+G4WT0 > Event N: 438000
+G4WT0 > Event N: 439000
+G4WT0 > 439588	48.1061	2.8796	14.4874	0.580857	2.29874	0	0
+G4WT0 > 439599	16.9958	5.82076	5.82076	0.601199	5.21956	0	0
+G4WT0 > Event N: 440000
+G4WT0 > Event N: 441000
+G4WT0 > Event N: 442000
+G4WT0 > Event N: 443000
+G4WT0 > 443687	41.54	5.9313	5.9313	0.566709	5.36459	0	0
+G4WT0 > Event N: 444000
+G4WT0 > Event N: 445000
+G4WT0 > Event N: 446000
+G4WT0 > Event N: 447000
+G4WT0 > Event N: 448000
+G4WT0 > Event N: 449000
+G4WT0 > Event N: 450000
+G4WT0 > Event N: 451000
+G4WT0 > Event N: 452000
+G4WT0 > Event N: 453000
+G4WT0 > 453474	41.4272	4.13994	9.70278	0.566725	3.57322	0	0
+G4WT0 > Event N: 454000
+G4WT0 > Event N: 455000
+G4WT0 > Event N: 456000
+G4WT0 > Event N: 457000
+G4WT0 > Event N: 458000
+G4WT0 > Event N: 459000
+G4WT0 > Event N: 460000
+G4WT0 > Event N: 461000
+G4WT0 > Event N: 462000
+G4WT0 > Event N: 463000
+G4WT0 > Event N: 464000
+G4WT0 > Event N: 465000
+G4WT0 > Event N: 466000
+G4WT0 > Event N: 467000
+G4WT0 > 467299	20.9835	3.25074	3.25074	0.540908	2.70983	0	0
+G4WT0 > Event N: 468000
+G4WT0 > Event N: 469000
+G4WT0 > Event N: 470000
+G4WT0 > Event N: 471000
+G4WT0 > 471044	48.7716	3.23735	12.3171	0.470088	2.76726	0	0
+G4WT0 > Event N: 472000
+G4WT0 > 472932	27.3888	2.62038	2.62038	0.438046	2.18233	0	0
+G4WT0 > Event N: 473000
+G4WT0 > Event N: 474000
+G4WT0 > Event N: 475000
+G4WT0 > Event N: 476000
+G4WT0 > Event N: 477000
+G4WT0 > Event N: 478000
+G4WT0 > Event N: 479000
+G4WT0 > 479444	56.5894	1.72479	27.974	0.35762	1.36717	0	0
+G4WT0 > Event N: 480000
+G4WT0 > Event N: 481000
+G4WT0 > 481018	49.6662	1.68787	1.68787	0.333381	1.35448	0	0
+G4WT0 > Event N: 482000
+G4WT0 > Event N: 483000
+G4WT0 > Event N: 484000
+G4WT0 > 484207	23.2682	5.57282	5.57282	0.465397	5.10742	0	0
+G4WT0 > 484374	89.7048	18.2761	18.2761	0.271252	18.0048	0	0
+G4WT0 > Event N: 485000
+G4WT0 > 485233	21.3212	2.79955	2.79955	0.509774	2.28977	0	0
+G4WT0 > Event N: 486000
+G4WT0 > Event N: 487000
+G4WT0 > Event N: 488000
+G4WT0 > Event N: 489000
+G4WT0 > Event N: 490000
+G4WT0 > Event N: 491000
+G4WT0 > Event N: 492000
+G4WT0 > Event N: 493000
+G4WT0 > Event N: 494000
+G4WT0 > Event N: 495000
+G4WT0 > Event N: 496000
+G4WT0 > Event N: 497000
+G4WT0 > Event N: 498000
+G4WT0 > 498616	30.4721	5.7918	5.7918	0.542419	5.24939	0	0
+G4WT0 > Event N: 499000
+G4WT0 > Event N: 500000
+G4WT0 > Event N: 501000
+G4WT0 > Event N: 502000
+G4WT0 > 502738	41.6418	2.6949	13.5591	0.486894	2.20801	0	0
+G4WT0 > 502739	35.3173	6.02857	6.02857	0.607746	5.42082	0	0
+G4WT0 > Event N: 503000
+G4WT0 > Event N: 504000
+G4WT0 > Event N: 505000
+G4WT0 > Event N: 506000
+G4WT0 > 506123	39.8115	1.3999	15.1512	0.275382	1.12452	0	0
+G4WT0 > Event N: 507000
+G4WT0 > Event N: 508000
+G4WT0 > Event N: 509000
+G4WT0 > Event N: 510000
+G4WT0 > Event N: 511000
+G4WT0 > Event N: 512000
+G4WT0 > Event N: 513000
+G4WT0 > 513420	59.2877	1.74548	1.74548	0.35553	1.38995	0	0
+G4WT0 > Event N: 514000
+G4WT0 > Event N: 515000
+G4WT0 > 515955	33.9124	4.74294	4.74294	0.455335	4.2876	0	0
+G4WT0 > Event N: 516000
+G4WT0 > Event N: 517000
+G4WT0 > Event N: 518000
+G4WT0 > Event N: 519000
+G4WT0 > Event N: 520000
+G4WT0 > 520881	30.243	1.86755	1.86755	0.33702	1.53053	0	0
+G4WT0 > Event N: 521000
+G4WT0 > Event N: 522000
+G4WT0 > Event N: 523000
+G4WT0 > Event N: 524000
+G4WT0 > Event N: 525000
+G4WT0 > 525121	41.8106	2.83915	14.0106	0.494629	2.34453	0	0
+G4WT0 > Event N: 526000
+G4WT0 > Event N: 527000
+G4WT0 > 527141	24.9874	2.81898	2.81898	0.394106	2.42487	0	0
+G4WT0 > Event N: 528000
+G4WT0 > 528590	16.8905	4.44038	4.44038	0.520426	3.91995	0	0
+G4WT0 > Event N: 529000
+G4WT0 > Event N: 530000
+G4WT0 > Event N: 531000
+G4WT0 > Event N: 532000
+G4WT0 > Event N: 533000
+G4WT0 > Event N: 534000
+G4WT0 > 534569	49.0452	3.74409	3.74409	0.490282	3.2538	0	0
+G4WT0 > Event N: 535000
+G4WT0 > 535873	53.8096	1.56064	7.56705	0.299951	1.26068	0	0
+G4WT0 > Event N: 536000
+G4WT0 > 536074	47.8685	1.61872	15.5109	0.337375	1.28135	0	0
+G4WT0 > Event N: 537000
+G4WT0 > Event N: 538000
+G4WT0 > Event N: 539000
+G4WT0 > Event N: 540000
+G4WT0 > Event N: 541000
+G4WT0 > Event N: 542000
+G4WT0 > Event N: 543000
+G4WT0 > Event N: 544000
+G4WT0 > Event N: 545000
+G4WT0 > Event N: 546000
+G4WT0 > 546105	47.2988	2.21972	11.4835	0.446875	1.77285	0	0
+G4WT0 > Event N: 547000
+G4WT0 > Event N: 548000
+G4WT0 > Event N: 549000
+G4WT0 > Event N: 550000
+G4WT0 > 550720	20.7354	3.0036	3.0036	0.536684	2.46691	0	0
+G4WT0 > Event N: 551000
+G4WT0 > Event N: 552000
+G4WT0 > Event N: 553000
+G4WT0 > Event N: 554000
+G4WT0 > Event N: 555000
+G4WT0 > 555626	38.4394	1.23472	18.0489	0.294823	0.939901	0	0
+G4WT0 > Event N: 556000
+G4WT0 > Event N: 557000
+G4WT0 > Event N: 558000
+G4WT0 > Event N: 559000
+G4WT0 > 559689	21.0227	2.43729	2.43729	0.506717	1.93057	0	0
+G4WT0 > Event N: 560000
+G4WT0 > Event N: 561000
+G4WT0 > 561238	27.1551	2.08537	2.08537	0.45843	1.62694	0	0
+G4WT0 > Event N: 562000
+G4WT0 > Event N: 563000
+G4WT0 > Event N: 564000
+G4WT0 > 564493	12.2905	3.11351	3.11351	0.74087	2.37264	0	0
+G4WT0 > Event N: 565000
+G4WT0 > Event N: 566000
+G4WT0 > Event N: 567000
+G4WT0 > 567198	15.9157	1.94465	1.94465	0.633252	1.3114	0	0
+G4WT0 > Event N: 568000
+G4WT0 > Event N: 569000
+G4WT0 > 569969	25.8681	3.03937	3.03937	0.384677	2.65469	0	0
+G4WT0 > Event N: 570000
+G4WT0 > Event N: 571000
+G4WT0 > 571211	21.5425	2.97932	2.97932	0.474484	2.50484	0	0
+G4WT0 > Event N: 572000
+G4WT0 > Event N: 573000
+G4WT0 > Event N: 574000
+G4WT0 > Event N: 575000
+G4WT0 > 575839	27.061	2.54175	2.54175	0.400596	2.14115	0	0
+G4WT0 > Event N: 576000
+G4WT0 > Event N: 577000
+G4WT0 > Event N: 578000
+G4WT0 > Event N: 579000
+G4WT0 > Event N: 580000
+G4WT0 > Event N: 581000
+G4WT0 > Event N: 582000
+G4WT0 > Event N: 583000
+G4WT0 > Event N: 584000
+G4WT0 > Event N: 585000
+G4WT0 > Event N: 586000
+G4WT0 > Event N: 587000
+G4WT0 > Event N: 588000
+G4WT0 > Event N: 589000
+G4WT0 > Event N: 590000
+G4WT0 > Event N: 591000
+G4WT0 > Event N: 592000
+G4WT0 > Event N: 593000
+G4WT0 > 593119	17.3345	6.21015	6.21015	0.530877	5.67927	0	0
+G4WT0 > Event N: 594000
+G4WT0 > Event N: 595000
+G4WT0 > Event N: 596000
+G4WT0 > 596925	25.0755	1.98217	1.98217	0.346372	1.6358	0	0
+G4WT0 > Event N: 597000
+G4WT0 > Event N: 598000
+G4WT0 > Event N: 599000
+G4WT0 > Event N: 600000
+G4WT0 > 600069	65.5654	1.46716	1.46716	0.285569	1.1816	0	0
+G4WT0 > Event N: 601000
+G4WT0 > 601058	28.3992	3.40432	3.40432	0.425012	2.97931	0	0
+G4WT0 > 601528	27.6713	2.12275	2.12275	0.444866	1.67788	0	0
+G4WT0 > Event N: 602000
+G4WT0 > Event N: 603000
+G4WT0 > Event N: 604000
+G4WT0 > Event N: 605000
+G4WT0 > Event N: 606000
+G4WT0 > Event N: 607000
+G4WT0 > Event N: 608000
+G4WT0 > Event N: 609000
+G4WT0 > 609778	17.1295	5.74876	5.74876	0.629182	5.11958	0	0
+G4WT0 > Event N: 610000
+G4WT0 > Event N: 611000
+G4WT0 > Event N: 612000
+G4WT0 > Event N: 613000
+G4WT0 > Event N: 614000
+G4WT0 > Event N: 615000
+G4WT0 > Event N: 616000
+G4WT0 > Event N: 617000
+G4WT0 > Event N: 618000
+G4WT0 > Event N: 619000
+G4WT0 > Event N: 620000
+G4WT0 > Event N: 621000
+G4WT0 > 621979	40.8438	1.51973	1.51973	0.300053	1.21968	0	0
+G4WT0 > Event N: 622000
+G4WT0 > 622702	16.5272	4.66348	4.66348	0.568068	4.09541	0	0
+G4WT0 > Event N: 623000
+G4WT0 > Event N: 624000
+G4WT0 > Event N: 625000
+G4WT0 > 625082	17.5629	6.24679	7.08672	0.571148	5.67564	0	0
+G4WT0 > Event N: 626000
+G4WT0 > Event N: 627000
+G4WT0 > Event N: 628000
+G4WT0 > Event N: 629000
+G4WT0 > Event N: 630000
+G4WT0 > Event N: 631000
+G4WT0 > Event N: 632000
+G4WT0 > Event N: 633000
+G4WT0 > Event N: 634000
+G4WT0 > Event N: 635000
+G4WT0 > 635612	52.7563	1.37599	10.3583	0.315339	1.06066	0	0
+G4WT0 > Event N: 636000
+G4WT0 > 636558	58.134	1.30733	28.2519	0.255623	1.05171	0	0
+G4WT0 > Event N: 637000
+G4WT0 > Event N: 638000
+G4WT0 > Event N: 639000
+G4WT0 > 639182	17.0763	4.8204	4.8204	0.653037	4.16736	0	0
+G4WT0 > Event N: 640000
+G4WT0 > Event N: 641000
+G4WT0 > 641466	29.2972	1.97755	1.97755	0.394217	1.58333	0	0
+G4WT0 > Event N: 642000
+G4WT0 > Event N: 643000
+G4WT0 > Event N: 644000
+G4WT0 > 644010	63.0373	0.573147	8.10647	0.290467	0.282679	0	0
+G4WT0 > Event N: 645000
+G4WT0 > Event N: 646000
+G4WT0 > Event N: 647000
+G4WT0 > Event N: 648000
+G4WT0 > Event N: 649000
+G4WT0 > 649100	31.2449	1.76741	1.76741	0.382278	1.38513	0	0
+G4WT0 > Event N: 650000
+G4WT0 > Event N: 651000
+G4WT0 > 651259	27.7308	2.16008	2.16008	0.377077	1.783	0	0
+G4WT0 > Event N: 652000
+G4WT0 > Event N: 653000
+G4WT0 > Event N: 654000
+G4WT0 > Event N: 655000
+G4WT0 > Event N: 656000
+G4WT0 > Event N: 657000
+G4WT0 > Event N: 658000
+G4WT0 > 658914	19.2516	4.09202	4.09202	0.555007	3.53701	0	0
+G4WT0 > Event N: 659000
+G4WT0 > Event N: 660000
+G4WT0 > Event N: 661000
+G4WT0 > Event N: 662000
+G4WT0 > Event N: 663000
+G4WT0 > Event N: 664000
+G4WT0 > 664870	16.4323	3.25785	3.25785	0.621178	2.63667	0	0
+G4WT0 > Event N: 665000
+G4WT0 > 665391	16.838	5.2823	5.2823	0.570306	4.712	0	0
+G4WT0 > Event N: 666000
+G4WT0 > Event N: 667000
+G4WT0 > 667922	22.2048	1.87005	1.87005	0.370677	1.49937	0	0
+G4WT0 > Event N: 668000
+G4WT0 > Event N: 669000
+G4WT0 > Event N: 670000
+G4WT0 > Event N: 671000
+G4WT0 > Event N: 672000
+G4WT0 > 672288	16.2634	1.24422	1.24422	0.639334	0.604881	0	0
+G4WT0 > Event N: 673000
+G4WT0 > Event N: 674000
+G4WT0 > 674432	57.0201	2.09286	2.09286	0.367752	1.72511	0	0
+G4WT0 > Event N: 675000
+G4WT0 > Event N: 676000
+G4WT0 > Event N: 677000
+G4WT0 > Event N: 678000
+G4WT0 > Event N: 679000
+G4WT0 > 679697	19.0162	4.40236	9.04064	0.552843	3.84951	0	0
+G4WT0 > Event N: 680000
+G4WT0 > Event N: 681000
+G4WT0 > Event N: 682000
+G4WT0 > 682742	73.4612	0.655929	24.5222	0.1542	0.501729	0	0
+G4WT0 > Event N: 683000
+G4WT0 > 683511	55.3464	1.86609	1.86609	0.34661	1.51948	0	0
+G4WT0 > Event N: 684000
+G4WT0 > 684910	17.469	5.19918	7.34615	0.53021	4.66897	0	0
+G4WT0 > Event N: 685000
+G4WT0 > Event N: 686000
+G4WT0 > 686535	67.7762	1.02825	22.9207	0.26563	0.762618	0	0
+G4WT0 > Event N: 687000
+G4WT0 > Event N: 688000
+G4WT0 > Event N: 689000
+G4WT0 > Event N: 690000
+G4WT0 > Event N: 691000
+G4WT0 > Event N: 692000
+G4WT0 > Event N: 693000
+G4WT0 > Event N: 694000
+G4WT0 > 694889	18.1563	5.02808	8.06525	0.594644	4.43343	0	0
+G4WT0 > Event N: 695000
+G4WT0 > 695548	34.4761	1.85814	14.5799	0.486935	1.3712	0	0
+G4WT0 > Event N: 696000
+G4WT0 > 696425	54.5916	1.81676	1.81676	0.316904	1.49985	0	0
+G4WT0 > 696530	29.036	2.31322	2.31322	0.398671	1.91455	0	0
+G4WT0 > Event N: 697000
+G4WT0 > 697094	19.0218	4.05876	4.05876	0.529464	3.5293	0	0
+G4WT0 > Event N: 698000
+G4WT0 > Event N: 699000
+G4WT0 > Event N: 700000
+G4WT0 > Event N: 701000
+G4WT0 > Event N: 702000
+G4WT0 > 702686	50.916	2.13215	23.3029	0.45424	1.67791	0	0
+G4WT0 > Event N: 703000
+G4WT0 > 703898	16.9082	5.42943	5.42943	0.634376	4.79505	0	0
+G4WT0 > Event N: 704000
+G4WT0 > Event N: 705000
+G4WT0 > Event N: 706000
+G4WT0 > 706482	48.1952	3.26323	3.26323	0.628224	2.635	0	0
+G4WT0 > Event N: 707000
+G4WT0 > Event N: 708000
+G4WT0 > Event N: 709000
+G4WT0 > 709366	17.8341	6.84341	6.84341	0.554923	6.28848	0	0
+G4WT0 > Event N: 710000
+G4WT0 > Event N: 711000
+G4WT0 > Event N: 712000
+G4WT0 > 712105	17.9035	4.88761	7.80286	0.550929	4.33668	0	0
+G4WT0 > Event N: 713000
+G4WT0 > 713628	32.8983	1.66543	1.66543	0.330483	1.33494	0	0
+G4WT0 > Event N: 714000
+G4WT0 > 714708	40.79	5.6033	5.6033	0.580786	5.02252	0	0
+G4WT0 > Event N: 715000
+G4WT0 > Event N: 716000
+G4WT0 > Event N: 717000
+G4WT0 > 717389	48.7226	4.08522	10.3223	0.606453	3.47876	0	0
+G4WT0 > Event N: 718000
+G4WT0 > Event N: 719000
+G4WT0 > 719992	26.8856	2.5441	2.5441	0.362185	2.18191	0	0
+G4WT0 > Event N: 720000
+G4WT0 > Event N: 721000
+G4WT0 > Event N: 722000
+G4WT0 > Event N: 723000
+G4WT0 > Event N: 724000
+G4WT0 > Event N: 725000
+G4WT0 > Event N: 726000
+G4WT0 > Event N: 727000
+G4WT0 > Event N: 728000
+G4WT0 > Event N: 729000
+G4WT0 > Event N: 730000
+G4WT0 > 730932	27.5198	2.05619	2.05619	0.406094	1.65009	0	0
+G4WT0 > Event N: 731000
+G4WT0 > Event N: 732000
+G4WT0 > Event N: 733000
+G4WT0 > 733798	58.5793	1.80831	5.50039	0.38669	1.42162	0	0
+G4WT0 > Event N: 734000
+G4WT0 > Event N: 735000
+G4WT0 > Event N: 736000
+G4WT0 > Event N: 737000
+G4WT0 > Event N: 738000
+G4WT0 > Event N: 739000
+G4WT0 > 739893	40.6034	2.28692	2.28692	0.415818	1.87111	0	0
+G4WT0 > Event N: 740000
+G4WT0 > Event N: 741000
+G4WT0 > Event N: 742000
+G4WT0 > Event N: 743000
+G4WT0 > Event N: 744000
+G4WT0 > Event N: 745000
+G4WT0 > Event N: 746000
+G4WT0 > Event N: 747000
+G4WT0 > Event N: 748000
+G4WT0 > Event N: 749000
+G4WT0 > 749634	26.2085	2.1897	2.1897	0.460715	1.72898	0	0
+G4WT0 > Event N: 750000
+G4WT0 > Event N: 751000
+G4WT0 > 751971	53.0765	1.95947	22.5598	0.389437	1.57003	0	0
+G4WT0 > Event N: 752000
+G4WT0 > Event N: 753000
+G4WT0 > Event N: 754000
+G4WT0 > Event N: 755000
+G4WT0 > 755450	17.9137	6.16888	7.28404	0.55912	5.60976	0	0
+G4WT0 > Event N: 756000
+G4WT0 > Event N: 757000
+G4WT0 > 757671	30.1062	4.63855	4.63855	0.571992	4.06656	0	0
+G4WT0 > Event N: 758000
+G4WT0 > Event N: 759000
+G4WT0 > Event N: 760000
+G4WT0 > 760523	30.3093	1.86222	14.2212	0.397675	1.46454	0	0
+G4WT0 > 760858	52.7818	2.00579	20.7488	0.401807	1.60398	0	0
+G4WT0 > Event N: 761000
+G4WT0 > Event N: 762000
+G4WT0 > Event N: 763000
+G4WT0 > Event N: 764000
+G4WT0 > 764906	48.0365	3.64883	10.2586	0.45656	3.19227	0	0
+G4WT0 > Event N: 765000
+G4WT0 > Event N: 766000
+G4WT0 > Event N: 767000
+G4WT0 > Event N: 768000
+G4WT0 > Event N: 769000
+G4WT0 > Event N: 770000
+G4WT0 > Event N: 771000
+G4WT0 > 771358	37.0301	1.08166	4.71355	0.273961	0.807699	0	0
+G4WT0 > Event N: 772000
+G4WT0 > Event N: 773000
+G4WT0 > Event N: 774000
+G4WT0 > Event N: 775000
+G4WT0 > Event N: 776000
+G4WT0 > Event N: 777000
+G4WT0 > Event N: 778000
+G4WT0 > Event N: 779000
+G4WT0 > Event N: 780000
+G4WT0 > Event N: 781000
+G4WT0 > Event N: 782000
+G4WT0 > Event N: 783000
+G4WT0 > Event N: 784000
+G4WT0 > Event N: 785000
+G4WT0 > 785193	27.9057	2.51105	2.51105	0.356681	2.15437	0	0
+G4WT0 > 785393	54.8869	1.91886	23.6814	0.399011	1.51985	0	0
+G4WT0 > 785559	37.9841	1.08844	1.08844	0.285778	0.802662	0	0
+G4WT0 > Event N: 786000
+G4WT0 > Event N: 787000
+G4WT0 > Event N: 788000
+G4WT0 > Event N: 789000
+G4WT0 > Event N: 790000
+G4WT0 > Event N: 791000
+G4WT0 > Event N: 792000
+G4WT0 > 792054	43.0616	2.78837	14.4975	0.461914	2.32646	0	0
+G4WT0 > Event N: 793000
+G4WT0 > Event N: 794000
+G4WT0 > Event N: 795000
+G4WT0 > Event N: 796000
+G4WT0 > Event N: 797000
+G4WT0 > Event N: 798000
+G4WT0 > 798424	39.2062	6.56143	6.56143	0.559987	6.00145	0	0
+G4WT0 > Event N: 799000
+G4WT0 > 799661	27.5831	2.53946	2.53946	0.369153	2.17031	0	0
+G4WT0 > Event N: 800000
+G4WT0 > Event N: 801000
+G4WT0 > Event N: 802000
+G4WT0 > Event N: 803000
+G4WT0 > Event N: 804000
+G4WT0 > 804213	33.1067	1.91888	1.91888	0.380362	1.53852	0	0
+G4WT0 > Event N: 805000
+G4WT0 > Event N: 806000
+G4WT0 > Event N: 807000
+G4WT0 > 807158	30.074	1.88092	1.88092	0.364706	1.51621	0	0
+G4WT0 > Event N: 808000
+G4WT0 > Event N: 809000
+G4WT0 > Event N: 810000
+G4WT0 > Event N: 811000
+G4WT0 > Event N: 812000
+G4WT0 > Event N: 813000
+G4WT0 > Event N: 814000
+G4WT0 > Event N: 815000
+G4WT0 > Event N: 816000
+G4WT0 > Event N: 817000
+G4WT0 > Event N: 818000
+G4WT0 > Event N: 819000
+G4WT0 > Event N: 820000
+G4WT0 > 820040	43.6004	1.37957	15.2502	0.266899	1.11267	0	0
+G4WT0 > Event N: 821000
+G4WT0 > Event N: 822000
+G4WT0 > Event N: 823000
+G4WT0 > Event N: 824000
+G4WT0 > 824943	24.5356	2.21012	2.21012	0.414775	1.79535	0	0
+G4WT0 > Event N: 825000
+G4WT0 > Event N: 826000
+G4WT0 > Event N: 827000
+G4WT0 > Event N: 828000
+G4WT0 > 828086	42.7562	1.92254	18.3394	0.437184	1.48536	0	0
+G4WT0 > Event N: 829000
+G4WT0 > Event N: 830000
+G4WT0 > Event N: 831000
+G4WT0 > Event N: 832000
+G4WT0 > Event N: 833000
+G4WT0 > Event N: 834000
+G4WT0 > Event N: 835000
+G4WT0 > Event N: 836000
+G4WT0 > Event N: 837000
+G4WT0 > Event N: 838000
+G4WT0 > Event N: 839000
+G4WT0 > Event N: 840000
+G4WT0 > 840980	50.6362	4.27728	10.4588	0.604566	3.67272	0	0
+G4WT0 > Event N: 841000
+G4WT0 > Event N: 842000
+G4WT0 > Event N: 843000
+G4WT0 > Event N: 844000
+G4WT0 > Event N: 845000
+G4WT0 > Event N: 846000
+G4WT0 > 846529	31.4716	6.40001	6.40001	0.543889	5.85612	0	0
+G4WT0 > 846847	36.6625	2.23758	2.23758	0.547367	1.69021	0	0
+G4WT0 > Event N: 847000
+G4WT0 > Event N: 848000
+G4WT0 > Event N: 849000
+G4WT0 > Event N: 850000
+G4WT0 > 850844	21.9351	3.83989	3.83989	0.403808	3.43608	0	0
+G4WT0 > Event N: 851000
+G4WT0 > 851439	32.6466	3.75497	10.7959	0.541583	3.21339	0	0
+G4WT0 > Event N: 852000
+G4WT0 > Event N: 853000
+G4WT0 > Event N: 854000
+G4WT0 > Event N: 855000
+G4WT0 > 855322	20.3353	1.88001	1.88001	0.390483	1.48953	0	0
+G4WT0 > Event N: 856000
+G4WT0 > Event N: 857000
+G4WT0 > Event N: 858000
+G4WT0 > Event N: 859000
+G4WT0 > Event N: 860000
+G4WT0 > 860808	53.1277	3.00633	3.00633	0.501128	2.5052	0	0
+G4WT0 > Event N: 861000
+G4WT0 > 861787	39.2708	1.47378	17.1238	0.324954	1.14883	0	0
+G4WT0 > Event N: 862000
+G4WT0 > Event N: 863000
+G4WT0 > Event N: 864000
+G4WT0 > Event N: 865000
+G4WT0 > 865880	32.3563	1.88915	1.88915	0.39297	1.49618	0	0
+G4WT0 > Event N: 866000
+G4WT0 > 866162	72.3253	0.723162	13.473	0.197956	0.525206	0	0
+G4WT0 > Event N: 867000
+G4WT0 > Event N: 868000
+G4WT0 > 868804	53.9452	1.85012	19.7721	0.358268	1.49185	0	0
+G4WT0 > Event N: 869000
+G4WT0 > 869394	21.8893	2.7921	2.7921	0.459826	2.33228	0	0
+G4WT0 > Event N: 870000
+G4WT0 > Event N: 871000
+G4WT0 > 871937	32.4832	2.36462	2.36462	0.421964	1.94265	0	0
+G4WT0 > Event N: 872000
+G4WT0 > 872069	37.145	1.49641	10.8141	0.310968	1.18544	0	0
+G4WT0 > Event N: 873000
+G4WT0 > Event N: 874000
+G4WT0 > Event N: 875000
+G4WT0 > 875863	40.4251	1.64833	1.64833	0.351665	1.29666	0	0
+G4WT0 > Event N: 876000
+G4WT0 > Event N: 877000
+G4WT0 > Event N: 878000
+G4WT0 > 878983	61.2521	1.5459	29.2599	0.293304	1.25259	0	0
+G4WT0 > Event N: 879000
+G4WT0 > 879339	18.3878	5.36325	5.36325	0.539848	4.8234	0	0
+G4WT0 > Event N: 880000
+G4WT0 > 880180	16.2714	1.97924	1.97924	0.530542	1.4487	0	0
+G4WT0 > Event N: 881000
+G4WT0 > Event N: 882000
+G4WT0 > 882576	40.8811	1.91539	1.91539	0.393377	1.52201	0	0
+G4WT0 > Event N: 883000
+G4WT0 > Event N: 884000
+G4WT0 > Event N: 885000
+G4WT0 > Event N: 886000
+G4WT0 > Event N: 887000
+G4WT0 > Event N: 888000
+G4WT0 > Event N: 889000
+G4WT0 > 889878	40.9912	1.6001	6.75815	0.323029	1.27707	0	0
+G4WT0 > Event N: 890000
+G4WT0 > Event N: 891000
+G4WT0 > Event N: 892000
+G4WT0 > Event N: 893000
+G4WT0 > Event N: 894000
+G4WT0 > Event N: 895000
+G4WT0 > 895955	29.6403	1.18769	1.18769	0.369636	0.818057	0	0
+G4WT0 > Event N: 896000
+G4WT0 > Event N: 897000
+G4WT0 > Event N: 898000
+G4WT0 > Event N: 899000
+G4WT0 > Event N: 900000
+G4WT0 > Event N: 901000
+G4WT0 > Event N: 902000
+G4WT0 > Event N: 903000
+G4WT0 > 903610	28.0555	1.76614	1.76614	0.324766	1.44137	0	0
+G4WT0 > Event N: 904000
+G4WT0 > Event N: 905000
+G4WT0 > Event N: 906000
+G4WT0 > Event N: 907000
+G4WT0 > 907734	28.9527	2.35092	2.35092	0.465534	1.88539	0	0
+G4WT0 > Event N: 908000
+G4WT0 > Event N: 909000
+G4WT0 > 909552	33.7186	1.73565	1.73565	0.332804	1.40285	0	0
+G4WT0 > Event N: 910000
+G4WT0 > 910117	36.6981	1.43898	1.43898	0.282195	1.15679	0	0
+G4WT0 > Event N: 911000
+G4WT0 > Event N: 912000
+G4WT0 > Event N: 913000
+G4WT0 > 913626	48.4855	2.53156	14.6442	0.443643	2.08792	0	0
+G4WT0 > Event N: 914000
+G4WT0 > Event N: 915000
+G4WT0 > Event N: 916000
+G4WT0 > 916028	27.02	2.11977	12.3372	0.391929	1.72784	0	0
+G4WT0 > Event N: 917000
+G4WT0 > Event N: 918000
+G4WT0 > Event N: 919000
+G4WT0 > 919468	27.4944	1.89205	11.5016	0.444616	1.44743	0	0
+G4WT0 > Event N: 920000
+G4WT0 > 920383	24.898	2.33876	2.33876	0.481255	1.85751	0	0
+G4WT0 > Event N: 921000
+G4WT0 > 921812	24.4592	2.22277	2.22277	0.454288	1.76849	0	0
+G4WT0 > Event N: 922000
+G4WT0 > Event N: 923000
+G4WT0 > Event N: 924000
+G4WT0 > Event N: 925000
+G4WT0 > Event N: 926000
+G4WT0 > Event N: 927000
+G4WT0 > 927018	35.8492	1.38792	6.98915	0.326313	1.06161	0	0
+G4WT0 > Event N: 928000
+G4WT0 > 928037	21.9526	5.02361	5.02361	0.423758	4.59985	0	0
+G4WT0 > Event N: 929000
+G4WT0 > 929004	26.6412	1.99621	1.99621	0.415907	1.5803	0	0
+G4WT0 > Event N: 930000
+G4WT0 > Event N: 931000
+G4WT0 > Event N: 932000
+G4WT0 > Event N: 933000
+G4WT0 > Event N: 934000
+G4WT0 > Event N: 935000
+G4WT0 > 935232	55.3251	1.4828	17.3026	0.332536	1.15026	0	0
+G4WT0 > Event N: 936000
+G4WT0 > 936200	55.5121	1.8303	25.7931	0.401069	1.42923	0	0
+G4WT0 > 936694	29.5567	2.19931	2.19931	0.395598	1.80372	0	0
+G4WT0 > Event N: 937000
+G4WT0 > Event N: 938000
+G4WT0 > 938863	52.527	2.86067	21.539	0.474014	2.38666	0	0
+G4WT0 > Event N: 939000
+G4WT0 > Event N: 940000
+G4WT0 > Event N: 941000
+G4WT0 > 941356	33.9101	1.37613	14.7373	0.269374	1.10675	0	0
+G4WT0 > Event N: 942000
+G4WT0 > Event N: 943000
+G4WT0 > Event N: 944000
+G4WT0 > Event N: 945000
+G4WT0 > Event N: 946000
+G4WT0 > Event N: 947000
+G4WT0 > Event N: 948000
+G4WT0 > Event N: 949000
+G4WT0 > Event N: 950000
+G4WT0 > 950812	17.2489	6.76407	6.79988	0.552147	6.21192	0	0
+G4WT0 > Event N: 951000
+G4WT0 > Event N: 952000
+G4WT0 > Event N: 953000
+G4WT0 > 953455	34.7947	1.65693	1.65693	0.390979	1.26595	0	0
+G4WT0 > Event N: 954000
+G4WT0 > Event N: 955000
+G4WT0 > Event N: 956000
+G4WT0 > 956550	50.626	2.56058	16.6497	0.433424	2.12715	0	0
+G4WT0 > Event N: 957000
+G4WT0 > Event N: 958000
+G4WT0 > Event N: 959000
+G4WT0 > Event N: 960000
+G4WT0 > Event N: 961000
+G4WT0 > 961925	18.5929	4.31172	8.58019	0.51728	3.79444	0	0
+G4WT0 > Event N: 962000
+G4WT0 > Event N: 963000
+G4WT0 > 963174	31.4402	1.93674	14.7495	0.445229	1.49151	0	0
+G4WT0 > Event N: 964000
+G4WT0 > Event N: 965000
+G4WT0 > Event N: 966000
+G4WT0 > Event N: 967000
+G4WT0 > Event N: 968000
+G4WT0 > Event N: 969000
+G4WT0 > Event N: 970000
+G4WT0 > Event N: 971000
+G4WT0 > Event N: 972000
+G4WT0 > Event N: 973000
+G4WT0 > 973157	26.4158	2.69918	2.69918	0.421419	2.27776	0	0
+G4WT0 > Event N: 974000
+G4WT0 > 974859	17.1147	5.87523	5.87523	0.550742	5.32449	0	0
+G4WT0 > Event N: 975000
+G4WT0 > Event N: 976000
+G4WT0 > Event N: 977000
+G4WT0 > Event N: 978000
+G4WT0 > Event N: 979000
+G4WT0 > Event N: 980000
+G4WT0 > Event N: 981000
+G4WT0 > 981869	36.422	4.07957	8.41589	0.335584	3.74398	0	0
+G4WT0 > Event N: 982000
+G4WT0 > Event N: 983000
+G4WT0 > 983990	60.7683	1.64633	1.64633	0.370303	1.27602	0	0
+G4WT0 > Event N: 984000
+G4WT0 > Event N: 985000
+G4WT0 > Event N: 986000
+G4WT0 > 986982	50.7176	2.01838	7.93138	0.455899	1.56248	0	0
+G4WT0 > Event N: 987000
+G4WT0 > Event N: 988000
+G4WT0 > Event N: 989000
+G4WT0 > 989203	25.6669	3.58229	10.8329	0.563043	3.01925	0	0
+G4WT0 > 989305	52.4993	2.60606	2.60606	0.536817	2.06925	0	0
+G4WT0 > Event N: 990000
+G4WT0 > 990259	49.6704	1.47738	22.0914	0.388525	1.08885	0	0
+G4WT0 > 990980	39.2496	2.24543	16.995	0.540221	1.70521	0	0
+G4WT0 > Event N: 991000
+G4WT0 > Event N: 992000
+G4WT0 > 992708	16.4224	3.96399	3.96399	0.603692	3.3603	0	0
+G4WT0 > Event N: 993000
+G4WT0 > 993426	38.286	3.86585	8.52924	0.421723	3.44413	0	0
+G4WT0 > Event N: 994000
+G4WT0 > Event N: 995000
+G4WT0 > Event N: 996000
+G4WT0 > Event N: 997000
+G4WT0 > 997077	16.4826	3.91176	3.91176	0.687302	3.22446	0	0
+G4WT0 > Event N: 998000
+G4WT0 > 998120	54.8238	2.46639	17.7575	0.479746	1.98665	0	0
+G4WT0 > Event N: 999000
+G4WT0 > Event N: 1000000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 1000000
+G4WT0 > [thread 0]   User=0.010000s Real=0.007996s Sys=0.000000s [Cpu=125.1%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/proton_j6_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/proton_j6_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 1000000
+  User=322.630000s Real=324.237186s Sys=0.160000s [Cpu=99.6%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+### Run 2 starts.
+
+==============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 1000 tasks with 1000 events/task...
+==============================================================================================
+
+G4WT0 > ### Run 2 starts on worker thread 0.
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/alpha_j6_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/alpha_j6.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/alpha_j6.root - done
+G4WT0 > Event N: 1000
+G4WT0 > Event N: 2000
+G4WT0 > Event N: 3000
+G4WT0 > Event N: 4000
+G4WT0 > Event N: 5000
+G4WT0 > Event N: 6000
+G4WT0 > Event N: 7000
+G4WT0 > Event N: 8000
+G4WT0 > Event N: 9000
+G4WT0 > Event N: 10000
+G4WT0 > Event N: 11000
+G4WT0 > Event N: 12000
+G4WT0 > Event N: 13000
+G4WT0 > Event N: 14000
+G4WT0 > Event N: 15000
+G4WT0 > Event N: 16000
+G4WT0 > Event N: 17000
+G4WT0 > Event N: 18000
+G4WT0 > Event N: 19000
+G4WT0 > Event N: 20000
+G4WT0 > Event N: 21000
+G4WT0 > Event N: 22000
+G4WT0 > Event N: 23000
+G4WT0 > Event N: 24000
+G4WT0 > Event N: 25000
+G4WT0 > Event N: 26000
+G4WT0 > Event N: 27000
+G4WT0 > Event N: 28000
+G4WT0 > Event N: 29000
+G4WT0 > Event N: 30000
+G4WT0 > Event N: 31000
+G4WT0 > Event N: 32000
+G4WT0 > Event N: 33000
+G4WT0 > Event N: 34000
+G4WT0 > 34745	194.312	12.3661	53.5147	2.04884	10.3172	0	0
+G4WT0 > Event N: 35000
+G4WT0 > 35132	168.811	10.028	67.6326	1.92166	8.10638	0	0
+G4WT0 > Event N: 36000
+G4WT0 > Event N: 37000
+G4WT0 > Event N: 38000
+G4WT0 > Event N: 39000
+G4WT0 > Event N: 40000
+G4WT0 > Event N: 41000
+G4WT0 > Event N: 42000
+G4WT0 > Event N: 43000
+G4WT0 > Event N: 44000
+G4WT0 > Event N: 45000
+G4WT0 > Event N: 46000
+G4WT0 > Event N: 47000
+G4WT0 > Event N: 48000
+G4WT0 > Event N: 49000
+G4WT0 > Event N: 50000
+G4WT0 > Event N: 51000
+G4WT0 > Event N: 52000
+G4WT0 > Event N: 53000
+G4WT0 > Event N: 54000
+G4WT0 > Event N: 55000
+G4WT0 > Event N: 56000
+G4WT0 > Event N: 57000
+G4WT0 > 57150	89.3182	11.1867	11.1867	1.90896	9.27772	0	0
+G4WT0 > 57942	143.812	6.54863	6.54863	1.57206	4.97657	0	0
+G4WT0 > Event N: 58000
+G4WT0 > Event N: 59000
+G4WT0 > Event N: 60000
+G4WT0 > Event N: 61000
+G4WT0 > Event N: 62000
+G4WT0 > Event N: 63000
+G4WT0 > Event N: 64000
+G4WT0 > Event N: 65000
+G4WT0 > Event N: 66000
+G4WT0 > Event N: 67000
+G4WT0 > Event N: 68000
+G4WT0 > Event N: 69000
+G4WT0 > Event N: 70000
+G4WT0 > Event N: 71000
+G4WT0 > Event N: 72000
+G4WT0 > 72635	192.175	24.7099	24.7099	1.86935	22.8405	0	0
+G4WT0 > 72689	98.3784	9.5172	9.5172	1.77543	7.74177	0	0
+G4WT0 > Event N: 73000
+G4WT0 > 73581	92.4967	20.5042	20.5042	1.9765	18.5277	0	0
+G4WT0 > Event N: 74000
+G4WT0 > Event N: 75000
+G4WT0 > Event N: 76000
+G4WT0 > Event N: 77000
+G4WT0 > Event N: 78000
+G4WT0 > Event N: 79000
+G4WT0 > Event N: 80000
+G4WT0 > Event N: 81000
+G4WT0 > Event N: 82000
+G4WT0 > Event N: 83000
+G4WT0 > Event N: 84000
+G4WT0 > Event N: 85000
+G4WT0 > Event N: 86000
+G4WT0 > Event N: 87000
+G4WT0 > Event N: 88000
+G4WT0 > Event N: 89000
+G4WT0 > Event N: 90000
+G4WT0 > Event N: 91000
+G4WT0 > 91866	121.502	11.1694	56.2821	2.02052	9.14891	0	0
+G4WT0 > Event N: 92000
+G4WT0 > Event N: 93000
+G4WT0 > Event N: 94000
+G4WT0 > 94829	151.017	1.88388	1.88388	1.07361	0.81027	0	0
+G4WT0 > Event N: 95000
+G4WT0 > Event N: 96000
+G4WT0 > Event N: 97000
+G4WT0 > Event N: 98000
+G4WT0 > Event N: 99000
+G4WT0 > Event N: 100000
+G4WT0 > Event N: 101000
+G4WT0 > Event N: 102000
+G4WT0 > Event N: 103000
+G4WT0 > Event N: 104000
+G4WT0 > Event N: 105000
+G4WT0 > Event N: 106000
+G4WT0 > 106693	211.745	8.36564	85.1876	1.8369	6.52875	0	0
+G4WT0 > Event N: 107000
+G4WT0 > Event N: 108000
+G4WT0 > 108390	126.6	7.29034	7.29034	1.35406	5.93628	0	0
+G4WT0 > Event N: 109000
+G4WT0 > 109564	296.17	3.18882	136.182	0.869059	2.31977	0	0
+G4WT0 > Event N: 110000
+G4WT0 > Event N: 111000
+G4WT0 > Event N: 112000
+G4WT0 > Event N: 113000
+G4WT0 > Event N: 114000
+G4WT0 > Event N: 115000
+G4WT0 > Event N: 116000
+G4WT0 > Event N: 117000
+G4WT0 > Event N: 118000
+G4WT0 > Event N: 119000
+G4WT0 > Event N: 120000
+G4WT0 > 120287	125.342	26.4435	26.4435	1.69498	24.7485	0	0
+G4WT0 > Event N: 121000
+G4WT0 > Event N: 122000
+G4WT0 > 122802	131.732	10.192	10.192	1.85276	8.33926	0	0
+G4WT0 > Event N: 123000
+G4WT0 > 123106	225.218	7.01827	7.01827	1.1855	5.83277	0	0
+G4WT0 > Event N: 124000
+G4WT0 > Event N: 125000
+G4WT0 > Event N: 126000
+G4WT0 > Event N: 127000
+G4WT0 > Event N: 128000
+G4WT0 > Event N: 129000
+G4WT0 > Event N: 130000
+G4WT0 > Event N: 131000
+G4WT0 > Event N: 132000
+G4WT0 > 132336	207.418	8.386	81.8386	1.68316	6.70285	0	0
+G4WT0 > Event N: 133000
+G4WT0 > Event N: 134000
+G4WT0 > Event N: 135000
+G4WT0 > Event N: 136000
+G4WT0 > Event N: 137000
+G4WT0 > Event N: 138000
+G4WT0 > 138686	143.403	6.48881	24.4526	1.35706	5.13176	0	0
+G4WT0 > Event N: 139000
+G4WT0 > Event N: 140000
+G4WT0 > Event N: 141000
+G4WT0 > Event N: 142000
+G4WT0 > Event N: 143000
+G4WT0 > Event N: 144000
+G4WT0 > 144689	216.116	7.59495	98.309	1.60273	5.99222	0	0
+G4WT0 > 144793	99.5876	8.81365	8.81365	1.79637	7.01728	0	0
+G4WT0 > Event N: 145000
+G4WT0 > 145745	80.1003	4.21492	4.21492	1.77583	2.43909	0	0
+G4WT0 > Event N: 146000
+G4WT0 > Event N: 147000
+G4WT0 > Event N: 148000
+G4WT0 > Event N: 149000
+G4WT0 > Event N: 150000
+G4WT0 > Event N: 151000
+G4WT0 > Event N: 152000
+G4WT0 > 152754	133.205	6.4726	64.9604	1.41115	5.06145	0	0
+G4WT0 > Event N: 153000
+G4WT0 > Event N: 154000
+G4WT0 > Event N: 155000
+G4WT0 > Event N: 156000
+G4WT0 > Event N: 157000
+G4WT0 > 157944	104.509	8.9923	8.9923	1.61155	7.38075	0	0
+G4WT0 > Event N: 158000
+G4WT0 > Event N: 159000
+G4WT0 > Event N: 160000
+G4WT0 > Event N: 161000
+G4WT0 > Event N: 162000
+G4WT0 > Event N: 163000
+G4WT0 > 163535	190.591	8.71535	8.71535	1.46625	7.2491	0	0
+G4WT0 > Event N: 164000
+G4WT0 > Event N: 165000
+G4WT0 > Event N: 166000
+G4WT0 > Event N: 167000
+G4WT0 > Event N: 168000
+G4WT0 > Event N: 169000
+G4WT0 > Event N: 170000
+G4WT0 > Event N: 171000
+G4WT0 > 171367	134.861	11.7643	51.8521	2.05085	9.71342	0	0
+G4WT0 > Event N: 172000
+G4WT0 > Event N: 173000
+G4WT0 > 173849	136.447	6.03415	62.3101	1.29883	4.73531	0	0
+G4WT0 > Event N: 174000
+G4WT0 > Event N: 175000
+G4WT0 > Event N: 176000
+G4WT0 > Event N: 177000
+G4WT0 > Event N: 178000
+G4WT0 > Event N: 179000
+G4WT0 > Event N: 180000
+G4WT0 > Event N: 181000
+G4WT0 > 181083	98.0097	24.1258	24.1258	1.89098	22.2348	0	0
+G4WT0 > Event N: 182000
+G4WT0 > Event N: 183000
+G4WT0 > 183406	204.099	11.2669	60.0976	2.03201	9.23491	0	0
+G4WT0 > Event N: 184000
+G4WT0 > 184080	248.917	5.86652	62.3945	1.39151	4.47501	0	0
+G4WT0 > Event N: 185000
+G4WT0 > Event N: 186000
+G4WT0 > Event N: 187000
+G4WT0 > Event N: 188000
+G4WT0 > Event N: 189000
+G4WT0 > Event N: 190000
+G4WT0 > Event N: 191000
+G4WT0 > Event N: 192000
+G4WT0 > Event N: 193000
+G4WT0 > Event N: 194000
+G4WT0 > Event N: 195000
+G4WT0 > Event N: 196000
+G4WT0 > Event N: 197000
+G4WT0 > Event N: 198000
+G4WT0 > 198621	116.252	8.05291	8.05291	1.47671	6.5762	0	0
+G4WT0 > Event N: 199000
+G4WT0 > Event N: 200000
+G4WT0 > Event N: 201000
+G4WT0 > 201203	166.642	8.36908	8.36908	1.83313	6.53595	0	0
+G4WT0 > Event N: 202000
+G4WT0 > Event N: 203000
+G4WT0 > Event N: 204000
+G4WT0 > 204222	118.539	8.11876	8.11876	1.40035	6.71841	0	0
+G4WT0 > Event N: 205000
+G4WT0 > Event N: 206000
+G4WT0 > Event N: 207000
+G4WT0 > Event N: 208000
+G4WT0 > 208001	88.4523	12.6582	12.6582	1.87979	10.7785	0	0
+G4WT0 > Event N: 209000
+G4WT0 > Event N: 210000
+G4WT0 > Event N: 211000
+G4WT0 > Event N: 212000
+G4WT0 > Event N: 213000
+G4WT0 > Event N: 214000
+G4WT0 > Event N: 215000
+G4WT0 > 215120	71.9189	11.2939	11.2939	2.12295	9.17094	0	0
+G4WT0 > Event N: 216000
+G4WT0 > Event N: 217000
+G4WT0 > Event N: 218000
+G4WT0 > Event N: 219000
+G4WT0 > 219213	137.772	6.19388	6.19388	1.32124	4.87265	0	0
+G4WT0 > Event N: 220000
+G4WT0 > Event N: 221000
+G4WT0 > Event N: 222000
+G4WT0 > Event N: 223000
+G4WT0 > 223066	68.8351	25.3072	25.3072	2.30222	23.005	0	0
+G4WT0 > Event N: 224000
+G4WT0 > Event N: 225000
+G4WT0 > 225392	73.8357	11.0691	11.0691	1.95893	9.11022	0	0
+G4WT0 > Event N: 226000
+G4WT0 > 226298	139.093	6.14849	37.0394	1.41423	4.73426	0	0
+G4WT0 > Event N: 227000
+G4WT0 > 227203	105.105	14.1381	44.8044	2.17151	11.9666	0	0
+G4WT0 > Event N: 228000
+G4WT0 > 228066	220.679	7.48837	96.0122	1.57949	5.90888	0	0
+G4WT0 > Event N: 229000
+G4WT0 > Event N: 230000
+G4WT0 > Event N: 231000
+G4WT0 > Event N: 232000
+G4WT0 > 232188	91.0051	10.4116	41.1702	1.90584	8.50577	0	0
+G4WT0 > Event N: 233000
+G4WT0 > Event N: 234000
+G4WT0 > Event N: 235000
+G4WT0 > Event N: 236000
+G4WT0 > 236335	140.18	5.99274	5.99274	1.36938	4.62336	0	0
+G4WT0 > Event N: 237000
+G4WT0 > Event N: 238000
+G4WT0 > Event N: 239000
+G4WT0 > Event N: 240000
+G4WT0 > Event N: 241000
+G4WT0 > Event N: 242000
+G4WT0 > Event N: 243000
+G4WT0 > 243599	69.0202	24.5431	24.5431	2.21721	22.3259	0	0
+G4WT0 > Event N: 244000
+G4WT0 > Event N: 245000
+G4WT0 > Event N: 246000
+G4WT0 > 246582	197.028	16.247	40.9104	2.25213	13.9949	0	0
+G4WT0 > Event N: 247000
+G4WT0 > 247768	94.2501	10.0412	10.0412	1.92229	8.11886	0	0
+G4WT0 > Event N: 248000
+G4WT0 > Event N: 249000
+G4WT0 > Event N: 250000
+G4WT0 > Event N: 251000
+G4WT0 > Event N: 252000
+G4WT0 > Event N: 253000
+G4WT0 > Event N: 254000
+G4WT0 > Event N: 255000
+G4WT0 > Event N: 256000
+G4WT0 > Event N: 257000
+G4WT0 > Event N: 258000
+G4WT0 > 258555	202.045	14.481	14.481	2.2153	12.2657	0	0
+G4WT0 > Event N: 259000
+G4WT0 > Event N: 260000
+G4WT0 > Event N: 261000
+G4WT0 > Event N: 262000
+G4WT0 > 262042	73.3425	19.9474	32.7661	2.28376	17.6636	0	0
+G4WT0 > Event N: 263000
+G4WT0 > Event N: 264000
+G4WT0 > Event N: 265000
+G4WT0 > Event N: 266000
+G4WT0 > Event N: 267000
+G4WT0 > 267949	151.238	11.2495	51.4593	1.89333	9.35616	0	0
+G4WT0 > Event N: 268000
+G4WT0 > Event N: 269000
+G4WT0 > Event N: 270000
+G4WT0 > Event N: 271000
+G4WT0 > 271231	209.572	6.91486	94.1877	1.50476	5.4101	0	0
+G4WT0 > Event N: 272000
+G4WT0 > Event N: 273000
+G4WT0 > Event N: 274000
+G4WT0 > Event N: 275000
+G4WT0 > Event N: 276000
+G4WT0 > Event N: 277000
+G4WT0 > Event N: 278000
+G4WT0 > Event N: 279000
+G4WT0 > Event N: 280000
+G4WT0 > Event N: 281000
+G4WT0 > Event N: 282000
+G4WT0 > 282605	226.614	5.75345	104.891	1.2874	4.46606	0	0
+G4WT0 > 282879	73.6198	19.6446	33.5045	2.15192	17.4926	0	0
+G4WT0 > Event N: 283000
+G4WT0 > Event N: 284000
+G4WT0 > Event N: 285000
+G4WT0 > Event N: 286000
+G4WT0 > 286897	68.3363	19.5539	19.5539	2.46935	17.0845	0	0
+G4WT0 > Event N: 287000
+G4WT0 > Event N: 288000
+G4WT0 > Event N: 289000
+G4WT0 > Event N: 290000
+G4WT0 > Event N: 291000
+G4WT0 > 291759	66.2646	15.5999	15.5999	2.30807	13.2919	0	0
+G4WT0 > Event N: 292000
+G4WT0 > Event N: 293000
+G4WT0 > Event N: 294000
+G4WT0 > Event N: 295000
+G4WT0 > Event N: 296000
+G4WT0 > Event N: 297000
+G4WT0 > Event N: 298000
+G4WT0 > Event N: 299000
+G4WT0 > Event N: 300000
+G4WT0 > 300886	55.0292	13.5156	13.5156	2.37271	11.1429	0	0
+G4WT0 > Event N: 301000
+G4WT0 > Event N: 302000
+G4WT0 > Event N: 303000
+G4WT0 > Event N: 304000
+G4WT0 > Event N: 305000
+G4WT0 > 305740	119.686	7.83163	7.83163	1.35528	6.47635	0	0
+G4WT0 > Event N: 306000
+G4WT0 > 306591	66.8919	11.1102	11.1102	2.26222	8.84793	0	0
+G4WT0 > Event N: 307000
+G4WT0 > Event N: 308000
+G4WT0 > Event N: 309000
+G4WT0 > Event N: 310000
+G4WT0 > Event N: 311000
+G4WT0 > Event N: 312000
+G4WT0 > Event N: 313000
+G4WT0 > 313763	142.111	6.21922	59.4782	1.48874	4.73048	0	0
+G4WT0 > Event N: 314000
+G4WT0 > Event N: 315000
+G4WT0 > Event N: 316000
+G4WT0 > 316239	106.997	9.9454	9.9454	1.65497	8.29044	0	0
+G4WT0 > Event N: 317000
+G4WT0 > Event N: 318000
+G4WT0 > Event N: 319000
+G4WT0 > Event N: 320000
+G4WT0 > Event N: 321000
+G4WT0 > Event N: 322000
+G4WT0 > 322010	111.499	10.8523	54.9617	1.8509	9.00144	0	0
+G4WT0 > 322355	51.8501	24.7694	24.7694	2.9351	21.8343	0	0
+G4WT0 > Event N: 323000
+G4WT0 > Event N: 324000
+G4WT0 > Event N: 325000
+G4WT0 > Event N: 326000
+G4WT0 > Event N: 327000
+G4WT0 > Event N: 328000
+G4WT0 > Event N: 329000
+G4WT0 > Event N: 330000
+G4WT0 > Event N: 331000
+G4WT0 > 331362	90.607	12.9038	12.9038	1.84178	11.062	0	0
+G4WT0 > Event N: 332000
+G4WT0 > Event N: 333000
+G4WT0 > Event N: 334000
+G4WT0 > Event N: 335000
+G4WT0 > Event N: 336000
+G4WT0 > Event N: 337000
+G4WT0 > Event N: 338000
+G4WT0 > Event N: 339000
+G4WT0 > Event N: 340000
+G4WT0 > Event N: 341000
+G4WT0 > Event N: 342000
+G4WT0 > Event N: 343000
+G4WT0 > 343216	83.3857	12.8848	12.8848	2.14642	10.7384	0	0
+G4WT0 > Event N: 344000
+G4WT0 > Event N: 345000
+G4WT0 > Event N: 346000
+G4WT0 > 346722	63.8094	12.9132	12.9132	2.33229	10.5809	0	0
+G4WT0 > Event N: 347000
+G4WT0 > Event N: 348000
+G4WT0 > Event N: 349000
+G4WT0 > Event N: 350000
+G4WT0 > Event N: 351000
+G4WT0 > Event N: 352000
+G4WT0 > Event N: 353000
+G4WT0 > 353520	77.4364	14.5341	14.5341	2.15239	12.3817	0	0
+G4WT0 > Event N: 354000
+G4WT0 > Event N: 355000
+G4WT0 > Event N: 356000
+G4WT0 > Event N: 357000
+G4WT0 > Event N: 358000
+G4WT0 > 358213	135.882	6.15039	62.1632	1.425	4.72539	0	0
+G4WT0 > Event N: 359000
+G4WT0 > 359753	94.4207	9.44588	9.44588	1.72346	7.72243	0	0
+G4WT0 > Event N: 360000
+G4WT0 > Event N: 361000
+G4WT0 > 361432	175.137	7.82731	83.8121	1.62683	6.20049	0	0
+G4WT0 > Event N: 362000
+G4WT0 > Event N: 363000
+G4WT0 > Event N: 364000
+G4WT0 > Event N: 365000
+G4WT0 > Event N: 366000
+G4WT0 > Event N: 367000
+G4WT0 > Event N: 368000
+G4WT0 > Event N: 369000
+G4WT0 > Event N: 370000
+G4WT0 > 370433	227.716	5.10485	104.646	1.20048	3.90437	0	0
+G4WT0 > Event N: 371000
+G4WT0 > Event N: 372000
+G4WT0 > Event N: 373000
+G4WT0 > Event N: 374000
+G4WT0 > Event N: 375000
+G4WT0 > 375695	144.16	6.36838	6.36838	1.34194	5.02644	0	0
+G4WT0 > Event N: 376000
+G4WT0 > Event N: 377000
+G4WT0 > Event N: 378000
+G4WT0 > Event N: 379000
+G4WT0 > Event N: 380000
+G4WT0 > 380327	96.0202	13.2086	13.2086	2.52389	10.6847	0	0
+G4WT0 > Event N: 381000
+G4WT0 > 381797	122.708	7.25889	7.25889	1.33886	5.92003	0	0
+G4WT0 > Event N: 382000
+G4WT0 > Event N: 383000
+G4WT0 > 383226	161.311	8.69278	8.69278	2.12686	6.56592	0	0
+G4WT0 > 383619	253.332	3.22264	3.22264	0.708343	2.5143	0	0
+G4WT0 > Event N: 384000
+G4WT0 > 384942	150.074	6.59518	6.59518	1.29693	5.29825	0	0
+G4WT0 > Event N: 385000
+G4WT0 > Event N: 386000
+G4WT0 > 386624	104.933	6.01867	6.01867	2.6272	3.39147	0	0
+G4WT0 > Event N: 387000
+G4WT0 > Event N: 388000
+G4WT0 > Event N: 389000
+G4WT0 > 389262	230.016	3.27513	103.546	0.795177	2.47995	0	0
+G4WT0 > Event N: 390000
+G4WT0 > Event N: 391000
+G4WT0 > Event N: 392000
+G4WT0 > Event N: 393000
+G4WT0 > Event N: 394000
+G4WT0 > Event N: 395000
+G4WT0 > 395370	67.6954	23.5739	23.5739	2.22215	21.3517	0	0
+G4WT0 > Event N: 396000
+G4WT0 > Event N: 397000
+G4WT0 > Event N: 398000
+G4WT0 > Event N: 399000
+G4WT0 > Event N: 400000
+G4WT0 > Event N: 401000
+G4WT0 > Event N: 402000
+G4WT0 > Event N: 403000
+G4WT0 > 403163	186.383	26.7463	26.7463	2.49287	24.2534	0	0
+G4WT0 > Event N: 404000
+G4WT0 > Event N: 405000
+G4WT0 > 405465	210.059	8.08454	86.1764	1.62794	6.4566	0	0
+G4WT0 > 405836	93.9302	9.3609	9.3609	1.70034	7.66056	0	0
+G4WT0 > Event N: 406000
+G4WT0 > Event N: 407000
+G4WT0 > 407208	173.315	9.68521	9.68521	1.86326	7.82194	0	0
+G4WT0 > Event N: 408000
+G4WT0 > Event N: 409000
+G4WT0 > Event N: 410000
+G4WT0 > Event N: 411000
+G4WT0 > Event N: 412000
+G4WT0 > 412982	176.277	6.13009	6.13009	1.39528	4.73481	0	0
+G4WT0 > Event N: 413000
+G4WT0 > Event N: 414000
+G4WT0 > Event N: 415000
+G4WT0 > Event N: 416000
+G4WT0 > Event N: 417000
+G4WT0 > Event N: 418000
+G4WT0 > Event N: 419000
+G4WT0 > Event N: 420000
+G4WT0 > Event N: 421000
+G4WT0 > Event N: 422000
+G4WT0 > Event N: 423000
+G4WT0 > Event N: 424000
+G4WT0 > Event N: 425000
+G4WT0 > Event N: 426000
+G4WT0 > Event N: 427000
+G4WT0 > Event N: 428000
+G4WT0 > Event N: 429000
+G4WT0 > Event N: 430000
+G4WT0 > Event N: 431000
+G4WT0 > Event N: 432000
+G4WT0 > Event N: 433000
+G4WT0 > 433472	152.412	5.9138	42.2846	1.26896	4.64484	0	0
+G4WT0 > Event N: 434000
+G4WT0 > Event N: 435000
+G4WT0 > Event N: 436000
+G4WT0 > Event N: 437000
+G4WT0 > Event N: 438000
+G4WT0 > Event N: 439000
+G4WT0 > Event N: 440000
+G4WT0 > Event N: 441000
+G4WT0 > Event N: 442000
+G4WT0 > Event N: 443000
+G4WT0 > Event N: 444000
+G4WT0 > Event N: 445000
+G4WT0 > 445475	209.767	27.6076	27.6076	1.82034	25.7873	0	0
+G4WT0 > Event N: 446000
+G4WT0 > Event N: 447000
+G4WT0 > Event N: 448000
+G4WT0 > 448311	130.332	14.7248	42.1406	2.2104	12.5144	0	0
+G4WT0 > Event N: 449000
+G4WT0 > Event N: 450000
+G4WT0 > 450679	155.23	10.4328	10.4328	1.82427	8.60853	0	0
+G4WT0 > Event N: 451000
+G4WT0 > Event N: 452000
+G4WT0 > Event N: 453000
+G4WT0 > Event N: 454000
+G4WT0 > Event N: 455000
+G4WT0 > 455723	148.155	5.17221	5.17221	0.125326	5.04688	0	0
+G4WT0 > Event N: 456000
+G4WT0 > 456990	199.082	8.41263	8.41263	2.46111	5.95152	0	0
+G4WT0 > Event N: 457000
+G4WT0 > Event N: 458000
+G4WT0 > Event N: 459000
+G4WT0 > Event N: 460000
+G4WT0 > Event N: 461000
+G4WT0 > 461207	110.702	7.16291	7.16291	1.49443	5.66848	0	0
+G4WT0 > Event N: 462000
+G4WT0 > Event N: 463000
+G4WT0 > Event N: 464000
+G4WT0 > Event N: 465000
+G4WT0 > Event N: 466000
+G4WT0 > Event N: 467000
+G4WT0 > Event N: 468000
+G4WT0 > Event N: 469000
+G4WT0 > Event N: 470000
+G4WT0 > 470075	124.901	22.936	22.936	2.52618	20.4098	0	0
+G4WT0 > Event N: 471000
+G4WT0 > Event N: 472000
+G4WT0 > 472191	124.694	5.80862	33.9716	1.31389	4.49474	0	0
+G4WT0 > Event N: 473000
+G4WT0 > Event N: 474000
+G4WT0 > Event N: 475000
+G4WT0 > Event N: 476000
+G4WT0 > Event N: 477000
+G4WT0 > Event N: 478000
+G4WT0 > Event N: 479000
+G4WT0 > Event N: 480000
+G4WT0 > Event N: 481000
+G4WT0 > Event N: 482000
+G4WT0 > Event N: 483000
+G4WT0 > Event N: 484000
+G4WT0 > Event N: 485000
+G4WT0 > 485003	202.66	32.499	32.499	1.08499	31.4141	0	0
+G4WT0 > Event N: 486000
+G4WT0 > Event N: 487000
+G4WT0 > 487786	86.7765	11.2134	11.2134	2.07347	9.13994	0	0
+G4WT0 > Event N: 488000
+G4WT0 > Event N: 489000
+G4WT0 > 489872	73.6617	19.9978	19.9978	2.21544	17.7823	0	0
+G4WT0 > Event N: 490000
+G4WT0 > Event N: 491000
+G4WT0 > Event N: 492000
+G4WT0 > Event N: 493000
+G4WT0 > Event N: 494000
+G4WT0 > 494604	70.0989	24.613	24.613	2.35968	22.2533	0	0
+G4WT0 > Event N: 495000
+G4WT0 > Event N: 496000
+G4WT0 > Event N: 497000
+G4WT0 > Event N: 498000
+G4WT0 > Event N: 499000
+G4WT0 > Event N: 500000
+G4WT0 > Event N: 501000
+G4WT0 > Event N: 502000
+G4WT0 > 502256	219.097	7.42292	100.297	1.57488	5.84804	0	0
+G4WT0 > Event N: 503000
+G4WT0 > Event N: 504000
+G4WT0 > Event N: 505000
+G4WT0 > Event N: 506000
+G4WT0 > Event N: 507000
+G4WT0 > Event N: 508000
+G4WT0 > Event N: 509000
+G4WT0 > Event N: 510000
+G4WT0 > Event N: 511000
+G4WT0 > 511360	72.0022	25.8266	25.8266	2.59047	23.2362	0	0
+G4WT0 > Event N: 512000
+G4WT0 > Event N: 513000
+G4WT0 > Event N: 514000
+G4WT0 > 514430	89.1178	11.1755	11.1755	1.99993	9.17556	0	0
+G4WT0 > Event N: 515000
+G4WT0 > Event N: 516000
+G4WT0 > Event N: 517000
+G4WT0 > Event N: 518000
+G4WT0 > 518364	58.0016	18.0177	18.0177	2.64087	15.3768	0	0
+G4WT0 > Event N: 519000
+G4WT0 > Event N: 520000
+G4WT0 > Event N: 521000
+G4WT0 > Event N: 522000
+G4WT0 > Event N: 523000
+G4WT0 > Event N: 524000
+G4WT0 > Event N: 525000
+G4WT0 > Event N: 526000
+G4WT0 > 526596	238.52	5.21379	87.4823	1.07622	4.13757	0	0
+G4WT0 > Event N: 527000
+G4WT0 > 527826	159.302	26.4867	26.4867	2.28809	24.1986	0	0
+G4WT0 > Event N: 528000
+G4WT0 > Event N: 529000
+G4WT0 > Event N: 530000
+G4WT0 > Event N: 531000
+G4WT0 > 531537	108.153	9.17645	9.17645	1.54903	7.62742	0	0
+G4WT0 > Event N: 532000
+G4WT0 > Event N: 533000
+G4WT0 > Event N: 534000
+G4WT0 > Event N: 535000
+G4WT0 > Event N: 536000
+G4WT0 > Event N: 537000
+G4WT0 > Event N: 538000
+G4WT0 > Event N: 539000
+G4WT0 > Event N: 540000
+G4WT0 > 540305	95.3317	9.33548	9.33548	1.92005	7.41543	0	0
+G4WT0 > Event N: 541000
+G4WT0 > Event N: 542000
+G4WT0 > Event N: 543000
+G4WT0 > Event N: 544000
+G4WT0 > Event N: 545000
+G4WT0 > Event N: 546000
+G4WT0 > Event N: 547000
+G4WT0 > Event N: 548000
+G4WT0 > Event N: 549000
+G4WT0 > Event N: 550000
+G4WT0 > 550070	59.1458	18.7286	18.7286	2.46028	16.2683	0	0
+G4WT0 > Event N: 551000
+G4WT0 > Event N: 552000
+G4WT0 > Event N: 553000
+G4WT0 > 553063	191.938	8.5091	83.4198	1.73241	6.7767	0	0
+G4WT0 > Event N: 554000
+G4WT0 > Event N: 555000
+G4WT0 > Event N: 556000
+G4WT0 > Event N: 557000
+G4WT0 > Event N: 558000
+G4WT0 > 558172	133.887	14.2138	14.2138	2.45934	11.7544	0	0
+G4WT0 > Event N: 559000
+G4WT0 > 559150	157.969	24.6167	24.6167	2.55852	22.0582	0	0
+G4WT0 > Event N: 560000
+G4WT0 > Event N: 561000
+G4WT0 > Event N: 562000
+G4WT0 > Event N: 563000
+G4WT0 > 563824	67.7732	24.9271	24.9271	2.12286	22.8042	0	0
+G4WT0 > Event N: 564000
+G4WT0 > 564610	72.172	26.2717	26.2717	2.30112	23.9706	0	0
+G4WT0 > Event N: 565000
+G4WT0 > Event N: 566000
+G4WT0 > Event N: 567000
+G4WT0 > Event N: 568000
+G4WT0 > 568364	66.4776	16.4527	16.4527	2.36802	14.0847	0	0
+G4WT0 > Event N: 569000
+G4WT0 > Event N: 570000
+G4WT0 > 570489	114.406	5.77455	5.77455	1.59995	4.1746	0	0
+G4WT0 > Event N: 571000
+G4WT0 > Event N: 572000
+G4WT0 > 572831	126.576	10.503	56.7787	2.44309	8.05994	0	0
+G4WT0 > Event N: 573000
+G4WT0 > Event N: 574000
+G4WT0 > Event N: 575000
+G4WT0 > Event N: 576000
+G4WT0 > Event N: 577000
+G4WT0 > Event N: 578000
+G4WT0 > Event N: 579000
+G4WT0 > Event N: 580000
+G4WT0 > Event N: 581000
+G4WT0 > Event N: 582000
+G4WT0 > Event N: 583000
+G4WT0 > Event N: 584000
+G4WT0 > Event N: 585000
+G4WT0 > Event N: 586000
+G4WT0 > 586514	166.005	5.40604	39.444	1.11869	4.28735	0	0
+G4WT0 > 586749	98.3808	11.3306	11.3306	1.80406	9.52653	0	0
+G4WT0 > Event N: 587000
+G4WT0 > Event N: 588000
+G4WT0 > Event N: 589000
+G4WT0 > Event N: 590000
+G4WT0 > 590346	102.054	12.6135	12.6135	1.69232	10.9212	0	0
+G4WT0 > Event N: 591000
+G4WT0 > Event N: 592000
+G4WT0 > Event N: 593000
+G4WT0 > Event N: 594000
+G4WT0 > 594775	64.8596	12.7077	12.7077	2.37959	10.3281	0	0
+G4WT0 > Event N: 595000
+G4WT0 > Event N: 596000
+G4WT0 > Event N: 597000
+G4WT0 > Event N: 598000
+G4WT0 > Event N: 599000
+G4WT0 > 599948	448.878	1.2708	1.2708	0.536338	0.734463	0	0
+G4WT0 > Event N: 600000
+G4WT0 > Event N: 601000
+G4WT0 > Event N: 602000
+G4WT0 > Event N: 603000
+G4WT0 > Event N: 604000
+G4WT0 > 604302	73.5041	19.593	32.3245	2.16407	17.4289	0	0
+G4WT0 > Event N: 605000
+G4WT0 > Event N: 606000
+G4WT0 > 606941	148.803	5.59394	44.833	1.2279	4.36604	0	0
+G4WT0 > Event N: 607000
+G4WT0 > Event N: 608000
+G4WT0 > Event N: 609000
+G4WT0 > Event N: 610000
+G4WT0 > Event N: 611000
+G4WT0 > 611480	146.209	1.77542	1.77542	1.71727	0.0581463	0	0
+G4WT0 > Event N: 612000
+G4WT0 > 612602	198.991	13.8368	13.8368	2.22997	11.6069	0	0
+G4WT0 > Event N: 613000
+G4WT0 > Event N: 614000
+G4WT0 > Event N: 615000
+G4WT0 > Event N: 616000
+G4WT0 > Event N: 617000
+G4WT0 > Event N: 618000
+G4WT0 > Event N: 619000
+G4WT0 > Event N: 620000
+G4WT0 > Event N: 621000
+G4WT0 > Event N: 622000
+G4WT0 > 622370	130.671	5.82721	63.1911	1.35685	4.47037	0	0
+G4WT0 > Event N: 623000
+G4WT0 > Event N: 624000
+G4WT0 > Event N: 625000
+G4WT0 > Event N: 626000
+G4WT0 > Event N: 627000
+G4WT0 > Event N: 628000
+G4WT0 > Event N: 629000
+G4WT0 > Event N: 630000
+G4WT0 > Event N: 631000
+G4WT0 > Event N: 632000
+G4WT0 > Event N: 633000
+G4WT0 > Event N: 634000
+G4WT0 > Event N: 635000
+G4WT0 > Event N: 636000
+G4WT0 > 636603	235.672	3.17887	104.84	0.856199	2.32268	0	0
+G4WT0 > Event N: 637000
+G4WT0 > Event N: 638000
+G4WT0 > Event N: 639000
+G4WT0 > Event N: 640000
+G4WT0 > Event N: 641000
+G4WT0 > Event N: 642000
+G4WT0 > Event N: 643000
+G4WT0 > 643124	105.689	3.17469	3.17469	1.69275	1.48194	0	0
+G4WT0 > Event N: 644000
+G4WT0 > Event N: 645000
+G4WT0 > Event N: 646000
+G4WT0 > Event N: 647000
+G4WT0 > Event N: 648000
+G4WT0 > Event N: 649000
+G4WT0 > Event N: 650000
+G4WT0 > Event N: 651000
+G4WT0 > Event N: 652000
+G4WT0 > Event N: 653000
+G4WT0 > 653814	114.253	8.37079	8.37079	1.58895	6.78184	0	0
+G4WT0 > Event N: 654000
+G4WT0 > Event N: 655000
+G4WT0 > Event N: 656000
+G4WT0 > Event N: 657000
+G4WT0 > 657402	74.054	16.1419	36.8094	2.09323	14.0487	0	0
+G4WT0 > Event N: 658000
+G4WT0 > Event N: 659000
+G4WT0 > 659582	70.9894	22.8361	29.0611	2.44801	20.3881	0	0
+G4WT0 > Event N: 660000
+G4WT0 > Event N: 661000
+G4WT0 > Event N: 662000
+G4WT0 > Event N: 663000
+G4WT0 > Event N: 664000
+G4WT0 > Event N: 665000
+G4WT0 > Event N: 666000
+G4WT0 > Event N: 667000
+G4WT0 > Event N: 668000
+G4WT0 > Event N: 669000
+G4WT0 > 669532	144.779	6.38019	6.38019	1.28287	5.09732	0	0
+G4WT0 > Event N: 670000
+G4WT0 > 670133	111.193	3.09902	3.09902	1.67853	1.42049	0	0
+G4WT0 > Event N: 671000
+G4WT0 > 671936	135.771	5.90378	60.0776	1.32864	4.57514	0	0
+G4WT0 > Event N: 672000
+G4WT0 > Event N: 673000
+G4WT0 > Event N: 674000
+G4WT0 > Event N: 675000
+G4WT0 > Event N: 676000
+G4WT0 > Event N: 677000
+G4WT0 > 677306	224.357	6.72655	6.72655	1.41795	5.3086	0	0
+G4WT0 > Event N: 678000
+G4WT0 > 678278	189.145	5.44564	33.3436	1.11748	4.32816	0	0
+G4WT0 > Event N: 679000
+G4WT0 > Event N: 680000
+G4WT0 > Event N: 681000
+G4WT0 > Event N: 682000
+G4WT0 > Event N: 683000
+G4WT0 > Event N: 684000
+G4WT0 > Event N: 685000
+G4WT0 > Event N: 686000
+G4WT0 > Event N: 687000
+G4WT0 > Event N: 688000
+G4WT0 > Event N: 689000
+G4WT0 > Event N: 690000
+G4WT0 > Event N: 691000
+G4WT0 > Event N: 692000
+G4WT0 > Event N: 693000
+G4WT0 > 693519	68.3173	25.1936	25.1936	2.21979	22.9738	0	0
+G4WT0 > Event N: 694000
+G4WT0 > Event N: 695000
+G4WT0 > Event N: 696000
+G4WT0 > Event N: 697000
+G4WT0 > Event N: 698000
+G4WT0 > Event N: 699000
+G4WT0 > Event N: 700000
+G4WT0 > 700416	197.006	12.4504	52.4629	2.14578	10.3046	0	0
+G4WT0 > Event N: 701000
+G4WT0 > Event N: 702000
+G4WT0 > Event N: 703000
+G4WT0 > Event N: 704000
+G4WT0 > Event N: 705000
+G4WT0 > Event N: 706000
+G4WT0 > Event N: 707000
+G4WT0 > Event N: 708000
+G4WT0 > Event N: 709000
+G4WT0 > 709914	162.918	5.80858	5.80858	1.2041	4.60448	0	0
+G4WT0 > Event N: 710000
+G4WT0 > Event N: 711000
+G4WT0 > Event N: 712000
+G4WT0 > 712948	202.556	6.17551	6.17551	1.26943	4.90608	0	0
+G4WT0 > Event N: 713000
+G4WT0 > Event N: 714000
+G4WT0 > Event N: 715000
+G4WT0 > Event N: 716000
+G4WT0 > Event N: 717000
+G4WT0 > Event N: 718000
+G4WT0 > Event N: 719000
+G4WT0 > Event N: 720000
+G4WT0 > 719999	90.8626	13.9398	13.9398	2.05076	11.8891	0	0
+G4WT0 > Event N: 721000
+G4WT0 > Event N: 722000
+G4WT0 > Event N: 723000
+G4WT0 > Event N: 724000
+G4WT0 > Event N: 725000
+G4WT0 > Event N: 726000
+G4WT0 > Event N: 727000
+G4WT0 > Event N: 728000
+G4WT0 > Event N: 729000
+G4WT0 > Event N: 730000
+G4WT0 > Event N: 731000
+G4WT0 > Event N: 732000
+G4WT0 > 732588	193.393	8.58667	78.0185	1.7311	6.85557	0	0
+G4WT0 > Event N: 733000
+G4WT0 > 733313	205.31	9.82812	70.6513	1.93545	7.89267	0	0
+G4WT0 > Event N: 734000
+G4WT0 > Event N: 735000
+G4WT0 > Event N: 736000
+G4WT0 > Event N: 737000
+G4WT0 > Event N: 738000
+G4WT0 > Event N: 739000
+G4WT0 > Event N: 740000
+G4WT0 > Event N: 741000
+G4WT0 > Event N: 742000
+G4WT0 > Event N: 743000
+G4WT0 > Event N: 744000
+G4WT0 > Event N: 745000
+G4WT0 > Event N: 746000
+G4WT0 > Event N: 747000
+G4WT0 > Event N: 748000
+G4WT0 > Event N: 749000
+G4WT0 > Event N: 750000
+G4WT0 > Event N: 751000
+G4WT0 > Event N: 752000
+G4WT0 > Event N: 753000
+G4WT0 > Event N: 754000
+G4WT0 > Event N: 755000
+G4WT0 > Event N: 756000
+G4WT0 > Event N: 757000
+G4WT0 > 757533	74.8882	16.4251	37.2874	2.37728	14.0478	0	0
+G4WT0 > 757794	83.4917	7.58288	7.58288	1.78256	5.80032	0	0
+G4WT0 > Event N: 758000
+G4WT0 > Event N: 759000
+G4WT0 > Event N: 760000
+G4WT0 > Event N: 761000
+G4WT0 > Event N: 762000
+G4WT0 > Event N: 763000
+G4WT0 > Event N: 764000
+G4WT0 > Event N: 765000
+G4WT0 > 765314	289.093	2.08571	29.6036	0.889631	1.19608	0	0
+G4WT0 > Event N: 766000
+G4WT0 > Event N: 767000
+G4WT0 > Event N: 768000
+G4WT0 > Event N: 769000
+G4WT0 > Event N: 770000
+G4WT0 > 770195	71.0057	23.6131	29.1416	2.21934	21.3937	0	0
+G4WT0 > Event N: 771000
+G4WT0 > Event N: 772000
+G4WT0 > Event N: 773000
+G4WT0 > Event N: 774000
+G4WT0 > Event N: 775000
+G4WT0 > Event N: 776000
+G4WT0 > 776513	71.5897	18.5667	32.1377	2.06333	16.5033	0	0
+G4WT0 > Event N: 777000
+G4WT0 > Event N: 778000
+G4WT0 > Event N: 779000
+G4WT0 > 779522	228.241	7.74206	7.74206	1.6436	6.09847	0	0
+G4WT0 > 779848	130.321	6.88711	6.88711	1.43523	5.45188	0	0
+G4WT0 > Event N: 780000
+G4WT0 > Event N: 781000
+G4WT0 > Event N: 782000
+G4WT0 > Event N: 783000
+G4WT0 > Event N: 784000
+G4WT0 > Event N: 785000
+G4WT0 > Event N: 786000
+G4WT0 > Event N: 787000
+G4WT0 > Event N: 788000
+G4WT0 > Event N: 789000
+G4WT0 > Event N: 790000
+G4WT0 > Event N: 791000
+G4WT0 > Event N: 792000
+G4WT0 > Event N: 793000
+G4WT0 > Event N: 794000
+G4WT0 > Event N: 795000
+G4WT0 > 795268	70.4054	24.4745	24.4745	2.24164	22.2329	0	0
+G4WT0 > Event N: 796000
+G4WT0 > Event N: 797000
+G4WT0 > Event N: 798000
+G4WT0 > Event N: 799000
+G4WT0 > Event N: 800000
+G4WT0 > Event N: 801000
+G4WT0 > Event N: 802000
+G4WT0 > 802360	68.7393	23.8223	27.7072	2.22976	21.5925	0	0
+G4WT0 > Event N: 803000
+G4WT0 > Event N: 804000
+G4WT0 > Event N: 805000
+G4WT0 > Event N: 806000
+G4WT0 > Event N: 807000
+G4WT0 > Event N: 808000
+G4WT0 > Event N: 809000
+G4WT0 > Event N: 810000
+G4WT0 > 810920	69.7667	22.42	29.3245	2.22505	20.195	0	0
+G4WT0 > Event N: 811000
+G4WT0 > Event N: 812000
+G4WT0 > Event N: 813000
+G4WT0 > Event N: 814000
+G4WT0 > 814031	109.672	7.37933	7.37933	1.44085	5.93847	0	0
+G4WT0 > 814101	73.5612	16.8838	16.8838	2.17968	14.7041	0	0
+G4WT0 > Event N: 815000
+G4WT0 > Event N: 816000
+G4WT0 > Event N: 817000
+G4WT0 > Event N: 818000
+G4WT0 > Event N: 819000
+G4WT0 > Event N: 820000
+G4WT0 > Event N: 821000
+G4WT0 > 821507	191.155	15.051	41.9909	2.27472	12.7763	0	0
+G4WT0 > Event N: 822000
+G4WT0 > Event N: 823000
+G4WT0 > Event N: 824000
+G4WT0 > Event N: 825000
+G4WT0 > Event N: 826000
+G4WT0 > Event N: 827000
+G4WT0 > 827796	87.8849	11.5261	11.5261	2.06913	9.45694	0	0
+G4WT0 > Event N: 828000
+G4WT0 > Event N: 829000
+G4WT0 > 829977	234.353	6.05868	101.496	1.33923	4.71946	0	0
+G4WT0 > Event N: 830000
+G4WT0 > Event N: 831000
+G4WT0 > Event N: 832000
+G4WT0 > Event N: 833000
+G4WT0 > Event N: 834000
+G4WT0 > Event N: 835000
+G4WT0 > Event N: 836000
+G4WT0 > 836038	155.382	7.36984	7.36984	1.37456	5.99528	0	0
+G4WT0 > Event N: 837000
+G4WT0 > Event N: 838000
+G4WT0 > Event N: 839000
+G4WT0 > Event N: 840000
+G4WT0 > 840111	195.828	18.4114	18.4114	2.30974	16.1017	0	0
+G4WT0 > Event N: 841000
+G4WT0 > 841444	172.132	7.89031	48.6202	1.7379	6.1524	0	0
+G4WT0 > 841964	98.2485	8.87329	8.87329	1.89583	6.97747	0	0
+G4WT0 > Event N: 842000
+G4WT0 > Event N: 843000
+G4WT0 > Event N: 844000
+G4WT0 > Event N: 845000
+G4WT0 > Event N: 846000
+G4WT0 > Event N: 847000
+G4WT0 > Event N: 848000
+G4WT0 > 848243	191.627	10.6671	10.6671	2.05945	8.60764	0	0
+G4WT0 > Event N: 849000
+G4WT0 > Event N: 850000
+G4WT0 > 850518	138.497	23.8741	23.8741	2.50689	21.3673	0	0
+G4WT0 > Event N: 851000
+G4WT0 > Event N: 852000
+G4WT0 > 852379	74.1367	16.9577	35.3502	2.19593	14.7617	0	0
+G4WT0 > Event N: 853000
+G4WT0 > Event N: 854000
+G4WT0 > Event N: 855000
+G4WT0 > Event N: 856000
+G4WT0 > Event N: 857000
+G4WT0 > Event N: 858000
+G4WT0 > 858616	217.89	7.82798	7.82798	1.69224	6.13575	0	0
+G4WT0 > Event N: 859000
+G4WT0 > 859035	90.7798	8.31218	8.31218	1.73449	6.57769	0	0
+G4WT0 > Event N: 860000
+G4WT0 > Event N: 861000
+G4WT0 > Event N: 862000
+G4WT0 > Event N: 863000
+G4WT0 > Event N: 864000
+G4WT0 > 864376	93.4892	23.3284	23.3284	1.7698	21.5586	0	0
+G4WT0 > Event N: 865000
+G4WT0 > Event N: 866000
+G4WT0 > 866067	69.7699	21.9853	29.2263	2.29697	19.6883	0	0
+G4WT0 > Event N: 867000
+G4WT0 > Event N: 868000
+G4WT0 > Event N: 869000
+G4WT0 > Event N: 870000
+G4WT0 > Event N: 871000
+G4WT0 > Event N: 872000
+G4WT0 > Event N: 873000
+G4WT0 > Event N: 874000
+G4WT0 > 874309	195.608	10.1881	62.2471	1.78447	8.40363	0	0
+G4WT0 > Event N: 875000
+G4WT0 > Event N: 876000
+G4WT0 > Event N: 877000
+G4WT0 > Event N: 878000
+G4WT0 > Event N: 879000
+G4WT0 > Event N: 880000
+G4WT0 > Event N: 881000
+G4WT0 > Event N: 882000
+G4WT0 > 882148	163.64	10.0387	10.0387	1.79953	8.23919	0	0
+G4WT0 > Event N: 883000
+G4WT0 > Event N: 884000
+G4WT0 > Event N: 885000
+G4WT0 > Event N: 886000
+G4WT0 > Event N: 887000
+G4WT0 > Event N: 888000
+G4WT0 > Event N: 889000
+G4WT0 > Event N: 890000
+G4WT0 > Event N: 891000
+G4WT0 > Event N: 892000
+G4WT0 > Event N: 893000
+G4WT0 > Event N: 894000
+G4WT0 > Event N: 895000
+G4WT0 > Event N: 896000
+G4WT0 > Event N: 897000
+G4WT0 > Event N: 898000
+G4WT0 > Event N: 899000
+G4WT0 > Event N: 900000
+G4WT0 > Event N: 901000
+G4WT0 > Event N: 902000
+G4WT0 > Event N: 903000
+G4WT0 > Event N: 904000
+G4WT0 > Event N: 905000
+G4WT0 > Event N: 906000
+G4WT0 > 906805	120.503	5.06381	5.06381	1.41236	3.65145	0	0
+G4WT0 > 906881	205.708	7.55008	95.3957	1.69515	5.85493	0	0
+G4WT0 > Event N: 907000
+G4WT0 > Event N: 908000
+G4WT0 > Event N: 909000
+G4WT0 > Event N: 910000
+G4WT0 > Event N: 911000
+G4WT0 > 911215	71.6005	17.9935	32.986	2.36213	15.6314	0	0
+G4WT0 > Event N: 912000
+G4WT0 > 912415	92.485	9.76258	9.76258	1.84918	7.9134	0	0
+G4WT0 > Event N: 913000
+G4WT0 > Event N: 914000
+G4WT0 > Event N: 915000
+G4WT0 > 915269	96.7176	9.33853	9.33853	1.72716	7.61137	0	0
+G4WT0 > Event N: 916000
+G4WT0 > Event N: 917000
+G4WT0 > 917377	104.016	6.04855	17.3883	1.49546	4.55309	0	0
+G4WT0 > 917786	160.695	5.38719	27.8378	1.0922	4.29499	0	0
+G4WT0 > Event N: 918000
+G4WT0 > 918375	106.973	8.12417	8.12417	1.68137	6.4428	0	0
+G4WT0 > Event N: 919000
+G4WT0 > Event N: 920000
+G4WT0 > Event N: 921000
+G4WT0 > Event N: 922000
+G4WT0 > 922440	72.6983	27.7729	27.7729	2.38729	25.3856	0	0
+G4WT0 > Event N: 923000
+G4WT0 > 923401	147.904	9.07164	9.07164	2.6362	6.43544	0	0
+G4WT0 > Event N: 924000
+G4WT0 > Event N: 925000
+G4WT0 > 925625	71.6122	26.9447	26.9447	2.30241	24.6423	0	0
+G4WT0 > Event N: 926000
+G4WT0 > Event N: 927000
+G4WT0 > Event N: 928000
+G4WT0 > Event N: 929000
+G4WT0 > Event N: 930000
+G4WT0 > Event N: 931000
+G4WT0 > Event N: 932000
+G4WT0 > Event N: 933000
+G4WT0 > 933617	161.758	4.86174	73.8465	1.30539	3.55635	0	0
+G4WT0 > Event N: 934000
+G4WT0 > Event N: 935000
+G4WT0 > Event N: 936000
+G4WT0 > Event N: 937000
+G4WT0 > Event N: 938000
+G4WT0 > Event N: 939000
+G4WT0 > Event N: 940000
+G4WT0 > Event N: 941000
+G4WT0 > Event N: 942000
+G4WT0 > Event N: 943000
+G4WT0 > Event N: 944000
+G4WT0 > Event N: 945000
+G4WT0 > Event N: 946000
+G4WT0 > Event N: 947000
+G4WT0 > Event N: 948000
+G4WT0 > 948581	221.55	6.86018	107.242	1.45356	5.40662	0	0
+G4WT0 > Event N: 949000
+G4WT0 > Event N: 950000
+G4WT0 > Event N: 951000
+G4WT0 > Event N: 952000
+G4WT0 > Event N: 953000
+G4WT0 > 953317	170.943	5.35907	85.0222	1.11573	4.24334	0	0
+G4WT0 > Event N: 954000
+G4WT0 > Event N: 955000
+G4WT0 > Event N: 956000
+G4WT0 > Event N: 957000
+G4WT0 > Event N: 958000
+G4WT0 > Event N: 959000
+G4WT0 > Event N: 960000
+G4WT0 > 960849	94.7217	20.4407	32.1781	2.3818	18.0589	0	0
+G4WT0 > Event N: 961000
+G4WT0 > Event N: 962000
+G4WT0 > 962517	115.56	7.30077	7.30077	1.43702	5.86375	0	0
+G4WT0 > Event N: 963000
+G4WT0 > Event N: 964000
+G4WT0 > Event N: 965000
+G4WT0 > Event N: 966000
+G4WT0 > Event N: 967000
+G4WT0 > Event N: 968000
+G4WT0 > Event N: 969000
+G4WT0 > Event N: 970000
+G4WT0 > Event N: 971000
+G4WT0 > 971750	152.273	5.84863	49.3427	1.1524	4.69623	0	0
+G4WT0 > Event N: 972000
+G4WT0 > Event N: 973000
+G4WT0 > 973439	109.531	7.98641	7.98641	1.59463	6.39178	0	0
+G4WT0 > Event N: 974000
+G4WT0 > Event N: 975000
+G4WT0 > Event N: 976000
+G4WT0 > Event N: 977000
+G4WT0 > Event N: 978000
+G4WT0 > 978214	79.052	13.7865	13.7865	2.11159	11.675	0	0
+G4WT0 > Event N: 979000
+G4WT0 > 979699	391.758	2.54481	106.555	0.639751	1.90506	0	0
+G4WT0 > Event N: 980000
+G4WT0 > Event N: 981000
+G4WT0 > Event N: 982000
+G4WT0 > Event N: 983000
+G4WT0 > 983795	178.021	8.34602	73.2947	1.94797	6.39805	0	0
+G4WT0 > Event N: 984000
+G4WT0 > Event N: 985000
+G4WT0 > Event N: 986000
+G4WT0 > Event N: 987000
+G4WT0 > Event N: 988000
+G4WT0 > Event N: 989000
+G4WT0 > Event N: 990000
+G4WT0 > Event N: 991000
+G4WT0 > Event N: 992000
+G4WT0 > Event N: 993000
+G4WT0 > Event N: 994000
+G4WT0 > Event N: 995000
+G4WT0 > Event N: 996000
+G4WT0 > Event N: 997000
+G4WT0 > Event N: 998000
+G4WT0 > Event N: 999000
+G4WT0 > Event N: 1000000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 1000000
+G4WT0 > [thread 0]   User=0.020000s Real=0.020397s Sys=0.000000s [Cpu=98.1%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/alpha_j6_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/Output_Geant4Simulation_20230814/DST/GDML_file_4/alpha_j6_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 1000000
+  User=395.760000s Real=396.334356s Sys=0.170000s [Cpu=99.9%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+Graphics systems deleted.
+Visualization Manager deleting...
+G4WT0 > Destroying WorkerRunManager (0x2b1e40049d70)
+G4WT0 > G4 kernel has come to Quit state.
+G4WT0 > ================== Deleting memory pools ===================
+G4WT0 > Number of memory pools allocated: 14; of which, static: 0
+G4WT0 > Dynamic pools deleted: 14 / Total memory freed: 0.062 MB
+G4WT0 > ============================================================
+G4WT0 > Thread-local UImanager is to be deleted.
+G4WT0 > There should not be any thread-local G4cout/G4cerr hereafter.
+ThreadPool destroyed
+G4 kernel has come to Quit state.
+================== Deleting memory pools ===================
+Number of memory pools allocated: 5; of which, static: 0
+Dynamic pools deleted: 5 / Total memory freed: 0.013 MB
+============================================================
+RunManagerKernel is deleted. Good bye :)
