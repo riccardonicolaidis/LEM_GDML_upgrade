@@ -360,6 +360,72 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 Report.SetEmail("riccardo.nicolaidis@unitn.it")
                 Report.SetOutputDirectory(LatexReportDir)
                 Report.SetDocumentClass("beamer")
+
+                
+                ScalePicture = 1.
+                
+                Report.BeginSlide("Info")
+                
+                ###### GET THE NAME OF THE GDML FILE ####
+                f_Report = open(os.path.join(global_input_dir,'report.txt'))
+                
+                lineOld = ''
+                for line in f_Report:
+                    if ("File "+str(number)) in lineOld:
+                        FileNameGDML = line.rstrip('\n')
+                        break                
+                    lineOld = line
+                
+
+                # Adding to the slide the name of the GDML file
+                Report.Body += r'''
+                \centering
+                GDML File Name : \textbf{ '''+ FileNameGDML + r'''}
+                
+                '''
+                
+                
+                # Dumping the NTuples of the file
+                f_NTuple_Info = None
+                f_MaterialInfo = None
+                # Retrieving the file with the .txt report                
+                for fileName in os.listdir(os.path.join(global_input_dir,"Text_output", "GDML_file_"+str(number))):
+                    if "NTupleInfo" in fileName:
+                        f_NTuple_Info = open(os.path.join(global_input_dir,"Text_output", "GDML_file_"+str(number), fileName))
+                        break
+            
+                for fileName in os.listdir(os.path.join(global_input_dir,"Text_output", "GDML_file_"+str(number))):
+                    if "MaterialInfo" in fileName:
+                        f_MaterialInfo = open(os.path.join(global_input_dir,"Text_output", "GDML_file_"+str(number), fileName))
+                        break
+            
+
+                # Dumping in an itemize
+                
+                Report.Body += r'''
+                \vspace{2 cm}
+                \textbf{NTuple Info}:
+                \vspace{1 cm}
+                '''
+                Report.BeginItemize()
+                for line in f_NTuple_Info:
+                    if "Ntuple ID" in line:
+                        Report.Item(line.rstrip('\n'))
+                Report.EndItemize()               
+                Report.EndSlide()
+                
+
+                Report.BeginSlide("Material Info")
+              
+                Report.BeginTable([" Volume ", " Material ", " Mass (g) "])
+                for line in f_MaterialInfo:
+                    if "Volume " in line:
+                        line2 = line.rstrip("\n").replace("Volume ", "").replace("Mass", "").replace("Material", "")
+                        Report.AddRow(line2.split(":"))
+                Report.EndTable()
+
+                
+                Report.EndSlide()
                 
                 
                 print("Inserting Slide With PID performances")
@@ -368,7 +434,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the Energy reconstructed."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -377,7 +443,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID_NoCalo.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the Energy reconstructed, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -386,7 +452,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID2.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the MC Energy."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -395,7 +461,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID2_NoCalo.pdf" in pictures:
                         Caption = "PID, No Gaussian Smearing, Total Energy is the MC Energy, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -407,7 +473,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the Energy reconstructed."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -416,7 +482,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID_NoCalo.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the Energy reconstructed, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -425,7 +491,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID2.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the MC Energy."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -434,7 +500,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "gPID2_NoCalo.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the MC Energy, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -444,7 +510,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "graph_PID_center.pdf" in pictures:
                         Caption = "PID, Gaussian Smearing, Total Energy is the Energy reconstructed, No Calorimeter."
-                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, ScalePicture)
                         print("Inserted figure: {}".format(pictures))
                         break
                 Report.EndSlide()
@@ -454,21 +520,21 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                     Report.BeginSlide("MC quantities for " + file)
                     for mcfile in os.listdir(PDF_images_dir):
                         if ("Montecarlo" in mcfile) and (file.replace(".root", "") in mcfile):
-                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "MC quantities", 0.8)
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "MC quantities", ScalePicture)
                             print("Inserted figure: {}".format(mcfile))
                     Report.EndSlide()
                     
                     Report.BeginSlide("Energies distribution for {}".format(ParticleName[index]))
                     for mcfile in os.listdir(PDF_images_dir):
                         if ("Energies" in mcfile) and (file.replace(".root", "") in mcfile):
-                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Detected energies", 0.8)
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Detected energies", ScalePicture)
                             print("Inserted figure: {}".format(mcfile))
                     Report.EndSlide()
                     
                     Report.BeginSlide("Angles distribution accepted for {}".format(ParticleName[index]))                
                     for mcfile in os.listdir(PDF_images_dir):
                         if ("Angles" in mcfile) and (file.replace(".root", "") in mcfile):
-                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Angles distribution", 0.8)
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Angles distribution", ScalePicture)
                             print("Inserted figure: {}".format(mcfile))
                     Report.EndSlide()
                     
@@ -491,7 +557,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                             if ("2DAngHistoFigure_{}".format(j) ) in name_img:
                                 print("Inserting the slide for the 2D histogram {}".format(name_img))
                                 Report.BeginSlide("Angles distribution accepted for {}".format(ParticleName[index]))
-                                Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Angles distribution", 0.8)
+                                Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Angles distribution", ScalePicture)
                                 Report.EndSlide()
                         
                     print("Inserting the slides for the generation position")            
@@ -500,7 +566,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                             if ("GenPosition_{}".format(j) ) in name_img:
                                 print("Inserting the slide for the generation position {}".format(name_img))
                                 Report.BeginSlide("Generation Position distribution accepted for {}".format(ParticleName[index]))
-                                Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Generation Position", 0.8)
+                                Report.InsertFigure(os.path.join(PDF_images_dir, name_img), "Generation Position", ScalePicture)
                                 Report.EndSlide()
                     
                     
@@ -508,7 +574,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                     for mcfile in os.listdir(PDF_images_dir):
                         print(mcfile)
                         if ("Acceptances" in mcfile) and (file.replace(".root", "") in mcfile):
-                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", ScalePicture)
                             print("Inserted figure: {}".format(mcfile))                
                     Report.EndSlide()
                     
@@ -517,7 +583,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                     for mcfile in os.listdir(PDF_images_dir):
                         print(mcfile)
                         if "ChannelGeomFactor" in mcfile and file.replace(".root", "") in mcfile:
-                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)
+                            Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", ScalePicture)
                             print("Inserted figure: {}".format(mcfile))
                     Report.EndSlide()
                     
@@ -525,7 +591,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 Report.BeginSlide("Geometric factors for all particles")
                 for mcfile in os.listdir(PDF_images_dir):
                     if "GeomAll" in mcfile:
-                        Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", 0.8)                         
+                        Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", ScalePicture)                         
                 Report.EndSlide()
                 
                 
