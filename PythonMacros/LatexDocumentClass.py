@@ -21,6 +21,7 @@ class LatexDocumentClass:
         self.AmIInTable = False
         self.Body = ""
         self.DocumentClass = "beamer"
+        self.IsThisLongTable = False
         
         self.AllowedDocumentClasses = ["beamer", "article"]
     
@@ -51,7 +52,10 @@ class LatexDocumentClass:
         Text = ""
         if self.DocumentClass == "beamer":        
             Text = r'''
-                \documentclass[8pt]{beamer} 
+                \documentclass[8pt]{beamer}
+                \usepackage{beamerthemesplit}
+                %\usepackage[orientation=portrait,size=custom,width=60,height=80, scale = 1.4]{beamerposter} 
+                \geometry{papersize={16cm,22cm}}
                 \usetheme{CambridgeUS} 
                 \usepackage{textpos} 
                 \usepackage[latin1]{inputenc} 
@@ -59,12 +63,16 @@ class LatexDocumentClass:
                 \usepackage{mathtools} 
                 \usepackage{color} 
                 \usepackage{mathabx} 
-                \usepackage{graphicx} 
+                \usepackage{microtype} % Miglioramento dell'allineamento del testo
+                \usepackage{ragged2e} % Miglioramento dell'allineamento del testo
+                \usepackage{graphicx}
+                \usepackage{longtable} 
                 \usepackage{tikz} 
                 \usepackage{esvect} 
                 \usetikzlibrary{arrows,shapes} 
                 \usecolortheme{beaver} 
                 \usepackage{graphicx} 
+                \usepackage{booktabs}
                 \usepackage{changepage} 
                 \setbeamertemplate{navigation symbols}{} 
                 \setbeamertemplate{navigation symbols}{} 
@@ -280,21 +288,28 @@ class LatexDocumentClass:
 
 
 
-    def BeginTable(self, Header):
+    def BeginTable(self, Header, IsLongTable = False):
+        self.IsThisLongTable = IsLongTable
+        
         self.AmIInTable = True
         
         TableFormatting = ""
         
         for i in range(len(Header)):
             TableFormatting += r'''p{2 cm}'''
+
+        Text = ""
         
-        Text = r'''
-        \begin{longtable}{'''+ TableFormatting +r'''}
-        '''   
+        if IsLongTable:
+            Text = r'''
+            \begin{longtable}{'''+ TableFormatting +r'''}
+            '''   
+        else:
+            Text = r'''
+            \begin{table}
+            \begin{tabular}{''' + len(Header)*"l" + '''}
+            '''
         
-        Text+=r'''
-        \toprule
-        '''
         
         TextHeader = ""
         for index, elements in enumerate(Header):
@@ -303,17 +318,28 @@ class LatexDocumentClass:
                     '''
             else:
                 TextHeader += str(elements) + r'''&'''
-            
-        Text += TextHeader + r'''
-        \midrule
-        \endfirsthead
-        \toprule
-        '''
         
-        Text += TextHeader + r'''
-        \midrule
-        \endhead
-        '''
+        
+        
+        if IsLongTable:
+            Text+=r'''
+            \toprule
+            '''
+                
+            Text += TextHeader + r'''
+            \midrule
+            \endfirsthead
+            \toprule
+            '''
+            
+            Text += TextHeader + r'''
+            \midrule
+            \endhead
+            '''
+        else: 
+            Text += TextHeader + r'''
+            \midrule
+            '''
              
         self.Body += Text    
         return Text
@@ -335,10 +361,19 @@ class LatexDocumentClass:
         
     def EndTable(self):
         self.AmIInTable = False
-        Text = r'''
-        \bottomrule
-        \end{longtable}
-        '''
+
+        if self.IsThisLongTable:
+            Text = r'''
+            \bottomrule
+            \end{longtable}
+            '''
+        else:
+            Text = r'''
+            \bottomrule
+            \end{tabular}
+            \end{table}
+            '''    
+        
         self.Body += Text        
         return Text
     
