@@ -25,6 +25,7 @@
 #include "TLegend.h"
 #include "TMultiGraph.h"
 #include "TList.h"
+#include "TObjArray.h"
 
 
 using namespace std;
@@ -52,10 +53,12 @@ int PID(
 
     vector<TString> FileNames;
     vector<TString> FileNames_noExt;
+    vector<TString> FileNames_noPath;
     vector<double> Emins;
     vector<double> Emaxs;
     FileNames.resize(NFiles);
     FileNames_noExt.resize(NFiles);
+    FileNames_noPath.resize(NFiles);
     Emins.resize(NFiles);
     Emaxs.resize(NFiles);
 
@@ -74,6 +77,11 @@ int PID(
             cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
             FileNames_noExt[i].ReplaceAll(".root", "");
             cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
+
+            // Remove all the absolute path to the file name
+            FileNames_noPath[i] =  FileNames_noExt[i](FileNames_noExt[i].Last('/')+1, FileNames_noExt[i].Length());
+            cout << "FileNames_noPath[" << i << "] = " << FileNames_noPath[i] << endl;
+
         }
     }
     else
@@ -242,8 +250,12 @@ int PID(
 
 
     TString destination_PID = destination + "/PID_plots";
-    gSystem -> mkdir(destination_PID.Data(), true);
+    TString destination_DeadMaterial = destination + "/DeadMaterial_plots";
 
+
+
+    gSystem -> mkdir(destination_PID.Data(), true);
+    gSystem -> mkdir(destination_DeadMaterial.Data(), true);
 
     
     vector<TH2DLogX*> hPID_log;
@@ -426,6 +438,68 @@ int PID(
         gPad -> SetGridy();
         cPID[i] -> SaveAs(SaveAsPath[i].Data());
     }
+
+
+    vector<TObjArray*> ListOfBranches;
+    ListOfBranches.resize(NFiles);
+
+    for(int i = 0; i < NFiles; ++i)
+    {
+        ListOfBranches[i] = Edep[i] -> GetListOfBranches();
+        // Get the size of this list
+        int NBranchesFromFile = ListOfBranches[i] -> GetEntries();
+        int NPlots = NBranchesFromFile - NumberBranches; // I want to plot all the branches not enumerated in the Branch Names before
+
+        vector<TString> BranchesToPlot;
+        BranchesToPlot.resize(NPlots);
+        vector<TCanvas*> c;
+        c.resize(NPlots);
+
+        int indexBranch = 0;
+
+
+        for(int j = 0; j < NBranchesFromFile; ++j)
+        {
+            TString CurrentBranch = ListOfBranches[i] -> At(j) -> GetName();
+            cout << CurrentBranch.Data() << endl;
+            // Loop over BranchName[NumberBranches] and check if CurrentBranch is in the list
+            // If not push it back in BranchesToPlot
+            // Do not use the == because it is too strict
+
+            bool IsInList = false;
+            for(int k = 0; k < NumberBranches; ++k)
+            {
+                if( (CurrentBranch.Contains(BranchName[k].Data())) || BranchName[k].Contains(CurrentBranch.Data()) )
+                {
+                    IsInList = true;
+                }
+            }
+            if(!IsInList)
+            {
+                BranchesToPlot[indexBranch++] = CurrentBranch;
+                cout << "Pushing back " << CurrentBranch.Data() << endl;
+            }
+        }
+
+        cout << "Number of branches to plot " << BranchesToPlot.size() << endl;
+        cout << "Number of branches in the file " << NBranchesFromFile << endl;
+        cout << "Number of branches in the list " << ListOfBranches[i] -> GetEntries() << endl;
+        cout << "File name " << FileNames_noPath[i].Data() << endl;
+        for(int j = 0; j < NPlots; ++j)
+        {
+            cout << "Plotting " << BranchesToPlot[j].Data() << endl;
+            c[j] = new TCanvas(Form("c_%d_%d", i, j), Form("c_%d_%d", i, j), 1000, 1000);
+            TString ConditionPlot = Form("(%s)&&(NCVF > %g)", ConditionGoodEvents.Data(), NCVF_threshold);
+            Edep[i] -> Draw(Form("%s", BranchesToPlot[j].Data()), ConditionPlot.Data(), "");
+            gPad -> SetGridx();
+            gPad -> SetGridy();
+            gPad -> SetLogy();
+            c[j] -> SaveAs(Form("%s/%s_%s.pdf", destination_DeadMaterial.Data(), FileNames_noPath[i].Data(),BranchesToPlot[j].Data()));
+
+        }
+    }
+
+
 
 
 

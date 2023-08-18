@@ -350,11 +350,21 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for items in ListOfRootFiles:
                     fNames_noExt.append(items.split('/')[-1].replace(".root", ""))
 
+                ###### GET THE NAME OF THE GDML FILE ####
+                f_Report = open(os.path.join(global_input_dir,'report.txt'))
+                
+                lineOld = ''
+                for line in f_Report:
+                    if ("File "+str(number)) in lineOld:
+                        FileNameGDML = line.rstrip('\n')
+                        break                
+                    lineOld = line
+
                     
                 # Creazione del report
                 Report = LatexDocumentClass()
                 #Settings
-                Report.SetNameOfTheDocument('Simulation_Report')
+                Report.SetNameOfTheDocument('Report_File_'+str(number) + "_" + FileNameGDML)
                 Report.SetTitle('GEANT4 Simulation Report')
                 Report.SetAuthor("Riccardo Nicolaidis")
                 Report.SetEmail("riccardo.nicolaidis@unitn.it")
@@ -366,15 +376,6 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 
                 Report.BeginSlide("Info")
                 
-                ###### GET THE NAME OF THE GDML FILE ####
-                f_Report = open(os.path.join(global_input_dir,'report.txt'))
-                
-                lineOld = ''
-                for line in f_Report:
-                    if ("File "+str(number)) in lineOld:
-                        FileNameGDML = line.rstrip('\n')
-                        break                
-                    lineOld = line
                 
 
                 # Adding to the slide the name of the GDML file
@@ -639,7 +640,10 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 
                 print("Now compiling the report")
                 Report.Compile()
-                    
+                
+                for files in os.listdir(LatexReportDir):
+                    if files.endswith('.pdf'):
+                        shutil.copy(os.path.join(LatexReportDir, files), os.path.join(global_input_dir,'LatexReport'))
                         
                     
                 
