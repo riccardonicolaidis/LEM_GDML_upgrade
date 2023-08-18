@@ -26,6 +26,7 @@
 #include "TMultiGraph.h"
 #include "TList.h"
 #include "TObjArray.h"
+#include "TTreeFormula.h"
 
 
 using namespace std;
@@ -46,6 +47,7 @@ int PID(
         double NCVF_threshold = 0.1
 )
 {
+
     // Open the file with name pathFileNames.txt
     ifstream fileNames(pathFileNames.Data());
     
@@ -445,6 +447,109 @@ int PID(
 
     for(int i = 0; i < NFiles; ++i)
     {
+
+        // NCVF Map
+        // Xgen, Ygen, Zgen
+        // pDirX, pDirY, pDirZ
+
+        double H = 5.0;
+
+        vector<double> vXimpact, vYimpact, vNCVF;
+
+        double bXgen, bYgen, bZgen, bpDirX, bpDirY, bpDirZ, bNCVF;
+        Edep[i] -> SetBranchAddress("Xgen", &bXgen);
+        Edep[i] -> SetBranchAddress("Ygen", &bYgen);
+        Edep[i] -> SetBranchAddress("Zgen", &bZgen);
+        Edep[i] -> SetBranchAddress("pDirX", &bpDirX);
+        Edep[i] -> SetBranchAddress("pDirY", &bpDirY);
+        Edep[i] -> SetBranchAddress("pDirZ", &bpDirZ);
+        TTreeFormula *fNCVF = new TTreeFormula("fNCVF", Edep[i]->GetAlias("NCVF"), Edep[i]);
+        TTreeFormula *fConditionGoodEvents = new TTreeFormula("fConditionGoodEvents", ConditionGoodEvents.Data(), Edep[i]);
+
+
+
+        for(int j = 0; j < Edep[i]->GetEntries(); ++j)
+        {
+            Edep[i] -> GetEntry(j);
+            double Ximpact = bXgen + (H - bZgen) * bpDirX / bpDirZ;
+            double Yimpact = bYgen + (H - bZgen) * bpDirY / bpDirZ;
+            double NCVF = fNCVF -> EvalInstance();
+            if( fConditionGoodEvents -> EvalInstance() == 1)
+            {
+                vXimpact.push_back(Ximpact);
+                vYimpact.push_back(Yimpact);
+                vNCVF.push_back(NCVF);
+            }
+        }
+
+        // Now I want to bin the NCVF map in a 2D histogram (TGraph2D)
+        // I want to bin it in 2D because I want to plot it in 2D
+
+        double Ximpact_max = *max_element(vXimpact.begin(), vXimpact.end());
+        double Ximpact_min = *min_element(vXimpact.begin(), vXimpact.end());
+        double Yimpact_max = *max_element(vYimpact.begin(), vYimpact.end());
+        double Yimpact_min = *min_element(vYimpact.begin(), vYimpact.end());
+
+        int Nbins_Ximpact = 80;
+        int Nbins_Yimpact = 80;
+
+        TH2D *hNCVF = new TH2D("hNCVF", "hNCVF", Nbins_Ximpact, Ximpact_min, Ximpact_max, Nbins_Yimpact, Yimpact_min, Yimpact_max);
+        // Now loop on the bins and fill the histogram setting the NCVF as the mean of the values found in the bin.
+        // If there are no values in the bin, set the NCVF to -1
+
+        vector< vector< vector<double> > > vNCVF_bin;
+        vNCVF_bin.resize(Nbins_Ximpact+2);
+        for(int j = 0; j < vNCVF_bin.size(); ++j)
+        {
+            vNCVF_bin[j].resize(Nbins_Yimpact+2);
+            for(int k = 0; k < vNCVF_bin[j].size(); ++k)
+            {
+                //cout << "resizing vNCVF_bin[" << j << "][" << k << "]" << endl;
+                vNCVF_bin[j][k].clear();
+            }
+        }
+
+        for(int j = 0; j < vXimpact.size(); ++j)
+        {
+            //cout << "j = " << j << endl;
+            int binX = hNCVF -> GetXaxis() -> FindBin(vXimpact[j]);
+            int binY = hNCVF -> GetYaxis() -> FindBin(vYimpact[j]);
+            cout << "binX = " << binX << ", binY = " << binY << endl;
+            vNCVF_bin[binX][binY].push_back(vNCVF[j]);
+        }
+
+        for(int j = 0; j < Nbins_Ximpact; ++j)
+        {
+            for(int k = 0; k < Nbins_Yimpact; ++k)
+            {
+                //cout << "j = " << j << ", k = " << k << endl;
+                if(vNCVF_bin[j][k].size() == 0)
+                {
+                    hNCVF -> SetBinContent(j, k, 2);
+                }
+                else
+                {
+                    double NCVF_mean = 0;
+                    for(int l = 0; l < vNCVF_bin[j][k].size(); ++l)
+                    {
+                        NCVF_mean += vNCVF_bin[j][k][l];
+                    }
+                    NCVF_mean /= vNCVF_bin[j][k].size();
+                    hNCVF -> SetBinContent(j, k, NCVF_mean);
+                }
+            }
+        }
+
+
+
+        TCanvas *cNCVF = new TCanvas("cNCVF", "cNCVF", 1000, 1000);
+        cNCVF -> cd();
+        hNCVF -> Draw("colz");
+        //gPad -> SetLogz();
+        cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".png");
+
+
+
         ListOfBranches[i] = Edep[i] -> GetListOfBranches();
         // Get the size of this list
         int NBranchesFromFile = ListOfBranches[i] -> GetEntries();

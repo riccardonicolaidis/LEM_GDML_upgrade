@@ -276,8 +276,11 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                     ArgVect.append(E_thr_Plastic)
                     Command = ROOT_CMD(ROOT_MacroName, ArgVect)
                     print(Command)
-                    os.system(Command)
-                
+                    return_code = os.system(Command)
+                    if return_code != 0:
+                        print("Error in SetAliases.C")
+                        exit(1)
+                    
                 Command = ''
                 ROOT_MacroName = os.path.join(root_dir, 'PID.C')
                 ArgVect = []
@@ -292,7 +295,10 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 ArgVect.append(E_thr_Plastic)
                 Command = ROOT_CMD(ROOT_MacroName, ArgVect)            
                 print(Command)
-                os.system(Command)
+                return_code = os.system(Command)
+                if return_code != 0:
+                    print("Error in PID.C")
+                    exit(1)
                 
             
             

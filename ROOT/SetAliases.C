@@ -43,7 +43,6 @@ void SetAliases(TString filename,
                 double ResSilicon = 0.01,
                 double ResPlastic = 0.2)
 {
-
     ofstream Log;
     Log.open(destination+"/"+"Log_"+filename_noExt+".txt");
 
