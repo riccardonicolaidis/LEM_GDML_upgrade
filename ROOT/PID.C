@@ -41,7 +41,8 @@ int PID(
         double E_thr_Plastic = 0.05,
         int NumberPairsSensors = 5,
         double ResSilicon = 0.01,
-        double ResPlastic = 0.05
+        double ResPlastic = 0.05,
+        double NCVF_threshold = 0.1
 )
 {
     // Open the file with name pathFileNames.txt
@@ -112,9 +113,17 @@ int PID(
         return 0;
     }
 
+
+    /* ###################################################### */
+    /*                      PLOT SETTINGS                     */
+    /* ###################################################### */
+
     double Xmin = Emin_plots;
     double Xmax = Emax_plots;
-
+    double Ymin = -3.2;
+    double Ymax = 3.2;
+    double Nbins_X = 300;
+    double Nbins_Y = 300;
 
     vector<TFile*> file;
     vector<TTree*> Edep;
@@ -198,9 +207,9 @@ int PID(
 
     for(int i = 0; i< NumberPairsSensors; ++i)
     {
-        cout << "Defining good events for pair" << BranchName[iStartSensors+i].Data() << " & " <<BranchName[iStartSensors+ NumberPairsSensors+i].Data() << endl;
+        //cout << "Defining good events for pair" << BranchName[iStartSensors+i].Data() << " & " <<BranchName[iStartSensors+ NumberPairsSensors+i].Data() << endl;
         ConditionPairSilicon[i] = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
-        cout << "ConditionPairSilicon[" << i << "] = " << ConditionPairSilicon[i].Data() << endl;
+        //cout << "ConditionPairSilicon[" << i << "] = " << ConditionPairSilicon[i].Data() << endl;
         if(i == 0)
         {
             ConditionPairSiliconAll = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
@@ -219,7 +228,7 @@ int PID(
     ConditionGoodEvents = Form("(%s < 2.0) && (%s) && (%s)", NumberPairsHit.Data(), ConditionPairSiliconAll.Data(), ConditionDrilledVeto.Data());
     for(int i = 0; i < NumberPairsSensors; ++i)
     {
-        cout << "Defining good events for pair" << BranchName[iStartSensors_Thin+i].Data() << " & " <<BranchName[iStartSensors_Thick+i].Data() << endl;
+        //cout << "Defining good events for pair" << BranchName[iStartSensors_Thin+i].Data() << " & " <<BranchName[iStartSensors_Thick+i].Data() << endl;
         ConditionGoodEventsSinglePair[i] = Form("(%s) && (%s)", ConditionPairSilicon[i].Data(), ConditionDrilledVeto.Data());
     }
 
@@ -228,124 +237,310 @@ int PID(
     TFile *fileOut = new TFile(destination +"/Plots.root", "RECREATE");
 
 
-    TCanvas *cPID, *cgPID, *cPID_NoCalo, *cgPID_NoCalo;
-    TCanvas *cPID2 , *cgPID2, *cPID2_NoCalo, *cgPID2_NoCalo;
+    // TCanvas *cPID, *cgPID, *cPID_NoCalo, *cgPID_NoCalo;
+    // TCanvas *cPID2 , *cgPID2, *cPID2_NoCalo, *cgPID2_NoCalo;
 
+
+    TString destination_PID = destination + "/PID_plots";
+    gSystem -> mkdir(destination_PID.Data(), true);
+
+
+    
+    vector<TH2DLogX*> hPID_log;
+    vector<TH2D*> hPID;
+    vector<TString> hPID_XTitle;
+    vector<TString> hPID_YTitle;
+    vector<TString> DrawRule;
+    vector<TString> Condition;
+    vector<TString> SaveAsPath;
+    vector<TCanvas*> cPID;
+
+    int N_Histos = 12;
+
+    hPID_log.resize(N_Histos);
+    hPID.resize(N_Histos);
+    hPID_XTitle.resize(N_Histos);
+    hPID_YTitle.resize(N_Histos);
+    DrawRule.resize(N_Histos);
+    Condition.resize(N_Histos);
+    SaveAsPath.resize(N_Histos);
+    cPID.resize(N_Histos);
+
+    int IndexHisto = 0;
+
+    // Template for all histograms
+    // hPID_Name[IndexHisto]: Assigned later in the loop
+    // hPID_Title[IndexHisto] = "";
+    // hPID_XTitle[IndexHisto] = "";
+    // hPID_YTitle[IndexHisto] = "";
+    // DrawRule[IndexHisto] = "";
+    // Condition[IndexHisto] = "";
+    // SaveAsPath[IndexHisto] = "";
+
+    // Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_0", ConditionGoodEvents.Data(), "colz");
+    // Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>hPID_1", ConditionGoodEvents.Data(), "colz");
+    // Edep[i] -> Draw("PID:(TotThick + TotThin)>>hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    // Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+
+    // Edep[i] -> Draw("PID:RandEnergy>>hPID2_0", ConditionGoodEvents.Data(), "colz");
+    // Edep[i] -> Draw("gPID:RandEnergy>>hPID2_1", ConditionGoodEvents.Data(), "colz");
+    // Edep[i] -> Draw("PID:RandEnergy>>hPID2_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    // Edep[i] -> Draw("gPID:RandEnergy>>hPID2_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+
+
+    // Histo 0
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto] = ConditionGoodEvents.Data();
+    SaveAsPath[IndexHisto] = destination_PID + "/PID.pdf";
+
+    // Histo 1
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "gPID:(gTotThick + gTotThin + gEd_LV_Calo)";
+    Condition[IndexHisto] = ConditionGoodEvents.Data();
+    SaveAsPath[IndexHisto] = destination_PID + "/gPID.pdf";
+
+    // Histo 2
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:(TotThick + TotThin)";
+    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto] = destination_PID + "/PID_NoCalo.pdf";
+
+    // Histo 3
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "gPID:(gTotThick + gTotThin)";
+    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto] = destination_PID + "/gPID_NoCalo.pdf";
+
+    // Histo 4
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:RandEnergy";
+    Condition[IndexHisto] = ConditionGoodEvents.Data();
+    SaveAsPath[IndexHisto] = destination_PID + "/PID2.pdf";
+
+    // Histo 5
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "gPID:RandEnergy";
+    Condition[IndexHisto] = ConditionGoodEvents.Data();
+
+
+    // Histo 6
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:RandEnergy";
+    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto] = destination_PID + "/PID2_NoCalo.pdf";
+
+    // Histo 7
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "gPID:RandEnergy";
+    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto] = destination_PID + "/gPID2_NoCalo.pdf";
+
+
+    // Histo 8
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto] = Form("(%s)&&(NCVF > %g)", ConditionGoodEvents.Data(), NCVF_threshold);
+    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_NOK.pdf";
+
+    // Histo 9
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto] = Form("(%s)&&(NCVF > %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_NOK_NoCalo.pdf";
+
+    // Histo 10
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto] = Form("(%s)&&(NCVF < %g)", ConditionGoodEvents.Data(), NCVF_threshold);
+    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_OK.pdf";
+
+    // Histo 11
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto] = Form("(%s)&&(NCVF < %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_OK_NoCalo.pdf";
     
 
 
-    TH2DLogX *hPID_log[4];
-    TH2D *hPID[4];
+    // Loop 
+    for(int i = 0; i < N_Histos; ++i)
+    {
+        cout << "Drawing Histo " << i << endl;
+        hPID_log[i] = new TH2DLogX();
+        hPID_log[i] -> SetName(Form("hPID_%d", i));
+        hPID_log[i] -> SetTitle(Form("hPID_%d", i));
+        hPID_log[i] -> SetXTitle(hPID_XTitle[i].Data());
+        hPID_log[i] -> SetYTitle(hPID_YTitle[i].Data());
+        hPID_log[i] -> SetXAxis(Xmin,Xmax, Nbins_X);
+        hPID_log[i] -> SetYAxis(Ymin,Ymax, Nbins_Y);
+        hPID_log[i] -> GenerateHistogram();
+        hPID[i] = (TH2D*)hPID_log[i] -> GetHistogram();
+        
+        
+        for(int j = 0; j < NFiles; ++j)
+        {
+            if(j == 0)
+            {
+                Edep[j] -> Draw(Form("%s>>hPID_%d", DrawRule[i].Data(), i), Condition[i].Data(), "goff");
+            }
+            else
+            {
+                Edep[j] -> Draw(Form("%s>>+hPID_%d", DrawRule[i].Data(), i), Condition[i].Data(), "goff");
+            }
+        }
+        //hPID_log[i] -> SaveAs(SaveAsPath[i].Data());
+    }
 
-    TH2DLogX *hPID2_log[4];
-    TH2D *hPID2[4];
+    for(int i = 0; i < N_Histos; ++i)
+    {
+        cPID[i] = new TCanvas(Form("cPID_%d", i), Form("cPID_%d", i), 1000, 1000);
+        cPID[i] -> cd();
+        hPID[i] -> Draw("colz");
+        gPad -> SetLogx();
+        gPad -> SetLogz();
+        gPad -> SetGridx();
+        gPad -> SetGridy();
+        cPID[i] -> SaveAs(SaveAsPath[i].Data());
+    }
+
+
+
+
+
+    // TH2DLogX *hPID_log[4];
+    // TH2D *hPID[4];
+
+    // TH2DLogX *hPID2_log[4];
+    // TH2D *hPID2[4];
 
     // Index 0: PID Thin + Thick + Calo
     // Index 1: PID gThin + gThick + gCalo
     // Index 2: PID Thin + Thick NO Calo
     // Index 3: PID gThin + gThick NO Calo
 
-    for(int i = 0; i < 4; ++i)
-    {
-        hPID_log[i] = new TH2DLogX();
-        hPID_log[i] -> SetName(Form("hPID_%d", i));
-        hPID_log[i] -> SetTitle(Form("hPID_%d", i));
-        hPID_log[i] -> SetXTitle("E_{tot} [MeV]");
-        hPID_log[i] -> SetYTitle("PID");
-        hPID_log[i] -> SetXAxis(Xmin, Xmax, 300);
-        hPID_log[i] -> SetYAxis(-3., +3.2, 300);
-        hPID_log[i] -> GenerateHistogram();
-        hPID[i] = (TH2D*) hPID_log[i] -> GetHistogram();
+    // for(int i = 0; i < 4; ++i)
+    // {
+    //     hPID_log[i] = new TH2DLogX();
+    //     hPID_log[i] -> SetName(Form("hPID_%d", i));
+    //     hPID_log[i] -> SetTitle(Form("hPID_%d", i));
+    //     hPID_log[i] -> SetXTitle("E_{tot} [MeV]");
+    //     hPID_log[i] -> SetYTitle("PID");
+    //     hPID_log[i] -> SetXAxis(Xmin, Xmax, 300);
+    //     hPID_log[i] -> SetYAxis(-3., +3.2, 300);
+    //     hPID_log[i] -> GenerateHistogram();
+    //     hPID[i] = (TH2D*) hPID_log[i] -> GetHistogram();
 
-        hPID2_log[i] = new TH2DLogX();
-        hPID2_log[i] -> SetName(Form("hPID2_%d", i));
-        hPID2_log[i] -> SetTitle(Form("hPID2_%d", i));
-        hPID2_log[i] -> SetXTitle("E_{tot} [MeV]");
-        hPID2_log[i] -> SetYTitle("PID");
-        hPID2_log[i] -> SetXAxis(Xmin, Xmax, 300);
-        hPID2_log[i] -> SetYAxis(-3., +3.2, 300);
-        hPID2_log[i] -> GenerateHistogram();
-        hPID2[i] = (TH2D*) hPID2_log[i] -> GetHistogram();
-    }
+    //     hPID2_log[i] = new TH2DLogX();
+    //     hPID2_log[i] -> SetName(Form("hPID2_%d", i));
+    //     hPID2_log[i] -> SetTitle(Form("hPID2_%d", i));
+    //     hPID2_log[i] -> SetXTitle("E_{tot} [MeV]");
+    //     hPID2_log[i] -> SetYTitle("PID");
+    //     hPID2_log[i] -> SetXAxis(Xmin, Xmax, 300);
+    //     hPID2_log[i] -> SetYAxis(-3., +3.2, 300);
+    //     hPID2_log[i] -> GenerateHistogram();
+    //     hPID2[i] = (TH2D*) hPID2_log[i] -> GetHistogram();
+    // }
 
 
-    for(int i = 0; i < NFiles; ++i)
-    {
-        if(i == 0)
-        {
-            Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_0", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>hPID_1", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("PID:(TotThick + TotThin)>>hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-            Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    // for(int i = 0; i < NFiles; ++i)
+    // {
+    //     if(i == 0)
+    //     {
+    //         Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_0", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>hPID_1", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("PID:(TotThick + TotThin)>>hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    //         Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
         
-            Edep[i] -> Draw("PID:RandEnergy>>hPID2_0", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("gPID:RandEnergy>>hPID2_1", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("PID:RandEnergy>>hPID2_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-            Edep[i] -> Draw("gPID:RandEnergy>>hPID2_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    //         Edep[i] -> Draw("PID:RandEnergy>>hPID2_0", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("gPID:RandEnergy>>hPID2_1", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("PID:RandEnergy>>hPID2_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    //         Edep[i] -> Draw("gPID:RandEnergy>>hPID2_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
         
-        }
-        else
-        {
-            Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>+hPID_0", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>+hPID_1", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("PID:(TotThick + TotThin)>>+hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-            Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>+hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    //     }
+    //     else
+    //     {
+    //         Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>+hPID_0", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>+hPID_1", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("PID:(TotThick + TotThin)>>+hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    //         Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>+hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
         
-            Edep[i] -> Draw("PID:RandEnergy>>+hPID2_0", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("gPID:RandEnergy>>+hPID2_1", ConditionGoodEvents.Data(), "colz");
-            Edep[i] -> Draw("PID:RandEnergy>>+hPID2_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-            Edep[i] -> Draw("gPID:RandEnergy>>+hPID2_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    //         Edep[i] -> Draw("PID:RandEnergy>>+hPID2_0", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("gPID:RandEnergy>>+hPID2_1", ConditionGoodEvents.Data(), "colz");
+    //         Edep[i] -> Draw("PID:RandEnergy>>+hPID2_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
+    //         Edep[i] -> Draw("gPID:RandEnergy>>+hPID2_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
 
-        }
-    }
-
-    TString destination_PID = destination + "/PID_plots";
-    gSystem -> mkdir(destination_PID.Data(), true);
+    //     }
+    // }
 
 
-    TH2DLogX *hPID_single;
-    TCanvas *cPID_single;
-    TH2D *hPIDlog_single;
+
+    // TH2DLogX *hPID_single;
+    // TCanvas *cPID_single;
+    // TH2D *hPIDlog_single;
     
-    cout << "Plotting Single PID" << endl;
-    for(int i = 0; i < 10; ++i)
-    {
-        cout << "########################" << endl;
-    }
+    // cout << "Plotting Single PID" << endl;
+    // for(int i = 0; i < 10; ++i)
+    // {
+    //     cout << "########################" << endl;
+    // }
 
     
 
 
 
-    for(int i = 0; i < NFiles; ++i)
-    {
-        hPID_single = new TH2DLogX();
-        hPID_single -> SetName("hPID_single");
-        hPID_single -> SetTitle(ParticleNames[i].Data());
-        hPID_single -> SetXTitle("E_{tot} [MeV]");
-        hPID_single -> SetYTitle("PID");
-        hPID_single -> SetXAxis(Emins[i], Emaxs[i], 200);
-        hPID_single -> SetYAxis(-3., +3.2, 200);
-        hPID_single -> GenerateHistogram();
+    // for(int i = 0; i < NFiles; ++i)
+    // {
+    //     hPID_single = new TH2DLogX();
+    //     hPID_single -> SetName("hPID_single");
+    //     hPID_single -> SetTitle(ParticleNames[i].Data());
+    //     hPID_single -> SetXTitle("E_{tot} [MeV]");
+    //     hPID_single -> SetYTitle("PID");
+    //     hPID_single -> SetXAxis(Emins[i], Emaxs[i], 200);
+    //     hPID_single -> SetYAxis(-3., +3.2, 200);
+    //     hPID_single -> GenerateHistogram();
 
-        hPIDlog_single = (TH2D*) hPID_single -> GetHistogram();
+    //     hPIDlog_single = (TH2D*) hPID_single -> GetHistogram();
         
-        Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_single", ConditionGoodEvents.Data(), "colz");
-        cPID_single = new TCanvas("cPID_single", "cPID_single", 600, 600);
+    //     Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_single", ConditionGoodEvents.Data(), "colz");
+    //     cPID_single = new TCanvas("cPID_single", "cPID_single", 600, 600);
 
-        hPIDlog_single -> Draw("colz");
-        gPad -> SetLogx();
-        gPad -> SetLogz();
-        gPad -> SetGrid();
-        cPID_single -> SaveAs(destination_PID + Form("/PID_single_%s.pdf", ParticleNames[i].Data()));
-        delete hPID_single;
-        delete cPID_single;
-        delete hPIDlog_single;
-    }
-    for(int i = 0; i < 10; ++i)
-    {
-        cout << "########################" << endl;
-    }
+    //     hPIDlog_single -> Draw("colz");
+    //     gPad -> SetLogx();
+    //     gPad -> SetLogz();
+    //     gPad -> SetGrid();
+    //     cPID_single -> SaveAs(destination_PID + Form("/PID_single_%s.pdf", ParticleNames[i].Data()));
+    //     delete hPID_single;
+    //     delete cPID_single;
+    //     delete hPIDlog_single;
+    // }
+    // for(int i = 0; i < 10; ++i)
+    // {
+    //     cout << "########################" << endl;
+    // }
 
     vector<TGraph*> grPID;
     grPID.resize(NFiles);
@@ -412,81 +607,81 @@ int PID(
 
 
 
-    cPID = new TCanvas("cPID", "cPID", 600, 600);
-    hPID[0] -> Draw("colz");
-    hPID[0] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cPID -> SaveAs(destination_PID + "/PID.pdf");
-    cPID -> SaveAs(destination_PID + "/PID.root");
-    cgPID = new TCanvas("cgPID", "cgPID", 600, 600);
-    hPID[1] -> Draw("colz");
-    hPID[1] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cgPID -> SaveAs(destination_PID + "/gPID.pdf");
-    cgPID -> SaveAs(destination_PID + "/gPID.root");
-    cPID_NoCalo = new TCanvas("cPID_NoCalo", "cPID_NoCalo", 600, 600);
-    hPID[2] -> Draw("colz");
-    hPID[2] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cPID_NoCalo -> SaveAs(destination_PID + "/PID_NoCalo.pdf");
-    cPID_NoCalo -> SaveAs(destination_PID + "/PID_NoCalo.root");
+    // cPID = new TCanvas("cPID", "cPID", 600, 600);
+    // hPID[0] -> Draw("colz");
+    // hPID[0] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cPID -> SaveAs(destination_PID + "/PID.pdf");
+    // cPID -> SaveAs(destination_PID + "/PID.root");
+    // cgPID = new TCanvas("cgPID", "cgPID", 600, 600);
+    // hPID[1] -> Draw("colz");
+    // hPID[1] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cgPID -> SaveAs(destination_PID + "/gPID.pdf");
+    // cgPID -> SaveAs(destination_PID + "/gPID.root");
+    // cPID_NoCalo = new TCanvas("cPID_NoCalo", "cPID_NoCalo", 600, 600);
+    // hPID[2] -> Draw("colz");
+    // hPID[2] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cPID_NoCalo -> SaveAs(destination_PID + "/PID_NoCalo.pdf");
+    // cPID_NoCalo -> SaveAs(destination_PID + "/PID_NoCalo.root");
 
-    cout << "Plotting PID2" << endl << endl << endl;
-    cgPID_NoCalo = new TCanvas("cgPID_NoCalo", "cgPID_NoCalo", 600, 600);
-    cout << hPID[3] -> GetEntries() << endl;
-    hPID[3] -> Draw("colz");
-    hPID[3] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cgPID_NoCalo -> SaveAs(destination_PID + "/gPID_NoCalo.pdf");
-    cgPID_NoCalo -> SaveAs(destination_PID + "/gPID_NoCalo.root");
+    // cout << "Plotting PID2" << endl << endl << endl;
+    // cgPID_NoCalo = new TCanvas("cgPID_NoCalo", "cgPID_NoCalo", 600, 600);
+    // cout << hPID[3] -> GetEntries() << endl;
+    // hPID[3] -> Draw("colz");
+    // hPID[3] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cgPID_NoCalo -> SaveAs(destination_PID + "/gPID_NoCalo.pdf");
+    // cgPID_NoCalo -> SaveAs(destination_PID + "/gPID_NoCalo.root");
 
-    cPID2 = new TCanvas("cPID2", "cPID2", 600, 600);
-    hPID2[0] -> Draw("colz");
-    hPID2[0] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cPID2 -> SaveAs(destination_PID + "/PID2.pdf");
+    // cPID2 = new TCanvas("cPID2", "cPID2", 600, 600);
+    // hPID2[0] -> Draw("colz");
+    // hPID2[0] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cPID2 -> SaveAs(destination_PID + "/PID2.pdf");
     
-    cgPID2 = new TCanvas("cgPID2", "cgPID2", 600, 600);
-    hPID2[1] -> Draw("colz");
-    hPID2[1] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cgPID2 -> SaveAs(destination_PID + "/gPID2.pdf");
+    // cgPID2 = new TCanvas("cgPID2", "cgPID2", 600, 600);
+    // hPID2[1] -> Draw("colz");
+    // hPID2[1] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cgPID2 -> SaveAs(destination_PID + "/gPID2.pdf");
 
-    cPID2_NoCalo = new TCanvas("cPID2_NoCalo", "cPID2_NoCalo", 600, 600);
-    hPID2[2] -> Draw("colz");
-    hPID2[2] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cPID2_NoCalo -> SaveAs(destination_PID + "/PID2_NoCalo.pdf");
+    // cPID2_NoCalo = new TCanvas("cPID2_NoCalo", "cPID2_NoCalo", 600, 600);
+    // hPID2[2] -> Draw("colz");
+    // hPID2[2] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cPID2_NoCalo -> SaveAs(destination_PID + "/PID2_NoCalo.pdf");
 
-    cgPID2_NoCalo = new TCanvas("cgPID2_NoCalo", "cgPID2_NoCalo", 600, 600);
-    hPID2[3] -> Draw("colz");
-    hPID2[3] -> SetStats(0);
-    gPad -> SetLogx();
-    gPad -> SetLogz();
-    gPad -> SetGridx();
-    gPad -> SetGridy();
-    cgPID2_NoCalo -> SaveAs(destination_PID + "/gPID2_NoCalo.pdf");
+    // cgPID2_NoCalo = new TCanvas("cgPID2_NoCalo", "cgPID2_NoCalo", 600, 600);
+    // hPID2[3] -> Draw("colz");
+    // hPID2[3] -> SetStats(0);
+    // gPad -> SetLogx();
+    // gPad -> SetLogz();
+    // gPad -> SetGridx();
+    // gPad -> SetGridy();
+    // cgPID2_NoCalo -> SaveAs(destination_PID + "/gPID2_NoCalo.pdf");
 
 
     TCanvas *cDisentangle = new TCanvas("cDisentangle", "cDisentangle", 600, 600);

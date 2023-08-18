@@ -146,7 +146,7 @@ def GDML_Retrieve_Names(input_file):
 
 
 
-def GDML_Parser(input_file, dummy_materials):
+def GDML_Parser(input_file, dummy_materials, all_sensitive_det):
     
     RelativePath = os.path.dirname(input_file)
     FileName_GDML = os.path.basename(input_file)
@@ -303,7 +303,7 @@ def GDML_Parser(input_file, dummy_materials):
                     f_GDML_Parsed.write(lineCol)
                     break
                 
-            if SetSensDet:
+            if SetSensDet or all_sensitive_det:
                 lineSensDet = Build_AuxiliaryLine_SensDet()
                 f_GDML_Parsed.write(lineSensDet)
                 SetSensDet = False
@@ -330,6 +330,7 @@ if __name__ == "__main__":
     argparser.add_argument( "-i", "--input", help = "Input GDML file", required = False )
     argparser.add_argument( "-s", "--step-of-process", help = "Step of process: 0 or 1", required = False )
     argparser.add_argument( "-d", "--dummy-materials", help = "Dummy materials: If inserted all the Non-SensDet will be assigned to G4_Galactic", action="store_true", required = False)
+    argparser.add_argument( "-a", "--all-sensitive", help = "All sensitive: If inserted all the volumes will be assigned to G4_Galactic", action="store_true", required = False)
     
     args = argparser.parse_args()
     
@@ -338,4 +339,4 @@ if __name__ == "__main__":
         GDML_Retrieve_Names(args.input)
     elif args.step_of_process == "1":
         print("Step 1")
-        GDML_Parser(args.input, args.dummy_materials)
+        GDML_Parser(args.input, args.dummy_materials, args.all_sensitive)

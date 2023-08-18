@@ -13,15 +13,15 @@ def Geant4Simulation():
     # ######################################################## #
     
     
-    IsTest = False
+    IsTest = True
     
     RunName = "Geant4Simulation"
     Date = time.strftime("%Y%m%d")
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 100
-    N_evjob = 1000000
+    N_jobs = 2
+    N_evjob = 100000
 
     # Run directory for the run
     if IsTest:

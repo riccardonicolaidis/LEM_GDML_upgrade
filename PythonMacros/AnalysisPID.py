@@ -382,6 +382,44 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                         break
                 Report.EndSlide()
                 
+                
+                Report.BeginSlide("PID - Non Confinement Violation Factor - NOK")
+                for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
+                    if "PID_NCVF_NOK.pdf" in pictures:
+                        Caption = "PID. Convined events but Measured energy is not equal to the MC energy."
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        print("Inserted figure: {}".format(pictures))
+                        break
+                Report.EndSlide()
+
+                Report.BeginSlide("PID - Non Confinement Violation Factor - OK")
+                for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
+                    if "PID_NCVF_OK.pdf" in pictures:
+                        Caption = "PID. Convined events and Measured energy is equal to the MC energy."
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        print("Inserted figure: {}".format(pictures))
+                        break
+                Report.EndSlide()
+                
+                Report.BeginSlide("PID - Non Confinement Violation Factor - NOK - No Calorimeter")
+                for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
+                    if "PID_NCVF_NOK_NoCalo.pdf" in pictures:
+                        Caption = "PID. Convined events but Measured energy is not equal to the MC energy. No Calorimeter."
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        print("Inserted figure: {}".format(pictures))
+                        break
+                Report.EndSlide()
+                
+                Report.BeginSlide("PID - Non Confinement Violation Factor - OK - No Calorimeter")
+                for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
+                    if "PID_NCVF_OK_NoCalo.pdf" in pictures:
+                        Caption = "PID. Convined events and Measured energy is equal to the MC energy. No Calorimeter."
+                        Report.InsertFigure(os.path.join(PDF_images_dir,"PID_plots",pictures), Caption, 0.5)
+                        print("Inserted figure: {}".format(pictures))
+                        break
+                Report.EndSlide()
+                                                
+                
                 Report.BeginSlide("PID MC Energy")
                 for pictures in os.listdir(os.path.join(PDF_images_dir,"PID_plots")):
                     if "PID2.pdf" in pictures:

@@ -205,6 +205,10 @@ void SetAliases(TString filename,
     Edep -> SetAlias("gTotalEnergy", gTotalEnergy.Data());
 
 
+    // Defining the Non Confinement Violation Factor
+    Edep -> SetAlias("NCVF", "(RandEnergy - TotalEnergy)/RandEnergy");    
+
+
     Edep -> SetAlias("PID", PID.Data());
     Edep -> SetAlias("gPID", gPID.Data());
     Edep -> SetAlias("PID_noCalo", PID_noCalo.Data());
