@@ -13,21 +13,21 @@ def Geant4Simulation():
     # ######################################################## #
     
     
-    IsTest = True
+    IsTest = False
     
     RunName = "Geant4Simulation"
     Date = time.strftime("%Y%m%d")
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 2
-    N_evjob = 100000
+    N_jobs = 10
+    N_evjob = 1000000
 
     # Run directory for the run
     if IsTest:
-        RunDir = "Output_" + RunName + "_" + Date + "_test"
+        RunDir = "OUT/Output_" + RunName + "_" + Date + "_test"
     else:
-        RunDir = "Output_" + RunName + "_" + Date
+        RunDir = "OUT/Output_" + RunName + "_" + Date
 
 
     # ######################################################## #
@@ -35,8 +35,8 @@ def Geant4Simulation():
     # ######################################################## #
 
     gps_particle = ["e-", "proton", "alpha"]
-    gps_ene_min = [0.08, 2       , 10]
-    gps_ene_max = [20  , 100     , 500]
+    gps_ene_min = [0.08, 1       , 10]
+    gps_ene_max = [8  , 50     , 200]
 
 
     gps_ene_type = "Lin"
@@ -47,16 +47,16 @@ def Geant4Simulation():
     gps_pos_centre_cm = [0, 0, 12]
     
     if IsTest:
-        gps_pos_radius_cm = 0.5
+        gps_pos_radius_cm = 0.1
     else:
-        gps_pos_radius_cm = 3
+        gps_pos_radius_cm = 2.3
     gps_ang_type = "iso"
     gps_ang_mintheta_deg = 0
     
     if IsTest:
-        gps_ang_maxtheta_deg = 5
+        gps_ang_maxtheta_deg = 45
     else:
-        gps_ang_maxtheta_deg = 90
+        gps_ang_maxtheta_deg = 50
     
     run_beamOn = N_evjob
 

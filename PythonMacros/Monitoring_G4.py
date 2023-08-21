@@ -61,8 +61,8 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
     Checkpoint_Plot = start_time
     Checkpoint_Sampling = start_time
     
-    UpdateFreq_Message = 10.0 # seconds
-    UpdateFreq_Plot = 10.0 # seconds
+    UpdateFreq_Message = 20.0 # seconds
+    UpdateFreq_Plot = 120.0 # seconds
     UpdateFreq_Sampling = 1.0 # seconds
     
     
@@ -81,9 +81,9 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
     evts = np.array([])
     
     
-    
+    TotalNumberEvents_monitored = 0
     Total_Percentage = 0.0
-    while Total_Percentage < (100.0-1e-6):
+    while TotalNumberEvents_monitored < TotNumberEvents_computed:
         MessageString = "" 
         for i in range(N_Files):
             if i > 0:
@@ -95,32 +95,30 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
                 
                 # check if .lock file exists else wait unitil it disappear
                 while os.path.exists(NameLock):
+                    pass
                     # wait 1 millisecond
                     #print('Waiting for lock file to disappear')
-                    time.sleep(0.001)
                 if os.path.exists(NameFile):
                     f = open(NameFile, 'r')
                     for line in f:
                         line_split = line.split(' ')
                         particle_name = line_split[0]
-                        #print(particle_name)
                         EventNumber = int(line_split[1])
-                        #print(EventNumber)
                         # Add the percentage to the string with no decimals
                         MessageString += ' ' + str(int(100 * EventNumber/N_EventsPerJob)) + particle_name[0]+'% '
-                        #print('F'+str(i)+ " J"+str(j) + " " + particle_name + ' ' + str(EventNumber))
-                        #MessageStrings.append("F"+str(i)+ " J"+str(j) + " " + particle_name + ' ' + str(EventNumber))
-                        # Find the index of the particle in the Particles vector of strings
-                        # use enumerate
+                        
                         particle_index = 0
                         for k, particle in enumerate(Particles):
                             if particle_name in particle:
                                 particle_index = k
                                 break
                         SubVector_Files[i][j][particle_index] = EventNumber
+                        
+                        for index_dummy in range(particle_index):
+                            SubVector_Files[i][j][index_dummy] = N_EventsPerJob
                     f.close()
                 else:
-                    #print('File does not exist')
+
                     MessageString += ' - '
                     SubVector_Files[i][j] = [0 for i in range(len(Particles))]
                         

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <fstream>
 #include <map>
 #include <algorithm>
 
@@ -27,6 +28,8 @@
 #include "TKey.h"
 #include "TObject.h"
 #include "TObjArray.h"
+#include "TEntryList.h"
+#include "TTreeFormula.h"
 
 
 using namespace std;
@@ -43,11 +46,12 @@ void SetAliases(TString filename,
                 double ResSilicon = 0.01,
                 double ResPlastic = 0.2)
 {
-    ofstream Log;
-    Log.open(destination+"/"+"Log_"+filename_noExt+".txt");
 
-    std::cout << "Setting aliases for " << filename << endl;
-    Log << "Setting aliases for " << filename << endl;
+
+    /* ###################################################### */
+    /*            DEFINITION OF THE BRANCHES NAMES            */
+    /* ###################################################### */
+
 
     TString NameFile = filename_noExt;
     TString DirName[3] = {"DirX", "DirY", "DirZ"};
@@ -56,8 +60,6 @@ void SetAliases(TString filename,
 
     /* Number of branches */
     int NumberBranches = 7 + 3 + 2*NumberPairsSensors;
-    std::cout << "NumberBranches = " << NumberBranches << endl;
-    Log << "NumberBranches = " << NumberBranches << endl;
     /* Definition of Branches Names*/
     TString BranchName[NumberBranches];
 
@@ -86,7 +88,18 @@ void SetAliases(TString filename,
         iBranch++;
     }
 
-    /* Print Branch names */
+
+    /* ###################################################### */
+    /*                        LOG FILES                       */
+    /* ###################################################### */
+
+    ofstream Log;
+    Log.open(destination+"/"+"Log_"+filename_noExt+".txt");
+    Log << "Setting aliases for " << filename << endl;
+    Log << "NumberBranches = " << NumberBranches << endl;
+    std::cout << "Setting aliases for " << filename << endl;
+    std::cout << "NumberBranches = " << NumberBranches << endl;
+
     for(int i = 0; i < NumberBranches; i++)
     {
         std::cout << "BranchName[" << i << "] = " << BranchName[i] << endl;
@@ -95,123 +108,152 @@ void SetAliases(TString filename,
 
     /* Open the file to be read */
     TFile *file = new TFile(filename, "READ");
-    Log << "File " << filename << " opened" << endl;
+    TList *list = file -> GetListOfKeys();
 
+    Log << "File " << filename << " opened" << endl;
     // Print the file structure in the log file
     Log << "File structure:" << endl;
-    TList *list = file -> GetListOfKeys();
     for(int i = 0; i < list -> GetSize(); ++i)
     {
         Log << "Key " << i << " = " << list -> At(i) -> GetName() << endl;
     }
 
+    /* ###################################################### */
+    /*                   CREATING A NEW FILE                  */
+    /* ###################################################### */
     
-
+    /* ------------- CLONING THE TREE STRUCTURE ------------- */
     /* Open the file with new trees where we are going to define aliases */
     TFile *file_alias = new TFile(destination +"/" + filename_noExt + "_alias.root", "RECREATE");
     /* Old tree without aliases */
     TTree *Edep_old = (TTree*) (file -> Get("Edep"));
 
-    // Print the file structure in the log file
+    /* --------------- PRINTING THE STRUCTURE --------------- */
     Log << "TTree structure:" << endl;
     TObjArray *list2 = Edep_old -> GetListOfBranches();
     for(int i = 0; i < list2 -> GetSize(); ++i)
     {
         Log << "Branch " << i << " = " << list2 -> At(i) -> GetName() << endl;
     }
-
     Log.close();
 
-    file_alias -> cd();
-    /* New tree with aliases */
-    TTree *Edep = Edep_old -> CloneTree();
 
-    /* Number of sensors for energy measurement */
+
+
+
+    /* ----------------- CD TO THE NEW FILE ----------------- */
+    file_alias -> cd();
+    
+    
+    
+    /* ------------- CLONING ONLY THE STRUCTURE ------------- */
+    TTree *Edep = Edep_old -> CloneTree(0);
+
+
+    /* ---------- DEFINING STRINGS FOR THE ALIASES ---------- */
     int NumberEnergySensors = 2*NumberPairsSensors + 2 + 1;
 
 
-    /* Total energy deposited in the sensors */
-    TString TotThin = "(";
-    TString TotThick = "(";
-    TString gTotThin = "(";
+    /* ---------- TOTAL ENERGY DEPOSITED IN SENSORS --------- */
+    TString TotThin   = "(";
+    TString TotThick  = "(";
+    TString gTotThin  = "(";
     TString gTotThick = "(";
 
     for(int i = 0; i < NumberPairsSensors; i++)
     {
         if(i == 0)
         {
-            TotThin += Form("(%s)*(%s > %g)", BranchName[i + iStartSensors_Thin].Data(), BranchName[i + iStartSensors_Thin].Data(), E_thr_Thin);
-            TotThick += Form("(%s)*(%s > %g)", BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
-            gTotThin += Form("(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thin].Data(), BranchName[i + iStartSensors_Thin].Data(), E_thr_Thin);
+            TotThin   += Form("(%s)*(%s > %g)",   BranchName[i + iStartSensors_Thin].Data(),  BranchName[i + iStartSensors_Thin].Data(),  E_thr_Thin);
+            TotThick  += Form("(%s)*(%s > %g)",   BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
+            gTotThin  += Form("(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thin].Data(),  BranchName[i + iStartSensors_Thin].Data(),  E_thr_Thin);
             gTotThick += Form("(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
         }
         else
         {
-            TotThin += Form("+(%s)*(%s > %g)", BranchName[i + iStartSensors_Thin].Data(), BranchName[i + iStartSensors_Thin].Data(), E_thr_Thin);
-            TotThick += Form("+(%s)*(%s > %g)", BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
-            gTotThin += Form("+(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thin].Data(), BranchName[i + iStartSensors_Thin].Data(), E_thr_Thin);
+            TotThin   += Form("+(%s)*(%s > %g)",   BranchName[i + iStartSensors_Thin].Data(),  BranchName[i + iStartSensors_Thin].Data(),  E_thr_Thin);
+            TotThick  += Form("+(%s)*(%s > %g)",   BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
+            gTotThin  += Form("+(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thin].Data(),  BranchName[i + iStartSensors_Thin].Data(),  E_thr_Thin);
             gTotThick += Form("+(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
         }
     }
 
-    TotThin += ")";
-    TotThick += ")";
-    gTotThin += ")";
+    TotThin   += ")";
+    TotThick  += ")";
+    gTotThin  += ")";
     gTotThick += ")";
 
 
-    TString TotalEnergy = Form("((%s) + (%s) + (%s)*(%s > %g))", TotThin.Data(), TotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
-    TString gTotalEnergy = Form("((%s) + (%s) + (g%s)*(%s > %g))", gTotThin.Data(), gTotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
-
-    TString TotThickCalo = Form("((%s) + (%s)*(%s > %g))", TotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
+    TString TotalEnergy   = Form("((%s) + (%s) + (%s)*(%s > %g))", TotThin.Data(), TotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
+    TString gTotalEnergy  = Form("((%s) + (%s) + (g%s)*(%s > %g))", gTotThin.Data(), gTotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
+    TString TotThickCalo  = Form("((%s) + (%s)*(%s > %g))", TotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
     TString gTotThickCalo = Form("((%s) + (g%s)*(g%s > %g))", gTotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
 
-    TString PID = "TMath::Log10((TotalEnergy)*(TotThin))";
-    TString gPID = "TMath::Log10((gTotalEnergy)*(gTotThin))";
-    TString PID_noCalo = Form("TMath::Log10((%s)*(TotThin))", BranchName[iBranchEnergies_Calo].Data());
+    TString PID         = "TMath::Log10((TotalEnergy)*(TotThin))";
+    TString gPID        = "TMath::Log10((gTotalEnergy)*(gTotThin))";
+    TString PID_noCalo  = Form("TMath::Log10((%s)*(TotThin))", BranchName[iBranchEnergies_Calo].Data());
     TString gPID_noCalo = Form("TMath::Log10((g%s)*(gTotThin))", BranchName[iBranchEnergies_Calo].Data());
 
 
-    /* Gaussian random variables */
+    /* ----------------- GAUS VARIABLES RND ----------------- */
     for(int i = 0; i < NumberEnergySensors; i++)
     {
         Edep -> SetAlias(Form("wnorm%d", i), "(sin(2 *pi*rndm)*sqrt(-2*log(rndm)))");
     }
 
-    /* Gaussian smeared energy depositions */
-    /* For smeared quantities add a "g" in front of the logic volume name */
+    /* ----------------- GAUSSIAN SMEARINGS ----------------- */
+    // Put a g in front of the name of the branch to get the smeared value
     for(int i = 0; i < NumberEnergySensors; ++i)
     {
         Edep -> SetAlias(Form("g%s", BranchName[i + iBranchEnergies].Data()), Form("(%s)*(1 + wnorm%d * %g)", BranchName[i + iBranchEnergies].Data(), i, ((i + iBranchEnergies)>= iStartSensors) ? ResSilicon : ResPlastic));
         std::cout << "g" << BranchName[i + iBranchEnergies].Data() << " = " << Form("(%s)*(1 + wnorm%d * %g)", BranchName[i + iBranchEnergies].Data(), i, ((i + iBranchEnergies)>= iStartSensors) ? ResSilicon : ResPlastic) << endl;
     }
 
+
+    /* ------------------- SETTING ALIASES ------------------ */
     Edep -> SetAlias("TotThin", TotThin.Data());
     Edep -> SetAlias("TotThick", TotThick.Data());
     Edep -> SetAlias("gTotThin", gTotThin.Data());
     Edep -> SetAlias("gTotThick", gTotThick.Data());
+    Edep -> SetAlias("TotThickCalo", TotThickCalo.Data());
+    Edep -> SetAlias("gTotThickCalo", gTotThickCalo.Data());
+    Edep -> SetAlias("TotalEnergy", TotalEnergy.Data());
+    Edep -> SetAlias("gTotalEnergy", gTotalEnergy.Data());
+    Edep -> SetAlias("NCVF", "(1 - ((TotalEnergy)/RandEnergy))");    
+    Edep -> SetAlias("PID", PID.Data());
+    Edep -> SetAlias("gPID", gPID.Data());
+    Edep -> SetAlias("PID_noCalo", PID_noCalo.Data());
+    Edep -> SetAlias("gPID_noCalo", gPID_noCalo.Data());
+
+    Edep_old -> SetAlias("TotThin", TotThin.Data());
+    Edep_old -> SetAlias("TotThick", TotThick.Data());
+    Edep_old -> SetAlias("gTotThin", gTotThin.Data());
+    Edep_old -> SetAlias("gTotThick", gTotThick.Data());
+    Edep_old -> SetAlias("TotThickCalo", TotThickCalo.Data());
+    Edep_old -> SetAlias("gTotThickCalo", gTotThickCalo.Data());
+    Edep_old -> SetAlias("TotalEnergy", TotalEnergy.Data());
+    Edep_old -> SetAlias("gTotalEnergy", gTotalEnergy.Data());
+    Edep_old -> SetAlias("NCVF", "(RandEnergy - TotalEnergy)/RandEnergy");    
+    Edep_old -> SetAlias("PID", PID.Data());
+    Edep_old -> SetAlias("gPID", gPID.Data());
+    Edep_old -> SetAlias("PID_noCalo", PID_noCalo.Data());
+    Edep_old -> SetAlias("gPID_noCalo", gPID_noCalo.Data());
 
 
     std::cout << "TotThin = " << TotThin << endl;
     std::cout << "TotThick = " << TotThick << endl;
     std::cout << "gTotThin = " << gTotThin << endl;
     std::cout << "gTotThick = " << gTotThick << endl;
+    std::cout << "TotThickCalo = " << TotThickCalo << endl;
+    std::cout << "gTotThickCalo = " << gTotThickCalo << endl;
+    std::cout << "TotalEnergy = " << TotalEnergy << endl;
+    std::cout << "gTotalEnergy = " << gTotalEnergy << endl;
+    std::cout << "PID = " << PID << endl;
+    std::cout << "gPID = " << gPID << endl;
+    std::cout << "PID_noCalo = " << PID_noCalo << endl;
+    std::cout << "gPID_noCalo = " << gPID_noCalo << endl;
+    std::cout << "NCVF = " << "(RandEnergy - TotalEnergy)/RandEnergy" << endl;
 
-
-    Edep -> SetAlias("TotThickCalo", TotThickCalo.Data());
-    Edep -> SetAlias("gTotThickCalo", gTotThickCalo.Data());
-    Edep -> SetAlias("TotalEnergy", TotalEnergy.Data());
-    Edep -> SetAlias("gTotalEnergy", gTotalEnergy.Data());
-
-
-    // Defining the Non Confinement Violation Factor
-    Edep -> SetAlias("NCVF", "(RandEnergy - TotalEnergy)/RandEnergy");    
-
-
-    Edep -> SetAlias("PID", PID.Data());
-    Edep -> SetAlias("gPID", gPID.Data());
-    Edep -> SetAlias("PID_noCalo", PID_noCalo.Data());
-    Edep -> SetAlias("gPID_noCalo", gPID_noCalo.Data());
 
 
     Edep -> SetAlias("NormP", "TMath::Sqrt(pDirX*pDirX + pDirY*pDirY + pDirZ*pDirZ)");
@@ -227,11 +269,21 @@ void SetAliases(TString filename,
         }
     }
 
+    Edep_old -> SetAlias(PolarAngle[0].Data(), Form("TMath::ACos(%s)", DirName[2].Data()));
+    Edep_old -> SetAlias(PolarAngle[1].Data(), Form("TMath::ATan2(%s, %s)", DirName[1].Data(), DirName[0].Data()));
+    Edep_old -> SetAlias(NewPolarAngle[1].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Cos(%s)),(TMath::Cos(%s))))",              PolarAngle[0].Data(), PolarAngle[0].Data(), PolarAngle[1].Data() )); // *(180/3.415927))
+    Edep_old -> SetAlias(NewPolarAngle[0].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Sin(%s)*TMath::Sin(%s)),TMath::Cos(%s)))", PolarAngle[0].Data(), PolarAngle[1].Data(), NewPolarAngle[1].Data(), PolarAngle[0].Data())); // *(180/3.415927))
+
     Edep -> SetAlias(PolarAngle[0].Data(), Form("TMath::ACos(%s)", DirName[2].Data()));
     Edep -> SetAlias(PolarAngle[1].Data(), Form("TMath::ATan2(%s, %s)", DirName[1].Data(), DirName[0].Data()));
     Edep -> SetAlias(NewPolarAngle[1].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Cos(%s)),(TMath::Cos(%s))))",              PolarAngle[0].Data(), PolarAngle[0].Data(), PolarAngle[1].Data() )); // *(180/3.415927))
     Edep -> SetAlias(NewPolarAngle[0].Data(), Form("(TMath::ATan2((TMath::Sin(%s)*TMath::Sin(%s)*TMath::Sin(%s)),TMath::Cos(%s)))", PolarAngle[0].Data(), PolarAngle[1].Data(), NewPolarAngle[1].Data(), PolarAngle[0].Data())); // *(180/3.415927))
 
+
+
+    /* ###################################################### */
+    /*                 GOOD EVENTS CONDITIONS                 */
+    /* ###################################################### */
 
     TString ConditionPairSilicon[NumberPairsSensors];
     TString ConditionPairSiliconAll;
@@ -239,7 +291,7 @@ void SetAliases(TString filename,
     TString ConditionGoodEvents;
     TString ConditionGoodEventsSinglePair[NumberPairsSensors];
     TString ConditionNoCalo;
-    TString NumberPairsHit = "(";
+    TString NumberPairsHit;
 
     for(int i = 0; i< NumberPairsSensors; ++i)
     {
@@ -249,12 +301,12 @@ void SetAliases(TString filename,
         if(i == 0)
         {
             ConditionPairSiliconAll = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
-            NumberPairsHit += Form("1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
+            NumberPairsHit          = Form("(1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
         }
         else 
         {
             ConditionPairSiliconAll += Form("|| ((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
-            NumberPairsHit += Form(" + 1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
+            NumberPairsHit          += Form(" + 1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
         }
     }
     NumberPairsHit += ")";
@@ -272,6 +324,43 @@ void SetAliases(TString filename,
 
     ConditionNoCalo = Form("(%s < %g)", BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
     cout << "ConditionNoCalo = " << ConditionNoCalo.Data() << endl;
+
+
+    /* ###################################################### */
+    /*               TTREE FORMULAE FOR SKIMMING              */
+    /* ###################################################### */
+
+
+    TTreeFormula *fConditionGoodEvents_Calo = new TTreeFormula("fConditionGoodEvents", Form("(%s) && !(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), Edep_old);
+    TTreeFormula *fConditionGoodEvents_NoCalo = new TTreeFormula("fConditionGoodEvents", Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), Edep_old);
+
+    TEntryList *SkimmingList_Calo = new TEntryList("SkimmingList_Calo", "SkimmingList_Calo", Edep_old);
+    TEntryList *SkimmingList_NoCalo = new TEntryList("SkimmingList_NoCalo", "SkimmingList_NoCalo", Edep_old);
+    TEntryList *Skimming_OR = new TEntryList("Skimming_OR", "Skimming_OR", Edep_old);
+
+    Edep_old -> Draw(">>SkimmingList_Calo", Form("(%s) && !(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "entrylist");
+    Edep_old -> Draw(">>SkimmingList_NoCalo", Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "entrylist");
+
+
+    Skimming_OR -> Add(SkimmingList_Calo);
+    Skimming_OR -> Add(SkimmingList_NoCalo);
+
+    cout << "SkimmingList_Calo->GetN() = " << SkimmingList_Calo->GetN() << endl;
+    cout << "SkimmingList_NoCalo->GetN() = " << SkimmingList_NoCalo->GetN() << endl;
+    cout << "Skimming_OR->GetN() = " << Skimming_OR->GetN() << endl;
+
+
+
+    /* ###################################################### */
+    /*                SKIMMING TTREE PRODUCTION               */
+    /* ###################################################### */
+    Edep_old -> SetEntryList(Skimming_OR);
+    for(int i = 0; i < Skimming_OR -> GetN(); ++i)
+    {
+        Edep_old -> GetEntry(Skimming_OR -> GetEntry(i));
+        Edep -> Fill();
+    }
+
 
     /* Files with the computed angles from MonteCarlo Momentum direction */
     double projXAngle, projYAngle;
@@ -324,7 +413,9 @@ void SetAliases(TString filename,
 
 
 
-    /* Figures for MonteCarlo diagnostics */
+    /* ###################################################### */
+    /*                  PLOTS FOR DIAGNOSTICS                 */
+    /* ###################################################### */
 
     TCanvas *cAngles;
     TH2D *hAngles;
@@ -448,10 +539,10 @@ void SetAliases(TString filename,
 
 
     file_alias -> cd();
-    Edep -> Write();
+    Edep       -> Write();
     file_alias -> Write();
     file_alias -> Close();
-    file -> Close();
+    file       -> Close();
     delete file;
 
     return;

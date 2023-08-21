@@ -1,0 +1,1847 @@
+
+Usage: gdml_det <intput_gdml_file:mandatory>
+
+Output text folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/Text_output/GDML_file_1/OutText_f1_j6
+Output monitoring folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/Progress_monitoring
+Job number set to: 6
+Update frequency set to: 10000
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/GDML_src/LEM_Plastic_Mirion_Mirion-worldVOL_Parsed.gdml'...
+G4GDML: VALIDATION ERROR! element 'materials' is not allowed for content model '(define,materials,solids,structure,userinfo?,setup+)' at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_PLASTIC_SC_VINYLTOLUENE' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_BAKELITE' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Galactic' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Al' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Si' is referenced but was never declared at line: 31897
+G4GDML: Reading definitions...
+G4GDML: Reading materials...
+G4GDML: Reading materials...
+G4GDML: Reading solids...
+G4GDML: Reading structure...
+G4GDML: Reading setup...
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/GDML_src/LEM_Plastic_Mirion_Mirion-worldVOL_Parsed.gdml' done!
+Stripping off GDML names of materials, solids and volumes ...
+
+
+          ################################
+          !!! G4Backtrace is activated !!!
+          ################################
+
+
+**************************************************************
+ Geant4 version Name: geant4-11-00-patch-03 [MT]   (16-September-2022)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+<<< Geant4 Physics List simulation engine: FTFP_BERT
+
+Found 56 volume(s) with auxiliary information.
+
+Volume LV_AlTop has the following list of auxiliary information: 
+Computing random points on LV_AlTop
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_4
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_1
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_3
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_3
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlShieldUpper has the following list of auxiliary information: 
+Computing random points on LV_AlShieldUpper
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_1
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_4
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_2
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlShieldLower has the following list of auxiliary information: 
+Computing random points on LV_AlShieldLower
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_5 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_5
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_9 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_9
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_6 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_6
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_8 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_8
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_0
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_7 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_7
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_0
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_2
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_0
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_2
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_2
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_0
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew has the following list of auxiliary information: 
+Computing random points on LV_AlScrew
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_2
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_3
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardMiddleLower
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+Computing random points on LV_PlasticVetoBottom
+	Type: Color Value: #ffcc99b2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlBottom has the following list of auxiliary information: 
+Computing random points on LV_AlBottom
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardTop
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_2
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_3
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_1
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_2
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_4
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_4
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_1
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_4
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_0
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_0
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_0
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardCalo
+	Type: Color Value: #3333ffff
+	Type: SensDet Value: Calorimeter
+Volume LV_Calo has the following list of auxiliary information: 
+Computing random points on LV_Calo
+	Type: Color Value: #3333ffff
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardBottom
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardMiddleUpper
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_3
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_2
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_3
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+Computing random points on LV_PlasticVetoTop
+	Type: Color Value: #ffcc99b2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_3
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_4
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_1
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_3
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_4
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+
+Volume LV_AlTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlTop
+Volume LV_BakeliteCable_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_4
+Volume LV_BakeliteCable_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_1
+Volume LV_BakeliteCable_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_3
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_3
+Volume LV_AlShieldUpper has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlShieldUpper
+Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_1
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_4
+Volume LV_BakeliteCable_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_2
+Volume LV_AlShieldLower has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlShieldLower
+Volume LV_AlFrame_Thick_5 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_5
+Volume LV_AlFrame_Thick_9 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_9
+Volume LV_AlFrame_Thick_6 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_6
+Volume LV_AlFrame_Thick_8 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_8
+Volume LV_BakeliteCable_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_0
+Volume LV_AlFrame_Thick_7 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_7
+Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_0
+Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_2
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_0
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_2
+Volume LV_AlScrew_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_2
+Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_0
+Volume LV_AlScrew has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_1
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_2
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_3
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleLower
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoBottom
+Volume LV_AlBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlBottom
+Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardTop
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_2
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_3
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_1
+Volume LV_AlScrew_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_2
+Volume LV_AlScrew_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_4
+Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_4
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_1
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_4
+Volume LV_AlScrew_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_0
+Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_0
+Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_0
+Volume LV_AlScrew_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_1
+Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardCalo
+Volume LV_Calo has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_Calo
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardBottom
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleUpper
+Volume LV_AlScrew_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_3
+Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_2
+Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_3
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoTop
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_3
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_4
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_1
+Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_3
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_4
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_1
+
+ hInelastic FTFP_BERT : threshold between BERT and FTFP is over the interval 
+ for pions :   3 to 6 GeV
+ for kaons :   3 to 6 GeV
+ for proton :  3 to 6 GeV
+ for neutron : 3 to 6 GeV
+
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+=======================================================================
+======                 Electromagnetic Physics Parameters      ========
+=======================================================================
+LPM effect enabled                                 1
+Enable creation and use of sampling tables         0
+Apply cuts on all EM processes                     0
+Use general process                                0
+Enable linear polarisation for gamma               0
+Enable sampling of quantum entanglement            0
+X-section factor for integral approach             0.8
+Min kinetic energy for tables                      100 eV 
+Max kinetic energy for tables                      100 TeV
+Number of bins per decade of a table               7
+Verbose level                                      1
+Verbose level for worker thread                    0
+Bremsstrahlung energy threshold above which 
+  primary e+- is added to the list of secondary    100 TeV
+Bremsstrahlung energy threshold above which primary
+  muon/hadron is added to the list of secondary    100 TeV
+Lowest triplet kinetic energy                      1 MeV
+Enable sampling of gamma linear polarisation       0
+5D gamma conversion model type                     0
+5D gamma conversion model on isolated ion          0
+Livermore data directory                           livermore
+=======================================================================
+======                 Ionisation Parameters                   ========
+=======================================================================
+Step function for e+-                              (0.2, 1 mm)
+Step function for muons/hadrons                    (0.2, 0.1 mm)
+Step function for light ions                       (0.2, 0.1 mm)
+Step function for general ions                     (0.2, 0.1 mm)
+Lowest e+e- kinetic energy                         1 keV
+Lowest muon/hadron kinetic energy                  1 keV
+Fluctuations of dE/dx are enabled                  1
+Use ICRU90 data                                    0
+Use built-in Birks satuaration                     0
+Build CSDA range enabled                           0
+Use cut as a final range enabled                   0
+Enable angular generator interface                 0
+Max kinetic energy for CSDA tables                 1 GeV
+Max kinetic energy for NIEL computation            0 eV 
+Linear loss limit                                  0.01
+Read data from file for e+e- pair production by mu 0
+=======================================================================
+======                 Multiple Scattering Parameters          ========
+=======================================================================
+Type of msc step limit algorithm for e+-           1
+Type of msc step limit algorithm for muons/hadrons 0
+Msc lateral displacement for e+- enabled           1
+Msc lateral displacement for muons and hadrons     0
+Urban msc model lateral displacement alg96         1
+Range factor for msc step limit for e+-            0.04
+Range factor for msc step limit for muons/hadrons  0.2
+Geometry factor for msc step limitation of e+-     2.5
+Safety factor for msc step limit for e+-           0.6
+Skin parameter for msc step limitation of e+-      1
+Lambda limit for msc step limit for e+-            1 mm
+Use Mott correction for e- scattering              0
+Factor used for dynamic computation of angular 
+  limit between single and multiple scattering     1
+Fixed angular limit between single 
+  and multiple scattering                          3.1416 rad
+Upper energy limit for e+- multiple scattering     100 MeV
+Type of electron single scattering model           0
+Type of nuclear form-factor                        1
+Screening factor                                   1
+=======================================================================
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 61 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 56 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina : Emin=    0 eV  Emax=  100 TeV
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 18 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+     BetheHeitlerLPM : Emin=    0 eV  Emax=  100 TeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 100 TeV in 63 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  100 TeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 MeV Nbins=42 100 eV  - 100 MeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=42 100 MeV - 100 TeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e-  XStype:4  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+CoulombScat:  for e- XStype:1 SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 MeV Nbins=42 100 eV  - 100 MeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=42 100 MeV - 100 TeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e+  XStype:4  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+annihil:  for e+ XStype:2 SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for e+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for proton  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+hBrems:  for proton  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for proton  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for proton XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for GenericIon  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+ionIoni:  for GenericIon  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      Stopping Power data for 17 ion/material pairs
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+msc:  for alpha  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+ionIoni:  for alpha  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV
+
+msc:  for anti_proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for anti_proton  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+hBrems:  for anti_proton  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for anti_proton  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for anti_proton XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for kaon+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+hBrems:  for kaon+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for kaon+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for kaon+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for kaon-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+hBrems:  for kaon-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for kaon-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for kaon- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of kaon+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+muIoni:  for mu+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for mu+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+muIoni:  for mu-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for mu- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of mu+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for pi+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+hBrems:  for pi+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for pi+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for pi+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for pi-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+hBrems:  for pi-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for pi-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for pi- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of pi+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+====================================================================
+                  HADRONIC PROCESSES SUMMARY (verbose level 1)
+
+---------------------------------------------------
+                           Hadronic Processes for neutron
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronElasticXS: 0 eV  ---> 100 TeV
+
+  Process: neutronInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:      G4NeutronInelasticXS: 0 eV  ---> 100 TeV
+
+  Process: nCapture
+        Model:               nRadCapture: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronCaptureXS: 0 eV  ---> 100 TeV
+
+  Process: nKiller
+
+---------------------------------------------------
+                           Hadronic Processes for B-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: B-Inelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for D-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: D-Inelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for GenericIon
+
+  Process: ionInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: He3Inelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: alphaInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_He3Inelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_alphaInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_deuteronInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: anti_lambdaInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_neutron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_neutronInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_proton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_protonInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_tritonInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: dInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for e+
+
+  Process: positronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e-
+
+  Process: electronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for gamma
+
+  Process: photonNuclear
+        Model:               GammaNPreco: 0 eV  ---> 200 MeV
+        Model:            BertiniCascade: 199 MeV ---> 6 GeV
+        Model:           TheoFSGenerator: 3 GeV ---> 100 TeV
+     Cr_sctns:            GammaNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: kaon+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: kaon-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: lambdaInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu+
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu-
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+  Process: muMinusCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for pi+
+
+  Process: hadElastic
+        Model:           hElasticGlauber: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: pi+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for pi-
+
+  Process: hadElastic
+        Model:           hElasticGlauber: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: pi-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for proton
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: protonInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for sigma-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: sigma-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: tInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+================================================================
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Pre-compound model active                           1
+Pre-compound excitation low energy (MeV)            0.1
+Pre-compound excitation high energy (MeV)           30
+Type of de-excitation inverse x-section             3
+Type of de-excitation factory                       Evaporation+GEM
+Number of de-excitation channels                    68
+Min excitation energy (keV)                         0.01
+Min energy per nucleon for multifragmentation (MeV) 2e+05
+Limit excitation energy for Fermi BreakUp (MeV)     20
+Level density (1/MeV)                               0.075
+Use simple level density model                      1
+Use discrete excitation energy of the residual      0
+Time limit for long lived isomeres (ns)             1
+Isomer production flag                              1
+Internal e- conversion flag                         1
+Store e- internal conversion data                   0
+Correlated gamma emission flag                      0
+Max 2J for sampling of angular correlations         10
+=======================================================================
+
+=========================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Initializing workers...
+=========================================================================
+
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/Text_output/GDML_file_1/OutText_f1_j6_GDML_SD_EventAction.txt
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+G4WT0 > ###############
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Registered graphics systems are:
+  ASCIITree (ATree)
+  DAWNFILE (DAWNFILE)
+  G4HepRepFile (HepRepFile)
+  RayTracer (RayTracer)
+  VRML2FILE (VRML2FILE)
+  gMocrenFile (gMocrenFile)
+  OpenGLImmediateQt (OGLIQt, OGLI)
+  OpenGLStoredQt (OGLSQt, OGL, OGLS)
+  OpenGLImmediateXm (OGLIXm, OGLIQt_FALLBACK)
+  OpenGLStoredXm (OGLSXm, OGLSQt_FALLBACK)
+  OpenGLImmediateX (OGLIX, OGLIQt_FALLBACK, OGLIXm_FALLBACK)
+  OpenGLStoredX (OGLSX, OGLSQt_FALLBACK, OGLSXm_FALLBACK)
+
+Registering model factories...
+
+You have successfully registered the following model factories.
+Registered model factories:
+  generic
+  drawByAttribute
+  drawByCharge
+  drawByOriginVolume
+  drawByParticleID
+  drawByEncounteredVolume
+
+Registered models:
+  None
+
+Registered filter factories:
+  attributeFilter
+  chargeFilter
+  originVolumeFilter
+  particleFilter
+  encounteredVolumeFilter
+
+Registered filters:
+  None
+
+You have successfully registered the following user vis actions.
+Run Duration User Vis Actions: none
+End of Event User Vis Actions: none
+End of Run User Vis Actions: none
+
+Some /vis commands (optionally) take a string to specify colour.
+"/vis/list" to see available colours.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+G4VisManager: Using G4TrajectoryDrawByCharge as fallback trajectory model.
+See commands in /vis/modeling/trajectories/ for other options.
+### Run 0 starts.
+
+============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 224 tasks with 223 events/task...
+============================================================================================
+
+G4WT0 > ### Run 0 starts on worker thread 0.
+G4WT0 > ... set ntuple merging row mode : row-wise - done
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/e-_j6_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/e-_j6.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/e-_j6.root - done
+G4WT0 > 577	12.2488	2.12266	6.02898	0.0986579	2.024	0	0
+G4WT0 > Event N: 1000
+G4WT0 > 1583	14.2439	1.82034	6.0201	1.7028	0.117537	0	0
+G4WT0 > 1834	2.36745	0.287607	0.782896	0.100015	0.187592	0	0
+G4WT0 > Event N: 2000
+G4WT0 > 2114	2.72336	0.209891	0.837967	0.0974797	0.112412	0	0
+G4WT0 > 2491	4.42457	0.972755	2.16655	0.106555	0.866201	0	0
+G4WT0 > Event N: 3000
+G4WT0 > 3122	17.4757	0.215367	2.14163	0.0917224	0.123645	0	0
+G4WT0 > 3370	18.7442	1.82048	4.9865	1.71185	0.10863	0	0
+G4WT0 > 3458	18.8974	5.30481	8.47165	1.40357	3.90124	0	0
+G4WT0 > Event N: 4000
+G4WT0 > 4272	10.3419	2.60759	4.38464	1.43814	1.16945	0	0
+G4WT0 > 4373	14.7741	3.26163	7.2174	1.61145	1.65018	0	0
+G4WT0 > Event N: 5000
+G4WT0 > Event N: 6000
+G4WT0 > 6477	12.0108	1.10171	5.42636	1.00359	0.0981146	0	0
+G4WT0 > 6605	13.2134	3.30696	6.30447	0.0967046	3.21026	0	0
+G4WT0 > 6858	18.8573	4.99912	8.79128	2.70423	2.29489	0	0
+G4WT0 > Event N: 7000
+G4WT0 > Event N: 8000
+G4WT0 > 8140	10.3723	1.57994	3.59955	0.834395	0.745546	0	0
+G4WT0 > 8253	7.02439	2.0752	3.12657	0.0902767	1.98492	0	0
+G4WT0 > Event N: 9000
+G4WT0 > Event N: 10000
+G4WT0 > 10041	18.4228	4.48714	6.69961	4.40199	0.0851482	0	0
+G4WT0 > 10566	19.005	3.76927	5.31437	1.64219	2.12708	0	0
+G4WT0 > Event N: 11000
+G4WT0 > Event N: 12000
+G4WT0 > 12066	12.8267	3.20081	3.3794	0.101153	3.09966	0	0
+G4WT0 > 12517	12.0707	0.89656	3.02563	0.206785	0.689774	0	0
+G4WT0 > Event N: 13000
+G4WT0 > 13381	12.1086	0.253087	6.03556	0.163965	0.0891224	0	0
+G4WT0 > Event N: 14000
+G4WT0 > Event N: 15000
+G4WT0 > 15444	8.12164	1.71135	2.23141	0.0915048	1.61984	0	0
+G4WT0 > 15950	15.42	2.85399	6.62447	1.03497	1.81901	0	0
+G4WT0 > Event N: 16000
+G4WT0 > Event N: 17000
+G4WT0 > 17282	15.962	4.10368	6.69806	1.71263	2.39105	0	0
+G4WT0 > 17710	14.6085	2.38784	3.68173	2.21845	0.169388	0	0
+G4WT0 > 17906	18.0183	4.71922	7.14327	1.64746	3.07176	0	0
+G4WT0 > 17936	19.2223	5.46995	6.95792	3.28139	2.18856	0	0
+G4WT0 > Event N: 18000
+G4WT0 > 18087	11.1294	2.67146	4.78032	1.98381	0.68765	0	0
+G4WT0 > 18100	10.1285	1.98291	4.09561	1.69984	0.283072	0	0
+G4WT0 > 18203	12.1141	3.98723	4.79595	0.726246	3.26098	0	0
+G4WT0 > 18366	13.2885	0.182829	4.86612	0.0807723	0.102057	0	0
+G4WT0 > Event N: 19000
+G4WT0 > 19694	19.7025	3.56263	5.51198	0.12008	3.44255	0	0
+G4WT0 > 19790	8.27184	2.51787	3.31985	2.43215	0.0857245	0	0
+G4WT0 > Event N: 20000
+G4WT0 > 20180	12.9497	2.64113	5.85478	0.544444	2.09668	0	0
+G4WT0 > 20368	11.3073	2.58959	4.61217	1.94538	0.644207	0	0
+G4WT0 > 20838	14.3815	3.62959	6.08875	1.16888	2.46072	0	0
+G4WT0 > 20985	10.6248	3.09177	4.54168	1.52448	1.56729	0	0
+G4WT0 > Event N: 21000
+G4WT0 > 21083	8.91932	2.75943	4.14991	0.102409	2.65702	0	0
+G4WT0 > 21183	10.7968	3.85348	5.35106	1.97	1.88349	0	0
+G4WT0 > 21248	10.2209	2.11464	3.83473	1.68539	0.429246	0	0
+G4WT0 > 21635	14.9057	2.78407	5.87371	0.0899995	2.69407	0	0
+G4WT0 > 21828	12.9099	5.44166	6.4226	2.1626	3.27906	0	0
+G4WT0 > Event N: 22000
+G4WT0 > Event N: 23000
+G4WT0 > 23264	18.9089	2.00603	7.72022	1.63193	0.374107	0	0
+G4WT0 > 23398	19.1501	3.76809	6.91741	1.78563	1.98246	0	0
+G4WT0 > 23465	13.6668	5.22861	6.47085	1.71192	3.51669	0	0
+G4WT0 > Event N: 24000
+G4WT0 > 24089	19.1991	0.192729	3.48299	0.0924893	0.10024	0	0
+G4WT0 > 24774	14.0442	2.64191	3.9951	0.0953463	2.54656	0	0
+G4WT0 > Event N: 25000
+G4WT0 > Event N: 26000
+G4WT0 > Event N: 27000
+G4WT0 > 27226	10.3976	2.08129	3.8454	1.92136	0.15993	0	0
+G4WT0 > 27313	15.335	5.59362	6.92251	1.69407	3.89955	0	0
+G4WT0 > 27954	14.1242	2.30671	6.74881	1.5412	0.765507	0	0
+G4WT0 > Event N: 28000
+G4WT0 > 28105	18.8874	2.66268	8.67527	1.5407	1.12198	0	0
+G4WT0 > 28338	14.9938	4.12968	6.36809	2.08242	2.04726	0	0
+G4WT0 > Event N: 29000
+G4WT0 > 29477	10.2287	2.65425	4.08498	0.350064	2.30419	0	0
+G4WT0 > Event N: 30000
+G4WT0 > 30193	14.9074	2.88538	4.19743	1.74348	1.1419	0	0
+G4WT0 > 30322	13.9843	2.73805	6.63244	0.0403885	2.69766	0	0
+G4WT0 > 30985	9.95167	2.18184	3.98093	0.820417	1.36142	0	0
+G4WT0 > Event N: 31000
+G4WT0 > 31564	15.0675	5.67173	6.81336	1.43856	4.23317	0	0
+G4WT0 > 31612	10.4854	1.46765	3.3727	1.07262	0.395025	0	0
+G4WT0 > Event N: 32000
+G4WT0 > 32032	11.2192	3.24528	4.3723	1.76787	1.47742	0	0
+G4WT0 > Event N: 33000
+G4WT0 > 33280	12.1541	0.625481	3.59538	0.435967	0.189514	0	0
+G4WT0 > Event N: 34000
+G4WT0 > 34434	17.3046	4.63395	6.33343	2.71899	1.91496	0	0
+G4WT0 > 34653	17.1343	4.58546	7.33062	3.39702	1.18844	0	0
+G4WT0 > Event N: 35000
+G4WT0 > Event N: 36000
+G4WT0 > Event N: 37000
+G4WT0 > 37193	16.3895	4.0418	7.24953	2.75832	1.28348	0	0
+G4WT0 > Event N: 38000
+G4WT0 > 38479	17.3093	3.4037	5.15677	1.47279	1.93091	0	0
+G4WT0 > 38960	15.8822	0.203381	4.60161	0.0944594	0.108922	0	0
+G4WT0 > Event N: 39000
+G4WT0 > 39079	17.6833	1.81301	7.37335	0.983029	0.829978	0	0
+G4WT0 > 39132	14.1739	3.68202	5.47874	2.1455	1.53652	0	0
+G4WT0 > 39618	15.3996	5.20968	6.27705	3.84448	1.3652	0	0
+G4WT0 > 39813	18.0111	0.185763	5.95207	0.098616	0.0871469	0	0
+G4WT0 > Event N: 40000
+G4WT0 > 40239	19.8487	6.83888	7.3332	1.63749	5.2014	0	0
+G4WT0 > 40607	15.2432	3.22952	5.30792	0.10303	3.12649	0	0
+G4WT0 > 40665	17.3858	2.62012	8.60852	1.5523	1.06782	0	0
+G4WT0 > 40854	18.2984	4.62802	6.61327	2.87512	1.75289	0	0
+G4WT0 > 40887	17.4013	7.19193	7.63977	0.0850015	7.10693	0	0
+G4WT0 > 40912	11.234	2.84186	4.95488	2.3888	0.453055	0	0
+G4WT0 > 40995	14.1845	4.63865	6.55358	2.26517	2.37348	0	0
+G4WT0 > Event N: 41000
+G4WT0 > Event N: 42000
+G4WT0 > 42027	4.01842	1.53583	1.54715	0.0891586	1.44667	0	0
+G4WT0 > 42448	15.9587	2.49216	4.65562	0.503794	1.98836	0	0
+G4WT0 > 42907	18.6382	2.1715	7.714	1.64779	0.523705	0	0
+G4WT0 > Event N: 43000
+G4WT0 > 43165	5.64166	0.811808	2.70948	0.712246	0.099562	0	0
+G4WT0 > 43281	9.95543	1.34912	4.96535	1.14836	0.200755	0	0
+G4WT0 > 43410	16.521	2.00129	5.42785	1.42034	0.580952	0	0
+G4WT0 > 43757	10.4957	0.553433	1.26383	0.11864	0.434793	0	0
+G4WT0 > 43808	18.9042	3.68649	7.03976	2.68938	0.997104	0	0
+G4WT0 > Event N: 44000
+G4WT0 > 44070	19.0032	5.69695	8.56781	3.88604	1.81091	0	0
+G4WT0 > 44358	7.13089	0.695376	3.39749	0.627898	0.0674774	0	0
+G4WT0 > 44553	14.1248	3.2902	6.45805	0.873068	2.41713	0	0
+G4WT0 > Event N: 45000
+G4WT0 > 45174	12.9458	3.57272	5.74907	1.64166	1.93106	0	0
+G4WT0 > 45401	10.5554	3.1398	4.11372	0.201333	2.93847	0	0
+G4WT0 > Event N: 46000
+G4WT0 > 46089	12.5877	3.62478	5.49955	1.69402	1.93076	0	0
+G4WT0 > 46567	15.3574	2.65594	6.42226	1.03624	1.6197	0	0
+G4WT0 > Event N: 47000
+G4WT0 > 47486	11.0064	3.60625	4.69915	1.83452	1.77173	0	0
+G4WT0 > Event N: 48000
+G4WT0 > 48752	7.72934	0.202439	0.849258	0.0794231	0.123016	0	0
+G4WT0 > 48763	17.3327	5.67761	8.1741	1.72792	3.94968	0	0
+G4WT0 > Event N: 49000
+G4WT0 > 49284	15.6624	4.44187	5.56557	2.62425	1.81761	0	0
+G4WT0 > 49784	18.2867	1.42214	1.77404	0.723681	0.698463	0	0
+G4WT0 > 49893	16.0141	3.07556	4.23998	1.59881	1.47675	0	0
+G4WT0 > Event N: 50000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 50000
+G4WT0 > [thread 0]   User=0.000000s Real=0.001432s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/e-_j6_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/e-_j6_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 50000
+  User=52.290000s Real=52.557857s Sys=0.030000s [Cpu=99.5%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+### Run 1 starts.
+
+============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 224 tasks with 223 events/task...
+============================================================================================
+
+G4WT0 > ### Run 1 starts on worker thread 0.
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/proton_j6_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/proton_j6.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/proton_j6.root - done
+G4WT0 > Event N: 1000
+G4WT0 > Event N: 2000
+G4WT0 > Event N: 3000
+G4WT0 > Event N: 4000
+G4WT0 > Event N: 5000
+G4WT0 > Event N: 6000
+G4WT0 > 6447	83.1771	31.187	31.196	0.482472	30.7045	0	0
+G4WT0 > Event N: 7000
+G4WT0 > 7465	80.9184	4.11414	21.6965	0.506194	3.60795	0	0
+G4WT0 > Event N: 8000
+G4WT0 > Event N: 9000
+G4WT0 > 9460	88.8203	9.3116	29.4942	9.06856	0.24304	0	0
+G4WT0 > Event N: 10000
+G4WT0 > Event N: 11000
+G4WT0 > 11081	97.1101	2.88286	40.8729	1.99135	0.891502	0	0
+G4WT0 > Event N: 12000
+G4WT0 > Event N: 13000
+G4WT0 > Event N: 14000
+G4WT0 > Event N: 15000
+G4WT0 > Event N: 16000
+G4WT0 > 16224	93.6337	7.64221	45.3736	0.349927	7.29228	0	0
+G4WT0 > Event N: 17000
+G4WT0 > Event N: 18000
+G4WT0 > Event N: 19000
+G4WT0 > Event N: 20000
+G4WT0 > 20427	79.8626	29.7285	37.9717	9.41655	20.3119	0	0
+G4WT0 > 20633	46.7752	4.02302	18.5296	2.89072	1.13231	0	0
+G4WT0 > Event N: 21000
+G4WT0 > Event N: 22000
+G4WT0 > Event N: 23000
+G4WT0 > 23106	97.1802	22.4122	27.6865	2.429	19.9832	0	0
+G4WT0 > Event N: 24000
+G4WT0 > Event N: 25000
+G4WT0 > Event N: 26000
+G4WT0 > 26691	28.0777	0.685894	12.0801	0.396108	0.289785	0	0
+G4WT0 > Event N: 27000
+G4WT0 > Event N: 28000
+G4WT0 > Event N: 29000
+G4WT0 > Event N: 30000
+G4WT0 > Event N: 31000
+G4WT0 > Event N: 32000
+G4WT0 > Event N: 33000
+G4WT0 > Event N: 34000
+G4WT0 > 34966	89.6825	18.2698	34.38	8.27342	9.99634	0	0
+G4WT0 > Event N: 35000
+G4WT0 > 35764	79.9293	11.8905	19.15	4.09658	7.79392	0	0
+G4WT0 > Event N: 36000
+G4WT0 > Event N: 37000
+G4WT0 > Event N: 38000
+G4WT0 > Event N: 39000
+G4WT0 > 39420	72.1157	11.3617	32.0869	9.91184	1.44986	0	0
+G4WT0 > Event N: 40000
+G4WT0 > Event N: 41000
+G4WT0 > Event N: 42000
+G4WT0 > Event N: 43000
+G4WT0 > Event N: 44000
+G4WT0 > Event N: 45000
+G4WT0 > Event N: 46000
+G4WT0 > 46801	89.8318	30.2494	33.6434	7.05342	23.1959	0	0
+G4WT0 > Event N: 47000
+G4WT0 > 47695	77.5833	31.2722	38.652	9.28073	21.9914	0	0
+G4WT0 > Event N: 48000
+G4WT0 > 48246	85.2567	41.1577	41.224	0.425521	40.7322	0	0
+G4WT0 > Event N: 49000
+G4WT0 > Event N: 50000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 50000
+G4WT0 > [thread 0]   User=0.000000s Real=0.001393s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/proton_j6_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/proton_j6_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 50000
+  User=26.230000s Real=26.381400s Sys=0.020000s [Cpu=99.5%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+### Run 2 starts.
+
+============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 224 tasks with 223 events/task...
+============================================================================================
+
+G4WT0 > ### Run 2 starts on worker thread 0.
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/alpha_j6_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/alpha_j6.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/alpha_j6.root - done
+G4WT0 > 496	478.774	71.9786	99.7239	1.6728	70.3058	0	0
+G4WT0 > Event N: 1000
+G4WT0 > Event N: 2000
+G4WT0 > 2103	475.819	73.311	157.34	64.0499	9.26102	0	0
+G4WT0 > 2931	436.907	31.8586	125.795	26.6074	5.25126	0	0
+G4WT0 > Event N: 3000
+G4WT0 > Event N: 4000
+G4WT0 > 4396	228.355	26.5114	109.753	12.2828	14.2286	0	0
+G4WT0 > Event N: 5000
+G4WT0 > 5385	399.829	128.469	150.209	25.73	102.739	0	0
+G4WT0 > Event N: 6000
+G4WT0 > 6508	223.71	26.4246	63.1414	2.49068	23.9339	0	0
+G4WT0 > Event N: 7000
+G4WT0 > Event N: 8000
+G4WT0 > Event N: 9000
+G4WT0 > 9047	258.478	61.3281	98.1753	60.0178	1.3103	0	0
+G4WT0 > Event N: 10000
+G4WT0 > 10795	225.256	111.257	111.257	2.50978	108.747	0	0
+G4WT0 > Event N: 11000
+G4WT0 > Event N: 12000
+G4WT0 > Event N: 13000
+G4WT0 > 13394	273.56	4.55738	123.524	2.25633	2.30105	0	0
+G4WT0 > 13714	373.524	55.183	141.239	37.9017	17.2813	0	0
+G4WT0 > Event N: 14000
+G4WT0 > Event N: 15000
+G4WT0 > Event N: 16000
+G4WT0 > Event N: 17000
+G4WT0 > 17629	323.215	80.2448	98.3166	2.15303	78.0917	0	0
+G4WT0 > Event N: 18000
+G4WT0 > Event N: 19000
+G4WT0 > Event N: 20000
+G4WT0 > 20483	318.944	27.5715	92.0016	7.2646	20.3069	0	0
+G4WT0 > Event N: 21000
+G4WT0 > 21543	268.424	53.9241	94.7854	52.6495	1.27453	0	0
+G4WT0 > Event N: 22000
+G4WT0 > Event N: 23000
+G4WT0 > Event N: 24000
+G4WT0 > 24141	295.679	77.7563	145.221	75.7636	1.99278	0	0
+G4WT0 > 24599	379.831	68.5828	95.1624	58.7375	9.84534	0	0
+G4WT0 > Event N: 25000
+G4WT0 > 25253	246.38	79.5375	117.38	2.68174	76.8558	0	0
+G4WT0 > Event N: 26000
+G4WT0 > Event N: 27000
+G4WT0 > 27956	291.917	82.5539	130.764	67.0679	15.486	0	0
+G4WT0 > Event N: 28000
+G4WT0 > 28342	336.587	41.4752	86.2777	1.75962	39.7156	0	0
+G4WT0 > 28553	320.244	36.3225	138.959	12.1039	24.2186	0	0
+G4WT0 > 28713	294.537	77.7325	142.199	13.8632	63.8693	0	0
+G4WT0 > 28774	252.886	58.3076	110.417	52.637	5.67066	0	0
+G4WT0 > Event N: 29000
+G4WT0 > 29508	347.499	25.5287	131.734	16.0676	9.46104	0	0
+G4WT0 > Event N: 30000
+G4WT0 > Event N: 31000
+G4WT0 > Event N: 32000
+G4WT0 > Event N: 33000
+G4WT0 > 33515	426.344	41.5661	105.057	1.68986	39.8762	0	0
+G4WT0 > Event N: 34000
+G4WT0 > 34071	431.241	68.608	145.112	65.4507	3.15728	0	0
+G4WT0 > Event N: 35000
+G4WT0 > Event N: 36000
+G4WT0 > 36114	250.363	69.7936	103.22	64.8656	4.92798	0	0
+G4WT0 > Event N: 37000
+G4WT0 > Event N: 38000
+G4WT0 > Event N: 39000
+G4WT0 > Event N: 40000
+G4WT0 > 40875	377.286	56.0137	187.574	26.6313	29.3823	0	0
+G4WT0 > Event N: 41000
+G4WT0 > 41135	458.624	115.715	149.999	1.84464	113.87	0	0
+G4WT0 > 41374	272.798	24.7723	104.8	22.7996	1.97271	0	0
+G4WT0 > Event N: 42000
+G4WT0 > 42359	420.742	39.5373	191.554	25.5237	14.0136	0	0
+G4WT0 > Event N: 43000
+G4WT0 > 43143	424.096	61.65	131.738	60.4933	1.15671	0	0
+G4WT0 > 43368	417.99	52.8328	179.585	25.2685	27.5642	0	0
+G4WT0 > Event N: 44000
+G4WT0 > 44958	196.315	55.9566	69.879	2.8615	53.0951	0	0
+G4WT0 > Event N: 45000
+G4WT0 > 45306	334.336	62.2672	129.094	32.1969	30.0703	0	0
+G4WT0 > Event N: 46000
+G4WT0 > 46030	304.016	115.454	144.527	35.1704	80.2841	0	0
+G4WT0 > 46066	364.442	56.3931	175.669	19.3949	36.9983	0	0
+G4WT0 > Event N: 47000
+G4WT0 > 47954	398.306	123.939	158.573	27.5009	96.4378	0	0
+G4WT0 > Event N: 48000
+G4WT0 > 48274	277.531	67.9396	127.091	9.59516	58.3445	0	0
+G4WT0 > 48527	406.904	58.7436	117.389	42.4207	16.3229	0	0
+G4WT0 > Event N: 49000
+G4WT0 > 49203	237.456	2.62359	88.3329	1.31314	1.31045	0	0
+G4WT0 > Event N: 50000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 50000
+G4WT0 > [thread 0]   User=0.010000s Real=0.001334s Sys=0.000000s [Cpu=749.4%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/alpha_j6_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230819_test/DST/GDML_file_1/alpha_j6_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 50000
+  User=30.570000s Real=30.734207s Sys=0.030000s [Cpu=99.6%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+Graphics systems deleted.
+Visualization Manager deleting...
+G4WT0 > Destroying WorkerRunManager (0x2b2194049d70)
+G4WT0 > G4 kernel has come to Quit state.
+G4WT0 > ================== Deleting memory pools ===================
+G4WT0 > Number of memory pools allocated: 14; of which, static: 0
+G4WT0 > Dynamic pools deleted: 14 / Total memory freed: 0.062 MB
+G4WT0 > ============================================================
+G4WT0 > Thread-local UImanager is to be deleted.
+G4WT0 > There should not be any thread-local G4cout/G4cerr hereafter.
+ThreadPool destroyed
+G4 kernel has come to Quit state.
+================== Deleting memory pools ===================
+Number of memory pools allocated: 5; of which, static: 0
+Dynamic pools deleted: 5 / Total memory freed: 0.017 MB
+============================================================
+RunManagerKernel is deleted. Good bye :)

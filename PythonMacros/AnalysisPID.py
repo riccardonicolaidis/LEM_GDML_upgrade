@@ -136,7 +136,13 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 sys.exit()
         else:
             print("OnlyLatex is True: I don't need to re run the ROOT processing. I don't need to clean the Analysis_output directory")        
-        
+
+    
+    # Create a txt file in which I write the bash commands of the analysis
+    if not OnlyLatex:
+        f_CMD = open(os.path.join(global_input_dir, 'Analysis_output', 'CMD.txt'), 'w')
+    
+    
     # Create subdirectories for each GDML file
     if not OnlyLatex:
         for i in range(Number_of_files):
@@ -192,23 +198,37 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
 
     HADD_to_apply = False
     
+    # os.system('chmod 777 -R ' + global_input_dir)
+
+
     if not OnlyLatex:
         for root, dirs, files in os.walk(dst_dir):
-            HADD_to_apply = False
             if 'GDML_file_' in root:
                 pattern = r"/GDML_file_(\d+)"
-                match = re.search(pattern, os.path.join(root, dir))
+                match = re.search(pattern, root)
                 if match is not None:
                     number = int(match.group(1))
                 else:
                     number = -1
-
+                    
+                HADD_to_apply = False
                 # Look if there are files such as: particle_j0_t0.root particle_j1_t0.root
                 for file in files:
                     if '_j' in file:
                         HADD_to_apply = True
                         print('Filse processed by Cluter\nMerging files...')
                         break
+                
+                # Ok, but if there is already a file called particle_t0.root, I don't need to merge anything
+                if HADD_to_apply:
+                    CounterFilesMerged = 0
+                    for particle in ParticleName:
+                        if os.path.exists(os.path.join(root, particle + '_t0.root')):
+                            CounterFilesMerged += 1
+                    if CounterFilesMerged == len(ParticleName):
+                        HADD_to_apply = False
+                        print('All files already merged')
+                
                                         
                 if HADD_to_apply:
                     for particle in ParticleName:            
@@ -222,22 +242,10 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                             for file in FilesToMerge:
                                 CMD_TO_EXECUTE += ' ' + os.path.join(root, file)
                             print(CMD_TO_EXECUTE)
+                            f_CMD.write(CMD_TO_EXECUTE + '\n\n')
                             os.system(CMD_TO_EXECUTE)
                             #input('Press enter to continue')
-
-
-    # os.system('chmod 777 -R ' + global_input_dir)
-
-
-    if not OnlyLatex:
-        for root, dirs, files in os.walk(dst_dir):
-            for dir in dirs:
-                pattern = r"/GDML_file_(\d+)"
-                match = re.search(pattern, os.path.join(root, dir))
-                if match is not None:
-                    number = int(match.group(1))
-                else:
-                    number = -1
+                
                 
                 
                 Command = ''
@@ -268,7 +276,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 for index, file in enumerate(ListOfRootFiles):
                     print("Processing file: {}".format(file))
                     ArgVect = []
-                    ArgVect.append(os.path.join(root, dir ,file.split('/')[-1]))
+                    ArgVect.append(os.path.join(root,file.split('/')[-1]))
                     ArgVect.append(file.split('/')[-1].replace(".root", ""))
                     ArgVect.append(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number)))
                     ArgVect.append(E_thr_Thin)
@@ -276,11 +284,45 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                     ArgVect.append(E_thr_Plastic)
                     Command = ROOT_CMD(ROOT_MacroName, ArgVect)
                     print(Command)
+                    f_CMD.write(Command + '\n\n')
                     return_code = os.system(Command)
                     if return_code != 0:
                         print("Error in SetAliases.C")
                         exit(1)
                     
+                # Retrieve the information about the positions of the silicon detectors and dump them in a file in the AnalysisOutput/GDML_file_n directory
+                
+                for fileName in os.listdir(os.path.join(global_input_dir,"Text_output", "GDML_file_"+str(number))):
+                    if "SiliconPosition" in fileName:
+                        f_SiliconPosition = open(os.path.join(global_input_dir,"Text_output", "GDML_file_"+str(number), fileName), 'r')
+                        f_SiliconPosition_out = open(os.path.join(PrefixRootFilesAlias, "SiliconPosition.txt"), 'w')
+                        for line in f_SiliconPosition:
+                            line_split = line.replace('\n','').split(' ')
+                            if "SiliconDetector" in line_split[0]:
+                                if "Thick" in line_split[0]:
+                                    ThinThick = 1
+                                elif "Thin" in line_split[0]:
+                                    ThinThick = 0
+                                    
+                                if '_0' in line_split[0]:
+                                    Area = 55.0
+                                    Radius = np.sqrt(Area/3.14159265359)
+                                else:
+                                    Area = 150.0
+                                    Radius = np.sqrt(Area/3.14159265359) 
+                                
+                                # The last character of the first word is the number of the detector. Find this number integer
+                                # Use re
+                                pattern = r"(\d+)"
+                                match = re.search(pattern, line_split[0])
+                                if match is not None:
+                                    IdDetector = int(match.group(1))    
+                                
+                                f_SiliconPosition_out.write(str(ThinThick) + ' '+ str(IdDetector) + ' ' + line_split[1] + ' ' + line_split[2] + ' ' + line_split[3]+ ' ' + str(Radius) + '\n')   
+                        f_SiliconPosition.close()
+                        f_SiliconPosition_out.close()
+                        break
+                
                 Command = ''
                 ROOT_MacroName = os.path.join(root_dir, 'PID.C')
                 ArgVect = []
@@ -293,15 +335,17 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                 ArgVect.append(E_thr_Thin)
                 ArgVect.append(E_thr_Thick)
                 ArgVect.append(E_thr_Plastic)
+                ArgVect.append(os.path.join(PrefixRootFilesAlias, "SiliconPosition.txt"))
                 Command = ROOT_CMD(ROOT_MacroName, ArgVect)            
                 print(Command)
+                f_CMD.write(Command + '\n\n')
                 return_code = os.system(Command)
                 if return_code != 0:
                     print("Error in PID.C")
                     exit(1)
                 
             
-            
+    f_CMD.close()
             
             
             

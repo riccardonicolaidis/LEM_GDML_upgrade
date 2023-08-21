@@ -27,24 +27,27 @@
 #include "TList.h"
 #include "TObjArray.h"
 #include "TTreeFormula.h"
+#include "TEllipse.h"
+#include "TObjString.h"
 
 
 using namespace std;
 
 int PID(
-        int NFiles,
+        int     NFiles,
         TString pathFileNames = "",
         TString pathFileEnergies = "",
         TString destination = "",
-        double Emin_plots = 0.01,
-        double Emax_plots = 300.,
-        double E_thr_Thin = 0.04,
-        double E_thr_Thick = 0.04,
-        double E_thr_Plastic = 0.05,
-        int NumberPairsSensors = 5,
-        double ResSilicon = 0.01,
-        double ResPlastic = 0.05,
-        double NCVF_threshold = 0.1
+        double  Emin_plots = 0.01,
+        double  Emax_plots = 300.,
+        double  E_thr_Thin = 0.04,
+        double  E_thr_Thick = 0.04,
+        double  E_thr_Plastic = 0.05,
+        TString PathSiliconPositionFile = "",
+        int     NumberPairsSensors = 5,
+        double  ResSilicon = 0.01,
+        double  ResPlastic = 0.05,
+        double  NCVF_threshold = 0.1
 )
 {
 
@@ -56,8 +59,8 @@ int PID(
     vector<TString> FileNames;
     vector<TString> FileNames_noExt;
     vector<TString> FileNames_noPath;
-    vector<double> Emins;
-    vector<double> Emaxs;
+    vector<double>  Emins;
+    vector<double>  Emaxs;
     FileNames.resize(NFiles);
     FileNames_noExt.resize(NFiles);
     FileNames_noPath.resize(NFiles);
@@ -73,15 +76,14 @@ int PID(
         for(int i = 0; i < NFiles; i++)
         {
             getline(fileNames, textline);
-            FileNames[i] = textline;
-            cout << "FileNames[" << i << "] = " << FileNames[i] << endl;
-            FileNames_noExt[i] = FileNames[i];
-            cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
+            FileNames[i]        = textline;
+            FileNames_noExt[i]  = FileNames[i];
             FileNames_noExt[i].ReplaceAll(".root", "");
-            cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
-
-            // Remove all the absolute path to the file name
             FileNames_noPath[i] =  FileNames_noExt[i](FileNames_noExt[i].Last('/')+1, FileNames_noExt[i].Length());
+
+            cout << "FileNames[" << i << "] = " << FileNames[i] << endl;
+            cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
+            cout << "FileNames_noExt[" << i << "] = " << FileNames_noExt[i] << endl;
             cout << "FileNames_noPath[" << i << "] = " << FileNames_noPath[i] << endl;
 
         }
@@ -89,9 +91,12 @@ int PID(
     else
     {
         cout << "Unable to open file" << endl;
-        return 0;
+        return 1;
     }
 
+    /* ###################################################### */
+    /*                     PARTICLE NAMES                     */
+    /* ###################################################### */
 
     vector<TString> ParticleNames;
     ParticleNames.resize(NFiles);
@@ -99,12 +104,16 @@ int PID(
     for(int i = 0; i < NFiles; i++)
     {
         string CompleteFileName = FileNames_noExt[i].Data();
-        string ParticleName = CompleteFileName.substr(CompleteFileName.find_last_of("/")+1);
+        string ParticleName     = CompleteFileName.substr(CompleteFileName.find_last_of("/")+1);
         ParticleNames[i] = ParticleName;
         ParticleNames[i].ReplaceAll("_t0_alias", "");
     }
         
 
+
+    /* ###################################################### */
+    /*                  ENERGIES INFORMATION                  */
+    /* ###################################################### */
 
     // Open the file with name pathFileEnergies.txt
     ifstream fileEnergies(pathFileEnergies.Data());
@@ -120,8 +129,104 @@ int PID(
     else
     {
         cout << "Unable to open file" << endl;
-        return 0;
+        return 1;
     }
+
+
+    /* ###################################################### */
+    /*                SILICON DETECTOR POSITION               */
+    /* ###################################################### */
+
+    // Open the file with name PathSiliconPositionFile.txt
+    ifstream fileSiliconPosition(PathSiliconPositionFile.Data());
+    // The format of data is the following:
+    // NAME X/double Y/double Z/double Radius/double
+    // The names contain information on the detector
+    // LV_SiliconDetector_Thin_2
+    //     - Thin/Thick
+    //     - 1/2/3/4/5
+
+    vector<TString> SiliconDetectorNames;
+    vector<double>  SiliconDetectorX;
+    vector<double>  SiliconDetectorY;
+    vector<double>  SiliconDetectorZ;
+    vector<double>  SiliconDetectorRadius;
+    vector<int>     SiliconDetectorNumber;
+    vector<int>     SiliconDetectorThickness;
+
+    double zMeanThin = 0.;
+    double zMeanThick = 0.;
+
+    // Convention:
+    // 0 = Thin
+    // 1 = Thick
+    
+
+    string textlineSiliconPosition;
+
+    if (fileSiliconPosition.is_open())
+    {
+        while(getline(fileSiliconPosition, textlineSiliconPosition))
+        {
+            // Remove the newline character at the end of the line
+            // Split the line using the space as delimiter
+            // I used the TObjectArray returned by the Tokenize method
+            // There may be better ways to do it...
+
+            TString lineTString = textlineSiliconPosition;
+            TObjArray *lineTStringSplitted = lineTString.Tokenize(" ");
+
+            TIter next(lineTStringSplitted);
+            vector<TString> lineSplitted;
+            TObjString *token;
+
+            while ((token=static_cast<TObjString*>(next())))
+            {
+                lineSplitted.push_back(token->GetString());
+                cout << "token = " << token->GetString() << endl;
+            }
+
+            int ThinThick = lineSplitted[0].Atoi();
+            int number    = lineSplitted[1].Atoi();
+            double x      = lineSplitted[2].Atof();
+            double y      = lineSplitted[3].Atof();
+            double z      = lineSplitted[4].Atof();
+            double radius = lineSplitted[5].Atof();
+
+            // Find the mean z position of the silicon detectors
+            if(ThinThick == 0)
+            {
+                zMeanThin += z/NumberPairsSensors;
+            }
+            else if(ThinThick == 1)
+            {
+                zMeanThick += z/NumberPairsSensors;
+            }
+            else
+            {
+                cout << "Error in the name of the silicon detector" << endl;
+                return 1;
+            }
+
+            // Find the number of the detector
+            cout << "number = " << number << endl;
+            SiliconDetectorX.push_back(x);
+            SiliconDetectorY.push_back(y);
+            SiliconDetectorZ.push_back(z);
+            SiliconDetectorRadius.push_back(radius);
+            SiliconDetectorNumber.push_back(number);
+            SiliconDetectorThickness.push_back(ThinThick);
+        }
+    }
+    else
+    {
+        cout << "Unable to open file" << endl;
+        return 1;
+    }
+
+    fileSiliconPosition.close();
+    
+
 
 
     /* ###################################################### */
@@ -146,7 +251,6 @@ int PID(
         Edep[i] = (TTree*)file[i]->Get("Edep");
 
         // Get List Of Aliases
-
         TList *listOfAliases = Edep[i] -> GetListOfAliases();
         for(int j = 0; j < listOfAliases -> GetEntries(); ++j)
         {
@@ -161,8 +265,8 @@ int PID(
 
     TString AliasETot = "ETot";
 
-    TString DirName[3] = {"DirX", "DirY", "DirZ"};
-    TString PolarAngle[2] = {"dirTheta", "dirPhi"};
+    TString DirName[3]       = {"DirX", "DirY", "DirZ"};
+    TString PolarAngle[2]    = {"dirTheta", "dirPhi"};
     TString NewPolarAngle[2] = {"dirThetaNew", "dirPhiNew"};
 
 
@@ -187,13 +291,13 @@ int PID(
     BranchName[iBranch++] = "Ed_LV_PlasticVetoTop";
     int iBranchEnergies_Calo = iBranch;
     BranchName[iBranch++] = "Ed_LV_Calo";
-    int iStartSensors = iBranch;
-    int iStartSensors_Thin = iStartSensors;
+    int iStartSensors       = iBranch;
+    int iStartSensors_Thin  = iStartSensors;
     int iStartSensors_Thick = iStartSensors + NumberPairsSensors;
 
     for(int iPair = 0; iPair < NumberPairsSensors; iPair++)
     {
-        BranchName[iBranch] = "Ed_LV_SiliconDetector_Thin_" + to_string(iPair);
+        BranchName[iBranch]                    = "Ed_LV_SiliconDetector_Thin_" + to_string(iPair);
         BranchName[iBranch+NumberPairsSensors] = "Ed_LV_SiliconDetector_Thick_" + to_string(iPair);
         iBranch++;
     }
@@ -213,61 +317,51 @@ int PID(
     vector<TString> ConditionGoodEventsSinglePair;
     ConditionGoodEventsSinglePair.resize(NumberPairsSensors);
     TString ConditionNoCalo;
-    TString NumberPairsHit = "(";
+    TString NumberPairsHit;
 
+
+    ConditionDrilledVeto = Form("(%s < %g) && (%s < %g)", BranchName[iBranchEnergies].Data(), E_thr_Plastic, BranchName[iBranchEnergies + 1].Data(), E_thr_Plastic);
+
+    // Defining the conditions for tagged as good events
     for(int i = 0; i< NumberPairsSensors; ++i)
     {
-        //cout << "Defining good events for pair" << BranchName[iStartSensors+i].Data() << " & " <<BranchName[iStartSensors+ NumberPairsSensors+i].Data() << endl;
-        ConditionPairSilicon[i] = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
-        //cout << "ConditionPairSilicon[" << i << "] = " << ConditionPairSilicon[i].Data() << endl;
+        ConditionPairSilicon[i]          = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
+        ConditionGoodEventsSinglePair[i] = Form("(%s) && (%s)", ConditionPairSilicon[i].Data(), ConditionDrilledVeto.Data());
         if(i == 0)
         {
             ConditionPairSiliconAll = Form("((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
-            NumberPairsHit += Form("1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
+            NumberPairsHit          = Form("(1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
         }
         else 
         {
             ConditionPairSiliconAll += Form("|| ((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
-            NumberPairsHit += Form(" + 1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
+            NumberPairsHit          += Form(" + 1*((%s > %g) && (%s > %g))", BranchName[iStartSensors+i].Data(), E_thr_Thin, BranchName[iStartSensors + NumberPairsSensors + i].Data(), E_thr_Thick);
         }
     }
-    NumberPairsHit += ")";
+    NumberPairsHit      += ")";
+    ConditionGoodEvents  = Form("(%s < 2.0) && (%s) && (%s)", NumberPairsHit.Data(), ConditionPairSiliconAll.Data(), ConditionDrilledVeto.Data());
+    ConditionNoCalo      = Form("(%s < %g)", BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
 
-    ConditionDrilledVeto = Form("(%s < %g) && (%s < %g)", BranchName[iBranchEnergies].Data(), E_thr_Plastic, BranchName[iBranchEnergies + 1].Data(), E_thr_Plastic);
 
-    ConditionGoodEvents = Form("(%s < 2.0) && (%s) && (%s)", NumberPairsHit.Data(), ConditionPairSiliconAll.Data(), ConditionDrilledVeto.Data());
-    for(int i = 0; i < NumberPairsSensors; ++i)
-    {
-        //cout << "Defining good events for pair" << BranchName[iStartSensors_Thin+i].Data() << " & " <<BranchName[iStartSensors_Thick+i].Data() << endl;
-        ConditionGoodEventsSinglePair[i] = Form("(%s) && (%s)", ConditionPairSilicon[i].Data(), ConditionDrilledVeto.Data());
-    }
 
-    ConditionNoCalo = Form("(%s < %g)", BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
 
     TFile *fileOut = new TFile(destination +"/Plots.root", "RECREATE");
 
-
-    // TCanvas *cPID, *cgPID, *cPID_NoCalo, *cgPID_NoCalo;
-    // TCanvas *cPID2 , *cgPID2, *cPID2_NoCalo, *cgPID2_NoCalo;
-
-
-    TString destination_PID = destination + "/PID_plots";
+    TString destination_PID          = destination + "/PID_plots";
     TString destination_DeadMaterial = destination + "/DeadMaterial_plots";
-
-
 
     gSystem -> mkdir(destination_PID.Data(), true);
     gSystem -> mkdir(destination_DeadMaterial.Data(), true);
 
     
     vector<TH2DLogX*> hPID_log;
-    vector<TH2D*> hPID;
-    vector<TString> hPID_XTitle;
-    vector<TString> hPID_YTitle;
-    vector<TString> DrawRule;
-    vector<TString> Condition;
-    vector<TString> SaveAsPath;
-    vector<TCanvas*> cPID;
+    vector<TH2D*>     hPID;
+    vector<TString>   hPID_XTitle;
+    vector<TString>   hPID_YTitle;
+    vector<TString>   DrawRule;
+    vector<TString>   Condition;
+    vector<TString>   SaveAsPath;
+    vector<TCanvas*>  cPID;
 
     int N_Histos = 12;
 
@@ -282,7 +376,10 @@ int PID(
 
     int IndexHisto = 0;
 
-    // Template for all histograms
+    /* ###################################################### */
+    /*             TEMPLATE FOR HISTOGRAM DRAWING             */
+    /* ###################################################### */
+
     // hPID_Name[IndexHisto]: Assigned later in the loop
     // hPID_Title[IndexHisto] = "";
     // hPID_XTitle[IndexHisto] = "";
@@ -291,112 +388,102 @@ int PID(
     // Condition[IndexHisto] = "";
     // SaveAsPath[IndexHisto] = "";
 
-    // Edep[i] -> Draw("PID:(TotThick + TotThin + Ed_LV_Calo)>>hPID_0", ConditionGoodEvents.Data(), "colz");
-    // Edep[i] -> Draw("gPID:(gTotThick + gTotThin + gEd_LV_Calo)>>hPID_1", ConditionGoodEvents.Data(), "colz");
-    // Edep[i] -> Draw("PID:(TotThick + TotThin)>>hPID_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-    // Edep[i] -> Draw("gPID:(gTotThick + gTotThin)>>hPID_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-
-    // Edep[i] -> Draw("PID:RandEnergy>>hPID2_0", ConditionGoodEvents.Data(), "colz");
-    // Edep[i] -> Draw("gPID:RandEnergy>>hPID2_1", ConditionGoodEvents.Data(), "colz");
-    // Edep[i] -> Draw("PID:RandEnergy>>hPID2_2", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-    // Edep[i] -> Draw("gPID:RandEnergy>>hPID2_3", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "colz");
-
 
     // Histo 0
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
-    Condition[IndexHisto] = ConditionGoodEvents.Data();
-    SaveAsPath[IndexHisto] = destination_PID + "/PID.pdf";
+    DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto]   = ConditionGoodEvents.Data();
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID.pdf";
 
     // Histo 1
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "gPID:(gTotThick + gTotThin + gEd_LV_Calo)";
-    Condition[IndexHisto] = ConditionGoodEvents.Data();
-    SaveAsPath[IndexHisto] = destination_PID + "/gPID.pdf";
+    DrawRule[IndexHisto]    = "gPID:(gTotThick + gTotThin + gEd_LV_Calo)";
+    Condition[IndexHisto]   = ConditionGoodEvents.Data();
+    SaveAsPath[IndexHisto]  = destination_PID + "/gPID.pdf";
 
     // Histo 2
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:(TotThick + TotThin)";
-    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto] = destination_PID + "/PID_NoCalo.pdf";
+    DrawRule[IndexHisto]    = "PID:(TotThick + TotThin)";
+    Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NoCalo.pdf";
 
     // Histo 3
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "gPID:(gTotThick + gTotThin)";
-    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto] = destination_PID + "/gPID_NoCalo.pdf";
+    DrawRule[IndexHisto]    = "gPID:(gTotThick + gTotThin)";
+    Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/gPID_NoCalo.pdf";
 
     // Histo 4
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:RandEnergy";
-    Condition[IndexHisto] = ConditionGoodEvents.Data();
-    SaveAsPath[IndexHisto] = destination_PID + "/PID2.pdf";
+    DrawRule[IndexHisto]    = "PID:RandEnergy";
+    Condition[IndexHisto]   = ConditionGoodEvents.Data();
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID2.pdf";
 
     // Histo 5
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "gPID:RandEnergy";
-    Condition[IndexHisto] = ConditionGoodEvents.Data();
+    DrawRule[IndexHisto]    = "gPID:RandEnergy";
+    Condition[IndexHisto]   = ConditionGoodEvents.Data();
 
 
     // Histo 6
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:RandEnergy";
-    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto] = destination_PID + "/PID2_NoCalo.pdf";
+    DrawRule[IndexHisto]    = "PID:RandEnergy";
+    Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID2_NoCalo.pdf";
 
     // Histo 7
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "gPID:RandEnergy";
-    Condition[IndexHisto] = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto] = destination_PID + "/gPID2_NoCalo.pdf";
+    DrawRule[IndexHisto]    = "gPID:RandEnergy";
+    Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/gPID2_NoCalo.pdf";
 
 
     // Histo 8
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
-    Condition[IndexHisto] = Form("(%s)&&(NCVF > %g)", ConditionGoodEvents.Data(), NCVF_threshold);
-    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_NOK.pdf";
+    DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto]   = Form("(%s)&&(NCVF > %g)", ConditionGoodEvents.Data(), NCVF_threshold);
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_NOK.pdf";
 
     // Histo 9
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
-    Condition[IndexHisto] = Form("(%s)&&(NCVF > %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_NOK_NoCalo.pdf";
+    DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto]   = Form("(%s)&&(NCVF > %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_NOK_NoCalo.pdf";
 
     // Histo 10
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
-    Condition[IndexHisto] = Form("(%s)&&(NCVF < %g)", ConditionGoodEvents.Data(), NCVF_threshold);
-    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_OK.pdf";
+    DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto]   = Form("(%s)&&(NCVF < %g)", ConditionGoodEvents.Data(), NCVF_threshold);
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_OK.pdf";
 
     // Histo 11
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} Reco [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto] = "PID:(TotThick + TotThin + Ed_LV_Calo)";
-    Condition[IndexHisto] = Form("(%s)&&(NCVF < %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto] = destination_PID + "/PID_NCVF_OK_NoCalo.pdf";
+    DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
+    Condition[IndexHisto]   = Form("(%s)&&(NCVF < %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_OK_NoCalo.pdf";
     
 
 
@@ -441,20 +528,24 @@ int PID(
         cPID[i] -> SaveAs(SaveAsPath[i].Data());
     }
 
+    cout << "Done: Saved all the plots" << endl;
 
     vector<TObjArray*> ListOfBranches;
     ListOfBranches.resize(NFiles);
 
+    cout << "Reading Files" << endl;
     for(int i = 0; i < NFiles; ++i)
     {
 
         // NCVF Map
         // Xgen, Ygen, Zgen
         // pDirX, pDirY, pDirZ
-
-        double H = 5.0;
+        cout << "Reading File " << i << endl;
+        cout << "zMeanThick = " << zMeanThick << endl;
+        double H = zMeanThin;
 
         vector<double> vXimpact, vYimpact, vNCVF;
+        vector<bool> CaloTriggered;
 
         double bXgen, bYgen, bZgen, bpDirX, bpDirY, bpDirZ, bNCVF;
         Edep[i] -> SetBranchAddress("Xgen", &bXgen);
@@ -464,9 +555,10 @@ int PID(
         Edep[i] -> SetBranchAddress("pDirY", &bpDirY);
         Edep[i] -> SetBranchAddress("pDirZ", &bpDirZ);
         TTreeFormula *fNCVF = new TTreeFormula("fNCVF", Edep[i]->GetAlias("NCVF"), Edep[i]);
-        TTreeFormula *fConditionGoodEvents = new TTreeFormula("fConditionGoodEvents", ConditionGoodEvents.Data(), Edep[i]);
+        TTreeFormula *fConditionGoodEvents_Calo = new TTreeFormula("fConditionGoodEvents", Form("(%s) && !(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), Edep[i]);
+        TTreeFormula *fConditionGoodEvents_NoCalo = new TTreeFormula("fConditionGoodEvents", Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), Edep[i]);
 
-
+        cout << "Edep[i]->GetEntries() = " << Edep[i]->GetEntries() << endl;
 
         for(int j = 0; j < Edep[i]->GetEntries(); ++j)
         {
@@ -474,11 +566,20 @@ int PID(
             double Ximpact = bXgen + (H - bZgen) * bpDirX / bpDirZ;
             double Yimpact = bYgen + (H - bZgen) * bpDirY / bpDirZ;
             double NCVF = fNCVF -> EvalInstance();
-            if( fConditionGoodEvents -> EvalInstance() == 1)
+
+            if(fConditionGoodEvents_Calo -> EvalInstance() == 1)
             {
                 vXimpact.push_back(Ximpact);
                 vYimpact.push_back(Yimpact);
                 vNCVF.push_back(NCVF);
+                CaloTriggered.push_back(true);
+            }
+            else if(fConditionGoodEvents_NoCalo -> EvalInstance() == 1)
+            {
+                vXimpact.push_back(Ximpact);
+                vYimpact.push_back(Yimpact);
+                vNCVF.push_back(NCVF);
+                CaloTriggered.push_back(false);
             }
         }
 
@@ -493,29 +594,39 @@ int PID(
         int Nbins_Ximpact = 80;
         int Nbins_Yimpact = 80;
 
-        TH2D *hNCVF = new TH2D("hNCVF", "hNCVF", Nbins_Ximpact, Ximpact_min, Ximpact_max, Nbins_Yimpact, Yimpact_min, Yimpact_max);
+        TH2D *hNCVF_Calo = new TH2D("hNCVF_Calo", "hNCVF_Calo", Nbins_Ximpact, Ximpact_min, Ximpact_max, Nbins_Yimpact, Yimpact_min, Yimpact_max);
+        TH2D *hNCVF_NoCalo = new TH2D("hNCVF_NoCalo", "hNCVF_NoCalo", Nbins_Ximpact, Ximpact_min, Ximpact_max, Nbins_Yimpact, Yimpact_min, Yimpact_max);
         // Now loop on the bins and fill the histogram setting the NCVF as the mean of the values found in the bin.
         // If there are no values in the bin, set the NCVF to -1
 
-        vector< vector< vector<double> > > vNCVF_bin;
-        vNCVF_bin.resize(Nbins_Ximpact+2);
-        for(int j = 0; j < vNCVF_bin.size(); ++j)
+        vector< vector< vector<double> > > vNCVF_bin_Calo;
+        vector< vector< vector<double> > > vNCVF_bin_NoCalo;
+
+        vNCVF_bin_Calo.resize(Nbins_Ximpact+2);
+        vNCVF_bin_NoCalo.resize(Nbins_Ximpact+2);
+        for(int j = 0; j < vNCVF_bin_Calo.size(); ++j)
         {
-            vNCVF_bin[j].resize(Nbins_Yimpact+2);
-            for(int k = 0; k < vNCVF_bin[j].size(); ++k)
+            vNCVF_bin_Calo[j].resize(Nbins_Yimpact+2);
+            vNCVF_bin_NoCalo[j].resize(Nbins_Yimpact+2);
+            for(int k = 0; k < vNCVF_bin_Calo[j].size(); ++k)
             {
                 //cout << "resizing vNCVF_bin[" << j << "][" << k << "]" << endl;
-                vNCVF_bin[j][k].clear();
+                vNCVF_bin_Calo[j][k].clear();
+                vNCVF_bin_NoCalo[j][k].clear();
             }
         }
 
         for(int j = 0; j < vXimpact.size(); ++j)
         {
             //cout << "j = " << j << endl;
-            int binX = hNCVF -> GetXaxis() -> FindBin(vXimpact[j]);
-            int binY = hNCVF -> GetYaxis() -> FindBin(vYimpact[j]);
+            int binX = hNCVF_Calo -> GetXaxis() -> FindBin(vXimpact[j]);
+            int binY = hNCVF_Calo -> GetYaxis() -> FindBin(vYimpact[j]);
             cout << "binX = " << binX << ", binY = " << binY << endl;
-            vNCVF_bin[binX][binY].push_back(vNCVF[j]);
+            
+            if(CaloTriggered[j])
+                vNCVF_bin_Calo[binX][binY].push_back(vNCVF[j]);
+            else
+                vNCVF_bin_NoCalo[binX][binY].push_back(vNCVF[j]);
         }
 
         for(int j = 0; j < Nbins_Ximpact; ++j)
@@ -523,30 +634,117 @@ int PID(
             for(int k = 0; k < Nbins_Yimpact; ++k)
             {
                 //cout << "j = " << j << ", k = " << k << endl;
-                if(vNCVF_bin[j][k].size() == 0)
+                if(vNCVF_bin_Calo[j][k].size() == 0)
                 {
-                    hNCVF -> SetBinContent(j, k, 2);
+                    hNCVF_Calo -> SetBinContent(j, k, -1);
                 }
                 else
                 {
-                    double NCVF_mean = 0;
-                    for(int l = 0; l < vNCVF_bin[j][k].size(); ++l)
+                    double NCVF_mean_Calo = 0;
+                    int NCVF_mean_Calo_counter = 0;
+                    for(int l = 0; l < vNCVF_bin_Calo[j][k].size(); ++l)
                     {
-                        NCVF_mean += vNCVF_bin[j][k][l];
+                        if(vNCVF_bin_Calo[j][k][l] != -1)
+                        {
+                            NCVF_mean_Calo += vNCVF_bin_Calo[j][k][l];
+                            NCVF_mean_Calo_counter++;
+                        }
                     }
-                    NCVF_mean /= vNCVF_bin[j][k].size();
-                    hNCVF -> SetBinContent(j, k, NCVF_mean);
+                    NCVF_mean_Calo /= NCVF_mean_Calo_counter;
+                    hNCVF_Calo -> SetBinContent(j, k, NCVF_mean_Calo);
+                }
+
+                if(vNCVF_bin_NoCalo[j][k].size() == 0)
+                {
+                    hNCVF_NoCalo -> SetBinContent(j, k, -1);
+                }
+                else
+                {
+                    double NCVF_mean_NoCalo = 0;
+                    int NCVF_mean_NoCalo_counter = 0;
+                    for(int l = 0; l < vNCVF_bin_NoCalo[j][k].size(); ++l)
+                    {
+                        if(vNCVF_bin_NoCalo[j][k][l] != -1)
+                        {
+                            NCVF_mean_NoCalo += vNCVF_bin_NoCalo[j][k][l];
+                            NCVF_mean_NoCalo_counter++;
+                        }
+                    }
+                    NCVF_mean_NoCalo /= NCVF_mean_NoCalo_counter;
+                    hNCVF_NoCalo -> SetBinContent(j, k, NCVF_mean_NoCalo);
                 }
             }
         }
 
 
 
-        TCanvas *cNCVF = new TCanvas("cNCVF", "cNCVF", 1000, 1000);
-        cNCVF -> cd();
-        hNCVF -> Draw("colz");
-        //gPad -> SetLogz();
-        cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".png");
+        TCanvas *cNCVF = new TCanvas("cNCVF", "cNCVF", 2000, 1000);
+        cNCVF -> Divide(2, 1);
+        cNCVF -> cd(1);
+        hNCVF_Calo -> Draw("colz");
+        hNCVF_Calo -> SetStats(0);
+
+        vector<TEllipse*> vEllipse;
+        vEllipse.resize(4*NumberPairsSensors);
+
+        // vector<double> SiliconDetectorX;
+        // vector<double> SiliconDetectorY;
+        // vector<double> SiliconDetectorZ;
+        // vector<double> SiliconDetectorRadius;
+        // vector<int> SiliconDetectorNumber;
+        // vector<int> SiliconDetectorThickness;
+
+
+        for(int j = 0; j < 2*NumberPairsSensors; ++j)
+        {
+            vEllipse[j] = new TEllipse(SiliconDetectorX[j], SiliconDetectorY[j], SiliconDetectorRadius[j], SiliconDetectorRadius[j]);
+            vEllipse[j] -> SetFillStyle(0);
+            if(SiliconDetectorThickness[j] == 1)
+            {
+                vEllipse[j] -> SetLineColor(kRed);
+                vEllipse[j] -> SetLineWidth(2);
+                vEllipse[j] -> SetLineStyle(2);
+            }
+            else
+            {
+                vEllipse[j] -> SetLineColor(kYellow);
+                vEllipse[j] -> SetLineWidth(2);
+                vEllipse[j] -> SetLineStyle(3);
+            }
+            vEllipse[j] -> Draw("same");
+        }
+            
+
+
+
+
+
+        cNCVF -> cd(2);
+        hNCVF_NoCalo -> Draw("colz");
+        hNCVF_NoCalo -> SetStats(0);
+        // Draw again 
+        for(int j = 0; j < 2*NumberPairsSensors; ++j)
+        {
+            vEllipse[j+2*NumberPairsSensors] = new TEllipse(SiliconDetectorX[j], SiliconDetectorY[j], SiliconDetectorRadius[j], SiliconDetectorRadius[j]);
+            vEllipse[j+2*NumberPairsSensors] -> SetFillStyle(0);
+            if(SiliconDetectorThickness[j] == 1)
+            {
+                vEllipse[j+2*NumberPairsSensors] -> SetLineColor(kRed);
+                vEllipse[j+2*NumberPairsSensors] -> SetLineWidth(2);
+                vEllipse[j+2*NumberPairsSensors] -> SetLineStyle(2);
+            }
+            else
+            {
+                vEllipse[j+2*NumberPairsSensors] -> SetLineColor(kYellow);
+                vEllipse[j+2*NumberPairsSensors] -> SetLineWidth(2);
+                vEllipse[j+2*NumberPairsSensors] -> SetLineStyle(3);
+            }        
+            vEllipse[j+2*NumberPairsSensors] -> Draw("same");
+        }
+
+
+        cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".pdf");
+        cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".root");
 
 
 

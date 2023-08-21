@@ -61,6 +61,8 @@ void G04DetectorConstruction::ConstructSDandField()
   //------------------------------------------------ 
   // Sensitive detectors
   //------------------------------------------------ 
+  G4VPhysicalVolume* worldVolume = fParser.GetWorldVolume();
+  G4int nVols = worldVolume->GetLogicalVolume()->GetNoDaughters();
 
   G4SDManager* SDman = G4SDManager::GetSDMpointer();
   
@@ -121,8 +123,39 @@ void G04DetectorConstruction::ConstructSDandField()
     G4String SolidName = logvol->GetSolid()->GetName();
     G4String SolidType = logvol->GetSolid()->GetEntityType();
 
-    solidnamesfile << LogicName << " " << SolidName << " " << SolidType << G4endl;
+    for(int i = 0; i < nVols; i++)
+    {
+      G4VPhysicalVolume* physvol = worldVolume->GetLogicalVolume()->GetDaughter(i);
+      G4String physvolname = physvol->GetName();
+      G4String logvolphys = physvol->GetLogicalVolume()->GetName();
+      if(logvolphys == LogicName)
+      {
+        G4ThreeVector position = physvol->GetTranslation();
+        //SiliconPositionFile << LogicName << " " << position.getX() << " " << position.getY() << " " << position.getZ() << G4endl;
+      }
+    }
 
+    G4VSolid *solid = logvol->GetSolid();
+    G4int nRand = 1000000;
+    G4ThreeVector randPoint = G4ThreeVector(0,0,0);
+
+    G4cout << "Computing random points on " << LogicName << G4endl;
+    for(int i = 0; i < nRand; i++)
+    {
+      randPoint = randPoint + (solid->GetPointOnSurface())*(1.0/nRand);
+    }
+
+    SiliconPositionFile << LogicName << " " << randPoint.getX() << " " << randPoint.getY() << " " << randPoint.getZ() << G4endl;
+
+
+
+    //G4ThreeVector position = physvol->GetTranslation();
+
+
+
+    solidnamesfile << LogicName << " " << SolidName << " " << SolidType << G4endl;
+    
+    //SiliconPositionFile << LogicName << " " << position.getX() << " " << position.getY() << " " << position.getZ() << G4endl;
 
 
 
