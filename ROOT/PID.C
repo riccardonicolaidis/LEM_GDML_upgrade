@@ -363,7 +363,7 @@ int PID(
     vector<TString>   SaveAsPath;
     vector<TCanvas*>  cPID;
 
-    int N_Histos = 12;
+    int N_Histos = 14;
 
     hPID_log.resize(N_Histos);
     hPID.resize(N_Histos);
@@ -485,6 +485,22 @@ int PID(
     Condition[IndexHisto]   = Form("(%s)&&(NCVF < %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
     SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_OK_NoCalo.pdf";
     
+    // Histo 12
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{Thick} / E_{Thin}";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto]    = "PID:(TotThick / TotThin)";
+    Condition[IndexHisto]   = Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_ThickThin_NoCalo.pdf";
+
+    // Histo 13
+    IndexHisto++;
+    hPID_XTitle[IndexHisto] = "E_{Thick} / E_{Thin}";
+    hPID_YTitle[IndexHisto] = "PID";
+    DrawRule[IndexHisto]    = "PID:(TotThick / TotThin)";
+    Condition[IndexHisto]   = Form("(%s)", ConditionGoodEvents.Data());
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_ThickThin.pdf";
+
 
 
     // Loop 
@@ -497,6 +513,10 @@ int PID(
         hPID_log[i] -> SetXTitle(hPID_XTitle[i].Data());
         hPID_log[i] -> SetYTitle(hPID_YTitle[i].Data());
         hPID_log[i] -> SetXAxis(Xmin,Xmax, Nbins_X);
+        if(i >= 12)
+        {
+            hPID_log[i] -> SetXAxis(0.001,1000, Nbins_X);
+        }
         hPID_log[i] -> SetYAxis(Ymin,Ymax, Nbins_Y);
         hPID_log[i] -> GenerateHistogram();
         hPID[i] = (TH2D*)hPID_log[i] -> GetHistogram();

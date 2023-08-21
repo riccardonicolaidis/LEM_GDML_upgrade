@@ -1,14 +1,14 @@
 # Low Energy Module (LEM): Upgrade with geometry from CAD file
 
 
-<img src="./docs/LEM_logo.PNG"  width="20%" height="20%"> <img src="./docs/G4Logo.png"  width="50%" height="50%">
+<img src="./LEM_Logo.jpg"  width="20%" height="20%"> <img src="https://web.infn.it/Geant4-INFN/images/Banner-modificato-2.png"  width="50%" height="50%">
 
 
 ## Brief description
 This repository contains the source code for the Geant4 simulation of the Low Energy Module, a submodule fo the Zire` detector onboard teh NUSES platform.
 
 
-<img src="./docs/LEM.png" width = 80%>
+<img src="./LEM_Logo.jpg" width = 20%>
 
 
 This simulation is inherited by the Geant4 example **G04** [Link to the G04 example](https://gitlab.cern.ch/geant4/geant4/-/tree/v11.1.1/examples/extended/persistency/gdml/G04).

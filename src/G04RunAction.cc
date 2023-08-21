@@ -68,6 +68,7 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector,
     }
 
     man -> CreateNtupleIColumn("EventID");          // 7
+    man -> CreateNtupleIColumn("JobNumber");        // 8
 
     man ->FinishNtuple();
 

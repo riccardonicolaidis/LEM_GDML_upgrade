@@ -107,7 +107,7 @@ void G04EventAction::EndOfEventAction(const G4Event *Event)
                 {
                     Ed_Silicon_Thick += NTupleData[NTupleColumnIndex];
                 }
-                else if(G4StrUtil::contains(SDName,"calo"))
+                else if(G4StrUtil::contains(SDName,"Calo"))
                 {
                     Ed_Plastic = NTupleData[NTupleColumnIndex];
                 }
