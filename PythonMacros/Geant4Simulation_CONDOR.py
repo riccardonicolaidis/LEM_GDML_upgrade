@@ -21,7 +21,7 @@ def Geant4Simulation():
     print("Date: ", Date)
 
     N_jobs = 10
-    N_evjob = 1000000
+    N_evjob = 100000
 
     # Run directory for the run
     if IsTest:
@@ -223,11 +223,7 @@ def Geant4Simulation():
     os.system("chmod -R 777 " + out_paths["Progress_monitoring"])
     os.system("condor_submit " + os.path.join(out_paths["condor_scripts"], "monitoring.sub"))
     
-    print("Launched monitoring script\nSleeping for 15 seconds")
-    for i in range(5):
-        print(15-i)
-        os.system("sleep 1")    
-
+    
 
 
 

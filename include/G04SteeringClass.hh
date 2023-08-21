@@ -23,11 +23,11 @@ private:
     int FileNumber;
 
 
-    G4String OutputTextFolder_KEY = "OUT_TEXT";
-    G4String OutputMonitoringFolder_KEY = "OUT_MONITORING_FLD";
-    G4String UpdateFrequency_KEY = "UPDATE_FREQUENCY";
-    G4String JobNumber_KEY = "NJOB";
-    G4String FileNumber_KEY = "NFILE";
+    const G4String OutputTextFolder_KEY       = "OUT_TEXT";
+    const G4String OutputMonitoringFolder_KEY = "OUT_MONITORING_FLD";
+    const G4String UpdateFrequency_KEY        = "UPDATE_FREQUENCY";
+    const G4String JobNumber_KEY              = "NJOB";
+    const G4String FileNumber_KEY             = "NFILE";
 
 public:
     G04SteeringClass();
@@ -35,17 +35,17 @@ public:
 
     void UploadSteeringFile(G4String filename);
 
-    void SetOutputTextFolder(G4String folder) { OutputTextFolder = folder; };
+    void SetOutputTextFolder      (G4String folder) { OutputTextFolder = folder; };
     void SetOutputMonitoringFolder(G4String folder) { OutputMonitoringFolder = folder; };
-    void SetUpdateFrequency(int freq) { UpdateFrequency = freq; };
-    void SetJobNumber(int job) { JobNumber = job; };
-    void SetFileNumber(int file) { FileNumber = file; };
+    void SetUpdateFrequency       (int freq)        { UpdateFrequency = freq; };
+    void SetJobNumber             (int job)         { JobNumber = job; };
+    void SetFileNumber            (int file)        { FileNumber = file; };
     
-    G4String GetOutputTextFolder() { return OutputTextFolder; };
-    G4String GetOutputMonitoringFolder() { return OutputMonitoringFolder; };
-    int GetUpdateFrequency() { return UpdateFrequency; };
-    int GetJobNumber() { return JobNumber; };
-    int GetFileNumber() { return FileNumber; };
+    G4String GetOutputTextFolder()       const { return OutputTextFolder; };
+    G4String GetOutputMonitoringFolder() const { return OutputMonitoringFolder; };
+    int      GetUpdateFrequency()        const { return UpdateFrequency; };
+    int      GetJobNumber()              const { return JobNumber; };
+    int      GetFileNumber()             const { return FileNumber; };
 };
 
 #endif

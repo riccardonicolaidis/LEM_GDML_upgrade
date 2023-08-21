@@ -1,0 +1,2420 @@
+
+Usage: gdml_det <intput_gdml_file:mandatory>
+
+Output text folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/Text_output/GDML_file_1/OutText_f1_j3
+Output monitoring folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/Progress_monitoring
+Job number set to: 3
+Update frequency set to: 10000
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/GDML_src/LEM_Plastic_Mirion_Mirion-worldVOL_Parsed.gdml'...
+G4GDML: VALIDATION ERROR! element 'materials' is not allowed for content model '(define,materials,solids,structure,userinfo?,setup+)' at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_PLASTIC_SC_VINYLTOLUENE' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_BAKELITE' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Galactic' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Al' is referenced but was never declared at line: 31897
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Si' is referenced but was never declared at line: 31897
+G4GDML: Reading definitions...
+G4GDML: Reading materials...
+G4GDML: Reading materials...
+G4GDML: Reading solids...
+G4GDML: Reading structure...
+G4GDML: Reading setup...
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/GDML_src/LEM_Plastic_Mirion_Mirion-worldVOL_Parsed.gdml' done!
+Stripping off GDML names of materials, solids and volumes ...
+
+
+          ################################
+          !!! G4Backtrace is activated !!!
+          ################################
+
+
+**************************************************************
+ Geant4 version Name: geant4-11-00-patch-03 [MT]   (16-September-2022)
+  << in Multi-threaded mode >> 
+                       Copyright : Geant4 Collaboration
+                      References : NIM A 506 (2003), 250-303
+                                 : IEEE-TNS 53 (2006), 270-278
+                                 : NIM A 835 (2016), 186-225
+                             WWW : http://geant4.org/
+**************************************************************
+
+<<< Geant4 Physics List simulation engine: FTFP_BERT
+
+Found 56 volume(s) with auxiliary information.
+
+Volume LV_AlTop has the following list of auxiliary information: 
+Computing random points on LV_AlTop
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_4
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_1
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_3
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_3
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlShieldUpper has the following list of auxiliary information: 
+Computing random points on LV_AlShieldUpper
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_1
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_4
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_2
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlShieldLower has the following list of auxiliary information: 
+Computing random points on LV_AlShieldLower
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_5 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_5
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_9 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_9
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_6 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_6
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_8 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_8
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thin_0
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_7 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_7
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_0
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_2
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_0
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_2
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_2
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_0
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew has the following list of auxiliary information: 
+Computing random points on LV_AlScrew
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_2
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_3
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardMiddleLower
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+Computing random points on LV_PlasticVetoBottom
+	Type: Color Value: #ffcc99b2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlBottom has the following list of auxiliary information: 
+Computing random points on LV_AlBottom
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardTop
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_2
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_3
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_1
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_2
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_4
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_4
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_1
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_4
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_0
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_0
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_0
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardCalo
+	Type: Color Value: #3333ffff
+	Type: SensDet Value: Calorimeter
+Volume LV_Calo has the following list of auxiliary information: 
+Computing random points on LV_Calo
+	Type: Color Value: #3333ffff
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardBottom
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardMiddleUpper
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thin_3
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_2
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_3
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+Computing random points on LV_PlasticVetoTop
+	Type: Color Value: #ffcc99b2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_3
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_4
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_1
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_3
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_4
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+
+Volume LV_AlTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlTop
+Volume LV_BakeliteCable_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_4
+Volume LV_BakeliteCable_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_1
+Volume LV_BakeliteCable_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_3
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_3
+Volume LV_AlShieldUpper has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlShieldUpper
+Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_1
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_4
+Volume LV_BakeliteCable_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_2
+Volume LV_AlShieldLower has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlShieldLower
+Volume LV_AlFrame_Thick_5 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_5
+Volume LV_AlFrame_Thick_9 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_9
+Volume LV_AlFrame_Thick_6 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_6
+Volume LV_AlFrame_Thick_8 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_8
+Volume LV_BakeliteCable_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thin_0
+Volume LV_AlFrame_Thick_7 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_7
+Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_0
+Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_2
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_0
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_2
+Volume LV_AlScrew_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_2
+Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_0
+Volume LV_AlScrew has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_1
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_2
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_3
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleLower
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoBottom
+Volume LV_AlBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlBottom
+Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardTop
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_2
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_3
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_1
+Volume LV_AlScrew_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_2
+Volume LV_AlScrew_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_4
+Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_4
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_1
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_4
+Volume LV_AlScrew_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_0
+Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_0
+Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_0
+Volume LV_AlScrew_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_1
+Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardCalo
+Volume LV_Calo has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_Calo
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardBottom
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleUpper
+Volume LV_AlScrew_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thin_3
+Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_2
+Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_3
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoTop
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_3
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_4
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_1
+Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_3
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_4
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_1
+
+ hInelastic FTFP_BERT : threshold between BERT and FTFP is over the interval 
+ for pions :   3 to 6 GeV
+ for kaons :   3 to 6 GeV
+ for proton :  3 to 6 GeV
+ for neutron : 3 to 6 GeV
+
+### Adding tracking cuts for neutron  TimeCut(ns)= 10000  KinEnergyCut(MeV)= 0
+=======================================================================
+======                 Electromagnetic Physics Parameters      ========
+=======================================================================
+LPM effect enabled                                 1
+Enable creation and use of sampling tables         0
+Apply cuts on all EM processes                     0
+Use general process                                0
+Enable linear polarisation for gamma               0
+Enable sampling of quantum entanglement            0
+X-section factor for integral approach             0.8
+Min kinetic energy for tables                      100 eV 
+Max kinetic energy for tables                      100 TeV
+Number of bins per decade of a table               7
+Verbose level                                      1
+Verbose level for worker thread                    0
+Bremsstrahlung energy threshold above which 
+  primary e+- is added to the list of secondary    100 TeV
+Bremsstrahlung energy threshold above which primary
+  muon/hadron is added to the list of secondary    100 TeV
+Lowest triplet kinetic energy                      1 MeV
+Enable sampling of gamma linear polarisation       0
+5D gamma conversion model type                     0
+5D gamma conversion model on isolated ion          0
+Livermore data directory                           livermore
+=======================================================================
+======                 Ionisation Parameters                   ========
+=======================================================================
+Step function for e+-                              (0.2, 1 mm)
+Step function for muons/hadrons                    (0.2, 0.1 mm)
+Step function for light ions                       (0.2, 0.1 mm)
+Step function for general ions                     (0.2, 0.1 mm)
+Lowest e+e- kinetic energy                         1 keV
+Lowest muon/hadron kinetic energy                  1 keV
+Fluctuations of dE/dx are enabled                  1
+Use ICRU90 data                                    0
+Use built-in Birks satuaration                     0
+Build CSDA range enabled                           0
+Use cut as a final range enabled                   0
+Enable angular generator interface                 0
+Max kinetic energy for CSDA tables                 1 GeV
+Max kinetic energy for NIEL computation            0 eV 
+Linear loss limit                                  0.01
+Read data from file for e+e- pair production by mu 0
+=======================================================================
+======                 Multiple Scattering Parameters          ========
+=======================================================================
+Type of msc step limit algorithm for e+-           1
+Type of msc step limit algorithm for muons/hadrons 0
+Msc lateral displacement for e+- enabled           1
+Msc lateral displacement for muons and hadrons     0
+Urban msc model lateral displacement alg96         1
+Range factor for msc step limit for e+-            0.04
+Range factor for msc step limit for muons/hadrons  0.2
+Geometry factor for msc step limitation of e+-     2.5
+Safety factor for msc step limit for e+-           0.6
+Skin parameter for msc step limitation of e+-      1
+Lambda limit for msc step limit for e+-            1 mm
+Use Mott correction for e- scattering              0
+Factor used for dynamic computation of angular 
+  limit between single and multiple scattering     1
+Fixed angular limit between single 
+  and multiple scattering                          3.1416 rad
+Upper energy limit for e+- multiple scattering     100 MeV
+Type of electron single scattering model           0
+Type of nuclear form-factor                        1
+Screening factor                                   1
+=======================================================================
+
+phot:  for gamma SubType=12 BuildTable=0
+      LambdaPrime table from 200 keV to 100 TeV in 61 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+ LivermorePhElectric : Emin=    0 eV  Emax=  100 TeV  SauterGavrila Fluo
+
+compt:  for gamma SubType=13 BuildTable=1
+      Lambda table from 100 eV  to 1 MeV, 7 bins/decade, spline: 1
+      LambdaPrime table from 1 MeV to 100 TeV in 56 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+       Klein-Nishina : Emin=    0 eV  Emax=  100 TeV
+
+conv:  for gamma SubType=14 BuildTable=1
+      Lambda table from 1.022 MeV to 100 TeV, 18 bins/decade, spline: 1
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+     BetheHeitlerLPM : Emin=    0 eV  Emax=  100 TeV  ModifiedTsai
+
+Rayl:  for gamma SubType=11 BuildTable=1
+      Lambda table from 100 eV  to 100 keV, 7 bins/decade, spline: 0
+      LambdaPrime table from 100 keV to 100 TeV in 63 bins 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+   LivermoreRayleigh : Emin=    0 eV  Emax=  100 TeV  CullenGenerator
+
+msc:  for e-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 MeV Nbins=42 100 eV  - 100 MeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=42 100 MeV - 100 TeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e-  XStype:4  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+CoulombScat:  for e- XStype:1 SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for e+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 MeV Nbins=42 100 eV  - 100 MeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+        WentzelVIUni : Emin=  100 MeV Emax=  100 TeV Nbins=42 100 MeV - 100 TeV
+          StepLim=UseSafety Rfact=0.04 Gfact=2.5 Sfact=0.6 DispFlag:1 Skin=1 Llim=1 mm
+
+eIoni:  for e+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        MollerBhabha : Emin=    0 eV  Emax=  100 TeV
+
+eBrem:  for e+  XStype:4  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      LPM flag: 1 for E > 1 GeV,  VertexHighEnergyTh(GeV)= 100000
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+             eBremSB : Emin=    0 eV  Emax=    1 GeV  ModifiedTsai
+            eBremLPM : Emin=    1 GeV Emax=  100 TeV  ModifiedTsai
+
+annihil:  for e+ XStype:2 SubType=5 BuildTable=0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            eplus2gg : Emin=    0 eV  Emax=  100 TeV
+
+CoulombScat:  for e+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from 100 MeV to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=  100 MeV Emax=  100 TeV
+
+msc:  for proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for proton  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+hBrems:  for proton  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for proton  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for proton XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for GenericIon  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+ionIoni:  for GenericIon  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      Stopping Power data for 17 ion/material pairs
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+msc:  for alpha  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            UrbanMsc : Emin=    0 eV  Emax=  100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+ionIoni:  for alpha  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.02
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            BraggIon : Emin=    0 eV  Emax=7.9452 MeV
+          BetheBloch : Emin=7.9452 MeV Emax=  100 TeV
+
+msc:  for anti_proton  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for anti_proton  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=    2 MeV
+          BetheBloch : Emin=    2 MeV Emax=  100 TeV
+
+hBrems:  for anti_proton  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for anti_proton  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 17x1001; from 7.50618 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for anti_proton XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for kaon+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+hBrems:  for kaon+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for kaon+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for kaon+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for kaon-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for kaon-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=1.05231 MeV
+          BetheBloch : Emin=1.05231 MeV Emax=  100 TeV
+
+hBrems:  for kaon-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for kaon-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 18x1001; from 3.94942 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for kaon- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of kaon+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+muIoni:  for mu+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for mu+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for mu-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+muIoni:  for mu-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=  200 keV
+          BetheBloch : Emin=  200 keV Emax=    1 GeV
+        MuBetheBloch : Emin=    1 GeV Emax=  100 TeV
+
+muBrems:  for mu-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+              MuBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+muPairProd:  for mu-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 21x1001; from 1 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+          muPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for mu- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of mu+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi+  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for pi+  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               Bragg : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+hBrems:  for pi+  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for pi+  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for pi+ XStype:1 SubType=1 BuildTable=1
+      Lambda table from threshold  to 100 TeV, 7 bins/decade, spline: 0
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+msc:  for pi-  SubType= 10
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+        WentzelVIUni : Emin=    0 eV  Emax=  100 TeV Nbins=84 100 eV  - 100 TeV
+          StepLim=Minimal Rfact=0.2 Gfact=2.5 Sfact=0.6 DispFlag:0 Skin=1 Llim=1 mm
+
+hIoni:  for pi-  XStype:1  SubType=2
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 1
+      StepFunction=(0.2, 0.1 mm), integ: 1, fluct: 1, linLossLim= 0.01
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+            ICRU73QO : Emin=    0 eV  Emax=297.505 keV
+          BetheBloch : Emin=297.505 keV Emax=  100 TeV
+
+hBrems:  for pi-  XStype:1  SubType=3
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+               hBrem : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+hPairProd:  for pi-  XStype:1  SubType=4
+      dE/dx and range tables from 100 eV  to 100 TeV in 84 bins
+      Lambda tables from threshold to 100 TeV, 7 bins/decade, spline: 0
+      Sampling table 20x1001; from 1.11656 GeV to 100 TeV 
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+           hPairProd : Emin=    0 eV  Emax=  100 TeV  ModifiedMephi
+
+CoulombScat:  for pi- XStype:1 SubType=1 BuildTable=1
+      Used Lambda table of pi+
+      ThetaMin(p) < Theta(degree) < 180; pLimit(GeV^1)= 0.139531
+      ===== EM models for the G4Region  DefaultRegionForTheWorld ======
+  eCoulombScattering : Emin=    0 eV  Emax=  100 TeV
+
+====================================================================
+                  HADRONIC PROCESSES SUMMARY (verbose level 1)
+
+---------------------------------------------------
+                           Hadronic Processes for neutron
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronElasticXS: 0 eV  ---> 100 TeV
+
+  Process: neutronInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:      G4NeutronInelasticXS: 0 eV  ---> 100 TeV
+
+  Process: nCapture
+        Model:               nRadCapture: 0 eV  ---> 100 TeV
+     Cr_sctns:        G4NeutronCaptureXS: 0 eV  ---> 100 TeV
+
+  Process: nKiller
+
+---------------------------------------------------
+                           Hadronic Processes for B-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: B-Inelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for D-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: D-Inelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for GenericIon
+
+  Process: ionInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: He3Inelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: alphaInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for anti_He3
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_He3Inelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_alpha
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_alphaInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_deuteronInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: anti_lambdaInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_neutron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_neutronInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_proton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100.1 MeV
+        Model:              AntiAElastic: 100 MeV ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_protonInelastic
+        Model:                      FTFP: 0 eV  ---> 100 TeV
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for anti_triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100.1 MeV/n
+        Model:              AntiAElastic: 100 MeV/n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: anti_tritonInelastic
+        Model:                      FTFP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:              AntiAGlauber: 0 eV  ---> 25.6 PeV
+
+  Process: hFritiofCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for deuteron
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: dInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+---------------------------------------------------
+                           Hadronic Processes for e+
+
+  Process: positronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for e-
+
+  Process: electronNuclear
+        Model:   G4ElectroVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:          ElectroNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for gamma
+
+  Process: photonNuclear
+        Model:               GammaNPreco: 0 eV  ---> 200 MeV
+        Model:            BertiniCascade: 199 MeV ---> 6 GeV
+        Model:           TheoFSGenerator: 3 GeV ---> 100 TeV
+     Cr_sctns:            GammaNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon+
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: kaon+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for kaon-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: kaon-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for lambda
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: lambdaInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu+
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for mu-
+
+  Process: muonNuclear
+        Model:      G4MuonVDNuclearModel: 0 eV  ---> 1 PeV
+     Cr_sctns:     KokoulinMuonNuclearXS: 0 eV  ---> 100 TeV
+
+  Process: muMinusCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for pi+
+
+  Process: hadElastic
+        Model:           hElasticGlauber: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: pi+Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for pi-
+
+  Process: hadElastic
+        Model:           hElasticGlauber: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: pi-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for proton
+
+  Process: hadElastic
+        Model:             hElasticCHIPS: 0 eV  ---> 100 TeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+  Process: protonInelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:  BarashenkovGlauberGribov: 0 eV  ---> 100 TeV
+
+---------------------------------------------------
+                           Hadronic Processes for sigma-
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV  ---> 100 TeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: sigma-Inelastic
+        Model:                      FTFP: 3 GeV ---> 100 TeV
+        Model:            BertiniCascade: 0 eV  ---> 6 GeV
+     Cr_sctns:            Glauber-Gribov: 0 eV  ---> 100 TeV
+
+  Process: hBertiniCaptureAtRest
+
+---------------------------------------------------
+                           Hadronic Processes for triton
+
+  Process: hadElastic
+        Model:              hElasticLHEP: 0 eV /n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+  Process: tInelastic
+        Model:  Binary Light Ion Cascade: 0 eV /n ---> 6 GeV/n
+        Model:                      FTFP: 3 GeV/n ---> 100 TeV/n
+     Cr_sctns:  Glauber-Gribov Nucl-nucl: 0 eV  ---> 25.6 PeV
+
+================================================================
+=======================================================================
+======       Pre-compound/De-excitation Physics Parameters     ========
+=======================================================================
+Type of pre-compound inverse x-section              3
+Pre-compound model active                           1
+Pre-compound excitation low energy (MeV)            0.1
+Pre-compound excitation high energy (MeV)           30
+Type of de-excitation inverse x-section             3
+Type of de-excitation factory                       Evaporation+GEM
+Number of de-excitation channels                    68
+Min excitation energy (keV)                         0.01
+Min energy per nucleon for multifragmentation (MeV) 2e+05
+Limit excitation energy for Fermi BreakUp (MeV)     20
+Level density (1/MeV)                               0.075
+Use simple level density model                      1
+Use discrete excitation energy of the residual      0
+Time limit for long lived isomeres (ns)             1
+Isomer production flag                              1
+Internal e- conversion flag                         1
+Store e- internal conversion data                   0
+Correlated gamma emission flag                      0
+Max 2J for sampling of angular correlations         10
+=======================================================================
+
+=========================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Initializing workers...
+=========================================================================
+
+Visualization Manager instantiating with verbosity "warnings (3)"...
+Visualization Manager initialising...
+Registering graphics systems...
+
+You have successfully registered the following graphics systems.
+Registered graphics systems are:
+  ASCIITree (ATree)
+  DAWNFILE (DAWNFILE)
+  G4HepRepFile (HepRepFile)
+  RayTracer (RayTracer)
+  VRML2FILE (VRML2FILE)
+  gMocrenFile (gMocrenFile)
+  OpenGLImmediateQt (OGLIQt, OGLI)
+  OpenGLStoredQt (OGLSQt, OGL, OGLS)
+  OpenGLImmediateXm (OGLIXm, OGLIQt_FALLBACK)
+  OpenGLStoredXm (OGLSXm, OGLSQt_FALLBACK)
+  OpenGLImmediateX (OGLIX, OGLIQt_FALLBACK, OGLIXm_FALLBACK)
+  OpenGLStoredX (OGLSX, OGLSQt_FALLBACK, OGLSXm_FALLBACK)
+
+Registering model factories...
+
+You have successfully registered the following model factories.
+Registered model factories:
+  generic
+  drawByAttribute
+  drawByCharge
+  drawByOriginVolume
+  drawByParticleID
+  drawByEncounteredVolume
+
+Registered models:
+  None
+
+Registered filter factories:
+  attributeFilter
+  chargeFilter
+  originVolumeFilter
+  particleFilter
+  encounteredVolumeFilter
+
+Registered filters:
+  None
+
+You have successfully registered the following user vis actions.
+Run Duration User Vis Actions: none
+End of Event User Vis Actions: none
+End of Run User Vis Actions: none
+
+Some /vis commands (optionally) take a string to specify colour.
+"/vis/list" to see available colours.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+G4VisManager: Using G4TrajectoryDrawByCharge as fallback trajectory model.
+See commands in /vis/modeling/trajectories/ for other options.
+### Run 0 starts.
+
+============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 316 tasks with 316 events/task...
+============================================================================================
+
+G4WT0 > ### Run 0 starts on worker thread 0.
+G4WT0 > ... set ntuple merging row mode : row-wise - done
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/e-_j3_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/e-_j3.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/e-_j3.root - done
+G4WT0 > Event 210 - Energy Confinement Anomaly Detected
+G4WT0 > Event 223 - Energy Confinement Anomaly Detected
+G4WT0 > Event 964 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 1000
+G4WT0 > Event 1046 - Energy Confinement Anomaly Detected
+G4WT0 > Event 1204 - Energy Confinement Anomaly Detected
+G4WT0 > Event 1300 - Energy Confinement Anomaly Detected
+G4WT0 > Event 1713 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 2000
+G4WT0 > Event 2642 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 3000
+G4WT0 > Event 3112 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3131 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3193 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3354 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3461 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3973 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 4000
+G4WT0 > Event 4139 - Energy Confinement Anomaly Detected
+G4WT0 > Event 4419 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 5000
+G4WT0 > Event 5031 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5117 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5480 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5518 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5568 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5624 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5940 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 6000
+G4WT0 > Event 6524 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 7000
+G4WT0 > Event 7505 - Energy Confinement Anomaly Detected
+G4WT0 > Event 7665 - Energy Confinement Anomaly Detected
+G4WT0 > Event 7756 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 8000
+G4WT0 > Event 8673 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 9000
+G4WT0 > Event 9392 - Energy Confinement Anomaly Detected
+G4WT0 > Event 9618 - Energy Confinement Anomaly Detected
+G4WT0 > Event 9634 - Energy Confinement Anomaly Detected
+G4WT0 > Event 9844 - Energy Confinement Anomaly Detected
+G4WT0 > Event 9862 - Energy Confinement Anomaly Detected
+G4WT0 > Event 9964 - Energy Confinement Anomaly Detected
+G4WT0 > Event 9981 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 10000
+G4WT0 > Event 10308 - Energy Confinement Anomaly Detected
+G4WT0 > Event 10485 - Energy Confinement Anomaly Detected
+G4WT0 > Event 10486 - Energy Confinement Anomaly Detected
+G4WT0 > Event 10885 - Energy Confinement Anomaly Detected
+G4WT0 > Event 10938 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 11000
+G4WT0 > Event 11049 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11076 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11267 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11304 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11531 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11565 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11643 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11862 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11893 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11907 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 12000
+G4WT0 > Event 12111 - Energy Confinement Anomaly Detected
+G4WT0 > Event 12451 - Energy Confinement Anomaly Detected
+G4WT0 > Event 12509 - Energy Confinement Anomaly Detected
+G4WT0 > Event 12816 - Energy Confinement Anomaly Detected
+G4WT0 > Event 12965 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 13000
+G4WT0 > Event 13026 - Energy Confinement Anomaly Detected
+G4WT0 > Event 13226 - Energy Confinement Anomaly Detected
+G4WT0 > Event 13472 - Energy Confinement Anomaly Detected
+G4WT0 > Event 13582 - Energy Confinement Anomaly Detected
+G4WT0 > Event 13614 - Energy Confinement Anomaly Detected
+G4WT0 > Event 13657 - Energy Confinement Anomaly Detected
+G4WT0 > Event 13685 - Energy Confinement Anomaly Detected
+G4WT0 > Event 13928 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 14000
+G4WT0 > Event 14177 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 15000
+G4WT0 > Event 15266 - Energy Confinement Anomaly Detected
+G4WT0 > Event 15670 - Energy Confinement Anomaly Detected
+G4WT0 > Event 15727 - Energy Confinement Anomaly Detected
+G4WT0 > Event 15831 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 16000
+G4WT0 > Event 16190 - Energy Confinement Anomaly Detected
+G4WT0 > Event 16411 - Energy Confinement Anomaly Detected
+G4WT0 > Event 16422 - Energy Confinement Anomaly Detected
+G4WT0 > Event 16475 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 17000
+G4WT0 > Event 17090 - Energy Confinement Anomaly Detected
+G4WT0 > Event 17357 - Energy Confinement Anomaly Detected
+G4WT0 > Event 17537 - Energy Confinement Anomaly Detected
+G4WT0 > Event 17920 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 18000
+G4WT0 > Event 18558 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 19000
+G4WT0 > Event 19166 - Energy Confinement Anomaly Detected
+G4WT0 > Event 19768 - Energy Confinement Anomaly Detected
+G4WT0 > Event 19897 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 20000
+G4WT0 > Event 20209 - Energy Confinement Anomaly Detected
+G4WT0 > Event 20299 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 21000
+G4WT0 > Event 21603 - Energy Confinement Anomaly Detected
+G4WT0 > Event 21744 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 22000
+G4WT0 > Event 22102 - Energy Confinement Anomaly Detected
+G4WT0 > Event 22552 - Energy Confinement Anomaly Detected
+G4WT0 > Event 22601 - Energy Confinement Anomaly Detected
+G4WT0 > Event 22862 - Energy Confinement Anomaly Detected
+G4WT0 > Event 22918 - Energy Confinement Anomaly Detected
+G4WT0 > Event 22951 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 23000
+G4WT0 > Event 23000 - Energy Confinement Anomaly Detected
+G4WT0 > Event 23013 - Energy Confinement Anomaly Detected
+G4WT0 > Event 23496 - Energy Confinement Anomaly Detected
+G4WT0 > Event 23614 - Energy Confinement Anomaly Detected
+G4WT0 > Event 23883 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 24000
+G4WT0 > Event 24384 - Energy Confinement Anomaly Detected
+G4WT0 > Event 24678 - Energy Confinement Anomaly Detected
+G4WT0 > Event 24778 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 25000
+G4WT0 > Event 25270 - Energy Confinement Anomaly Detected
+G4WT0 > Event 25646 - Energy Confinement Anomaly Detected
+G4WT0 > Event 25675 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 26000
+G4WT0 > Event 26124 - Energy Confinement Anomaly Detected
+G4WT0 > Event 26415 - Energy Confinement Anomaly Detected
+G4WT0 > Event 26929 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 27000
+G4WT0 > Event 27382 - Energy Confinement Anomaly Detected
+G4WT0 > Event 27433 - Energy Confinement Anomaly Detected
+G4WT0 > Event 27730 - Energy Confinement Anomaly Detected
+G4WT0 > Event 27815 - Energy Confinement Anomaly Detected
+G4WT0 > Event 27971 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 28000
+G4WT0 > Event 28276 - Energy Confinement Anomaly Detected
+G4WT0 > Event 28397 - Energy Confinement Anomaly Detected
+G4WT0 > Event 28408 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 29000
+G4WT0 > Event 29220 - Energy Confinement Anomaly Detected
+G4WT0 > Event 29964 - Energy Confinement Anomaly Detected
+G4WT0 > Event 29971 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 30000
+G4WT0 > Event 30209 - Energy Confinement Anomaly Detected
+G4WT0 > Event 30230 - Energy Confinement Anomaly Detected
+G4WT0 > Event 30298 - Energy Confinement Anomaly Detected
+G4WT0 > Event 30637 - Energy Confinement Anomaly Detected
+G4WT0 > Event 30646 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 31000
+G4WT0 > Event 31334 - Energy Confinement Anomaly Detected
+G4WT0 > Event 31740 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 32000
+G4WT0 > Event 32007 - Energy Confinement Anomaly Detected
+G4WT0 > Event 32059 - Energy Confinement Anomaly Detected
+G4WT0 > Event 32243 - Energy Confinement Anomaly Detected
+G4WT0 > Event 32292 - Energy Confinement Anomaly Detected
+G4WT0 > Event 32678 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 33000
+G4WT0 > Event 33023 - Energy Confinement Anomaly Detected
+G4WT0 > Event 33342 - Energy Confinement Anomaly Detected
+G4WT0 > Event 33357 - Energy Confinement Anomaly Detected
+G4WT0 > Event 33518 - Energy Confinement Anomaly Detected
+G4WT0 > Event 33609 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 34000
+G4WT0 > Event 34052 - Energy Confinement Anomaly Detected
+G4WT0 > Event 34633 - Energy Confinement Anomaly Detected
+G4WT0 > Event 34769 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 35000
+G4WT0 > Event 35877 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 36000
+G4WT0 > Event 36471 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 37000
+G4WT0 > Event 37412 - Energy Confinement Anomaly Detected
+G4WT0 > Event 37561 - Energy Confinement Anomaly Detected
+G4WT0 > Event 37619 - Energy Confinement Anomaly Detected
+G4WT0 > Event 37827 - Energy Confinement Anomaly Detected
+G4WT0 > Event 37829 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 38000
+G4WT0 > Event 38168 - Energy Confinement Anomaly Detected
+G4WT0 > Event 38354 - Energy Confinement Anomaly Detected
+G4WT0 > Event 38459 - Energy Confinement Anomaly Detected
+G4WT0 > Event 38541 - Energy Confinement Anomaly Detected
+G4WT0 > Event 38893 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 39000
+G4WT0 > Event 39429 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 40000
+G4WT0 > Event 40026 - Energy Confinement Anomaly Detected
+G4WT0 > Event 40061 - Energy Confinement Anomaly Detected
+G4WT0 > Event 40303 - Energy Confinement Anomaly Detected
+G4WT0 > Event 40627 - Energy Confinement Anomaly Detected
+G4WT0 > Event 40771 - Energy Confinement Anomaly Detected
+G4WT0 > Event 40868 - Energy Confinement Anomaly Detected
+G4WT0 > Event 40940 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 41000
+G4WT0 > Event 41518 - Energy Confinement Anomaly Detected
+G4WT0 > Event 41806 - Energy Confinement Anomaly Detected
+G4WT0 > Event 41857 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 42000
+G4WT0 > Event 42578 - Energy Confinement Anomaly Detected
+G4WT0 > Event 42746 - Energy Confinement Anomaly Detected
+G4WT0 > Event 42986 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 43000
+G4WT0 > Event 43099 - Energy Confinement Anomaly Detected
+G4WT0 > Event 43175 - Energy Confinement Anomaly Detected
+G4WT0 > Event 43526 - Energy Confinement Anomaly Detected
+G4WT0 > Event 43584 - Energy Confinement Anomaly Detected
+G4WT0 > Event 43970 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 44000
+G4WT0 > Event N: 45000
+G4WT0 > Event 45156 - Energy Confinement Anomaly Detected
+G4WT0 > Event 45434 - Energy Confinement Anomaly Detected
+G4WT0 > Event 45654 - Energy Confinement Anomaly Detected
+G4WT0 > Event 45798 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 46000
+G4WT0 > Event 46816 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 47000
+G4WT0 > Event 47023 - Energy Confinement Anomaly Detected
+G4WT0 > Event 47112 - Energy Confinement Anomaly Detected
+G4WT0 > Event 47446 - Energy Confinement Anomaly Detected
+G4WT0 > Event 47783 - Energy Confinement Anomaly Detected
+G4WT0 > Event 47917 - Energy Confinement Anomaly Detected
+G4WT0 > Event 47977 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 48000
+G4WT0 > Event 48008 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48023 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48081 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48250 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48517 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48532 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48766 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 49000
+G4WT0 > Event 49182 - Energy Confinement Anomaly Detected
+G4WT0 > Event 49441 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 50000
+G4WT0 > Event 50286 - Energy Confinement Anomaly Detected
+G4WT0 > Event 50537 - Energy Confinement Anomaly Detected
+G4WT0 > Event 50717 - Energy Confinement Anomaly Detected
+G4WT0 > Event 50970 - Energy Confinement Anomaly Detected
+G4WT0 > Event 50986 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 51000
+G4WT0 > Event 51275 - Energy Confinement Anomaly Detected
+G4WT0 > Event 51683 - Energy Confinement Anomaly Detected
+G4WT0 > Event 51850 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 52000
+G4WT0 > Event 52233 - Energy Confinement Anomaly Detected
+G4WT0 > Event 52334 - Energy Confinement Anomaly Detected
+G4WT0 > Event 52465 - Energy Confinement Anomaly Detected
+G4WT0 > Event 52676 - Energy Confinement Anomaly Detected
+G4WT0 > Event 52765 - Energy Confinement Anomaly Detected
+G4WT0 > Event 52899 - Energy Confinement Anomaly Detected
+G4WT0 > Event 52982 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 53000
+G4WT0 > Event 53118 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53397 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53581 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53607 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53622 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53881 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 54000
+G4WT0 > Event 54786 - Energy Confinement Anomaly Detected
+G4WT0 > Event 54909 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 55000
+G4WT0 > Event 55660 - Energy Confinement Anomaly Detected
+G4WT0 > Event 55791 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 56000
+G4WT0 > Event 56253 - Energy Confinement Anomaly Detected
+G4WT0 > Event 56878 - Energy Confinement Anomaly Detected
+G4WT0 > Event 56898 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 57000
+G4WT0 > Event 57036 - Energy Confinement Anomaly Detected
+G4WT0 > Event 57202 - Energy Confinement Anomaly Detected
+G4WT0 > Event 57302 - Energy Confinement Anomaly Detected
+G4WT0 > Event 57841 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 58000
+G4WT0 > Event 58072 - Energy Confinement Anomaly Detected
+G4WT0 > Event 58363 - Energy Confinement Anomaly Detected
+G4WT0 > Event 58590 - Energy Confinement Anomaly Detected
+G4WT0 > Event 58615 - Energy Confinement Anomaly Detected
+G4WT0 > Event 58809 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 59000
+G4WT0 > Event 59044 - Energy Confinement Anomaly Detected
+G4WT0 > Event 59413 - Energy Confinement Anomaly Detected
+G4WT0 > Event 59539 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 60000
+G4WT0 > Event 60299 - Energy Confinement Anomaly Detected
+G4WT0 > Event 60715 - Energy Confinement Anomaly Detected
+G4WT0 > Event 60951 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 61000
+G4WT0 > Event N: 62000
+G4WT0 > Event 62003 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62311 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62341 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62547 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62669 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 63000
+G4WT0 > Event 63815 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 64000
+G4WT0 > Event 64402 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 65000
+G4WT0 > Event 65259 - Energy Confinement Anomaly Detected
+G4WT0 > Event 65280 - Energy Confinement Anomaly Detected
+G4WT0 > Event 65615 - Energy Confinement Anomaly Detected
+G4WT0 > Event 65743 - Energy Confinement Anomaly Detected
+G4WT0 > Event 65789 - Energy Confinement Anomaly Detected
+G4WT0 > Event 65880 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 66000
+G4WT0 > Event 66119 - Energy Confinement Anomaly Detected
+G4WT0 > Event 66432 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 67000
+G4WT0 > Event 67346 - Energy Confinement Anomaly Detected
+G4WT0 > Event 67771 - Energy Confinement Anomaly Detected
+G4WT0 > Event 67802 - Energy Confinement Anomaly Detected
+G4WT0 > Event 67882 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 68000
+G4WT0 > Event 68304 - Energy Confinement Anomaly Detected
+G4WT0 > Event 68402 - Energy Confinement Anomaly Detected
+G4WT0 > Event 68639 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 69000
+G4WT0 > Event 69620 - Energy Confinement Anomaly Detected
+G4WT0 > Event 69715 - Energy Confinement Anomaly Detected
+G4WT0 > Event 69836 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 70000
+G4WT0 > Event 70001 - Energy Confinement Anomaly Detected
+G4WT0 > Event 70505 - Energy Confinement Anomaly Detected
+G4WT0 > Event 70600 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 71000
+G4WT0 > Event 71191 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71677 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71783 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71912 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 72000
+G4WT0 > Event 72030 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72087 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72122 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72129 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72215 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72356 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72509 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72629 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72917 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 73000
+G4WT0 > Event 73178 - Energy Confinement Anomaly Detected
+G4WT0 > Event 73598 - Energy Confinement Anomaly Detected
+G4WT0 > Event 73640 - Energy Confinement Anomaly Detected
+G4WT0 > Event 73851 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 74000
+G4WT0 > Event 74383 - Energy Confinement Anomaly Detected
+G4WT0 > Event 74657 - Energy Confinement Anomaly Detected
+G4WT0 > Event 74749 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 75000
+G4WT0 > Event 75004 - Energy Confinement Anomaly Detected
+G4WT0 > Event 75129 - Energy Confinement Anomaly Detected
+G4WT0 > Event 75206 - Energy Confinement Anomaly Detected
+G4WT0 > Event 75235 - Energy Confinement Anomaly Detected
+G4WT0 > Event 75422 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 76000
+G4WT0 > Event N: 77000
+G4WT0 > Event 77059 - Energy Confinement Anomaly Detected
+G4WT0 > Event 77149 - Energy Confinement Anomaly Detected
+G4WT0 > Event 77426 - Energy Confinement Anomaly Detected
+G4WT0 > Event 77583 - Energy Confinement Anomaly Detected
+G4WT0 > Event 77625 - Energy Confinement Anomaly Detected
+G4WT0 > Event 77898 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 78000
+G4WT0 > Event 78100 - Energy Confinement Anomaly Detected
+G4WT0 > Event 78340 - Energy Confinement Anomaly Detected
+G4WT0 > Event 78402 - Energy Confinement Anomaly Detected
+G4WT0 > Event 78752 - Energy Confinement Anomaly Detected
+G4WT0 > Event 78854 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 79000
+G4WT0 > Event 79193 - Energy Confinement Anomaly Detected
+G4WT0 > Event 79753 - Energy Confinement Anomaly Detected
+G4WT0 > Event 79866 - Energy Confinement Anomaly Detected
+G4WT0 > Event 79883 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 80000
+G4WT0 > Event 80088 - Energy Confinement Anomaly Detected
+G4WT0 > Event 80202 - Energy Confinement Anomaly Detected
+G4WT0 > Event 80557 - Energy Confinement Anomaly Detected
+G4WT0 > Event 80622 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 81000
+G4WT0 > Event 81349 - Energy Confinement Anomaly Detected
+G4WT0 > Event 81387 - Energy Confinement Anomaly Detected
+G4WT0 > Event 81631 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 82000
+G4WT0 > Event 82270 - Energy Confinement Anomaly Detected
+G4WT0 > Event 82413 - Energy Confinement Anomaly Detected
+G4WT0 > Event 82592 - Energy Confinement Anomaly Detected
+G4WT0 > Event 82606 - Energy Confinement Anomaly Detected
+G4WT0 > Event 82754 - Energy Confinement Anomaly Detected
+G4WT0 > Event 82801 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 83000
+G4WT0 > Event 83457 - Energy Confinement Anomaly Detected
+G4WT0 > Event 83725 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 84000
+G4WT0 > Event 84143 - Energy Confinement Anomaly Detected
+G4WT0 > Event 84151 - Energy Confinement Anomaly Detected
+G4WT0 > Event 84468 - Energy Confinement Anomaly Detected
+G4WT0 > Event 84887 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 85000
+G4WT0 > Event 85173 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 86000
+G4WT0 > Event N: 87000
+G4WT0 > Event 87130 - Energy Confinement Anomaly Detected
+G4WT0 > Event 87264 - Energy Confinement Anomaly Detected
+G4WT0 > Event 87500 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 88000
+G4WT0 > Event 88061 - Energy Confinement Anomaly Detected
+G4WT0 > Event 88104 - Energy Confinement Anomaly Detected
+G4WT0 > Event 88199 - Energy Confinement Anomaly Detected
+G4WT0 > Event 88676 - Energy Confinement Anomaly Detected
+G4WT0 > Event 88844 - Energy Confinement Anomaly Detected
+G4WT0 > Event 88990 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 89000
+G4WT0 > Event 89248 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89297 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89298 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89634 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89737 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89811 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 90000
+G4WT0 > Event 90241 - Energy Confinement Anomaly Detected
+G4WT0 > Event 90289 - Energy Confinement Anomaly Detected
+G4WT0 > Event 90436 - Energy Confinement Anomaly Detected
+G4WT0 > Event 90567 - Energy Confinement Anomaly Detected
+G4WT0 > Event 90802 - Energy Confinement Anomaly Detected
+G4WT0 > Event 90826 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 91000
+G4WT0 > Event 91111 - Energy Confinement Anomaly Detected
+G4WT0 > Event 91590 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 92000
+G4WT0 > Event 92250 - Energy Confinement Anomaly Detected
+G4WT0 > Event 92560 - Energy Confinement Anomaly Detected
+G4WT0 > Event 92567 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 93000
+G4WT0 > Event 93202 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93221 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93342 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93502 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93504 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93683 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93738 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93753 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93827 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 94000
+G4WT0 > Event 94066 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94171 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94202 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94536 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94538 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94552 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94629 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94658 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94748 - Energy Confinement Anomaly Detected
+G4WT0 > Event 94990 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 95000
+G4WT0 > Event 95191 - Energy Confinement Anomaly Detected
+G4WT0 > Event 95201 - Energy Confinement Anomaly Detected
+G4WT0 > Event 95848 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 96000
+G4WT0 > Event 96970 - Energy Confinement Anomaly Detected
+G4WT0 > Event 96997 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 97000
+G4WT0 > Event 97197 - Energy Confinement Anomaly Detected
+G4WT0 > Event 97331 - Energy Confinement Anomaly Detected
+G4WT0 > Event 97400 - Energy Confinement Anomaly Detected
+G4WT0 > Event 97461 - Energy Confinement Anomaly Detected
+G4WT0 > Event 97730 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 98000
+G4WT0 > Event 98294 - Energy Confinement Anomaly Detected
+G4WT0 > Event 98923 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 99000
+G4WT0 > Event 99600 - Energy Confinement Anomaly Detected
+G4WT0 > Event 99733 - Energy Confinement Anomaly Detected
+G4WT0 > Event 99835 - Energy Confinement Anomaly Detected
+G4WT0 > Event 99910 - Energy Confinement Anomaly Detected
+G4WT0 > Event 99978 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 100000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 100000
+G4WT0 > [thread 0]   User=0.000000s Real=0.011106s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/e-_j3_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/e-_j3_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 100000
+  User=90.250000s Real=91.132328s Sys=0.100000s [Cpu=99.1%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+### Run 1 starts.
+
+============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 316 tasks with 316 events/task...
+============================================================================================
+
+G4WT0 > ### Run 1 starts on worker thread 0.
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/proton_j3_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/proton_j3.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/proton_j3.root - done
+G4WT0 > Event 578 - Energy Confinement Anomaly Detected
+G4WT0 > Event 840 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 1000
+G4WT0 > Event N: 2000
+G4WT0 > Event 2792 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 3000
+G4WT0 > Event 3239 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 4000
+G4WT0 > Event 4130 - Energy Confinement Anomaly Detected
+G4WT0 > Event 4794 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 5000
+G4WT0 > Event 5032 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5246 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5571 - Energy Confinement Anomaly Detected
+G4WT0 > Event 5600 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 6000
+G4WT0 > Event 6010 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6148 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6247 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6623 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6730 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 7000
+G4WT0 > Event 7331 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 8000
+G4WT0 > Event 8028 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 9000
+G4WT0 > Event 9012 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 10000
+G4WT0 > Event 10802 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 11000
+G4WT0 > Event 11247 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11494 - Energy Confinement Anomaly Detected
+G4WT0 > Event 11728 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 12000
+G4WT0 > Event 12111 - Energy Confinement Anomaly Detected
+G4WT0 > Event 12332 - Energy Confinement Anomaly Detected
+G4WT0 > Event 12366 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 13000
+G4WT0 > Event N: 14000
+G4WT0 > Event 14297 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 15000
+G4WT0 > Event 15349 - Energy Confinement Anomaly Detected
+G4WT0 > Event 15765 - Energy Confinement Anomaly Detected
+G4WT0 > Event 15942 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 16000
+G4WT0 > Event 16286 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 17000
+G4WT0 > Event 17585 - Energy Confinement Anomaly Detected
+G4WT0 > Event 17773 - Energy Confinement Anomaly Detected
+G4WT0 > Event 17776 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 18000
+G4WT0 > Event 18177 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 19000
+G4WT0 > Event 19935 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 20000
+G4WT0 > Event 20452 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 21000
+G4WT0 > Event N: 22000
+G4WT0 > Event 22446 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 23000
+G4WT0 > Event 23079 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 24000
+G4WT0 > Event 24965 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 25000
+G4WT0 > Event N: 26000
+G4WT0 > Event 26255 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 27000
+G4WT0 > Event 27635 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 28000
+G4WT0 > Event 28845 - Energy Confinement Anomaly Detected
+G4WT0 > Event 28958 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 29000
+G4WT0 > Event 29074 - Energy Confinement Anomaly Detected
+G4WT0 > Event 29491 - Energy Confinement Anomaly Detected
+G4WT0 > Event 29803 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 30000
+G4WT0 > Event 30865 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 31000
+G4WT0 > Event 31035 - Energy Confinement Anomaly Detected
+G4WT0 > Event 31323 - Energy Confinement Anomaly Detected
+G4WT0 > Event 31720 - Energy Confinement Anomaly Detected
+G4WT0 > Event 31991 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 32000
+G4WT0 > Event 32236 - Energy Confinement Anomaly Detected
+G4WT0 > Event 32610 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 33000
+G4WT0 > Event N: 34000
+G4WT0 > Event 34736 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 35000
+G4WT0 > Event 35114 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 36000
+G4WT0 > Event 36530 - Energy Confinement Anomaly Detected
+G4WT0 > Event 36636 - Energy Confinement Anomaly Detected
+G4WT0 > Event 36796 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 37000
+G4WT0 > Event 37590 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 38000
+G4WT0 > Event 38383 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 39000
+G4WT0 > Event 39365 - Energy Confinement Anomaly Detected
+G4WT0 > Event 39404 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 40000
+G4WT0 > Event 40704 - Energy Confinement Anomaly Detected
+G4WT0 > Event 40983 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 41000
+G4WT0 > Event 41523 - Energy Confinement Anomaly Detected
+G4WT0 > Event 41781 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 42000
+G4WT0 > Event N: 43000
+G4WT0 > Event N: 44000
+G4WT0 > Event 44024 - Energy Confinement Anomaly Detected
+G4WT0 > Event 44058 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 45000
+G4WT0 > Event 45471 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 46000
+G4WT0 > Event 46391 - Energy Confinement Anomaly Detected
+G4WT0 > Event 46747 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 47000
+G4WT0 > Event N: 48000
+G4WT0 > Event 48475 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 49000
+G4WT0 > Event 49345 - Energy Confinement Anomaly Detected
+G4WT0 > Event 49397 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 50000
+G4WT0 > Event 50232 - Energy Confinement Anomaly Detected
+G4WT0 > Event 50606 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 51000
+G4WT0 > Event 51094 - Energy Confinement Anomaly Detected
+G4WT0 > Event 51259 - Energy Confinement Anomaly Detected
+G4WT0 > Event 51890 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 52000
+G4WT0 > Event 52568 - Energy Confinement Anomaly Detected
+G4WT0 > Event 52604 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 53000
+G4WT0 > Event 53306 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53845 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 54000
+G4WT0 > Event 54123 - Energy Confinement Anomaly Detected
+G4WT0 > Event 54772 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 55000
+G4WT0 > Event 55108 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 56000
+G4WT0 > Event N: 57000
+G4WT0 > Event N: 58000
+G4WT0 > Event 58090 - Energy Confinement Anomaly Detected
+G4WT0 > Event 58813 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 59000
+G4WT0 > Event N: 60000
+G4WT0 > Event 60635 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 61000
+G4WT0 > Event 61043 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 62000
+G4WT0 > Event 62401 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62500 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 63000
+G4WT0 > Event N: 64000
+G4WT0 > Event N: 65000
+G4WT0 > Event 65147 - Energy Confinement Anomaly Detected
+G4WT0 > Event 65449 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 66000
+G4WT0 > Event 66281 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 67000
+G4WT0 > Event 67167 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 68000
+G4WT0 > Event N: 69000
+G4WT0 > Event 69438 - Energy Confinement Anomaly Detected
+G4WT0 > Event 69904 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 70000
+G4WT0 > Event 70175 - Energy Confinement Anomaly Detected
+G4WT0 > Event 70502 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 71000
+G4WT0 > Event 71049 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71321 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71507 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71650 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 72000
+G4WT0 > Event 72066 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72152 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72535 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72902 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72918 - Energy Confinement Anomaly Detected
+G4WT0 > Event 72927 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 73000
+G4WT0 > Event 73204 - Energy Confinement Anomaly Detected
+G4WT0 > Event 73543 - Energy Confinement Anomaly Detected
+G4WT0 > Event 73740 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 74000
+G4WT0 > Event 74817 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 75000
+G4WT0 > Event N: 76000
+G4WT0 > Event 76389 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 77000
+G4WT0 > Event 77549 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 78000
+G4WT0 > Event 78136 - Energy Confinement Anomaly Detected
+G4WT0 > Event 78342 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 79000
+G4WT0 > Event N: 80000
+G4WT0 > Event 80852 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 81000
+G4WT0 > Event 81119 - Energy Confinement Anomaly Detected
+G4WT0 > Event 81779 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 82000
+G4WT0 > Event 82397 - Energy Confinement Anomaly Detected
+G4WT0 > Event 82993 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 83000
+G4WT0 > Event N: 84000
+G4WT0 > Event N: 85000
+G4WT0 > Event 85488 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 86000
+G4WT0 > Event 86208 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 87000
+G4WT0 > Event 87048 - Energy Confinement Anomaly Detected
+G4WT0 > Event 87116 - Energy Confinement Anomaly Detected
+G4WT0 > Event 87791 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 88000
+G4WT0 > Event N: 89000
+G4WT0 > Event 89014 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89377 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89514 - Energy Confinement Anomaly Detected
+G4WT0 > Event 89575 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 90000
+G4WT0 > Event 90504 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 91000
+G4WT0 > Event N: 92000
+G4WT0 > Event 92814 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 93000
+G4WT0 > Event 93636 - Energy Confinement Anomaly Detected
+G4WT0 > Event 93974 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 94000
+G4WT0 > Event 94142 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 95000
+G4WT0 > Event 95896 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 96000
+G4WT0 > Event 96008 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 97000
+G4WT0 > Event N: 98000
+G4WT0 > Event 98260 - Energy Confinement Anomaly Detected
+G4WT0 > Event 98385 - Energy Confinement Anomaly Detected
+G4WT0 > Event 98605 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 99000
+G4WT0 > Event 99390 - Energy Confinement Anomaly Detected
+G4WT0 > Event 99487 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 100000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 100000
+G4WT0 > [thread 0]   User=0.000000s Real=0.011025s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/proton_j3_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/proton_j3_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 100000
+  User=52.480000s Real=53.174499s Sys=0.050000s [Cpu=98.8%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+
+========= Table of registered couples ============================
+
+Index : 0     used in the geometry : Yes
+ Material : G4_Galactic
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  990 eV     e-  990 eV     e+  990 eV  proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 1     used in the geometry : Yes
+ Material : G4_Al
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 2     used in the geometry : Yes
+ Material : G4_BAKELITE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 3     used in the geometry : Yes
+ Material : G4_Si
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+Index : 4     used in the geometry : Yes
+ Material : G4_PLASTIC_SC_VINYLTOLUENE
+ Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
+ Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
+ Region(s) which use this couple : 
+    DefaultRegionForTheWorld
+
+==================================================================
+
+### Run 2 starts.
+
+============================================================================================
+--> G4TaskRunManager::CreateAndStartWorkers() --> Creating 316 tasks with 316 events/task...
+============================================================================================
+
+G4WT0 > ### Run 2 starts on worker thread 0.
+G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/alpha_j3_t0.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/alpha_j3.root - done
+G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/alpha_j3.root - done
+G4WT0 > Event 446 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 1000
+G4WT0 > Event 1109 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 2000
+G4WT0 > Event N: 3000
+G4WT0 > Event 3001 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3158 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3421 - Energy Confinement Anomaly Detected
+G4WT0 > Event 3936 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 4000
+G4WT0 > Event 4217 - Energy Confinement Anomaly Detected
+G4WT0 > Event 4458 - Energy Confinement Anomaly Detected
+G4WT0 > Event 4655 - Energy Confinement Anomaly Detected
+G4WT0 > Event 4755 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 5000
+G4WT0 > Event 5202 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 6000
+G4WT0 > Event 6081 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6207 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6819 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6848 - Energy Confinement Anomaly Detected
+G4WT0 > Event 6925 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 7000
+G4WT0 > Event 7634 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 8000
+G4WT0 > Event 8391 - Energy Confinement Anomaly Detected
+G4WT0 > Event 8448 - Energy Confinement Anomaly Detected
+G4WT0 > Event 8642 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 9000
+G4WT0 > Event N: 10000
+G4WT0 > Event 10592 - Energy Confinement Anomaly Detected
+G4WT0 > Event 10966 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 11000
+G4WT0 > Event N: 12000
+G4WT0 > Event 12085 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 13000
+G4WT0 > Event 13345 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 14000
+G4WT0 > Event 14302 - Energy Confinement Anomaly Detected
+G4WT0 > Event 14633 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 15000
+G4WT0 > Event 15004 - Energy Confinement Anomaly Detected
+G4WT0 > Event 15926 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 16000
+G4WT0 > Event 16117 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 17000
+G4WT0 > Event 17265 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 18000
+G4WT0 > Event 18118 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 19000
+G4WT0 > Event 19093 - Energy Confinement Anomaly Detected
+G4WT0 > Event 19260 - Energy Confinement Anomaly Detected
+G4WT0 > Event 19752 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 20000
+G4WT0 > Event 20031 - Energy Confinement Anomaly Detected
+G4WT0 > Event 20284 - Energy Confinement Anomaly Detected
+G4WT0 > Event 20378 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 21000
+G4WT0 > Event 21245 - Energy Confinement Anomaly Detected
+G4WT0 > Event 21327 - Energy Confinement Anomaly Detected
+G4WT0 > Event 21950 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 22000
+G4WT0 > Event N: 23000
+G4WT0 > Event 23029 - Energy Confinement Anomaly Detected
+G4WT0 > Event 23509 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 24000
+G4WT0 > Event 24138 - Energy Confinement Anomaly Detected
+G4WT0 > Event 24386 - Energy Confinement Anomaly Detected
+G4WT0 > Event 24725 - Energy Confinement Anomaly Detected
+G4WT0 > Event 24860 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 25000
+G4WT0 > Event 25676 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 26000
+G4WT0 > Event 26114 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 27000
+G4WT0 > Event 27373 - Energy Confinement Anomaly Detected
+G4WT0 > Event 27787 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 28000
+G4WT0 > Event 28795 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 29000
+G4WT0 > Event N: 30000
+G4WT0 > Event 30961 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 31000
+G4WT0 > Event 31480 - Energy Confinement Anomaly Detected
+G4WT0 > Event 31843 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 32000
+G4WT0 > Event N: 33000
+G4WT0 > Event 33303 - Energy Confinement Anomaly Detected
+G4WT0 > Event 33960 - Energy Confinement Anomaly Detected
+G4WT0 > Event 33976 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 34000
+G4WT0 > Event 34164 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 35000
+G4WT0 > Event 35166 - Energy Confinement Anomaly Detected
+G4WT0 > Event 35958 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 36000
+G4WT0 > Event 36662 - Energy Confinement Anomaly Detected
+G4WT0 > Event 36851 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 37000
+G4WT0 > Event 37847 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 38000
+G4WT0 > Event 38776 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 39000
+G4WT0 > Event 39008 - Energy Confinement Anomaly Detected
+G4WT0 > Event 39182 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 40000
+G4WT0 > Event N: 41000
+G4WT0 > Event 41078 - Energy Confinement Anomaly Detected
+G4WT0 > Event 41187 - Energy Confinement Anomaly Detected
+G4WT0 > Event 41708 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 42000
+G4WT0 > Event 42547 - Energy Confinement Anomaly Detected
+G4WT0 > Event 42619 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 43000
+G4WT0 > Event 43066 - Energy Confinement Anomaly Detected
+G4WT0 > Event 43633 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 44000
+G4WT0 > Event 44714 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 45000
+G4WT0 > Event N: 46000
+G4WT0 > Event 46413 - Energy Confinement Anomaly Detected
+G4WT0 > Event 46471 - Energy Confinement Anomaly Detected
+G4WT0 > Event 46687 - Energy Confinement Anomaly Detected
+G4WT0 > Event 46974 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 47000
+G4WT0 > Event 47124 - Energy Confinement Anomaly Detected
+G4WT0 > Event 47378 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 48000
+G4WT0 > Event 48136 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48389 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48968 - Energy Confinement Anomaly Detected
+G4WT0 > Event 48980 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 49000
+G4WT0 > Event 49180 - Energy Confinement Anomaly Detected
+G4WT0 > Event 49189 - Energy Confinement Anomaly Detected
+G4WT0 > Event 49213 - Energy Confinement Anomaly Detected
+G4WT0 > Event 49673 - Energy Confinement Anomaly Detected
+G4WT0 > Event 49806 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 50000
+G4WT0 > Event 50492 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 51000
+G4WT0 > Event 51730 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 52000
+G4WT0 > Event N: 53000
+G4WT0 > Event 53312 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53760 - Energy Confinement Anomaly Detected
+G4WT0 > Event 53945 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 54000
+G4WT0 > Event 54277 - Energy Confinement Anomaly Detected
+G4WT0 > Event 54302 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 55000
+G4WT0 > Event 55225 - Energy Confinement Anomaly Detected
+G4WT0 > Event 55694 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 56000
+G4WT0 > Event 56500 - Energy Confinement Anomaly Detected
+G4WT0 > Event 56936 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 57000
+G4WT0 > Event 57183 - Energy Confinement Anomaly Detected
+G4WT0 > Event 57401 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 58000
+G4WT0 > Event 58949 - Energy Confinement Anomaly Detected
+G4WT0 > Event 58982 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 59000
+G4WT0 > Event 59170 - Energy Confinement Anomaly Detected
+G4WT0 > Event 59954 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 60000
+G4WT0 > Event N: 61000
+G4WT0 > Event 61590 - Energy Confinement Anomaly Detected
+G4WT0 > Event 61922 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 62000
+G4WT0 > Event 62040 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62352 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62396 - Energy Confinement Anomaly Detected
+G4WT0 > Event 62534 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 63000
+G4WT0 > Event 63191 - Energy Confinement Anomaly Detected
+G4WT0 > Event 63651 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 64000
+G4WT0 > Event 64306 - Energy Confinement Anomaly Detected
+G4WT0 > Event 64798 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 65000
+G4WT0 > Event N: 66000
+G4WT0 > Event 66302 - Energy Confinement Anomaly Detected
+G4WT0 > Event 66410 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 67000
+G4WT0 > Event 67274 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 68000
+G4WT0 > Event 68461 - Energy Confinement Anomaly Detected
+G4WT0 > Event 68716 - Energy Confinement Anomaly Detected
+G4WT0 > Event 68804 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 69000
+G4WT0 > Event 69323 - Energy Confinement Anomaly Detected
+G4WT0 > Event 69956 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 70000
+G4WT0 > Event N: 71000
+G4WT0 > Event 71082 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71712 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71940 - Energy Confinement Anomaly Detected
+G4WT0 > Event 71992 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 72000
+G4WT0 > Event 72664 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 73000
+G4WT0 > Event 73182 - Energy Confinement Anomaly Detected
+G4WT0 > Event 73404 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 74000
+G4WT0 > Event 74003 - Energy Confinement Anomaly Detected
+G4WT0 > Event 74916 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 75000
+G4WT0 > Event 75177 - Energy Confinement Anomaly Detected
+G4WT0 > Event 75332 - Energy Confinement Anomaly Detected
+G4WT0 > Event 75518 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 76000
+G4WT0 > Event 76439 - Energy Confinement Anomaly Detected
+G4WT0 > Event 76814 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 77000
+G4WT0 > Event 77038 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 78000
+G4WT0 > Event 78518 - Energy Confinement Anomaly Detected
+G4WT0 > Event 78574 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 79000
+G4WT0 > Event 79273 - Energy Confinement Anomaly Detected
+G4WT0 > Event 79693 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 80000
+G4WT0 > Event 80340 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 81000
+G4WT0 > Event 81522 - Energy Confinement Anomaly Detected
+G4WT0 > Event 81801 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 82000
+G4WT0 > Event N: 83000
+G4WT0 > Event N: 84000
+G4WT0 > Event N: 85000
+G4WT0 > Event N: 86000
+G4WT0 > Event 86426 - Energy Confinement Anomaly Detected
+G4WT0 > Event 86592 - Energy Confinement Anomaly Detected
+G4WT0 > Event 86653 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 87000
+G4WT0 > Event 87537 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 88000
+G4WT0 > Event 88408 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 89000
+G4WT0 > Event N: 90000
+G4WT0 > Event 90457 - Energy Confinement Anomaly Detected
+G4WT0 > Event 90735 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 91000
+G4WT0 > Event 91722 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 92000
+G4WT0 > Event 92026 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 93000
+G4WT0 > Event N: 94000
+G4WT0 > Event N: 95000
+G4WT0 > Event 95728 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 96000
+G4WT0 > Event 96610 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 97000
+G4WT0 > Event N: 98000
+G4WT0 > Event 98045 - Energy Confinement Anomaly Detected
+G4WT0 > Event 98408 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 99000
+G4WT0 > Event 99393 - Energy Confinement Anomaly Detected
+G4WT0 > Event 99648 - Energy Confinement Anomaly Detected
+G4WT0 > Event N: 100000
+G4WT0 > [thread 0] Thread-local run terminated.
+G4WT0 > [thread 0] Run Summary
+G4WT0 > [thread 0]   Number of events processed : 100000
+G4WT0 > [thread 0]   User=0.000000s Real=0.000737s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/alpha_j3_t0.root - done
+G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230821/DST/GDML_file_1/alpha_j3_t0.root - done
+ Run terminated.
+Run Summary
+  Number of events processed : 100000
+  User=48.670000s Real=48.902901s Sys=0.030000s [Cpu=99.6%]
+0 events have been kept for refreshing and/or reviewing.
+  "/vis/reviewKeptEvents" to review them one by one.
+  "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
+Graphics systems deleted.
+Visualization Manager deleting...
+G4WT0 > Destroying WorkerRunManager (0x2b14e0049d70)
+G4WT0 > G4 kernel has come to Quit state.
+G4WT0 > ================== Deleting memory pools ===================
+G4WT0 > Number of memory pools allocated: 14; of which, static: 0
+G4WT0 > Dynamic pools deleted: 14 / Total memory freed: 0.056 MB
+G4WT0 > ============================================================
+G4WT0 > Thread-local UImanager is to be deleted.
+G4WT0 > There should not be any thread-local G4cout/G4cerr hereafter.
+ThreadPool destroyed
+G4 kernel has come to Quit state.
+================== Deleting memory pools ===================
+Number of memory pools allocated: 5; of which, static: 0
+Dynamic pools deleted: 5 / Total memory freed: 0.017 MB
+============================================================
+RunManagerKernel is deleted. Good bye :)

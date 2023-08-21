@@ -11,6 +11,7 @@ import matplotlib.colors as colors
 
 from LatexDocumentClass import LatexDocumentClass
 from utils import *
+from PlotViolation import PlotViolation
 
 import re
 
@@ -289,6 +290,11 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                     if return_code != 0:
                         print("Error in SetAliases.C")
                         exit(1)
+                    
+                    # Remove the extension from the file name
+                    fcsvName = file.split('/')[-1].replace(".root", "") + '_Hits.csv'
+                    PlotViolation(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number),'EnergyViolation3D',fcsvName))
+                    
                     
                 # Retrieve the information about the positions of the silicon detectors and dump them in a file in the AnalysisOutput/GDML_file_n directory
                 

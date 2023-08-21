@@ -26,23 +26,34 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector,
 
     // Ntuple particle generator
     man -> CreateNtuple("Edep","Edep");
+    man -> CreateNtupleDColumn("RandEnergy");       // 0
+    man -> CreateNtupleDColumn("Xgen");             // 1
+    man -> CreateNtupleDColumn("Ygen");             // 2
+    man -> CreateNtupleDColumn("Zgen");             // 3
+    man -> CreateNtupleDColumn("pDirX");            // 4
+    man -> CreateNtupleDColumn("pDirY");            // 5
+    man -> CreateNtupleDColumn("pDirZ");            // 6
+    man -> CreateNtupleIColumn("EventID");          // 7
+    man -> CreateNtupleIColumn("JobNumber");        // 8
+
+    // Sensitive detectors will start from here
+
+    
     ReportFile << "##############################################" << G4endl;
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Name: " << "Edep" << G4endl;
     ReportFile << "##############################################" << G4endl;
-    man -> CreateNtupleDColumn("RandEnergy");       // 0
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "RandEnergy" << G4endl;
-    man -> CreateNtupleDColumn("Xgen");             // 1
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "Xgen" << G4endl;
-    man -> CreateNtupleDColumn("Ygen");             // 2
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "Ygen" << G4endl;
-    man -> CreateNtupleDColumn("Zgen");             // 3 
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "Zgen" << G4endl;
-    man -> CreateNtupleDColumn("pDirX");            // 4
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "pDirX" << G4endl; 
-    man -> CreateNtupleDColumn("pDirY");            // 5 
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "pDirY" << G4endl;
-    man -> CreateNtupleDColumn("pDirZ");            // 6
     ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "pDirZ" << G4endl;
+    ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "EventID" << G4endl;
+    ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "JobNumber" << G4endl;
+
+    IndexStartSensitiveDet = NTupleColumnID; // This is the index where the sensitive detectors will start
+
 
     G4String sensitiveDetFilename = OutputTextFolder+"_GDML_SD_RunAction.txt";
     std::ofstream sensitiveDetFile(sensitiveDetFilename);
@@ -67,10 +78,29 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector,
         }
     }
 
-    man -> CreateNtupleIColumn("EventID");          // 7
-    man -> CreateNtupleIColumn("JobNumber");        // 8
+    
+    man ->FinishNtuple(0);
+    NTupleID++;
+    NTupleColumnID = 0;
+    man -> CreateNtuple("Hits", "Hits");
+    man -> CreateNtupleDColumn("X");
+    man -> CreateNtupleDColumn("Y");
+    man -> CreateNtupleDColumn("Z");
+    man -> CreateNtupleDColumn("E");
+    man -> CreateNtupleIColumn("ID");
+    man -> FinishNtuple(1);
 
-    man ->FinishNtuple();
+    ReportFile << "##############################################" << G4endl;
+    ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Name: " << "Hits" << G4endl;
+    ReportFile << "##############################################" << G4endl;
+
+    ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "X" << G4endl;
+    ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "Y" << G4endl;
+    ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "Z" << G4endl;
+    ReportFile << "Ntuple ID: " << NTupleID << " Ntuple Column ID: " << NTupleColumnID++ << " Ntuple Column Name: " << "E" << G4endl;
+
+
+
 
     ReportFile.close();
     sensitiveDetFile.close();

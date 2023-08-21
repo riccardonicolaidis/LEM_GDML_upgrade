@@ -61,7 +61,7 @@ class G04PrimaryGeneratorAction : public G4VUserPrimaryGeneratorAction
 
    virtual void GeneratePrimaries(G4Event* anEvent);
   
-   G4double GetMCEnergy(){return MCEnergy;};
+   G4double GetMCEnergy() const {return MCEnergy;};
 
   private:
 

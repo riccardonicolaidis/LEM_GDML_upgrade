@@ -61,7 +61,7 @@ void G04ActionInitialization::Build() const
   G04RunAction* runAction = new G04RunAction(fDetConstruction, primary, fSteeringClass);
   SetUserAction(runAction);
 
-  G04EventAction* eventAction = new G04EventAction(fDetConstruction->GetNumberOfSensitiveDetectors(), fDetConstruction, primary, fSteeringClass);
+  G04EventAction* eventAction = new G04EventAction(fDetConstruction, primary, fSteeringClass, runAction);
   SetUserAction(eventAction);
 
   G04TrackingAction* trackingAction = new G04TrackingAction(fDetConstruction);

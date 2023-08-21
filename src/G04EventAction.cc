@@ -4,32 +4,22 @@
 
 
 
-G04EventAction::G04EventAction(G4int NumberSD, 
-                               const G04DetectorConstruction *detector, 
-                               G04PrimaryGeneratorAction *generation,
-                               G04SteeringClass *steering): 
-                               fNumberSD(NumberSD), 
+G04EventAction::G04EventAction(const G04DetectorConstruction *detector, 
+                               const G04PrimaryGeneratorAction *generation,
+                               const G04SteeringClass *steering,
+                               const G04RunAction *runaction): 
+
+                               fNumberSD(detector -> GetNumberOfSensitiveDetectors()), 
                                fDetector(detector), 
                                fPrimary(generation),
                                fParser(detector->GetParser()),
-                               fSteering(steering)
+                               fSteering(steering),
+                               fRunAction(runaction),
+                               StartingNTuple(runaction->GetIndexStartSensitiveDet())
 {
     OutputTextFolder = fSteering -> GetOutputTextFolder();
     G4String sensitiveDetFilename = OutputTextFolder + "_GDML_SD_EventAction.txt";
     std::ofstream sensitiveDetFile(sensitiveDetFilename);
-
-
-    for(int i = 0; i < 10; ++i)
-    {
-        G4cout << "###############" << G4endl;
-    }
-
-    G4cout << sensitiveDetFilename << G4endl;
-
-    for(int i = 0; i < 100; ++i)
-    {
-        G4cout << "###############" << G4endl;
-    }
     
     const G4GDMLAuxMapType* auxmap = fParser.GetAuxMap();
     for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin(); iter!=auxmap->end(); iter++) 
@@ -42,6 +32,9 @@ G04EventAction::G04EventAction(G4int NumberSD,
             }
         }
     }
+
+
+    sensitiveDetFile.close();
 }
 
 G04EventAction::~G04EventAction()
@@ -59,95 +52,170 @@ void G04EventAction::EndOfEventAction(const G4Event *Event)
     G4AnalysisManager *man = G4AnalysisManager::Instance();
     G4bool AtLeastOne = false;
 
+    G4int NTupleColumnIndex_SD = fRunAction -> GetIndexStartSensitiveDet();
+
+    
+    Ed_Silicon_Thin   = 0.;
+    Ed_Silicon_Thick  = 0.;
+    Ed_Veto           = 0.;
+    Ed_Calo           = 0.;
+
+
+    for(int i = 0; i < 10; i++)
+    {
+        vEd_Silicon_Thin[i]  = 0.;
+        vEd_Silicon_Thick[i] = 0.;
+    }
+
     for(G4int i = 0; i < 1000; i++)
     {
         NTupleData[i] = 0.0;
     }
 
-    G4double Ed_Silicon_Thin = 0.;
-    G4double Ed_Silicon_Thick = 0.;
-    G4double Ed_Veto = 0.;
-    G4double Ed_Plastic =0.;
-
-    G4double MeasEnergy = 0.0;
-
-
-    G4int NTupleColumnIndex = StartingNTuple;
-    G4int HitsCollectionIndex = 0;
-    const G4GDMLAuxMapType* auxmap = fParser.GetAuxMap();
-    for(G4GDMLAuxMapType::const_iterator iter=auxmap->begin(); iter!=auxmap->end(); iter++) 
+    // Getting the hits collections for this event
+    G4HCofThisEvent* hcofEvent = Event->GetHCofThisEvent();
+    for(G4int iHC=0;iHC<hcofEvent->GetNumberOfCollections();++iHC)
     {
-        for (G4GDMLAuxListType::const_iterator vit=(*iter).second.begin(); vit!=(*iter).second.end(); vit++)
+        G4VHitsCollection* collection=static_cast<G4VHitsCollection*>(hcofEvent->GetHC(iHC));
+        G4int    HC_ID  = collection -> GetColID();
+        G4String SDName = collection -> GetSDname();
+        G4int    HCSize = collection -> GetSize();
+
+        for(G4int iHit = 0; iHit < HCSize; iHit++)
         {
-            if((*vit).type == "SensDet")
+            HitClass* hit=static_cast<HitClass*>(collection->GetHit(iHit));
+            NTupleData[HC_ID]+=hit->GetEdep();
+        }
+        man -> FillNtupleDColumn(0 , NTupleColumnIndex_SD+HC_ID , NTupleData[HC_ID]);
+
+        if(G4StrUtil::contains(SDName, "Thin"))
+        {
+            Ed_Silicon_Thin  += NTupleData[HC_ID];
+            for(int j = 0; j < NumberPairSilicon; j++)
             {
-                G4VHitsCollection *HC = Event -> GetHCofThisEvent() -> GetHC(HitsCollectionIndex++);
-                for(G4int iH = 0; iH < HC -> GetSize(); iH++)
-                {
-                    HitClass* hit=static_cast<HitClass*>(HC->GetHit(iH));
-                    NTupleData[NTupleColumnIndex]+=hit->GetEdep();
-                    MeasEnergy += hit->GetEdep(); 
-                }
-            
-                man -> FillNtupleDColumn(0, NTupleColumnIndex, NTupleData[NTupleColumnIndex]);
-                
-
-                if(NTupleData[NTupleColumnIndex] > 0.0)
-                {
-                    AtLeastOne = true;
-                }
-
-                G4String SDName = iter -> first -> GetName();
-                //G4cout << SDName << G4endl;
-                if(G4StrUtil::contains(SDName,"Thin"))
-                {
-                    Ed_Silicon_Thin += NTupleData[NTupleColumnIndex];
-                }
-                else if(G4StrUtil::contains(SDName,"Thick"))
-                {
-                    Ed_Silicon_Thick += NTupleData[NTupleColumnIndex];
-                }
-                else if(G4StrUtil::contains(SDName,"Calo"))
-                {
-                    Ed_Plastic = NTupleData[NTupleColumnIndex];
-                }
-                else if(G4StrUtil::contains(SDName,"Veto"))
-                {
-                    Ed_Veto += NTupleData[NTupleColumnIndex];
-                }
-
-
-                ++NTupleColumnIndex;
+                if(G4StrUtil::contains(SDName, (G4String) std::to_string(j)))
+                    vEd_Silicon_Thin[j] += NTupleData[HC_ID];
             }
         }
+        else if(G4StrUtil::contains(SDName, "Thick"))
+        {
+            Ed_Silicon_Thick += NTupleData[HC_ID];
+            for(int j = 0; j < NumberPairSilicon; j++)
+            {
+                if(G4StrUtil::contains(SDName, (G4String) std::to_string(j)))
+                    vEd_Silicon_Thick[j] += NTupleData[HC_ID];
+            }
+        }
+        else if(G4StrUtil::contains(SDName, "Veto"))
+            Ed_Veto          += NTupleData[HC_ID];
+        else if(G4StrUtil::contains(SDName, "Calo"))
+            Ed_Calo          += NTupleData[HC_ID];
+
+
+        if(NTupleData[HC_ID] > 0.0)
+            AtLeastOne = true;
     }
-    man -> FillNtupleIColumn(0, NTupleColumnIndex, Event -> GetEventID());
+
+
+    man -> FillNtupleIColumn(0, 7, Event -> GetEventID());
+    man -> FillNtupleIColumn(0, 8, fSteering -> GetJobNumber());
 
     G4double MCEnergy = fPrimary -> GetMCEnergy();
-    G4double EnergySum = Ed_Silicon_Thin + Ed_Silicon_Thick + Ed_Plastic + Ed_Veto;
+    G4double EnergySum = Ed_Silicon_Thin + Ed_Silicon_Thick + Ed_Calo + Ed_Veto;
 
-    G4UImanager* UImanager = G4UImanager::GetUIpointer();    
 
-    if(AtLeastOne)
+    // Definisco delle soglie per eventi anomali
+    G4double E_th_Veto       = 40 * keV;
+    G4double E_th_Silicon    = 10 * keV;
+    G4double AlarmPercentage = 0.5;
+
+    if(!AtLeastOne)
+        return;
+
+    man -> AddNtupleRow(0);
+
+
+    bool GoodTriggerCondition               = false;
+    bool EneregyConfinement_AnomalyDetected = false;
+
+
+    // 1. Check the number of Thin/Thick detectors over threshold
+    // 2. If the number of Thin detectors over threshold greater than 1  = BAD TRIGGER
+    // 3. If the number of Thick detectors over threshold greater than 1 = BAD TRIGGER
+    // 4. Number of Thin and Thick detectors over threshold is 1 respectively = GOOD TRIGGER
+    // 5. Number of Thin and Thick detectors over threshold is 0 = BAD TRIGGER
+    // 6. ID of the Thin detector over threshold is different from the ID of the Thick detector over threshold = BAD TRIGGER
+
+    G4int    NumberThinOverThreshold  = 0;
+    G4int    NumberThickOverThreshold = 0;
+    G4int    IDThinOverThreshold      = -1;
+    G4int    IDThickOverThreshold     = -1;
+
+    for(int i = 0; i < NumberPairSilicon; i++)
     {
-        if((MCEnergy-MeasEnergy) >= 0.5* MCEnergy)
+        if(vEd_Silicon_Thin[i] > E_th_Silicon)
         {
-            if(Ed_Veto == 0. && Ed_Plastic == 0. && Ed_Silicon_Thick > 0.04 && Ed_Silicon_Thin > 0.04)
-            {
-                //UImanager -> ApplyCommand("/random/saveThisEvent");
-                // Get Event Number
-                // G4cout << "Problem: " << Event -> GetEventID() << G4endl;
-                // G4cout << "MCEnergy: " << MCEnergy << G4endl;
-                // G4cout << "EnergySum: " << EnergySum << G4endl;
-                // G4cout << "MeasEnergy: " << MeasEnergy << G4endl;
-
-                G4cout << Event -> GetEventID() << "\t" << MCEnergy << "\t" << EnergySum << "\t" << MeasEnergy << "\t" << Ed_Silicon_Thin << "\t" << Ed_Silicon_Thick << "\t" << Ed_Plastic << "\t" << Ed_Veto << G4endl;
-            }
-
+            NumberThinOverThreshold++;
+            IDThinOverThreshold = i;
         }
-        man -> AddNtupleRow(0);
-        
+        if(vEd_Silicon_Thick[i] > E_th_Silicon)
+        {
+            NumberThickOverThreshold++;
+            IDThickOverThreshold = i;
+        }
     }
 
+    if(NumberThinOverThreshold == 1 && NumberThickOverThreshold == 1)
+    {
+        if(IDThinOverThreshold == IDThickOverThreshold)
+            GoodTriggerCondition = true;
+    }
+
+    // Check Energy Confinement Trigger Anomaly
+    // 1. Veto Activated (over threshold) = EVENT Discarded / NOT CONFINED
+    // 2. Veto NOT Activated (under threshold) = EVENT Accepted / CONFINED - continue the checks
+    // 3. Compute the measured energy: SUM Thin + Thick + Calo
+    // 4. If the discrepancy between the measured energy and the MC energy is greater than 50% of the MC energy = Anomaly - to be investigated - saving the event
+
+    if(Ed_Veto < E_th_Veto)
+    {
+        if((MCEnergy - EnergySum) > (AlarmPercentage * MCEnergy))
+            EneregyConfinement_AnomalyDetected = true;
+    }
+
+
+
+
+    if(GoodTriggerCondition && EneregyConfinement_AnomalyDetected)
+    {
+        G4cout << "Event " << Event -> GetEventID() << " - Energy Confinement Anomaly Detected" << G4endl;
+        for(G4int iHC=0;iHC<hcofEvent->GetNumberOfCollections();++iHC)
+        {
+            G4VHitsCollection* collection=static_cast<G4VHitsCollection*>(hcofEvent->GetHC(iHC));
+
+            G4int    HCSize = collection -> GetSize();
+
+            for(G4int iHit = 0; iHit < HCSize; iHit++)
+            {
+                HitClass* hit=static_cast<HitClass*>(collection->GetHit(iHit));
+                G4ThreeVector Position = hit -> GetPos();
+                G4double      Edep     = hit -> GetEdep();
+
+                man -> FillNtupleDColumn(1,0,Position.getX());
+                man -> FillNtupleDColumn(1,1,Position.getY());
+                man -> FillNtupleDColumn(1,2,Position.getZ());
+                man -> FillNtupleDColumn(1,3,Edep);
+                man -> FillNtupleIColumn(1,4,Event -> GetEventID());
+                man -> AddNtupleRow(1);
+            }
+        }
+
+    }
+
+
+    
+        
+
+    return;
 }
 

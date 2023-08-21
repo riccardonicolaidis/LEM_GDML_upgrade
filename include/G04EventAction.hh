@@ -16,15 +16,15 @@
 #include "G04DetectorConstruction.hh"
 #include "G04SteeringClass.hh"
 
-
+using namespace std;
 
 class G04EventAction : public G4UserEventAction
 {
 public:
-        G04EventAction(G4int NumberSD, 
-                       const G04DetectorConstruction *detector, 
-                       G04PrimaryGeneratorAction *generator,
-                       G04SteeringClass *steering
+        G04EventAction(const G04DetectorConstruction   *detector, 
+                       const G04PrimaryGeneratorAction *generator,
+                       const G04SteeringClass          *steering,
+                       const G04RunAction              *runaction
                        );
         ~G04EventAction();
 
@@ -32,16 +32,24 @@ public:
         virtual void EndOfEventAction(const G4Event*);
 
 private:
-        const G4int fNumberSD;
-        const G04DetectorConstruction *fDetector;
-        G04PrimaryGeneratorAction *fPrimary;
-        const G4GDMLParser &fParser;
-        G4String OutputTextFolder;
+        const G4int                      fNumberSD;
+        const G04DetectorConstruction   *fDetector;
+        const G04RunAction              *fRunAction;
+        const G04PrimaryGeneratorAction *fPrimary;
+        const G4GDMLParser              &fParser;
+        G4String                         OutputTextFolder;
+        const G04SteeringClass          *fSteering;
+        G4double                         NTupleData[1000];
+        const G4int                      StartingNTuple;
 
-        G04SteeringClass *fSteering;
+        G4int    NumberPairSilicon = 5;
+        G4double vEd_Silicon_Thin[10];
+        G4double vEd_Silicon_Thick[10];
+        G4double Ed_Silicon_Thin;
+        G4double Ed_Silicon_Thick;
+        G4double Ed_Veto;
+        G4double Ed_Calo;
 
-        G4double NTupleData[1000];
-        const G4int StartingNTuple = 7;
 
 };
 

@@ -30,6 +30,7 @@
 #include "TObjArray.h"
 #include "TEntryList.h"
 #include "TTreeFormula.h"
+#include "TGraph2D.h"
 
 
 using namespace std;
@@ -127,6 +128,7 @@ void SetAliases(TString filename,
     TFile *file_alias = new TFile(destination +"/" + filename_noExt + "_alias.root", "RECREATE");
     /* Old tree without aliases */
     TTree *Edep_old = (TTree*) (file -> Get("Edep"));
+    TTree *Hits = (TTree*) (file -> Get("Hits"));
 
     /* --------------- PRINTING THE STRUCTURE --------------- */
     Log << "TTree structure:" << endl;
@@ -137,6 +139,26 @@ void SetAliases(TString filename,
     }
     Log.close();
 
+    TString destination_Violation          = destination + "/EnergyViolation3D";
+    gSystem -> mkdir(destination_Violation.Data(), true);
+
+    Hits -> Draw("X:Y:Z:E", "", "goff");
+    // Dump X Y Z E in a .csv file so I can read it with python
+    ofstream csv;
+    csv.open(destination_Violation + "/" + filename_noExt + "_Hits.csv");
+    double X, Y, Z, E;
+    Hits -> SetBranchAddress("X", &X);
+    Hits -> SetBranchAddress("Y", &Y);
+    Hits -> SetBranchAddress("Z", &Z);
+    Hits -> SetBranchAddress("E", &E);
+    for(int i = 0; i < Hits -> GetEntries(); i++)
+    {
+        Hits -> GetEntry(i);
+        csv << X << "," << Y << "," << Z << "," << E << endl;
+        if(i%1000 == 0)
+            std::cout << "i = " << i << endl;
+    }
+    csv.close();
 
 
 

@@ -26,16 +26,18 @@ public:
     ~G04RunAction();
 
     virtual void BeginOfRunAction(const G4Run* );
-    virtual void EndOfRunAction(const G4Run* );
+    virtual void EndOfRunAction  (const G4Run* );
+    G4int GetIndexStartSensitiveDet() const {return IndexStartSensitiveDet;}
 
 private:
-    G04DetectorConstruction *fDetector;
+    G04DetectorConstruction   *fDetector;
     G04PrimaryGeneratorAction *fPrimary;
-    G4GenericMessenger *fMessenger;
-    G4String TotalFileName;
-    G4String TotalFileNameFinal;
-    G4String OutputTextFolder;
-    G04SteeringClass *fSteering;
+    G4GenericMessenger        *fMessenger;
+    G4String                   TotalFileName;
+    G4String                   TotalFileNameFinal;
+    G4String                   OutputTextFolder;
+    G04SteeringClass          *fSteering;
+    G4int                      IndexStartSensitiveDet;
 
     const G4GDMLParser &fParser;
 
