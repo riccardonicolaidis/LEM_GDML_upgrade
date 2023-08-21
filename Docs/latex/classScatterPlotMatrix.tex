@@ -1,28 +1,186 @@
-\doxysection{Scatter\+Plot\+Matrix Class Reference}
-\hypertarget{classScatterPlotMatrix}{}\label{classScatterPlotMatrix}\index{ScatterPlotMatrix@{ScatterPlotMatrix}}
-\doxysubsubsection*{Public Member Functions}
+\hypertarget{classScatterPlotMatrix}{}\doxysection{Scatter\+Plot\+Matrix Class Reference}
+\label{classScatterPlotMatrix}\index{ScatterPlotMatrix@{ScatterPlotMatrix}}
+
+
+{\ttfamily \#include $<$Scatter\+Plot\+Matrix.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classScatterPlotMatrix_a25b4b94b8ed08a50762044de4be3ad1f}\label{classScatterPlotMatrix_a25b4b94b8ed08a50762044de4be3ad1f} 
-{\bfseries Scatter\+Plot\+Matrix} (int Number\+Of\+Variables, int Number\+Of\+TTrees)
+\mbox{\hyperlink{classScatterPlotMatrix_a25b4b94b8ed08a50762044de4be3ad1f}{Scatter\+Plot\+Matrix}} (int Number\+Of\+Variables, int Number\+Of\+TTrees)
 \item 
-\Hypertarget{classScatterPlotMatrix_ad4434913a308095e5ca40b411f429a12}\label{classScatterPlotMatrix_ad4434913a308095e5ca40b411f429a12} 
-void {\bfseries Set\+Condition\+Selection} (TString Condition\+SelectionV)
+\mbox{\hyperlink{classScatterPlotMatrix_adb51afcac291952d4748e71726b9839a}{$\sim$\+Scatter\+Plot\+Matrix}} ()
 \item 
-\Hypertarget{classScatterPlotMatrix_a6067485b2f59baa48977afbd74646b8d}\label{classScatterPlotMatrix_a6067485b2f59baa48977afbd74646b8d} 
-void {\bfseries Add\+TTree} (TTree \texorpdfstring{$\ast$}{*}\texorpdfstring{$\ast$}{*}TTreeV)
+void \mbox{\hyperlink{classScatterPlotMatrix_ad4434913a308095e5ca40b411f429a12}{Set\+Condition\+Selection}} (TString Condition\+SelectionV)
 \item 
-\Hypertarget{classScatterPlotMatrix_af95d13016e68da95bfe0226e11b9199d}\label{classScatterPlotMatrix_af95d13016e68da95bfe0226e11b9199d} 
-void {\bfseries Add\+Variable\+Name} (TString Variable\+NameV)
+void \mbox{\hyperlink{classScatterPlotMatrix_a6067485b2f59baa48977afbd74646b8d}{Add\+TTree}} (TTree $\ast$$\ast$TTreeV)
 \item 
-\Hypertarget{classScatterPlotMatrix_a76b18da39643bb68e3fed46bf8e1349a}\label{classScatterPlotMatrix_a76b18da39643bb68e3fed46bf8e1349a} 
-void {\bfseries Set\+Nbins} (int NbinsV)
+void \mbox{\hyperlink{classScatterPlotMatrix_af95d13016e68da95bfe0226e11b9199d}{Add\+Variable\+Name}} (TString Variable\+NameV)
 \item 
-\Hypertarget{classScatterPlotMatrix_aef81bf4aa19ca1caeb3ac1498b4566fe}\label{classScatterPlotMatrix_aef81bf4aa19ca1caeb3ac1498b4566fe} 
-void {\bfseries Build\+Plot} ()
+void \mbox{\hyperlink{classScatterPlotMatrix_a76b18da39643bb68e3fed46bf8e1349a}{Set\+Nbins}} (int NbinsV)
+\item 
+void \mbox{\hyperlink{classScatterPlotMatrix_aef81bf4aa19ca1caeb3ac1498b4566fe}{Build\+Plot}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classScatterPlotMatrix_af3c8084e123d481234f4414bbc5f01cb}{index\+\_\+\+TTree}} = 0
+\item 
+int \mbox{\hyperlink{classScatterPlotMatrix_a9a19226d3bcdd4333ede21738b7058ea}{index\+\_\+\+Variable}} = 0
+\item 
+int \mbox{\hyperlink{classScatterPlotMatrix_a5536e70d61cddd07e5e2df91d8861b3b}{N\+\_\+\+TTrees}}
+\item 
+int \mbox{\hyperlink{classScatterPlotMatrix_a26fd41529457db5cfd524f15740ed589}{N\+\_\+\+Variables}}
+\item 
+vector$<$ TTree $\ast$ $>$ \mbox{\hyperlink{classScatterPlotMatrix_a8d863fe1e524279bb05a616de9fc9d95}{TTrees}}
+\item 
+vector$<$ TString $>$ \mbox{\hyperlink{classScatterPlotMatrix_a3894392c97847d6b4caae1cdff8a1167}{Variable\+Names}}
+\item 
+TString \mbox{\hyperlink{classScatterPlotMatrix_af148f78533677b3d3fe05663c802dd1d}{Condition\+Selection}}
+\item 
+int \mbox{\hyperlink{classScatterPlotMatrix_ac2a0dc517cbe4cf5c32166772d88c64a}{Nbins}}
+\item 
+vector$<$ TH1D $\ast$ $>$ \mbox{\hyperlink{classScatterPlotMatrix_a7233ec0444b48fab7a66061a8f157fd4}{Histograms}}
+\item 
+vector$<$ THStack $\ast$ $>$ \mbox{\hyperlink{classScatterPlotMatrix_a1cdc0811c91d332f73cc3c72bfa0186d}{Stacks}}
+\item 
+vector$<$ TGraph $\ast$ $>$ \mbox{\hyperlink{classScatterPlotMatrix_a81e0112dd548b19e5c96b89126fa1bb1}{Graphs}}
+\item 
+vector$<$ TMulti\+Graph $\ast$ $>$ \mbox{\hyperlink{classScatterPlotMatrix_aac0ab1ccfba19247c0dd53adcbf2f064}{Multi\+Graphs}}
+\item 
+TCanvas $\ast$ \mbox{\hyperlink{classScatterPlotMatrix_a0dde43085cfc169152ba5ad1713c04d4}{canvas}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classScatterPlotMatrix_a25b4b94b8ed08a50762044de4be3ad1f}\label{classScatterPlotMatrix_a25b4b94b8ed08a50762044de4be3ad1f}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{ScatterPlotMatrix()}{ScatterPlotMatrix()}}
+{\footnotesize\ttfamily Scatter\+Plot\+Matrix\+::\+Scatter\+Plot\+Matrix (\begin{DoxyParamCaption}\item[{int}]{Number\+Of\+Variables,  }\item[{int}]{Number\+Of\+TTrees }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_adb51afcac291952d4748e71726b9839a}\label{classScatterPlotMatrix_adb51afcac291952d4748e71726b9839a}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!````~ScatterPlotMatrix@{$\sim$ScatterPlotMatrix}}
+\index{````~ScatterPlotMatrix@{$\sim$ScatterPlotMatrix}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{$\sim$ScatterPlotMatrix()}{~ScatterPlotMatrix()}}
+{\footnotesize\ttfamily Scatter\+Plot\+Matrix\+::$\sim$\+Scatter\+Plot\+Matrix (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classScatterPlotMatrix_a6067485b2f59baa48977afbd74646b8d}\label{classScatterPlotMatrix_a6067485b2f59baa48977afbd74646b8d}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!AddTTree@{AddTTree}}
+\index{AddTTree@{AddTTree}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{AddTTree()}{AddTTree()}}
+{\footnotesize\ttfamily void Scatter\+Plot\+Matrix\+::\+Add\+TTree (\begin{DoxyParamCaption}\item[{TTree $\ast$$\ast$}]{TTreeV }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_af95d13016e68da95bfe0226e11b9199d}\label{classScatterPlotMatrix_af95d13016e68da95bfe0226e11b9199d}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!AddVariableName@{AddVariableName}}
+\index{AddVariableName@{AddVariableName}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{AddVariableName()}{AddVariableName()}}
+{\footnotesize\ttfamily void Scatter\+Plot\+Matrix\+::\+Add\+Variable\+Name (\begin{DoxyParamCaption}\item[{TString}]{Variable\+NameV }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_aef81bf4aa19ca1caeb3ac1498b4566fe}\label{classScatterPlotMatrix_aef81bf4aa19ca1caeb3ac1498b4566fe}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!BuildPlot@{BuildPlot}}
+\index{BuildPlot@{BuildPlot}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{BuildPlot()}{BuildPlot()}}
+{\footnotesize\ttfamily void Scatter\+Plot\+Matrix\+::\+Build\+Plot (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_ad4434913a308095e5ca40b411f429a12}\label{classScatterPlotMatrix_ad4434913a308095e5ca40b411f429a12}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!SetConditionSelection@{SetConditionSelection}}
+\index{SetConditionSelection@{SetConditionSelection}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{SetConditionSelection()}{SetConditionSelection()}}
+{\footnotesize\ttfamily void Scatter\+Plot\+Matrix\+::\+Set\+Condition\+Selection (\begin{DoxyParamCaption}\item[{TString}]{Condition\+SelectionV }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a76b18da39643bb68e3fed46bf8e1349a}\label{classScatterPlotMatrix_a76b18da39643bb68e3fed46bf8e1349a}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!SetNbins@{SetNbins}}
+\index{SetNbins@{SetNbins}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{SetNbins()}{SetNbins()}}
+{\footnotesize\ttfamily void Scatter\+Plot\+Matrix\+::\+Set\+Nbins (\begin{DoxyParamCaption}\item[{int}]{NbinsV }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classScatterPlotMatrix_a0dde43085cfc169152ba5ad1713c04d4}\label{classScatterPlotMatrix_a0dde43085cfc169152ba5ad1713c04d4}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!canvas@{canvas}}
+\index{canvas@{canvas}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{canvas}{canvas}}
+{\footnotesize\ttfamily TCanvas$\ast$ Scatter\+Plot\+Matrix\+::canvas\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_af148f78533677b3d3fe05663c802dd1d}\label{classScatterPlotMatrix_af148f78533677b3d3fe05663c802dd1d}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!ConditionSelection@{ConditionSelection}}
+\index{ConditionSelection@{ConditionSelection}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{ConditionSelection}{ConditionSelection}}
+{\footnotesize\ttfamily TString Scatter\+Plot\+Matrix\+::\+Condition\+Selection\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a81e0112dd548b19e5c96b89126fa1bb1}\label{classScatterPlotMatrix_a81e0112dd548b19e5c96b89126fa1bb1}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!Graphs@{Graphs}}
+\index{Graphs@{Graphs}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{Graphs}{Graphs}}
+{\footnotesize\ttfamily vector$<$TGraph$\ast$$>$ Scatter\+Plot\+Matrix\+::\+Graphs\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a7233ec0444b48fab7a66061a8f157fd4}\label{classScatterPlotMatrix_a7233ec0444b48fab7a66061a8f157fd4}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!Histograms@{Histograms}}
+\index{Histograms@{Histograms}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{Histograms}{Histograms}}
+{\footnotesize\ttfamily vector$<$TH1D$\ast$$>$ Scatter\+Plot\+Matrix\+::\+Histograms\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_af3c8084e123d481234f4414bbc5f01cb}\label{classScatterPlotMatrix_af3c8084e123d481234f4414bbc5f01cb}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!index\_TTree@{index\_TTree}}
+\index{index\_TTree@{index\_TTree}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{index\_TTree}{index\_TTree}}
+{\footnotesize\ttfamily int Scatter\+Plot\+Matrix\+::index\+\_\+\+TTree = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a9a19226d3bcdd4333ede21738b7058ea}\label{classScatterPlotMatrix_a9a19226d3bcdd4333ede21738b7058ea}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!index\_Variable@{index\_Variable}}
+\index{index\_Variable@{index\_Variable}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{index\_Variable}{index\_Variable}}
+{\footnotesize\ttfamily int Scatter\+Plot\+Matrix\+::index\+\_\+\+Variable = 0\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_aac0ab1ccfba19247c0dd53adcbf2f064}\label{classScatterPlotMatrix_aac0ab1ccfba19247c0dd53adcbf2f064}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!MultiGraphs@{MultiGraphs}}
+\index{MultiGraphs@{MultiGraphs}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{MultiGraphs}{MultiGraphs}}
+{\footnotesize\ttfamily vector$<$TMulti\+Graph$\ast$$>$ Scatter\+Plot\+Matrix\+::\+Multi\+Graphs\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a5536e70d61cddd07e5e2df91d8861b3b}\label{classScatterPlotMatrix_a5536e70d61cddd07e5e2df91d8861b3b}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!N\_TTrees@{N\_TTrees}}
+\index{N\_TTrees@{N\_TTrees}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{N\_TTrees}{N\_TTrees}}
+{\footnotesize\ttfamily int Scatter\+Plot\+Matrix\+::\+N\+\_\+\+TTrees\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a26fd41529457db5cfd524f15740ed589}\label{classScatterPlotMatrix_a26fd41529457db5cfd524f15740ed589}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!N\_Variables@{N\_Variables}}
+\index{N\_Variables@{N\_Variables}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{N\_Variables}{N\_Variables}}
+{\footnotesize\ttfamily int Scatter\+Plot\+Matrix\+::\+N\+\_\+\+Variables\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_ac2a0dc517cbe4cf5c32166772d88c64a}\label{classScatterPlotMatrix_ac2a0dc517cbe4cf5c32166772d88c64a}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!Nbins@{Nbins}}
+\index{Nbins@{Nbins}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{Nbins}{Nbins}}
+{\footnotesize\ttfamily int Scatter\+Plot\+Matrix\+::\+Nbins\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a1cdc0811c91d332f73cc3c72bfa0186d}\label{classScatterPlotMatrix_a1cdc0811c91d332f73cc3c72bfa0186d}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!Stacks@{Stacks}}
+\index{Stacks@{Stacks}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{Stacks}{Stacks}}
+{\footnotesize\ttfamily vector$<$THStack$\ast$$>$ Scatter\+Plot\+Matrix\+::\+Stacks\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a8d863fe1e524279bb05a616de9fc9d95}\label{classScatterPlotMatrix_a8d863fe1e524279bb05a616de9fc9d95}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!TTrees@{TTrees}}
+\index{TTrees@{TTrees}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{TTrees}{TTrees}}
+{\footnotesize\ttfamily vector$<$TTree$\ast$$>$ Scatter\+Plot\+Matrix\+::\+TTrees\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classScatterPlotMatrix_a3894392c97847d6b4caae1cdff8a1167}\label{classScatterPlotMatrix_a3894392c97847d6b4caae1cdff8a1167}} 
+\index{ScatterPlotMatrix@{ScatterPlotMatrix}!VariableNames@{VariableNames}}
+\index{VariableNames@{VariableNames}!ScatterPlotMatrix@{ScatterPlotMatrix}}
+\doxysubsubsection{\texorpdfstring{VariableNames}{VariableNames}}
+{\footnotesize\ttfamily vector$<$TString$>$ Scatter\+Plot\+Matrix\+::\+Variable\+Names\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-ROOT/Scatter\+Plot\+Matrix.\+h\end{DoxyCompactItemize}
+ROOT/\mbox{\hyperlink{ScatterPlotMatrix_8h}{Scatter\+Plot\+Matrix.\+h}}\end{DoxyCompactItemize}

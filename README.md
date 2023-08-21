@@ -222,3 +222,17 @@ At the moment, the directory structure is the following
 ```
 
 
+## Doxygen documentation
+Doxygen documentation is available in the `Docs` folder. To generate it, run the following command in the main directory
+
+```
+doxygen Doxyfile
+```
+To generate the pdf you need to add to the preamble of the `refman.tex` file the following line
+```
+\usepackage{pmboxdraw}
+```
+This is needed to correctly display the tree structure of the classes. Then run the following commands
+```
+make 
+```

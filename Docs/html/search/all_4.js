@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['description_0',['Brief description',['../md_README.html#autotoc_md1',1,'']]],
-  ['detector_20concept_1',['Detector concept',['../md_README.html#autotoc_md7',1,'']]],
-  ['directory_20structure_2',['Directory structure',['../md_README.html#autotoc_md8',1,'']]]
+  ['documentclass_52',['DocumentClass',['../classLatexDocumentClass_1_1LatexDocumentClass.html#acac966dde842ac126362a21023f8ff67',1,'LatexDocumentClass::LatexDocumentClass']]],
+  ['draw_53',['Draw',['../classHitClass.html#a3da0728f2d8b82617ce83cd4882b1048',1,'HitClass']]]
 ];

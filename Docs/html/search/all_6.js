@@ -1,6 +1,21 @@
 var searchData=
 [
-  ['file_0',['Low Energy Module (LEM): Upgrade with geometry from CAD file',['../md_README.html',1,'']]],
-  ['freecad_20gdml_20workbench_20commands_1',['FreeCAD GDML Workbench commands',['../md_README.html#autotoc_md4',1,'']]],
-  ['from_20cad_20file_2',['Low Energy Module (LEM): Upgrade with geometry from CAD file',['../md_README.html',1,'']]]
+  ['fdetconstruction_61',['fDetConstruction',['../classG04ActionInitialization.html#a7517d35a1a1b56191c9ea1b7b25b4fd1',1,'G04ActionInitialization']]],
+  ['fdetector_62',['fDetector',['../classG04EventAction.html#afbc00fe717dd4f6eacdef93a5a27b34f',1,'G04EventAction::fDetector()'],['../classG04RunAction.html#aef27299044bde8bcd5a60284321618ae',1,'G04RunAction::fDetector()'],['../classG04TrackingAction.html#a8fb3c1620bc9e52476467574bdbf2b36',1,'G04TrackingAction::fDetector()']]],
+  ['fedep_63',['fEdep',['../classHitClass.html#a15ac0f51daa90c73dd9d25b882680ab6',1,'HitClass']]],
+  ['fgeneralparticlesource_64',['fGeneralParticleSource',['../classG04PrimaryGeneratorAction.html#aab65fd35110eb59bc6e175d7a65c26f2',1,'G04PrimaryGeneratorAction']]],
+  ['fhitscollection_65',['fHitsCollection',['../classG04SensitiveDetector.html#a735f3fd81057217b67d1712797c3fd16',1,'G04SensitiveDetector']]],
+  ['filenumber_66',['FileNumber',['../classG04SteeringClass.html#af785b4a746e66c60bc3877853854340f',1,'G04SteeringClass']]],
+  ['filenumber_5fkey_67',['FileNumber_KEY',['../classG04SteeringClass.html#a349b862e18718f1c31335c4eea8546d2',1,'G04SteeringClass']]],
+  ['fmessenger_68',['fMessenger',['../classG04PrimaryGeneratorAction.html#a18f01f92674aefd9ad8f969d0a4665d5',1,'G04PrimaryGeneratorAction::fMessenger()'],['../classG04RunAction.html#a8ada3709443f0c340b1a344d8c5ea244',1,'G04RunAction::fMessenger()']]],
+  ['fnumbersd_69',['fNumberSD',['../classG04EventAction.html#a1d2ef4504e1a1c506ad8adc59d164fb9',1,'G04EventAction']]],
+  ['fparser_70',['fParser',['../classG04EventAction.html#ab87d4e97118b7558ecdb9ea442306fe6',1,'G04EventAction::fParser()'],['../classG04RunAction.html#abf37c272ee0967c21a82f5729869b5a9',1,'G04RunAction::fParser()'],['../classG04DetectorConstruction.html#a116fde2ff2e46c8b2fe601bb1602833f',1,'G04DetectorConstruction::fParser()']]],
+  ['fparticletable_71',['fParticleTable',['../classG04PrimaryGeneratorAction.html#a90bbb9bd33296197ac880d6513031f11',1,'G04PrimaryGeneratorAction']]],
+  ['fpos_72',['fPos',['../classHitClass.html#a8a412bfbe6e417bf4ef85709f637c5c4',1,'HitClass']]],
+  ['fprimary_73',['fPrimary',['../classG04EventAction.html#a20c4e025919c1c30712c835787fc22fe',1,'G04EventAction::fPrimary()'],['../classG04RunAction.html#a3901b9f0b2415bb635fee57420271fc8',1,'G04RunAction::fPrimary()']]],
+  ['freplicanb_74',['fReplicaNb',['../classHitClass.html#a5cff2421a69cda22a4a22a08411eda3b',1,'HitClass']]],
+  ['fsteering_75',['fSteering',['../classG04DetectorConstruction.html#a98091752ba32a5835f8b30c4b8f5fb36',1,'G04DetectorConstruction::fSteering()'],['../classG04EventAction.html#ad4d449f6c044f62bb088831ba522f1f9',1,'G04EventAction::fSteering()'],['../classG04PrimaryGeneratorAction.html#ad8fb920eb8c9ded24353ea7c54079b0e',1,'G04PrimaryGeneratorAction::fSteering()'],['../classG04RunAction.html#a96702c1ca854df12aef92fc08d33d8e5',1,'G04RunAction::fSteering()']]],
+  ['fsteeringclass_76',['fSteeringClass',['../classG04ActionInitialization.html#a849cdfd607a639b85a391d207f3132ce',1,'G04ActionInitialization']]],
+  ['ftime_77',['fTime',['../classHitClass.html#a00f1a2c7cea56afd463fbf51199dbb17',1,'HitClass']]],
+  ['ftrackid_78',['fTrackID',['../classHitClass.html#a1e7aa89848e291395b3f10e76350967b',1,'HitClass']]]
 ];

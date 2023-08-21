@@ -1,5 +1,5 @@
-\doxysection{G04\+Sensitive\+Detector Class Reference}
-\hypertarget{classG04SensitiveDetector}{}\label{classG04SensitiveDetector}\index{G04SensitiveDetector@{G04SensitiveDetector}}
+\hypertarget{classG04SensitiveDetector}{}\doxysection{G04\+Sensitive\+Detector Class Reference}
+\label{classG04SensitiveDetector}\index{G04SensitiveDetector@{G04SensitiveDetector}}
 
 
 Sensitive detector to be attached to the GDML geometry.  
@@ -15,27 +15,75 @@ Inheritance diagram for G04\+Sensitive\+Detector\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{classG04SensitiveDetector}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classG04SensitiveDetector_a99e758c4656e902d1683fb0346782f8d}\label{classG04SensitiveDetector_a99e758c4656e902d1683fb0346782f8d} 
-{\bfseries G04\+Sensitive\+Detector} (const G4\+String \&, const G4\+String \&)
+\mbox{\hyperlink{classG04SensitiveDetector_a99e758c4656e902d1683fb0346782f8d}{G04\+Sensitive\+Detector}} (const G4\+String \&, const G4\+String \&)
 \item 
-\Hypertarget{classG04SensitiveDetector_ab074993c39efe6a141935e1b8d5678fb}\label{classG04SensitiveDetector_ab074993c39efe6a141935e1b8d5678fb} 
-virtual void {\bfseries Initialize} (G4\+HCof\+This\+Event \texorpdfstring{$\ast$}{*}hit\+Collection)
+\mbox{\hyperlink{classG04SensitiveDetector_aef256fc58662ca2b0862e62a8e281bcb}{$\sim$\+G04\+Sensitive\+Detector}} ()
 \item 
-\Hypertarget{classG04SensitiveDetector_ae8a7ba9be54ccb55fe79e9a07c916795}\label{classG04SensitiveDetector_ae8a7ba9be54ccb55fe79e9a07c916795} 
-virtual G4bool {\bfseries Process\+Hits} (G4\+Step \texorpdfstring{$\ast$}{*}step, G4\+Touchable\+History \texorpdfstring{$\ast$}{*}history)
+virtual void \mbox{\hyperlink{classG04SensitiveDetector_ab074993c39efe6a141935e1b8d5678fb}{Initialize}} (G4\+HCof\+This\+Event $\ast$hit\+Collection)
 \item 
-\Hypertarget{classG04SensitiveDetector_a90cf3fd548a10ee3738d8a14d0e3036d}\label{classG04SensitiveDetector_a90cf3fd548a10ee3738d8a14d0e3036d} 
-virtual void {\bfseries End\+Of\+Event} (G4\+HCof\+This\+Event \texorpdfstring{$\ast$}{*}hit\+Collection)
+virtual G4bool \mbox{\hyperlink{classG04SensitiveDetector_ae8a7ba9be54ccb55fe79e9a07c916795}{Process\+Hits}} (G4\+Step $\ast$step, G4\+Touchable\+History $\ast$history)
+\item 
+virtual void \mbox{\hyperlink{classG04SensitiveDetector_a90cf3fd548a10ee3738d8a14d0e3036d}{End\+Of\+Event}} (G4\+HCof\+This\+Event $\ast$hit\+Collection)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{G04HitClass_8hh_a2f1c7ebe8ddd94255a20fa44c1fcc9f5}{Hits\+Collection}} $\ast$ \mbox{\hyperlink{classG04SensitiveDetector_a735f3fd81057217b67d1712797c3fd16}{f\+Hits\+Collection}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Sensitive detector to be attached to the GDML geometry. 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classG04SensitiveDetector_a99e758c4656e902d1683fb0346782f8d}\label{classG04SensitiveDetector_a99e758c4656e902d1683fb0346782f8d}} 
+\index{G04SensitiveDetector@{G04SensitiveDetector}!G04SensitiveDetector@{G04SensitiveDetector}}
+\index{G04SensitiveDetector@{G04SensitiveDetector}!G04SensitiveDetector@{G04SensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{G04SensitiveDetector()}{G04SensitiveDetector()}}
+{\footnotesize\ttfamily G04\+Sensitive\+Detector\+::\+G04\+Sensitive\+Detector (\begin{DoxyParamCaption}\item[{const G4\+String \&}]{name,  }\item[{const G4\+String \&}]{hits\+Collection\+Name }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classG04SensitiveDetector_aef256fc58662ca2b0862e62a8e281bcb}\label{classG04SensitiveDetector_aef256fc58662ca2b0862e62a8e281bcb}} 
+\index{G04SensitiveDetector@{G04SensitiveDetector}!````~G04SensitiveDetector@{$\sim$G04SensitiveDetector}}
+\index{````~G04SensitiveDetector@{$\sim$G04SensitiveDetector}!G04SensitiveDetector@{G04SensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{$\sim$G04SensitiveDetector()}{~G04SensitiveDetector()}}
+{\footnotesize\ttfamily G04\+Sensitive\+Detector\+::$\sim$\+G04\+Sensitive\+Detector (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classG04SensitiveDetector_a90cf3fd548a10ee3738d8a14d0e3036d}\label{classG04SensitiveDetector_a90cf3fd548a10ee3738d8a14d0e3036d}} 
+\index{G04SensitiveDetector@{G04SensitiveDetector}!EndOfEvent@{EndOfEvent}}
+\index{EndOfEvent@{EndOfEvent}!G04SensitiveDetector@{G04SensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{EndOfEvent()}{EndOfEvent()}}
+{\footnotesize\ttfamily void G04\+Sensitive\+Detector\+::\+End\+Of\+Event (\begin{DoxyParamCaption}\item[{G4\+HCof\+This\+Event $\ast$}]{hit\+Collection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classG04SensitiveDetector_ab074993c39efe6a141935e1b8d5678fb}\label{classG04SensitiveDetector_ab074993c39efe6a141935e1b8d5678fb}} 
+\index{G04SensitiveDetector@{G04SensitiveDetector}!Initialize@{Initialize}}
+\index{Initialize@{Initialize}!G04SensitiveDetector@{G04SensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{Initialize()}{Initialize()}}
+{\footnotesize\ttfamily void G04\+Sensitive\+Detector\+::\+Initialize (\begin{DoxyParamCaption}\item[{G4\+HCof\+This\+Event $\ast$}]{hit\+Collection }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classG04SensitiveDetector_ae8a7ba9be54ccb55fe79e9a07c916795}\label{classG04SensitiveDetector_ae8a7ba9be54ccb55fe79e9a07c916795}} 
+\index{G04SensitiveDetector@{G04SensitiveDetector}!ProcessHits@{ProcessHits}}
+\index{ProcessHits@{ProcessHits}!G04SensitiveDetector@{G04SensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{ProcessHits()}{ProcessHits()}}
+{\footnotesize\ttfamily G4bool G04\+Sensitive\+Detector\+::\+Process\+Hits (\begin{DoxyParamCaption}\item[{G4\+Step $\ast$}]{step,  }\item[{G4\+Touchable\+History $\ast$}]{history }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classG04SensitiveDetector_a735f3fd81057217b67d1712797c3fd16}\label{classG04SensitiveDetector_a735f3fd81057217b67d1712797c3fd16}} 
+\index{G04SensitiveDetector@{G04SensitiveDetector}!fHitsCollection@{fHitsCollection}}
+\index{fHitsCollection@{fHitsCollection}!G04SensitiveDetector@{G04SensitiveDetector}}
+\doxysubsubsection{\texorpdfstring{fHitsCollection}{fHitsCollection}}
+{\footnotesize\ttfamily \mbox{\hyperlink{G04HitClass_8hh_a2f1c7ebe8ddd94255a20fa44c1fcc9f5}{Hits\+Collection}}$\ast$ G04\+Sensitive\+Detector\+::f\+Hits\+Collection\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/G04\+Sensitive\+Detector.\+hh\item 
-src/G04\+Sensitive\+Detector.\+cc\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{G04SensitiveDetector_8hh}{G04\+Sensitive\+Detector.\+hh}}\item 
+src/\mbox{\hyperlink{G04SensitiveDetector_8cc}{G04\+Sensitive\+Detector.\+cc}}\end{DoxyCompactItemize}

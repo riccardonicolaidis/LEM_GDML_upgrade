@@ -1,5 +1,5 @@
-\doxysection{G04\+Detector\+Construction Class Reference}
-\hypertarget{classG04DetectorConstruction}{}\label{classG04DetectorConstruction}\index{G04DetectorConstruction@{G04DetectorConstruction}}
+\hypertarget{classG04DetectorConstruction}{}\doxysection{G04\+Detector\+Construction Class Reference}
+\label{classG04DetectorConstruction}\index{G04DetectorConstruction@{G04DetectorConstruction}}
 
 
 Detector construction for laoding GDML geometry.  
@@ -15,33 +15,107 @@ Inheritance diagram for G04\+Detector\+Construction\+:\begin{figure}[H]
 \includegraphics[height=2.000000cm]{classG04DetectorConstruction}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classG04DetectorConstruction_adf13388beb77ba65c0dba163dd13c260}\label{classG04DetectorConstruction_adf13388beb77ba65c0dba163dd13c260} 
-{\bfseries G04\+Detector\+Construction} (const G4\+GDMLParser \&parser, \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} \texorpdfstring{$\ast$}{*}steering)
+\mbox{\hyperlink{classG04DetectorConstruction_adf13388beb77ba65c0dba163dd13c260}{G04\+Detector\+Construction}} (const G4\+GDMLParser \&parser, \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} $\ast$steering)
 \item 
-\Hypertarget{classG04DetectorConstruction_a6c28f158224041b95721a1ff217438a0}\label{classG04DetectorConstruction_a6c28f158224041b95721a1ff217438a0} 
-virtual G4\+VPhysical\+Volume \texorpdfstring{$\ast$}{*} {\bfseries Construct} ()
+virtual G4\+VPhysical\+Volume $\ast$ \mbox{\hyperlink{classG04DetectorConstruction_a6c28f158224041b95721a1ff217438a0}{Construct}} ()
 \item 
-\Hypertarget{classG04DetectorConstruction_a797bb400803daac054a50b896c27a6bc}\label{classG04DetectorConstruction_a797bb400803daac054a50b896c27a6bc} 
-virtual void {\bfseries Construct\+SDand\+Field} ()
+virtual void \mbox{\hyperlink{classG04DetectorConstruction_a797bb400803daac054a50b896c27a6bc}{Construct\+SDand\+Field}} ()
 \item 
-\Hypertarget{classG04DetectorConstruction_aa2f5fd22e67b35e67e38ba35a8bf6f6a}\label{classG04DetectorConstruction_aa2f5fd22e67b35e67e38ba35a8bf6f6a} 
-const G4\+GDMLParser \& {\bfseries Get\+Parser} () const
+const G4\+GDMLParser \& \mbox{\hyperlink{classG04DetectorConstruction_a4859f30a587b7b237d0f8663d80653ad}{Get\+Parser}} () const
 \item 
-\Hypertarget{classG04DetectorConstruction_ada12e9d69d48f6b5a2da44449a81e473}\label{classG04DetectorConstruction_ada12e9d69d48f6b5a2da44449a81e473} 
-const \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Steering} () const
+const \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} $\ast$ \mbox{\hyperlink{classG04DetectorConstruction_aad96e2a3dff745f6feb8072de7eafcd8}{Get\+Steering}} () const
 \item 
-\Hypertarget{classG04DetectorConstruction_a05268bdc0ccced612fbc265c7b82ddb3}\label{classG04DetectorConstruction_a05268bdc0ccced612fbc265c7b82ddb3} 
-G4int {\bfseries Get\+Number\+Of\+Sensitive\+Detectors} () const
+G4int \mbox{\hyperlink{classG04DetectorConstruction_a05268bdc0ccced612fbc265c7b82ddb3}{Get\+Number\+Of\+Sensitive\+Detectors}} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const G4\+GDMLParser \& \mbox{\hyperlink{classG04DetectorConstruction_a116fde2ff2e46c8b2fe601bb1602833f}{f\+Parser}}
+\item 
+\mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} $\ast$ \mbox{\hyperlink{classG04DetectorConstruction_a98091752ba32a5835f8b30c4b8f5fb36}{f\+Steering}}
+\item 
+G4int \mbox{\hyperlink{classG04DetectorConstruction_a6acbb80edf85e85ab4b03bcf362a7f13}{Number\+Of\+Sensitive\+Detectors}}
+\item 
+G4\+String \mbox{\hyperlink{classG04DetectorConstruction_ae3edb351a9e3ed59f9035ec232191773}{Output\+Text\+Folder}}
 \end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Detector construction for laoding GDML geometry. 
 
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classG04DetectorConstruction_adf13388beb77ba65c0dba163dd13c260}\label{classG04DetectorConstruction_adf13388beb77ba65c0dba163dd13c260}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!G04DetectorConstruction@{G04DetectorConstruction}}
+\index{G04DetectorConstruction@{G04DetectorConstruction}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{G04DetectorConstruction()}{G04DetectorConstruction()}}
+{\footnotesize\ttfamily G04\+Detector\+Construction\+::\+G04\+Detector\+Construction (\begin{DoxyParamCaption}\item[{const G4\+GDMLParser \&}]{parser,  }\item[{\mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} $\ast$}]{steering }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classG04DetectorConstruction_a6c28f158224041b95721a1ff217438a0}\label{classG04DetectorConstruction_a6c28f158224041b95721a1ff217438a0}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!Construct@{Construct}}
+\index{Construct@{Construct}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{Construct()}{Construct()}}
+{\footnotesize\ttfamily G4\+VPhysical\+Volume $\ast$ G04\+Detector\+Construction\+::\+Construct (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classG04DetectorConstruction_a797bb400803daac054a50b896c27a6bc}\label{classG04DetectorConstruction_a797bb400803daac054a50b896c27a6bc}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!ConstructSDandField@{ConstructSDandField}}
+\index{ConstructSDandField@{ConstructSDandField}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{ConstructSDandField()}{ConstructSDandField()}}
+{\footnotesize\ttfamily void G04\+Detector\+Construction\+::\+Construct\+SDand\+Field (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classG04DetectorConstruction_a05268bdc0ccced612fbc265c7b82ddb3}\label{classG04DetectorConstruction_a05268bdc0ccced612fbc265c7b82ddb3}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!GetNumberOfSensitiveDetectors@{GetNumberOfSensitiveDetectors}}
+\index{GetNumberOfSensitiveDetectors@{GetNumberOfSensitiveDetectors}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{GetNumberOfSensitiveDetectors()}{GetNumberOfSensitiveDetectors()}}
+{\footnotesize\ttfamily G4int G04\+Detector\+Construction\+::\+Get\+Number\+Of\+Sensitive\+Detectors (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classG04DetectorConstruction_a4859f30a587b7b237d0f8663d80653ad}\label{classG04DetectorConstruction_a4859f30a587b7b237d0f8663d80653ad}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!GetParser@{GetParser}}
+\index{GetParser@{GetParser}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{GetParser()}{GetParser()}}
+{\footnotesize\ttfamily const G4\+GDMLParser\& G04\+Detector\+Construction\+::\+Get\+Parser (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+\mbox{\Hypertarget{classG04DetectorConstruction_aad96e2a3dff745f6feb8072de7eafcd8}\label{classG04DetectorConstruction_aad96e2a3dff745f6feb8072de7eafcd8}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!GetSteering@{GetSteering}}
+\index{GetSteering@{GetSteering}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{GetSteering()}{GetSteering()}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}}$\ast$ G04\+Detector\+Construction\+::\+Get\+Steering (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classG04DetectorConstruction_a116fde2ff2e46c8b2fe601bb1602833f}\label{classG04DetectorConstruction_a116fde2ff2e46c8b2fe601bb1602833f}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!fParser@{fParser}}
+\index{fParser@{fParser}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{fParser}{fParser}}
+{\footnotesize\ttfamily const G4\+GDMLParser\& G04\+Detector\+Construction\+::f\+Parser\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04DetectorConstruction_a98091752ba32a5835f8b30c4b8f5fb36}\label{classG04DetectorConstruction_a98091752ba32a5835f8b30c4b8f5fb36}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!fSteering@{fSteering}}
+\index{fSteering@{fSteering}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{fSteering}{fSteering}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}}$\ast$ G04\+Detector\+Construction\+::f\+Steering\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04DetectorConstruction_a6acbb80edf85e85ab4b03bcf362a7f13}\label{classG04DetectorConstruction_a6acbb80edf85e85ab4b03bcf362a7f13}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!NumberOfSensitiveDetectors@{NumberOfSensitiveDetectors}}
+\index{NumberOfSensitiveDetectors@{NumberOfSensitiveDetectors}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{NumberOfSensitiveDetectors}{NumberOfSensitiveDetectors}}
+{\footnotesize\ttfamily G4int G04\+Detector\+Construction\+::\+Number\+Of\+Sensitive\+Detectors\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04DetectorConstruction_ae3edb351a9e3ed59f9035ec232191773}\label{classG04DetectorConstruction_ae3edb351a9e3ed59f9035ec232191773}} 
+\index{G04DetectorConstruction@{G04DetectorConstruction}!OutputTextFolder@{OutputTextFolder}}
+\index{OutputTextFolder@{OutputTextFolder}!G04DetectorConstruction@{G04DetectorConstruction}}
+\doxysubsubsection{\texorpdfstring{OutputTextFolder}{OutputTextFolder}}
+{\footnotesize\ttfamily G4\+String G04\+Detector\+Construction\+::\+Output\+Text\+Folder\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/G04\+Detector\+Construction.\+hh\item 
+include/\mbox{\hyperlink{G04DetectorConstruction_8hh}{G04\+Detector\+Construction.\+hh}}\item 
 src/\mbox{\hyperlink{G04DetectorConstruction_8cc}{G04\+Detector\+Construction.\+cc}}\end{DoxyCompactItemize}

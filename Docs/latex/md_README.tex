@@ -1,15 +1,9 @@
-\chapter{Low Energy Module (LEM)\+: Upgrade with geometry from CAD file}
-\hypertarget{md_README}{}\label{md_README}\index{Low Energy Module (LEM): Upgrade with geometry from CAD file@{Low Energy Module (LEM): Upgrade with geometry from CAD file}}
-\label{md_README_autotoc_md0}%
-\Hypertarget{md_README_autotoc_md0}%
-
-
- \hypertarget{md_README_autotoc_md1}{}\doxysection{\texorpdfstring{Brief description}{Brief description}}\label{md_README_autotoc_md1}
+ \hypertarget{md_README_autotoc_md1}{}\doxysection{Brief description}\label{md_README_autotoc_md1}
 This repository contains the source code for the Geant4 simulation of the Low Energy Module, a submodule fo the Zire\`{} detector onboard teh NUSES platform.
 
 
 
-This simulation is inherited by the Geant4 example {\bfseries{G04}} \href{https://gitlab.cern.ch/geant4/geant4/-/tree/v11.1.1/examples/extended/persistency/gdml/G04}{\texttt{ Link to the G04 example}}.\hypertarget{md_README_autotoc_md2}{}\doxysection{\texorpdfstring{Softwares adopted}{Softwares adopted}}\label{md_README_autotoc_md2}
+This simulation is inherited by the Geant4 example {\bfseries{G04}} \href{https://gitlab.cern.ch/geant4/geant4/-/tree/v11.1.1/examples/extended/persistency/gdml/G04}{\texttt{ Link to the G04 example}}.\hypertarget{md_README_autotoc_md2}{}\doxysection{Softwares adopted}\label{md_README_autotoc_md2}
 Here the list of softwares and tools I used for the realisation of this repository\+:
 \begin{DoxyEnumerate}
 \item Fusion 360 by Auto\+Desk for the implementation of a plausible geometry of the LEM 
@@ -21,7 +15,7 @@ Here the list of softwares and tools I used for the realisation of this reposito
 
 \begin{DoxyEnumerate}
 \item The Free\+CAD workbench was then used for the assignment of the materials to all of the volumes within the geometry. It can be installed via the {\bfseries{Addon Manager}}. See the linked repository on Github \href{https://github.com/KeithSloan/GDML}{\texttt{ https\+://github.\+com/\+Keith\+Sloan/\+GDML}}
-\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md3}{}\doxysection{\texorpdfstring{Link and resources}{Link and resources}}\label{md_README_autotoc_md3}
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md3}{}\doxysection{Link and resources}\label{md_README_autotoc_md3}
 
 \begin{DoxyItemize}
 \item Geant4 website \href{https://geant4.web.cern.ch/}{\texttt{ https\+://geant4.\+web.\+cern.\+ch/}}
@@ -30,167 +24,185 @@ Here the list of softwares and tools I used for the realisation of this reposito
 \item Free\+CAD website \href{https://www.freecad.org/}{\texttt{ https\+://www.\+freecad.\+org/}}
 \item Free\+CAD GDML workbench \href{https://github.com/KeithSloan/GDML}{\texttt{ https\+://github.\+com/\+Keith\+Sloan/\+GDML}}
 \item Fusion 360 software \href{https://www.autodesk.it/}{\texttt{ https\+://www.\+autodesk.\+it/}}
-\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysection{\texorpdfstring{Free\+CAD GDML Workbench commands}{FreeCAD GDML Workbench commands}}\label{md_README_autotoc_md4}
+\end{DoxyItemize}\hypertarget{md_README_autotoc_md4}{}\doxysection{Free\+CAD GDML Workbench commands}\label{md_README_autotoc_md4}
 Here some useful commands for the utilization of the Free\+CAD Python console with the GDML workbench
 \begin{DoxyItemize}
-\item ` Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed').get\+Object(\textquotesingle{}GDMLBox\+\_\+\+World\+Box\textquotesingle{}).material = u"{}\+G4\+\_\+\+Galactic"{}{\ttfamily \+: Assegnazione del materiale G4\+\_\+\+Galactic al volume world\+Vol -\/}Gui.\+activate\+Workbench("{}\+GDML\+\_\+\+Workbench"{})\`{} \+: Command for the activation of the Workbench GDML
+\item ` Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed').get\+Object(\textquotesingle{}GDMLBox\+\_\+\+World\+Box\textquotesingle{}).material = u\char`\"{}\+G4\+\_\+\+Galactic\char`\"{}{\ttfamily \+: Assegnazione del materiale G4\+\_\+\+Galactic al volume world\+Vol -\/}Gui.\+activate\+Workbench(\char`\"{}\+GDML\+\_\+\+Workbench\char`\"{})\`{} \+: Command for the activation of the Workbench GDML
 \end{DoxyItemize}
 \begin{DoxyEnumerate}
-\item `Gui.\+run\+Command(\textquotesingle{}Box\+Command',0){\ttfamily \+: Command for the creation of a G4\+Box for the world volume 2.}Gui.\+Selection.\+add\+Selection(\textquotesingle{}Unnamed\textquotesingle{},\textquotesingle{}LV\+\_\+\+Box\textquotesingle{}){\ttfamily \+: Select the part containing the world volume 3.}Gui.\+Selection.\+add\+Selection(\textquotesingle{}Unnamed\textquotesingle{},\textquotesingle{}LV\+\_\+\+Box\textquotesingle{},\textquotesingle{}GDMLBox\+\_\+\+Box.\textquotesingle{}){\ttfamily Select the GDML Box object under the respective part 4.}Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed\textquotesingle{}).get\+Object(\textquotesingle{}GDMLBox\+\_\+\+Box\textquotesingle{}).material = u"{}\+G4\+\_\+\+Galactic"{}{\ttfamily \+: Change the material of the G4\+Box 5.}Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed\textquotesingle{}).get\+Object(\textquotesingle{}LV\+\_\+\+Box\textquotesingle{}).Label = "{}world\+Vol"{}{\ttfamily \+: rename the object label 6.}Gui.\+active\+View().set\+Active\+Object(\textquotesingle{}part\textquotesingle{}, App.\+active\+Document().Part)` Generate a part inside the document
+\item `Gui.\+run\+Command(\textquotesingle{}Box\+Command',0){\ttfamily \+: Command for the creation of a G4\+Box for the world volume 2.}Gui.\+Selection.\+add\+Selection(\textquotesingle{}Unnamed\textquotesingle{},\textquotesingle{}LV\+\_\+\+Box\textquotesingle{}){\ttfamily \+: Select the part containing the world volume 3.}Gui.\+Selection.\+add\+Selection(\textquotesingle{}Unnamed\textquotesingle{},\textquotesingle{}LV\+\_\+\+Box\textquotesingle{},\textquotesingle{}GDMLBox\+\_\+\+Box.\textquotesingle{}){\ttfamily Select the GDML Box object under the respective part 4.}Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed\textquotesingle{}).get\+Object(\textquotesingle{}GDMLBox\+\_\+\+Box\textquotesingle{}).material = u\char`\"{}\+G4\+\_\+\+Galactic\char`\"{}{\ttfamily \+: Change the material of the G4\+Box 5.}Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed\textquotesingle{}).get\+Object(\textquotesingle{}LV\+\_\+\+Box\textquotesingle{}).Label = \char`\"{}world\+Vol\char`\"{}{\ttfamily \+: rename the object label 6.}Gui.\+active\+View().set\+Active\+Object(\textquotesingle{}part\textquotesingle{}, App.\+active\+Document().Part)\`{} Generate a part inside the document
 \item Change the link between the parts. Move the created part under the world volume part 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{App.getDocument('Unnamed\&rsquo;).getObject('Part').adjustRelativeLinks(App.getDocument('Unnamed').getObject('LV\_Box'))}
+\DoxyCodeLine{App.getDocument('Unnamed').getObject('Part').adjustRelativeLinks(App.getDocument('Unnamed').getObject('LV\_Box'))}
 \DoxyCodeLine{}
 \DoxyCodeLine{App.getDocument("{}Unnamed"{}).getObject("{}LV\_Box"{}).addObject(App.getDocument("{}Unnamed"{}).getObject("{}Part"{}))}
 
 \end{DoxyCode}
 
-\item `Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed').get\+Object(\textquotesingle{}Part\textquotesingle{}).Label = "{}\+LEM\+\_\+\+Assembly"{}\`{} Rename the part under the world volume to "{}\+LEM\+\_\+\+Assembly"{}. Here we have to put the solids from the step file
-\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md5}{}\doxysection{\texorpdfstring{Run the simulation}{Run the simulation}}\label{md_README_autotoc_md5}
-\hypertarget{md_README_autotoc_md6}{}\doxysubsection{\texorpdfstring{With visualization}{With visualization}}\label{md_README_autotoc_md6}
+\item `Free\+CAD.\+get\+Document(\textquotesingle{}Unnamed').get\+Object(\textquotesingle{}Part\textquotesingle{}).Label = \char`\"{}\+LEM\+\_\+\+Assembly\char`\"{}\`{} Rename the part under the world volume to \char`\"{}\+LEM\+\_\+\+Assembly\char`\"{}. Here we have to put the solids from the step file
+\end{DoxyEnumerate}\hypertarget{md_README_autotoc_md5}{}\doxysection{Run the simulation}\label{md_README_autotoc_md5}
+\hypertarget{md_README_autotoc_md6}{}\doxysubsection{With visualization}\label{md_README_autotoc_md6}
 For running the simulation with the visualization use the bash script {\bfseries{simulation\+Vis.\+sh}}. The commands in this script are listed below. The executable file is named {\bfseries{gdml\+\_\+det}}. It is {\bfseries{MANDATORY}} to give an argument to the executable which is the path to the {\bfseries{GDML}} file containing the description of the detector.
 
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{cd\ ./build}
-\DoxyCodeLine{cmake\ ..}
+\DoxyCodeLine{cd ./build}
+\DoxyCodeLine{cmake ..}
 \DoxyCodeLine{make}
-\DoxyCodeLine{./gdml\_det\ LowEnergyVolume\_WorldVolume.gdml}
-\DoxyCodeLine{cd\ ..}
+\DoxyCodeLine{./gdml\_det LowEnergyVolume\_WorldVolume.gdml}
+\DoxyCodeLine{cd ..}
 
 \end{DoxyCode}
-\hypertarget{md_README_autotoc_md7}{}\doxysection{\texorpdfstring{Detector concept}{Detector concept}}\label{md_README_autotoc_md7}
+\hypertarget{md_README_autotoc_md7}{}\doxysection{Detector concept}\label{md_README_autotoc_md7}
 The detector is designed in the following way. From the external to the internal part there are\+:
 \begin{DoxyItemize}
 \item An aluminium mask formin a collimator. The Aluminium layer is 0.\+8 cm thick
 \item An active Veto made of plastic scintillator EJ-\/200 1 cm thick
 \item A first Silicon layer \$100 \textbackslash{} \textbackslash{}mu m\$ thick. This is the \$\textbackslash{}\+Delta E\$ layer in which only a small fraction of the energy is deposited. This amount of energy is sometimes called Linear Energy Transfer (LET). This because ~\newline
- \$\$ \textbackslash{}\+Delta E \textbackslash{}approx \textbackslash{}biggl\texorpdfstring{$\vert$}{|} -\/ \textbackslash{}frac\{1\}\{\textbackslash{}rho\} \textbackslash{}frac\{dE\}\{dx\} \textbackslash{}biggr\texorpdfstring{$\vert$}{|} \textbackslash{}rho\+\_\+\{Si\} \textbackslash{}times \textbackslash{}\+Delta x \$\$
+ \$\$ \textbackslash{}\+Delta E \textbackslash{}approx \textbackslash{}biggl$\vert$ -\/ \textbackslash{}frac\{1\}\{\textbackslash{}rho\} \textbackslash{}frac\{dE\}\{dx\} \textbackslash{}biggr$\vert$ \textbackslash{}rho\+\_\+\{Si\} \textbackslash{}times \textbackslash{}\+Delta x \$\$
 \item Then, a second layer made of Silicon with larger thickness is the layer in which the particle has to stop. The simulation has the setting to change this thickness and also to select another option of the material which is the CZT, a denser material.
 \item An active veto, made of plastic scintillator Ej-\/200 is then positioned on the back. If a particle is too energetic, it reaches the veto which wiull trigger ignoring that event.
 \item Additional plastic scintillator layers are added to extend te observed energy window to higher energies
 \end{DoxyItemize}
 
-The detector is based on the \$\textbackslash{}\+Delta E -\/ E\$ technique. This simulation is aimed at characterising the energy deposition inside the materials using the correct geometry of the instrument.\hypertarget{md_README_autotoc_md8}{}\doxysection{\texorpdfstring{Directory structure}{Directory structure}}\label{md_README_autotoc_md8}
+The detector is based on the \$\textbackslash{}\+Delta E -\/ E\$ technique. This simulation is aimed at characterising the energy deposition inside the materials using the correct geometry of the instrument.\hypertarget{md_README_autotoc_md8}{}\doxysection{Directory structure}\label{md_README_autotoc_md8}
 At the moment, the directory structure is the following
 
 
 \begin{DoxyCode}{0}
 \DoxyCodeLine{.}
-\DoxyCodeLine{├──\ build}
-\DoxyCodeLine{│\ \ \ ├──\ auxiliary.gdml}
-\DoxyCodeLine{│\ \ \ ├──\ CMakeCache.txt}
-\DoxyCodeLine{│\ \ \ ├──\ CMakeFiles}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ 3.22.1}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ CMakeCCompiler.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ CMakeCXXCompiler.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ CMakeDetermineCompilerABI\_C.bin}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ CMakeDetermineCompilerABI\_CXX.bin}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ CMakeSystem.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ CompilerIdC}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ │\ \ \ ├──\ a.out}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ │\ \ \ ├──\ CMakeCCompilerId.c}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ │\ \ \ └──\ tmp}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ CompilerIdCXX}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ a.out}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ CMakeCXXCompilerId.cpp}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ └──\ tmp}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ cmake.check\_cache}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ CMakeDirectoryInformation.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ CMakeOutput.log}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ CMakeRuleHashes.txt}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ CMakeTmp}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ G04.dir}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ build.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ cmake\_clean.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ compiler\_depend.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ compiler\_depend.ts}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ DependInfo.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ progress.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ gdml\_det.dir}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ build.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ cmake\_clean.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ compiler\_depend.internal}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ compiler\_depend.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ compiler\_depend.ts}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ DependInfo.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ depend.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ flags.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ gdml\_det.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ gdml\_det.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ link.txt}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ ├──\ progress.make}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ └──\ src}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04ActionInitialization.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04ActionInitialization.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04DetectorConstruction.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04DetectorConstruction.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04EventAction.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04EventAction.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04HitClass.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04HitClass.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04PrimaryGeneratorAction.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04PrimaryGeneratorAction.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04RunAction.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04RunAction.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04SensitiveDetector.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04SensitiveDetector.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ ├──\ G04TrackingAction.cc.o}
-\DoxyCodeLine{│\ \ \ │\ \ \ │\ \ \ \ \ \ \ └──\ G04TrackingAction.cc.o.d}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Makefile2}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ Makefile.cmake}
-\DoxyCodeLine{│\ \ \ │\ \ \ ├──\ progress.marks}
-\DoxyCodeLine{│\ \ \ │\ \ \ └──\ TargetDirectories.txt}
-\DoxyCodeLine{│\ \ \ ├──\ cmake\_install.cmake}
-\DoxyCodeLine{│\ \ \ ├──\ defaultSetting.mac}
-\DoxyCodeLine{│\ \ \ ├──\ g04.mac}
-\DoxyCodeLine{│\ \ \ ├──\ G4History.macro}
-\DoxyCodeLine{│\ \ \ ├──\ gdml\_det}
-\DoxyCodeLine{│\ \ \ ├──\ init\_vis.mac}
-\DoxyCodeLine{│\ \ \ ├──\ LowEnergyVolume\_WorldVolume.gdml}
-\DoxyCodeLine{│\ \ \ ├──\ Makefile}
-\DoxyCodeLine{│\ \ \ └──\ vis.mac}
-\DoxyCodeLine{├──\ CMakeLists.txt}
-\DoxyCodeLine{├──\ docs}
-\DoxyCodeLine{│\ \ \ ├──\ G4Logo.png}
-\DoxyCodeLine{│\ \ \ └──\ LEM\_logo.PNG}
-\DoxyCodeLine{├──\ gdml\_det.cc}
-\DoxyCodeLine{├──\ GdmlFiles}
-\DoxyCodeLine{│\ \ \ ├──\ auxiliary.gdml}
-\DoxyCodeLine{│\ \ \ └──\ LowEnergyVolume\_WorldVolume.gdml}
-\DoxyCodeLine{├──\ GNUmakefile}
-\DoxyCodeLine{├──\ History}
-\DoxyCodeLine{├──\ include}
-\DoxyCodeLine{│\ \ \ ├──\ G04ActionInitialization.hh}
-\DoxyCodeLine{│\ \ \ ├──\ G04DetectorConstruction.hh}
-\DoxyCodeLine{│\ \ \ ├──\ G04EventAction.hh}
-\DoxyCodeLine{│\ \ \ ├──\ G04HitClass.hh}
-\DoxyCodeLine{│\ \ \ ├──\ G04PrimaryGeneratorAction.hh}
-\DoxyCodeLine{│\ \ \ ├──\ G04RunAction.hh}
-\DoxyCodeLine{│\ \ \ ├──\ G04SensitiveDetector.hh}
-\DoxyCodeLine{│\ \ \ └──\ G04TrackingAction.hh}
-\DoxyCodeLine{├──\ macro}
-\DoxyCodeLine{│\ \ \ ├──\ defaultSetting.mac}
-\DoxyCodeLine{│\ \ \ ├──\ g04.mac}
-\DoxyCodeLine{│\ \ \ ├──\ init\_vis.mac}
-\DoxyCodeLine{│\ \ \ └──\ vis.mac}
-\DoxyCodeLine{├──\ OutputText}
-\DoxyCodeLine{│\ \ \ ├──\ GDML\_AuxiliaryInfo.txt}
-\DoxyCodeLine{│\ \ \ ├──\ GDML\_MaterialInfo.txt}
-\DoxyCodeLine{│\ \ \ └──\ GDML\_SolidNames.txt}
-\DoxyCodeLine{├──\ README}
-\DoxyCodeLine{├──\ simulationVis.sh}
-\DoxyCodeLine{└──\ src}
-\DoxyCodeLine{\ \ \ \ ├──\ G04ActionInitialization.cc}
-\DoxyCodeLine{\ \ \ \ ├──\ G04DetectorConstruction.cc}
-\DoxyCodeLine{\ \ \ \ ├──\ G04EventAction.cc}
-\DoxyCodeLine{\ \ \ \ ├──\ G04HitClass.cc}
-\DoxyCodeLine{\ \ \ \ ├──\ G04PrimaryGeneratorAction.cc}
-\DoxyCodeLine{\ \ \ \ ├──\ G04RunAction.cc}
-\DoxyCodeLine{\ \ \ \ ├──\ G04SensitiveDetector.cc}
-\DoxyCodeLine{\ \ \ \ └──\ G04TrackingAction.cc}
+\DoxyCodeLine{├── build}
+\DoxyCodeLine{│   ├── auxiliary.gdml}
+\DoxyCodeLine{│   ├── CMakeCache.txt}
+\DoxyCodeLine{│   ├── CMakeFiles}
+\DoxyCodeLine{│   │   ├── 3.22.1}
+\DoxyCodeLine{│   │   │   ├── CMakeCCompiler.cmake}
+\DoxyCodeLine{│   │   │   ├── CMakeCXXCompiler.cmake}
+\DoxyCodeLine{│   │   │   ├── CMakeDetermineCompilerABI\_C.bin}
+\DoxyCodeLine{│   │   │   ├── CMakeDetermineCompilerABI\_CXX.bin}
+\DoxyCodeLine{│   │   │   ├── CMakeSystem.cmake}
+\DoxyCodeLine{│   │   │   ├── CompilerIdC}
+\DoxyCodeLine{│   │   │   │   ├── a.out}
+\DoxyCodeLine{│   │   │   │   ├── CMakeCCompilerId.c}
+\DoxyCodeLine{│   │   │   │   └── tmp}
+\DoxyCodeLine{│   │   │   └── CompilerIdCXX}
+\DoxyCodeLine{│   │   │       ├── a.out}
+\DoxyCodeLine{│   │   │       ├── CMakeCXXCompilerId.cpp}
+\DoxyCodeLine{│   │   │       └── tmp}
+\DoxyCodeLine{│   │   ├── cmake.check\_cache}
+\DoxyCodeLine{│   │   ├── CMakeDirectoryInformation.cmake}
+\DoxyCodeLine{│   │   ├── CMakeOutput.log}
+\DoxyCodeLine{│   │   ├── CMakeRuleHashes.txt}
+\DoxyCodeLine{│   │   ├── CMakeTmp}
+\DoxyCodeLine{│   │   ├── G04.dir}
+\DoxyCodeLine{│   │   │   ├── build.make}
+\DoxyCodeLine{│   │   │   ├── cmake\_clean.cmake}
+\DoxyCodeLine{│   │   │   ├── compiler\_depend.make}
+\DoxyCodeLine{│   │   │   ├── compiler\_depend.ts}
+\DoxyCodeLine{│   │   │   ├── DependInfo.cmake}
+\DoxyCodeLine{│   │   │   └── progress.make}
+\DoxyCodeLine{│   │   ├── gdml\_det.dir}
+\DoxyCodeLine{│   │   │   ├── build.make}
+\DoxyCodeLine{│   │   │   ├── cmake\_clean.cmake}
+\DoxyCodeLine{│   │   │   ├── compiler\_depend.internal}
+\DoxyCodeLine{│   │   │   ├── compiler\_depend.make}
+\DoxyCodeLine{│   │   │   ├── compiler\_depend.ts}
+\DoxyCodeLine{│   │   │   ├── DependInfo.cmake}
+\DoxyCodeLine{│   │   │   ├── depend.make}
+\DoxyCodeLine{│   │   │   ├── flags.make}
+\DoxyCodeLine{│   │   │   ├── gdml\_det.cc.o}
+\DoxyCodeLine{│   │   │   ├── gdml\_det.cc.o.d}
+\DoxyCodeLine{│   │   │   ├── link.txt}
+\DoxyCodeLine{│   │   │   ├── progress.make}
+\DoxyCodeLine{│   │   │   └── src}
+\DoxyCodeLine{│   │   │       ├── G04ActionInitialization.cc.o}
+\DoxyCodeLine{│   │   │       ├── G04ActionInitialization.cc.o.d}
+\DoxyCodeLine{│   │   │       ├── G04DetectorConstruction.cc.o}
+\DoxyCodeLine{│   │   │       ├── G04DetectorConstruction.cc.o.d}
+\DoxyCodeLine{│   │   │       ├── G04EventAction.cc.o}
+\DoxyCodeLine{│   │   │       ├── G04EventAction.cc.o.d}
+\DoxyCodeLine{│   │   │       ├── G04HitClass.cc.o}
+\DoxyCodeLine{│   │   │       ├── G04HitClass.cc.o.d}
+\DoxyCodeLine{│   │   │       ├── G04PrimaryGeneratorAction.cc.o}
+\DoxyCodeLine{│   │   │       ├── G04PrimaryGeneratorAction.cc.o.d}
+\DoxyCodeLine{│   │   │       ├── G04RunAction.cc.o}
+\DoxyCodeLine{│   │   │       ├── G04RunAction.cc.o.d}
+\DoxyCodeLine{│   │   │       ├── G04SensitiveDetector.cc.o}
+\DoxyCodeLine{│   │   │       ├── G04SensitiveDetector.cc.o.d}
+\DoxyCodeLine{│   │   │       ├── G04TrackingAction.cc.o}
+\DoxyCodeLine{│   │   │       └── G04TrackingAction.cc.o.d}
+\DoxyCodeLine{│   │   ├── Makefile2}
+\DoxyCodeLine{│   │   ├── Makefile.cmake}
+\DoxyCodeLine{│   │   ├── progress.marks}
+\DoxyCodeLine{│   │   └── TargetDirectories.txt}
+\DoxyCodeLine{│   ├── cmake\_install.cmake}
+\DoxyCodeLine{│   ├── defaultSetting.mac}
+\DoxyCodeLine{│   ├── g04.mac}
+\DoxyCodeLine{│   ├── G4History.macro}
+\DoxyCodeLine{│   ├── gdml\_det}
+\DoxyCodeLine{│   ├── init\_vis.mac}
+\DoxyCodeLine{│   ├── LowEnergyVolume\_WorldVolume.gdml}
+\DoxyCodeLine{│   ├── Makefile}
+\DoxyCodeLine{│   └── vis.mac}
+\DoxyCodeLine{├── CMakeLists.txt}
+\DoxyCodeLine{├── docs}
+\DoxyCodeLine{│   ├── G4Logo.png}
+\DoxyCodeLine{│   └── LEM\_logo.PNG}
+\DoxyCodeLine{├── gdml\_det.cc}
+\DoxyCodeLine{├── GdmlFiles}
+\DoxyCodeLine{│   ├── auxiliary.gdml}
+\DoxyCodeLine{│   └── LowEnergyVolume\_WorldVolume.gdml}
+\DoxyCodeLine{├── GNUmakefile}
+\DoxyCodeLine{├── History}
+\DoxyCodeLine{├── include}
+\DoxyCodeLine{│   ├── G04ActionInitialization.hh}
+\DoxyCodeLine{│   ├── G04DetectorConstruction.hh}
+\DoxyCodeLine{│   ├── G04EventAction.hh}
+\DoxyCodeLine{│   ├── G04HitClass.hh}
+\DoxyCodeLine{│   ├── G04PrimaryGeneratorAction.hh}
+\DoxyCodeLine{│   ├── G04RunAction.hh}
+\DoxyCodeLine{│   ├── G04SensitiveDetector.hh}
+\DoxyCodeLine{│   └── G04TrackingAction.hh}
+\DoxyCodeLine{├── macro}
+\DoxyCodeLine{│   ├── defaultSetting.mac}
+\DoxyCodeLine{│   ├── g04.mac}
+\DoxyCodeLine{│   ├── init\_vis.mac}
+\DoxyCodeLine{│   └── vis.mac}
+\DoxyCodeLine{├── OutputText}
+\DoxyCodeLine{│   ├── GDML\_AuxiliaryInfo.txt}
+\DoxyCodeLine{│   ├── GDML\_MaterialInfo.txt}
+\DoxyCodeLine{│   └── GDML\_SolidNames.txt}
+\DoxyCodeLine{├── README}
+\DoxyCodeLine{├── simulationVis.sh}
+\DoxyCodeLine{└── src}
+\DoxyCodeLine{    ├── G04ActionInitialization.cc}
+\DoxyCodeLine{    ├── G04DetectorConstruction.cc}
+\DoxyCodeLine{    ├── G04EventAction.cc}
+\DoxyCodeLine{    ├── G04HitClass.cc}
+\DoxyCodeLine{    ├── G04PrimaryGeneratorAction.cc}
+\DoxyCodeLine{    ├── G04RunAction.cc}
+\DoxyCodeLine{    ├── G04SensitiveDetector.cc}
+\DoxyCodeLine{    └── G04TrackingAction.cc}
 \DoxyCodeLine{}
-\DoxyCodeLine{17\ directories,\ 95\ files}
+\DoxyCodeLine{17 directories, 95 files}
+
+\end{DoxyCode}
+\hypertarget{md_README_autotoc_md9}{}\doxysection{Doxygen documentation}\label{md_README_autotoc_md9}
+Doxygen documentation is available in the {\ttfamily Docs} folder. To generate it, run the following command in the main directory
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{doxygen Doxyfile}
+
+\end{DoxyCode}
+ To generate the pdf you need to add to the preamble of the {\ttfamily refman.\+tex} file the following line 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\(\backslash\)usepackage\{pmboxdraw\}}
+
+\end{DoxyCode}
+ This is needed to correctly display the tree structure of the classes. Then run the following commands 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make }
 
 \end{DoxyCode}
  

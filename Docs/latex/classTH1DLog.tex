@@ -1,31 +1,178 @@
-\doxysection{TH1\+DLog Class Reference}
-\hypertarget{classTH1DLog}{}\label{classTH1DLog}\index{TH1DLog@{TH1DLog}}
-\doxysubsubsection*{Public Member Functions}
+\hypertarget{classTH1DLog}{}\doxysection{TH1\+DLog Class Reference}
+\label{classTH1DLog}\index{TH1DLog@{TH1DLog}}
+
+
+{\ttfamily \#include $<$TH1\+DLog.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classTH1DLog_a0db6453579dd2e26aa0c5ff9e667c3f9}\label{classTH1DLog_a0db6453579dd2e26aa0c5ff9e667c3f9} 
-void {\bfseries Set\+XAxis} (double, double, int)
+\mbox{\hyperlink{classTH1DLog_a5523ae9d2716cd40b422ff703f842202}{TH1\+DLog}} ()
 \item 
-\Hypertarget{classTH1DLog_abf51d1e229cd43f0db68fa5341da093e}\label{classTH1DLog_abf51d1e229cd43f0db68fa5341da093e} 
-void {\bfseries Set\+Name} (TString)
+\mbox{\hyperlink{classTH1DLog_ae9ef4e29b9e537b862355ede62626a85}{$\sim$\+TH1\+DLog}} ()
 \item 
-\Hypertarget{classTH1DLog_abc7182507a9c98ab7964c28ce6073693}\label{classTH1DLog_abc7182507a9c98ab7964c28ce6073693} 
-void {\bfseries Set\+Title} (TString)
+void \mbox{\hyperlink{classTH1DLog_a0db6453579dd2e26aa0c5ff9e667c3f9}{Set\+XAxis}} (double, double, int)
 \item 
-\Hypertarget{classTH1DLog_ae0e60ffcdea1810477757c269eb5d8f7}\label{classTH1DLog_ae0e60ffcdea1810477757c269eb5d8f7} 
-void {\bfseries Set\+XTitle} (TString)
+void \mbox{\hyperlink{classTH1DLog_abf51d1e229cd43f0db68fa5341da093e}{Set\+Name}} (TString)
 \item 
-\Hypertarget{classTH1DLog_ae84b001da61b5f513c2fa30a238057c6}\label{classTH1DLog_ae84b001da61b5f513c2fa30a238057c6} 
-void {\bfseries Set\+YTitle} (TString)
+void \mbox{\hyperlink{classTH1DLog_abc7182507a9c98ab7964c28ce6073693}{Set\+Title}} (TString)
 \item 
-\Hypertarget{classTH1DLog_a6bf99ae5a44e52e8e0d81da270aa056f}\label{classTH1DLog_a6bf99ae5a44e52e8e0d81da270aa056f} 
-void {\bfseries Generate\+Histogram} ()
+void \mbox{\hyperlink{classTH1DLog_ae0e60ffcdea1810477757c269eb5d8f7}{Set\+XTitle}} (TString)
 \item 
-\Hypertarget{classTH1DLog_aac87e6ede9a8f5f160589f5662a41e40}\label{classTH1DLog_aac87e6ede9a8f5f160589f5662a41e40} 
-TH1D \texorpdfstring{$\ast$}{*} {\bfseries Get\+Histogram} ()
+void \mbox{\hyperlink{classTH1DLog_ae84b001da61b5f513c2fa30a238057c6}{Set\+YTitle}} (TString)
+\item 
+void \mbox{\hyperlink{classTH1DLog_a6bf99ae5a44e52e8e0d81da270aa056f}{Generate\+Histogram}} ()
+\item 
+TH1D $\ast$ \mbox{\hyperlink{classTH1DLog_aac87e6ede9a8f5f160589f5662a41e40}{Get\+Histogram}} ()
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+TH1D $\ast$ \mbox{\hyperlink{classTH1DLog_a6201ff954add20bdaf63d518f4d43ebc}{histogram}}
+\item 
+TString \mbox{\hyperlink{classTH1DLog_a5ceb07c2066d0715c8e211350860bddc}{Name}}
+\item 
+TString \mbox{\hyperlink{classTH1DLog_a725e9a50c2f55027d952f678cc5d102f}{Title}}
+\item 
+TString \mbox{\hyperlink{classTH1DLog_a14f495393837ba0d3e4afc2420bb9779}{XTitle}}
+\item 
+TString \mbox{\hyperlink{classTH1DLog_adaff6944b0b6e8b940c1677882de0850}{YTitle}}
+\item 
+double \mbox{\hyperlink{classTH1DLog_a53c394c7d43f62709f93e33ec24d792f}{x\+Min}}
+\item 
+double \mbox{\hyperlink{classTH1DLog_a028d9ed66a4791c939eaeaf21108d273}{x\+Max}}
+\item 
+int \mbox{\hyperlink{classTH1DLog_ac0b018c19368a749930d32324ee8c3cb}{NbinsX}}
+\item 
+double \mbox{\hyperlink{classTH1DLog_a5972131576e18346a274ba7b377bd21c}{x\+Min\+Log}}
+\item 
+double \mbox{\hyperlink{classTH1DLog_a8d7cf100deecc8f8b17b184dd03b432b}{x\+Max\+Log}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classTH1DLog_a5523ae9d2716cd40b422ff703f842202}\label{classTH1DLog_a5523ae9d2716cd40b422ff703f842202}} 
+\index{TH1DLog@{TH1DLog}!TH1DLog@{TH1DLog}}
+\index{TH1DLog@{TH1DLog}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{TH1DLog()}{TH1DLog()}}
+{\footnotesize\ttfamily TH1\+DLog\+::\+TH1\+DLog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTH1DLog_ae9ef4e29b9e537b862355ede62626a85}\label{classTH1DLog_ae9ef4e29b9e537b862355ede62626a85}} 
+\index{TH1DLog@{TH1DLog}!````~TH1DLog@{$\sim$TH1DLog}}
+\index{````~TH1DLog@{$\sim$TH1DLog}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{$\sim$TH1DLog()}{~TH1DLog()}}
+{\footnotesize\ttfamily TH1\+DLog\+::$\sim$\+TH1\+DLog (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classTH1DLog_a6bf99ae5a44e52e8e0d81da270aa056f}\label{classTH1DLog_a6bf99ae5a44e52e8e0d81da270aa056f}} 
+\index{TH1DLog@{TH1DLog}!GenerateHistogram@{GenerateHistogram}}
+\index{GenerateHistogram@{GenerateHistogram}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{GenerateHistogram()}{GenerateHistogram()}}
+{\footnotesize\ttfamily void TH1\+DLog\+::\+Generate\+Histogram (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTH1DLog_aac87e6ede9a8f5f160589f5662a41e40}\label{classTH1DLog_aac87e6ede9a8f5f160589f5662a41e40}} 
+\index{TH1DLog@{TH1DLog}!GetHistogram@{GetHistogram}}
+\index{GetHistogram@{GetHistogram}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{GetHistogram()}{GetHistogram()}}
+{\footnotesize\ttfamily TH1D $\ast$ TH1\+DLog\+::\+Get\+Histogram (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTH1DLog_abf51d1e229cd43f0db68fa5341da093e}\label{classTH1DLog_abf51d1e229cd43f0db68fa5341da093e}} 
+\index{TH1DLog@{TH1DLog}!SetName@{SetName}}
+\index{SetName@{SetName}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{SetName()}{SetName()}}
+{\footnotesize\ttfamily void TH1\+DLog\+::\+Set\+Name (\begin{DoxyParamCaption}\item[{TString}]{NameV }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTH1DLog_abc7182507a9c98ab7964c28ce6073693}\label{classTH1DLog_abc7182507a9c98ab7964c28ce6073693}} 
+\index{TH1DLog@{TH1DLog}!SetTitle@{SetTitle}}
+\index{SetTitle@{SetTitle}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{SetTitle()}{SetTitle()}}
+{\footnotesize\ttfamily void TH1\+DLog\+::\+Set\+Title (\begin{DoxyParamCaption}\item[{TString}]{TitleV }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTH1DLog_a0db6453579dd2e26aa0c5ff9e667c3f9}\label{classTH1DLog_a0db6453579dd2e26aa0c5ff9e667c3f9}} 
+\index{TH1DLog@{TH1DLog}!SetXAxis@{SetXAxis}}
+\index{SetXAxis@{SetXAxis}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{SetXAxis()}{SetXAxis()}}
+{\footnotesize\ttfamily void TH1\+DLog\+::\+Set\+XAxis (\begin{DoxyParamCaption}\item[{double}]{x\+MinV,  }\item[{double}]{x\+MaxV,  }\item[{int}]{Nbins\+XV }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTH1DLog_ae0e60ffcdea1810477757c269eb5d8f7}\label{classTH1DLog_ae0e60ffcdea1810477757c269eb5d8f7}} 
+\index{TH1DLog@{TH1DLog}!SetXTitle@{SetXTitle}}
+\index{SetXTitle@{SetXTitle}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{SetXTitle()}{SetXTitle()}}
+{\footnotesize\ttfamily void TH1\+DLog\+::\+Set\+XTitle (\begin{DoxyParamCaption}\item[{TString}]{XTitleV }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classTH1DLog_ae84b001da61b5f513c2fa30a238057c6}\label{classTH1DLog_ae84b001da61b5f513c2fa30a238057c6}} 
+\index{TH1DLog@{TH1DLog}!SetYTitle@{SetYTitle}}
+\index{SetYTitle@{SetYTitle}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{SetYTitle()}{SetYTitle()}}
+{\footnotesize\ttfamily void TH1\+DLog\+::\+Set\+YTitle (\begin{DoxyParamCaption}\item[{TString}]{YTitleV }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classTH1DLog_a6201ff954add20bdaf63d518f4d43ebc}\label{classTH1DLog_a6201ff954add20bdaf63d518f4d43ebc}} 
+\index{TH1DLog@{TH1DLog}!histogram@{histogram}}
+\index{histogram@{histogram}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{histogram}{histogram}}
+{\footnotesize\ttfamily TH1D$\ast$ TH1\+DLog\+::histogram\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_a5ceb07c2066d0715c8e211350860bddc}\label{classTH1DLog_a5ceb07c2066d0715c8e211350860bddc}} 
+\index{TH1DLog@{TH1DLog}!Name@{Name}}
+\index{Name@{Name}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{Name}{Name}}
+{\footnotesize\ttfamily TString TH1\+DLog\+::\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_ac0b018c19368a749930d32324ee8c3cb}\label{classTH1DLog_ac0b018c19368a749930d32324ee8c3cb}} 
+\index{TH1DLog@{TH1DLog}!NbinsX@{NbinsX}}
+\index{NbinsX@{NbinsX}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{NbinsX}{NbinsX}}
+{\footnotesize\ttfamily int TH1\+DLog\+::\+NbinsX\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_a725e9a50c2f55027d952f678cc5d102f}\label{classTH1DLog_a725e9a50c2f55027d952f678cc5d102f}} 
+\index{TH1DLog@{TH1DLog}!Title@{Title}}
+\index{Title@{Title}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{Title}{Title}}
+{\footnotesize\ttfamily TString TH1\+DLog\+::\+Title\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_a028d9ed66a4791c939eaeaf21108d273}\label{classTH1DLog_a028d9ed66a4791c939eaeaf21108d273}} 
+\index{TH1DLog@{TH1DLog}!xMax@{xMax}}
+\index{xMax@{xMax}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{xMax}{xMax}}
+{\footnotesize\ttfamily double TH1\+DLog\+::x\+Max\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_a8d7cf100deecc8f8b17b184dd03b432b}\label{classTH1DLog_a8d7cf100deecc8f8b17b184dd03b432b}} 
+\index{TH1DLog@{TH1DLog}!xMaxLog@{xMaxLog}}
+\index{xMaxLog@{xMaxLog}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{xMaxLog}{xMaxLog}}
+{\footnotesize\ttfamily double TH1\+DLog\+::x\+Max\+Log\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_a53c394c7d43f62709f93e33ec24d792f}\label{classTH1DLog_a53c394c7d43f62709f93e33ec24d792f}} 
+\index{TH1DLog@{TH1DLog}!xMin@{xMin}}
+\index{xMin@{xMin}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{xMin}{xMin}}
+{\footnotesize\ttfamily double TH1\+DLog\+::x\+Min\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_a5972131576e18346a274ba7b377bd21c}\label{classTH1DLog_a5972131576e18346a274ba7b377bd21c}} 
+\index{TH1DLog@{TH1DLog}!xMinLog@{xMinLog}}
+\index{xMinLog@{xMinLog}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{xMinLog}{xMinLog}}
+{\footnotesize\ttfamily double TH1\+DLog\+::x\+Min\+Log\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_a14f495393837ba0d3e4afc2420bb9779}\label{classTH1DLog_a14f495393837ba0d3e4afc2420bb9779}} 
+\index{TH1DLog@{TH1DLog}!XTitle@{XTitle}}
+\index{XTitle@{XTitle}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{XTitle}{XTitle}}
+{\footnotesize\ttfamily TString TH1\+DLog\+::\+XTitle\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classTH1DLog_adaff6944b0b6e8b940c1677882de0850}\label{classTH1DLog_adaff6944b0b6e8b940c1677882de0850}} 
+\index{TH1DLog@{TH1DLog}!YTitle@{YTitle}}
+\index{YTitle@{YTitle}!TH1DLog@{TH1DLog}}
+\doxysubsubsection{\texorpdfstring{YTitle}{YTitle}}
+{\footnotesize\ttfamily TString TH1\+DLog\+::\+YTitle\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-ROOT/TH1\+DLog.\+h\end{DoxyCompactItemize}
+ROOT/\mbox{\hyperlink{TH1DLog_8h}{TH1\+DLog.\+h}}\end{DoxyCompactItemize}

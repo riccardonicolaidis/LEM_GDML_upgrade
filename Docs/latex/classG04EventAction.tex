@@ -1,26 +1,129 @@
-\doxysection{G04\+Event\+Action Class Reference}
-\hypertarget{classG04EventAction}{}\label{classG04EventAction}\index{G04EventAction@{G04EventAction}}
+\hypertarget{classG04EventAction}{}\doxysection{G04\+Event\+Action Class Reference}
+\label{classG04EventAction}\index{G04EventAction@{G04EventAction}}
+
+
+{\ttfamily \#include $<$G04\+Event\+Action.\+hh$>$}
+
 Inheritance diagram for G04\+Event\+Action\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[height=2.000000cm]{classG04EventAction}
 \end{center}
 \end{figure}
-\doxysubsubsection*{Public Member Functions}
+\doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\Hypertarget{classG04EventAction_a3beea5fc2cfe8ce585d854198945223c}\label{classG04EventAction_a3beea5fc2cfe8ce585d854198945223c} 
-{\bfseries G04\+Event\+Action} (G4int Number\+SD, const \mbox{\hyperlink{classG04DetectorConstruction}{G04\+Detector\+Construction}} \texorpdfstring{$\ast$}{*}detector, \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04\+Primary\+Generator\+Action}} \texorpdfstring{$\ast$}{*}generator, \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} \texorpdfstring{$\ast$}{*}steering)
+\mbox{\hyperlink{classG04EventAction_a3beea5fc2cfe8ce585d854198945223c}{G04\+Event\+Action}} (G4int Number\+SD, const \mbox{\hyperlink{classG04DetectorConstruction}{G04\+Detector\+Construction}} $\ast$detector, \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04\+Primary\+Generator\+Action}} $\ast$generator, \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} $\ast$steering)
 \item 
-\Hypertarget{classG04EventAction_a192c112e6c181a0ab3d1df626e54c38b}\label{classG04EventAction_a192c112e6c181a0ab3d1df626e54c38b} 
-virtual void {\bfseries Begin\+Of\+Event\+Action} (const G4\+Event \texorpdfstring{$\ast$}{*})
+\mbox{\hyperlink{classG04EventAction_ae9783bd8013cc6c452c3e0062f38f342}{$\sim$\+G04\+Event\+Action}} ()
 \item 
-\Hypertarget{classG04EventAction_a48e4669333706023ae6d16ac54f31c78}\label{classG04EventAction_a48e4669333706023ae6d16ac54f31c78} 
-virtual void {\bfseries End\+Of\+Event\+Action} (const G4\+Event \texorpdfstring{$\ast$}{*})
+virtual void \mbox{\hyperlink{classG04EventAction_a192c112e6c181a0ab3d1df626e54c38b}{Begin\+Of\+Event\+Action}} (const G4\+Event $\ast$)
+\item 
+virtual void \mbox{\hyperlink{classG04EventAction_a48e4669333706023ae6d16ac54f31c78}{End\+Of\+Event\+Action}} (const G4\+Event $\ast$)
 \end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+const G4int \mbox{\hyperlink{classG04EventAction_a1d2ef4504e1a1c506ad8adc59d164fb9}{f\+Number\+SD}}
+\item 
+const \mbox{\hyperlink{classG04DetectorConstruction}{G04\+Detector\+Construction}} $\ast$ \mbox{\hyperlink{classG04EventAction_afbc00fe717dd4f6eacdef93a5a27b34f}{f\+Detector}}
+\item 
+\mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04\+Primary\+Generator\+Action}} $\ast$ \mbox{\hyperlink{classG04EventAction_a20c4e025919c1c30712c835787fc22fe}{f\+Primary}}
+\item 
+const G4\+GDMLParser \& \mbox{\hyperlink{classG04EventAction_ab87d4e97118b7558ecdb9ea442306fe6}{f\+Parser}}
+\item 
+G4\+String \mbox{\hyperlink{classG04EventAction_ad7b5a2640f1a10d0db09372f31bc5c26}{Output\+Text\+Folder}}
+\item 
+\mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} $\ast$ \mbox{\hyperlink{classG04EventAction_ad4d449f6c044f62bb088831ba522f1f9}{f\+Steering}}
+\item 
+G4double \mbox{\hyperlink{classG04EventAction_a84c506a5d3ea2759f8aa112c0af8d2a5}{NTuple\+Data}} \mbox{[}1000\mbox{]}
+\item 
+const G4int \mbox{\hyperlink{classG04EventAction_a720cab13adff477b37e1be660ee96c06}{Starting\+NTuple}} = 7
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classG04EventAction_a3beea5fc2cfe8ce585d854198945223c}\label{classG04EventAction_a3beea5fc2cfe8ce585d854198945223c}} 
+\index{G04EventAction@{G04EventAction}!G04EventAction@{G04EventAction}}
+\index{G04EventAction@{G04EventAction}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{G04EventAction()}{G04EventAction()}}
+{\footnotesize\ttfamily G04\+Event\+Action\+::\+G04\+Event\+Action (\begin{DoxyParamCaption}\item[{G4int}]{Number\+SD,  }\item[{const \mbox{\hyperlink{classG04DetectorConstruction}{G04\+Detector\+Construction}} $\ast$}]{detector,  }\item[{\mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04\+Primary\+Generator\+Action}} $\ast$}]{generator,  }\item[{\mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}} $\ast$}]{steering }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{classG04EventAction_ae9783bd8013cc6c452c3e0062f38f342}\label{classG04EventAction_ae9783bd8013cc6c452c3e0062f38f342}} 
+\index{G04EventAction@{G04EventAction}!````~G04EventAction@{$\sim$G04EventAction}}
+\index{````~G04EventAction@{$\sim$G04EventAction}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{$\sim$G04EventAction()}{~G04EventAction()}}
+{\footnotesize\ttfamily G04\+Event\+Action\+::$\sim$\+G04\+Event\+Action (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classG04EventAction_a192c112e6c181a0ab3d1df626e54c38b}\label{classG04EventAction_a192c112e6c181a0ab3d1df626e54c38b}} 
+\index{G04EventAction@{G04EventAction}!BeginOfEventAction@{BeginOfEventAction}}
+\index{BeginOfEventAction@{BeginOfEventAction}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{BeginOfEventAction()}{BeginOfEventAction()}}
+{\footnotesize\ttfamily void G04\+Event\+Action\+::\+Begin\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+\mbox{\Hypertarget{classG04EventAction_a48e4669333706023ae6d16ac54f31c78}\label{classG04EventAction_a48e4669333706023ae6d16ac54f31c78}} 
+\index{G04EventAction@{G04EventAction}!EndOfEventAction@{EndOfEventAction}}
+\index{EndOfEventAction@{EndOfEventAction}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{EndOfEventAction()}{EndOfEventAction()}}
+{\footnotesize\ttfamily void G04\+Event\+Action\+::\+End\+Of\+Event\+Action (\begin{DoxyParamCaption}\item[{const G4\+Event $\ast$}]{Event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classG04EventAction_afbc00fe717dd4f6eacdef93a5a27b34f}\label{classG04EventAction_afbc00fe717dd4f6eacdef93a5a27b34f}} 
+\index{G04EventAction@{G04EventAction}!fDetector@{fDetector}}
+\index{fDetector@{fDetector}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{fDetector}{fDetector}}
+{\footnotesize\ttfamily const \mbox{\hyperlink{classG04DetectorConstruction}{G04\+Detector\+Construction}}$\ast$ G04\+Event\+Action\+::f\+Detector\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04EventAction_a1d2ef4504e1a1c506ad8adc59d164fb9}\label{classG04EventAction_a1d2ef4504e1a1c506ad8adc59d164fb9}} 
+\index{G04EventAction@{G04EventAction}!fNumberSD@{fNumberSD}}
+\index{fNumberSD@{fNumberSD}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{fNumberSD}{fNumberSD}}
+{\footnotesize\ttfamily const G4int G04\+Event\+Action\+::f\+Number\+SD\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04EventAction_ab87d4e97118b7558ecdb9ea442306fe6}\label{classG04EventAction_ab87d4e97118b7558ecdb9ea442306fe6}} 
+\index{G04EventAction@{G04EventAction}!fParser@{fParser}}
+\index{fParser@{fParser}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{fParser}{fParser}}
+{\footnotesize\ttfamily const G4\+GDMLParser\& G04\+Event\+Action\+::f\+Parser\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04EventAction_a20c4e025919c1c30712c835787fc22fe}\label{classG04EventAction_a20c4e025919c1c30712c835787fc22fe}} 
+\index{G04EventAction@{G04EventAction}!fPrimary@{fPrimary}}
+\index{fPrimary@{fPrimary}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{fPrimary}{fPrimary}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04\+Primary\+Generator\+Action}}$\ast$ G04\+Event\+Action\+::f\+Primary\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04EventAction_ad4d449f6c044f62bb088831ba522f1f9}\label{classG04EventAction_ad4d449f6c044f62bb088831ba522f1f9}} 
+\index{G04EventAction@{G04EventAction}!fSteering@{fSteering}}
+\index{fSteering@{fSteering}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{fSteering}{fSteering}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classG04SteeringClass}{G04\+Steering\+Class}}$\ast$ G04\+Event\+Action\+::f\+Steering\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04EventAction_a84c506a5d3ea2759f8aa112c0af8d2a5}\label{classG04EventAction_a84c506a5d3ea2759f8aa112c0af8d2a5}} 
+\index{G04EventAction@{G04EventAction}!NTupleData@{NTupleData}}
+\index{NTupleData@{NTupleData}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{NTupleData}{NTupleData}}
+{\footnotesize\ttfamily G4double G04\+Event\+Action\+::\+NTuple\+Data\mbox{[}1000\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04EventAction_ad7b5a2640f1a10d0db09372f31bc5c26}\label{classG04EventAction_ad7b5a2640f1a10d0db09372f31bc5c26}} 
+\index{G04EventAction@{G04EventAction}!OutputTextFolder@{OutputTextFolder}}
+\index{OutputTextFolder@{OutputTextFolder}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{OutputTextFolder}{OutputTextFolder}}
+{\footnotesize\ttfamily G4\+String G04\+Event\+Action\+::\+Output\+Text\+Folder\hspace{0.3cm}{\ttfamily [private]}}
+
+\mbox{\Hypertarget{classG04EventAction_a720cab13adff477b37e1be660ee96c06}\label{classG04EventAction_a720cab13adff477b37e1be660ee96c06}} 
+\index{G04EventAction@{G04EventAction}!StartingNTuple@{StartingNTuple}}
+\index{StartingNTuple@{StartingNTuple}!G04EventAction@{G04EventAction}}
+\doxysubsubsection{\texorpdfstring{StartingNTuple}{StartingNTuple}}
+{\footnotesize\ttfamily const G4int G04\+Event\+Action\+::\+Starting\+NTuple = 7\hspace{0.3cm}{\ttfamily [private]}}
+
 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-include/G04\+Event\+Action.\+hh\item 
-src/G04\+Event\+Action.\+cc\end{DoxyCompactItemize}
+include/\mbox{\hyperlink{G04EventAction_8hh}{G04\+Event\+Action.\+hh}}\item 
+src/\mbox{\hyperlink{G04EventAction_8cc}{G04\+Event\+Action.\+cc}}\end{DoxyCompactItemize}
