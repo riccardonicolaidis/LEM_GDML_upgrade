@@ -1,0 +1,57 @@
+\doxysection{G04\+Event\+Action.\+hh}
+\hypertarget{G04EventAction_8hh_source}{}\label{G04EventAction_8hh_source}\index{include/G04EventAction.hh@{include/G04EventAction.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ EVENT\_HH}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ EVENT\_HH}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}G4UserEventAction.hh"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}G4Event.hh"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}G4RunManager.hh"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}G4UnitsTable.hh"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}G4SystemOfUnits.hh"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}G4AnalysisManager.hh"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}G04RunAction.hh"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}G04HitClass.hh"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}G04DetectorConstruction.hh"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}G04SteeringClass.hh"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG04EventAction}{G04EventAction}}\ :\ \textcolor{keyword}{public}\ G4UserEventAction}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classG04EventAction}{G04EventAction}}(G4int\ NumberSD,\ }
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classG04DetectorConstruction}{G04DetectorConstruction}}\ *detector,\ }
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04PrimaryGeneratorAction}}\ *generator,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}\ *steering}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ );}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classG04EventAction}{\string~G04EventAction}}();}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginOfEventAction(\textcolor{keyword}{const}\ G4Event*);}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ EndOfEventAction(\textcolor{keyword}{const}\ G4Event*);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4int\ fNumberSD;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{classG04DetectorConstruction}{G04DetectorConstruction}}\ *fDetector;}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04PrimaryGeneratorAction}}\ *fPrimary;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4GDMLParser\ \&fParser;}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ G4String\ OutputTextFolder;}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}\ *fSteering;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ G4double\ NTupleData[1000];}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ G4int\ StartingNTuple\ =\ 7;}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

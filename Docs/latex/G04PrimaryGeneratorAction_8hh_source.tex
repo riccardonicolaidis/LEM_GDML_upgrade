@@ -1,0 +1,83 @@
+\doxysection{G04\+Primary\+Generator\+Action.\+hh}
+\hypertarget{G04PrimaryGeneratorAction_8hh_source}{}\label{G04PrimaryGeneratorAction_8hh_source}\index{include/G04PrimaryGeneratorAction.hh@{include/G04PrimaryGeneratorAction.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ *\ License\ and\ Disclaimer\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ *\ The\ \ Geant4\ software\ \ is\ \ copyright\ of\ the\ Copyright\ Holders\ \ of\ *}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ *\ the\ Geant4\ Collaboration.\ \ It\ is\ provided\ \ under\ \ the\ terms\ \ and\ *}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//\ *\ conditions\ of\ the\ Geant4\ Software\ License,\ \ included\ in\ the\ file\ *}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//\ *\ LICENSE\ and\ available\ at\ \ http://cern.ch/geant4/license\ .\ \ These\ *}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ *\ include\ a\ list\ of\ copyright\ holders.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ *\ Neither\ the\ authors\ of\ this\ software\ system,\ nor\ their\ employing\ *}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ *\ institutes,nor\ the\ agencies\ providing\ financial\ support\ for\ this\ *}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//\ *\ work\ \ make\ \ any\ representation\ or\ \ warranty,\ express\ or\ implied,\ *}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ *\ regarding\ \ this\ \ software\ system\ or\ assume\ any\ liability\ for\ its\ *}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//\ *\ use.\ \ Please\ see\ the\ license\ in\ the\ file\ \ LICENSE\ \ and\ URL\ above\ *}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ *\ for\ the\ full\ disclaimer\ and\ the\ limitation\ of\ liability.\ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ *\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ *\ This\ \ code\ \ implementation\ is\ the\ result\ of\ \ the\ \ scientific\ and\ *}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ *\ technical\ work\ of\ the\ GEANT4\ collaboration.\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ *\ By\ using,\ \ copying,\ \ modifying\ or\ \ distributing\ the\ software\ (or\ *}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//\ *\ any\ work\ based\ \ on\ the\ software)\ \ you\ \ agree\ \ to\ acknowledge\ its\ *}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ *\ use\ \ in\ \ resulting\ \ scientific\ \ publications,\ \ and\ indicate\ your\ *}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ *\ acceptance\ of\ all\ terms\ of\ the\ Geant4\ Software\ license.\ \ \ \ \ \ \ \ \ \ *}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ ********************************************************************}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//}}
+\DoxyCodeLine{00028\ \textcolor{comment}{}\textcolor{comment}{//}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//}}
+\DoxyCodeLine{00030\ \textcolor{comment}{//}}
+\DoxyCodeLine{00031\ \textcolor{comment}{//}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#ifndef\ PRIMARY\_GENERATOR\_ACTION\_HH}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#define\ PRIMARY\_GENERATOR\_ACTION\_HH}}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#include\ "{}G4VUserPrimaryGeneratorAction.hh"{}}}
+\DoxyCodeLine{00037\ \textcolor{preprocessor}{\#include\ "{}G4Event.hh"{}}}
+\DoxyCodeLine{00038\ \textcolor{preprocessor}{\#include\ "{}G4ParticleTable.hh"{}}}
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#include\ "{}G4ParticleDefinition.hh"{}}}
+\DoxyCodeLine{00040\ \textcolor{preprocessor}{\#include\ "{}G4SystemOfUnits.hh"{}}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#include\ "{}G4GeneralParticleSource.hh"{}}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#include\ "{}G4GenericMessenger.hh"{}}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#include\ "{}G4AnalysisManager.hh"{}}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#include\ "{}G04SteeringClass.hh"{}}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#include\ "{}G4ThreeVector.hh"{}}}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#include\ "{}globals.hh"{}}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{class\ }G4ParticleGun;}
+\DoxyCodeLine{00050\ \textcolor{keyword}{class\ }G4Event;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04PrimaryGeneratorAction}}\ :\ \textcolor{keyword}{public}\ G4VUserPrimaryGeneratorAction}
+\DoxyCodeLine{00055\ \{}
+\DoxyCodeLine{00056\ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04PrimaryGeneratorAction}}(\mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}*);}
+\DoxyCodeLine{00059\ \ \ \ \mbox{\hyperlink{classG04PrimaryGeneratorAction}{\string~G04PrimaryGeneratorAction}}();}
+\DoxyCodeLine{00060\ \ \ \ \textcolor{keywordtype}{void}\ ResetParticleNumber()\{ParticleNumber=0;\};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ GeneratePrimaries(G4Event*\ anEvent);}
+\DoxyCodeLine{00063\ \ \ }
+\DoxyCodeLine{00064\ \ \ \ G4double\ GetMCEnergy()\{\textcolor{keywordflow}{return}\ MCEnergy;\};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}\ \ \ \ \ \ \ \ *fSteering;}
+\DoxyCodeLine{00069\ \ \ \ \ G4ParticleTable\ \ \ \ \ \ \ \ \ *fParticleTable;}
+\DoxyCodeLine{00070\ \ \ \ \ G4GeneralParticleSource\ *fGeneralParticleSource;}
+\DoxyCodeLine{00071\ \ \ \ \ G4int\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ ParticleNumber;}
+\DoxyCodeLine{00072\ \ \ \ \ G4GenericMessenger\ \ \ \ \ \ *fMessenger;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ G4double\ MCEnergy;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \};}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

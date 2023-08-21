@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['resources_0',['Link and resources',['../md_README.html#autotoc_md3',1,'']]],
-  ['run_20the_20simulation_1',['Run the simulation',['../md_README.html#autotoc_md5',1,'']]]
+  ['module_20lem_20_3a_20upgrade_20with_20geometry_20from_20cad_20file_0',['Low Energy Module (LEM): Upgrade with geometry from CAD file',['../md_README.html',1,'']]]
 ];

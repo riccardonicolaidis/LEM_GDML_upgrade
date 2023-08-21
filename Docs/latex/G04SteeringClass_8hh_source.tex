@@ -1,0 +1,62 @@
+\doxysection{G04\+Steering\+Class.\+hh}
+\hypertarget{G04SteeringClass_8hh_source}{}\label{G04SteeringClass_8hh_source}\index{include/G04SteeringClass.hh@{include/G04SteeringClass.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ G04\_STEERING\_CLASS\_HH}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ G04\_STEERING\_CLASS\_HH}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}G4Types.hh"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}G4SystemOfUnits.hh"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}G4UnitsTable.hh"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00019\ \ \ \ \ G4String\ OutputTextFolder;}
+\DoxyCodeLine{00020\ \ \ \ \ G4String\ OutputMonitoringFolder;}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{keywordtype}{int}\ UpdateFrequency;}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{int}\ JobNumber;}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{int}\ FileNumber;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ G4String\ OutputTextFolder\_KEY\ =\ \textcolor{stringliteral}{"{}OUT\_TEXT"{}};}
+\DoxyCodeLine{00027\ \ \ \ \ G4String\ OutputMonitoringFolder\_KEY\ =\ \textcolor{stringliteral}{"{}OUT\_MONITORING\_FLD"{}};}
+\DoxyCodeLine{00028\ \ \ \ \ G4String\ UpdateFrequency\_KEY\ =\ \textcolor{stringliteral}{"{}UPDATE\_FREQUENCY"{}};}
+\DoxyCodeLine{00029\ \ \ \ \ G4String\ JobNumber\_KEY\ =\ \textcolor{stringliteral}{"{}NJOB"{}};}
+\DoxyCodeLine{00030\ \ \ \ \ G4String\ FileNumber\_KEY\ =\ \textcolor{stringliteral}{"{}NFILE"{}};}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}();}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{classG04SteeringClass}{\string~G04SteeringClass}}();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ UploadSteeringFile(G4String\ filename);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ SetOutputTextFolder(G4String\ folder)\ \{\ OutputTextFolder\ =\ folder;\ \};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ SetOutputMonitoringFolder(G4String\ folder)\ \{\ OutputMonitoringFolder\ =\ folder;\ \};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ SetUpdateFrequency(\textcolor{keywordtype}{int}\ freq)\ \{\ UpdateFrequency\ =\ freq;\ \};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ SetJobNumber(\textcolor{keywordtype}{int}\ job)\ \{\ JobNumber\ =\ job;\ \};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFileNumber(\textcolor{keywordtype}{int}\ file)\ \{\ FileNumber\ =\ file;\ \};}
+\DoxyCodeLine{00043\ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ G4String\ GetOutputTextFolder()\ \{\ \textcolor{keywordflow}{return}\ OutputTextFolder;\ \};}
+\DoxyCodeLine{00045\ \ \ \ \ G4String\ GetOutputMonitoringFolder()\ \{\ \textcolor{keywordflow}{return}\ OutputMonitoringFolder;\ \};}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ GetUpdateFrequency()\ \{\ \textcolor{keywordflow}{return}\ UpdateFrequency;\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ GetJobNumber()\ \{\ \textcolor{keywordflow}{return}\ JobNumber;\ \};}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ GetFileNumber()\ \{\ \textcolor{keywordflow}{return}\ FileNumber;\ \};}
+\DoxyCodeLine{00049\ \};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ }
+
+\end{DoxyCode}

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['simulation_0',['Run the simulation',['../md_README.html#autotoc_md5',1,'']]],
-  ['softwares_20adopted_1',['Softwares adopted',['../md_README.html#autotoc_md2',1,'']]],
-  ['structure_2',['Directory structure',['../md_README.html#autotoc_md8',1,'']]]
+  ['resources_0',['Link and resources',['../md_README.html#autotoc_md3',1,'']]],
+  ['run_20the_20simulation_1',['Run the simulation',['../md_README.html#autotoc_md5',1,'']]]
 ];

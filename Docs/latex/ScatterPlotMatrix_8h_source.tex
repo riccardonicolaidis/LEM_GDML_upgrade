@@ -1,0 +1,247 @@
+\doxysection{Scatter\+Plot\+Matrix.\+h}
+\hypertarget{ScatterPlotMatrix_8h_source}{}\label{ScatterPlotMatrix_8h_source}\index{ROOT/ScatterPlotMatrix.h@{ROOT/ScatterPlotMatrix.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}TFile.h"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}TTree.h"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}TCanvas.h"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}TStyle.h"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}TColor.h"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}TROOT.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}TMath.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}TGraph.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}TGraphErrors.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}TMultiGraph.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}TAxis.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}TLegend.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}TH1D.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}TH2D.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}THStack.h"{}}}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{using\ namespace\ }std;}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classScatterPlotMatrix}{ScatterPlotMatrix}}}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classScatterPlotMatrix}{ScatterPlotMatrix}}(\textcolor{keywordtype}{int}\ NumberOfVariables,\ \textcolor{keywordtype}{int}\ NumberOfTTrees);}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{classScatterPlotMatrix}{\string~ScatterPlotMatrix}}();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetConditionSelection(TString\ ConditionSelectionV)}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \ \ \ \ ConditionSelection\ =\ ConditionSelectionV;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddTTree(TTree\ **TTreeV)}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\_TTree\ ==\ 0)}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TTrees.resize(N\_TTrees);}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \ \ \ \ TTrees[index\_TTree]\ =\ *TTreeV;}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ TTrees[index\_TTree]\ -\/>\ Print();}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \ \ \ \ index\_TTree++;}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ AddVariableName(TString\ VariableNameV)}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(index\_Variable\ ==\ 0)}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ VariableNames.resize(N\_Variables);}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \ \ \ \ VariableNames[index\_Variable]\ =\ VariableNameV;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}VariableNames["{}}\ <<\ index\_Variable\ <<\ \textcolor{stringliteral}{"{}]:\ "{}}\ <<\ VariableNames[index\_Variable]\ <<\ endl;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \ \ \ \ index\_Variable++;}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ SetNbins(\textcolor{keywordtype}{int}\ NbinsV)}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \ \ \ \ Nbins\ =\ NbinsV;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{void}\ BuildPlot();}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ index\_TTree\ =\ 0;}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{int}\ index\_Variable\ =\ 0;}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ N\_TTrees;}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ N\_Variables;}
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00077\ \ \ \ \ vector<TTree*>\ TTrees;}
+\DoxyCodeLine{00078\ \ \ \ \ vector<TString>\ VariableNames;}
+\DoxyCodeLine{00079\ \ \ \ \ TString\ ConditionSelection;}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ Nbins;}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ vector<TH1D*>\ Histograms;}
+\DoxyCodeLine{00083\ \ \ \ \ vector<THStack*>\ Stacks;}
+\DoxyCodeLine{00084\ \ \ \ \ vector<TGraph*>\ Graphs;}
+\DoxyCodeLine{00085\ \ \ \ \ vector<TMultiGraph*>\ MultiGraphs;}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ TCanvas\ *canvas;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ ScatterPlotMatrix::ScatterPlotMatrix(\textcolor{keywordtype}{int}\ NumberOfVariables,\ \textcolor{keywordtype}{int}\ NumberOfTTrees)}
+\DoxyCodeLine{00093\ \{}
+\DoxyCodeLine{00094\ \ \ \ \ TTrees.resize(NumberOfTTrees);}
+\DoxyCodeLine{00095\ \ \ \ \ VariableNames.resize(NumberOfVariables);}
+\DoxyCodeLine{00096\ \ \ \ \ N\_TTrees\ =\ NumberOfTTrees;}
+\DoxyCodeLine{00097\ \ \ \ \ N\_Variables\ =\ NumberOfVariables;}
+\DoxyCodeLine{00098\ \}}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ ScatterPlotMatrix::\string~ScatterPlotMatrix()}
+\DoxyCodeLine{00102\ \{}
+\DoxyCodeLine{00103\ \ \ \ \ TTrees.clear();}
+\DoxyCodeLine{00104\ \ \ \ \ VariableNames.clear();}
+\DoxyCodeLine{00105\ \}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{keywordtype}{void}\ ScatterPlotMatrix::BuildPlot()}
+\DoxyCodeLine{00108\ \{}
+\DoxyCodeLine{00109\ \ \ \ \ vector<vector\ <double>>\ Xmins(N\_Variables);}
+\DoxyCodeLine{00110\ \ \ \ \ vector<vector\ <double>>\ Xmaxs(N\_Variables);}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N\_Variables;\ ++i)}
+\DoxyCodeLine{00112\ \ \ \ \ \{}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ Xmins[i].resize(N\_TTrees);}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ Xmaxs[i].resize(N\_TTrees);}
+\DoxyCodeLine{00115\ \ \ \ \ \}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{comment}{//\ I\ have\ to\ search\ for\ maximum\ and\ minimum\ inside\ all\ the\ TTrees}}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ N\_TTrees;\ ++k)}
+\DoxyCodeLine{00120\ \ \ \ \ \{}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ TTree\ *localTTree\ =\ TTrees[k];}
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ localTTree\ -\/>\ Print();}
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N\_Variables;\ ++i)}
+\DoxyCodeLine{00124\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00125\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Variable:\ "{}}\ <<\ VariableNames[i]\ <<\ endl;}
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \ \ \ \ localTTree\ -\/>\ Draw(VariableNames[i].Data(),\ ConditionSelection.Data(),\ \textcolor{stringliteral}{"{}goff"{}});}
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \ \ \ \ Xmins[i][k]\ =\ TMath::MinElement(localTTree-\/>GetSelectedRows(),\ localTTree-\/>GetV1());}
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \ \ \ \ Xmaxs[i][k]\ =\ TMath::MaxElement(localTTree-\/>GetSelectedRows(),\ localTTree-\/>GetV1());}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Xmin:\ "{}}\ <<\ Xmins[i][k]\ <<\ endl;}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Xmax:\ "{}}\ <<\ Xmaxs[i][k]\ <<\ endl;}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00132\ \ \ \ \ \}}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ vector<double>\ Xmin2(N\_Variables);}
+\DoxyCodeLine{00135\ \ \ \ \ vector<double>\ Xmax2(N\_Variables);}
+\DoxyCodeLine{00136\ }
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N\_Variables;\ ++i)}
+\DoxyCodeLine{00138\ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ Xmin2[i]\ =\ *min\_element(Xmins[i].begin(),\ Xmins[i].end());}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ Xmax2[i]\ =\ *max\_element(Xmaxs[i].begin(),\ Xmaxs[i].end());}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Xmin2["{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}]:\ "{}}\ <<\ Xmin2[i]\ <<\ endl;}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Xmax2["{}}\ <<\ i\ <<\ \textcolor{stringliteral}{"{}]:\ "{}}\ <<\ Xmax2[i]\ <<\ endl;}
+\DoxyCodeLine{00143\ \ \ \ \ \}}
+\DoxyCodeLine{00144\ }
+\DoxyCodeLine{00145\ }
+\DoxyCodeLine{00146\ \ \ \ \ \textcolor{comment}{//\ Plot\ Matrix\ format}}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{/*H\ \ 0\ \ 0\ \ 0*/}}
+\DoxyCodeLine{00148\ \ \ \ \ \textcolor{comment}{/*C\ \ H\ \ 0\ \ 0*/}}
+\DoxyCodeLine{00149\ \ \ \ \ \textcolor{comment}{/*C\ \ C\ \ H\ \ 0*/}}
+\DoxyCodeLine{00150\ \ \ \ \ \textcolor{comment}{/*C\ \ C\ \ C\ \ H*/}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{keywordtype}{int}\ N\_Diagonal\ =\ VariableNames.size();}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{int}\ N\_ScatterPlots\ =\ N\_Diagonal*(N\_Diagonal-\/1)/2;}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ Histograms.resize(N\_Diagonal*N\_Variables);}
+\DoxyCodeLine{00157\ \ \ \ \ Stacks.resize(N\_Diagonal);}
+\DoxyCodeLine{00158\ \ \ \ \ Graphs.resize(N\_ScatterPlots*N\_Variables);}
+\DoxyCodeLine{00159\ \ \ \ \ MultiGraphs.resize(N\_ScatterPlots);}
+\DoxyCodeLine{00160\ }
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{comment}{//\ Create\ Canvas}}
+\DoxyCodeLine{00162\ \ \ \ \ canvas\ =\ \textcolor{keyword}{new}\ TCanvas(\textcolor{stringliteral}{"{}canvas"{}},\ \textcolor{stringliteral}{"{}canvas"{}},\ 1000,\ 1000);}
+\DoxyCodeLine{00163\ \ \ \ \ canvas-\/>Divide(N\_Diagonal,\ N\_Diagonal);}
+\DoxyCodeLine{00164\ }
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{int}\ index\_histogram\ =\ 0;}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{int}\ index\_graph\ =\ 0;}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{comment}{//\ \ \ \ \ \ 0\ \ 1\ \ 2\ \ 3}}
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{comment}{//\ \ 0\ \ \ 1\ \ 2\ \ 3\ \ 4}}
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{comment}{//\ \ 1\ \ \ 5\ \ 6\ \ 7\ \ 8}}
+\DoxyCodeLine{00173\ \ \ \ \ \textcolor{comment}{//\ \ 2\ \ \ 9\ 10\ 11\ 12}}
+\DoxyCodeLine{00174\ \ \ \ \ \textcolor{comment}{//\ \ 3\ \ 13\ 14\ 15\ 16}}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ N\_Variables;\ ++i)}
+\DoxyCodeLine{00177\ \ \ \ \ \{}
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ j\ =\ 0;\ j\ <\ N\_Variables;\ ++j)}
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ canvas\ -\/>\ cd(1\ +\ i*N\_Diagonal\ +\ j);}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}(i\ ==\ j)}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ Histogram\ diagonal}}
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Stacks[i]\ =\ \textcolor{keyword}{new}\ THStack(\textcolor{stringliteral}{"{}stack"{}},\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ N\_TTrees;\ ++k)}
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Histograms[index\_histogram]\ =\ \textcolor{keyword}{new}\ TH1D(Form(\textcolor{stringliteral}{"{}h\_\%d"{}},\ index\_histogram),\ \textcolor{stringliteral}{"{}histogram"{}},\ Nbins,\ Xmin2[i],\ Xmax2[i]);}
+\DoxyCodeLine{00188\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TTrees[k]-\/>Draw(VariableNames[i]\ +\ Form(\textcolor{stringliteral}{"{}>>h\_\%d"{}},\ index\_histogram),\ ConditionSelection.Data(),\ \textcolor{stringliteral}{"{}"{}});}
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Histograms[index\_histogram]-\/>SetLineColor(k+1);}
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Histograms[index\_histogram]-\/>SetLineWidth(2);}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Histograms[index\_histogram]-\/>SetStats(0);}
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Stacks[i]-\/>Add(Histograms[index\_histogram]);}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\_histogram++;}
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Stacks[i]-\/>Draw(\textcolor{stringliteral}{"{}nostack"{}});}
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gPad\ -\/>\ SetGrid();}
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00198\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\ \textcolor{keywordflow}{if}\ (j\ <\ i)}
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Create\ Scatter\ Plot}}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MultiGraphs[i+j]\ =\ \textcolor{keyword}{new}\ TMultiGraph();}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{for}(\textcolor{keywordtype}{int}\ k\ =\ 0;\ k\ <\ N\_TTrees;\ ++k)}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]\ =\ \textcolor{keyword}{new}\ TGraph();}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ TTrees[k]-\/>Draw(VariableNames[i]\ +\ \textcolor{stringliteral}{"{}:"{}}\ +\ VariableNames[j],\ ConditionSelection.Data(),\ \textcolor{stringliteral}{"{}goff"{}});}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]\ =\ \textcolor{keyword}{new}\ TGraph(TTrees[k]-\/>GetSelectedRows(),\ TTrees[k]-\/>GetV2(),\ TTrees[k]-\/>GetV1());}
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]-\/>SetMarkerStyle(20);}
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]-\/>SetMarkerSize(0.05);}
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]-\/>SetMarkerColor(k+1);}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]-\/>SetLineColor(k+1);}
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]-\/>SetLineWidth(2);}
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]\ -\/>\ SetMarkerColorAlpha(k+1,\ 0.2);}
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]\ -\/>\ SetLineColorAlpha(k+1,\ 0.2);}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ Graphs[index\_graph]\ -\/>\ SetFillColorAlpha(k+1,\ 0.2);}
+\DoxyCodeLine{00215\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MultiGraphs[i+j]-\/>Add(Graphs[index\_graph]);}
+\DoxyCodeLine{00216\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ index\_graph++;}
+\DoxyCodeLine{00217\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ MultiGraphs[i+j]-\/>Draw(\textcolor{stringliteral}{"{}AP"{}});}
+\DoxyCodeLine{00219\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ gPad\ -\/>\ SetGrid();}
+\DoxyCodeLine{00220\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00221\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00223\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Do\ Nothing}}
+\DoxyCodeLine{00224\ \ \ \ \ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00225\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00226\ \ \ \ \ \}}
+\DoxyCodeLine{00227\ }
+\DoxyCodeLine{00228\ }
+\DoxyCodeLine{00229\ \ \ \ \ \textcolor{comment}{//\ Matrix\ N*N}}
+\DoxyCodeLine{00230\ \ \ \ \ \textcolor{comment}{//\ Total\ Number\ Elements\ =\ N\string^2}}
+\DoxyCodeLine{00231\ \ \ \ \ \textcolor{comment}{//\ Diagonal\ Elements\ =\ N}}
+\DoxyCodeLine{00232\ \ \ \ \ \textcolor{comment}{//\ Off\ Diagonal\ Elements\ =\ N\string^2\ -\/\ N\ =\ N(N-\/1)}}
+\DoxyCodeLine{00233\ }
+\DoxyCodeLine{00234\ \ \ \ \ canvas\ -\/>\ SaveAs(\textcolor{stringliteral}{"{}ScatterPlotMatrix.pdf"{}});}
+\DoxyCodeLine{00235\ }
+\DoxyCodeLine{00236\ }
+\DoxyCodeLine{00237\ }
+\DoxyCodeLine{00238\ }
+\DoxyCodeLine{00239\ }
+\DoxyCodeLine{00240\ \}}
+\DoxyCodeLine{00241\ }
+
+\end{DoxyCode}

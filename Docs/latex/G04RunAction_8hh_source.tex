@@ -1,0 +1,50 @@
+\doxysection{G04\+Run\+Action.\+hh}
+\hypertarget{G04RunAction_8hh_source}{}\label{G04RunAction_8hh_source}\index{include/G04RunAction.hh@{include/G04RunAction.hh}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ RUN\_HH}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ RUN\_HH}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}G4UserRunAction.hh"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}G4Run.hh"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}G4GenericMessenger.hh"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}G4SystemOfUnits.hh"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}G4UnitsTable.hh"{}}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}G4GDMLParser.hh"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}G04DetectorConstruction.hh"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}G04PrimaryGeneratorAction.hh"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}G4AnalysisManager.hh"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}G04SteeringClass.hh"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG04DetectorConstruction}{G04DetectorConstruction}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04PrimaryGeneratorAction}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classG04RunAction}{G04RunAction}}\ :\ \textcolor{keyword}{public}\ G4UserRunAction}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{classG04RunAction}{G04RunAction}}(\mbox{\hyperlink{classG04DetectorConstruction}{G04DetectorConstruction}}*,\ \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04PrimaryGeneratorAction}}*,\ \mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}*);}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{classG04RunAction}{\string~G04RunAction}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ BeginOfRunAction(\textcolor{keyword}{const}\ G4Run*\ );}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ EndOfRunAction(\textcolor{keyword}{const}\ G4Run*\ );}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{classG04DetectorConstruction}{G04DetectorConstruction}}\ *fDetector;}
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{classG04PrimaryGeneratorAction}{G04PrimaryGeneratorAction}}\ *fPrimary;}
+\DoxyCodeLine{00034\ \ \ \ \ G4GenericMessenger\ *fMessenger;}
+\DoxyCodeLine{00035\ \ \ \ \ G4String\ TotalFileName;}
+\DoxyCodeLine{00036\ \ \ \ \ G4String\ TotalFileNameFinal;}
+\DoxyCodeLine{00037\ \ \ \ \ G4String\ OutputTextFolder;}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{classG04SteeringClass}{G04SteeringClass}}\ *fSteering;}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{const}\ G4GDMLParser\ \&fParser;}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

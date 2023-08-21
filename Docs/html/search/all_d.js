@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['upgrade_20with_20geometry_20from_20cad_20file_0',['Low Energy Module (LEM): Upgrade with geometry from CAD file',['../md_README.html',1,'']]]
+  ['th1dlog_0',['TH1DLog',['../classTH1DLog.html',1,'']]],
+  ['th2dlog_1',['TH2DLog',['../classTH2DLog.html',1,'']]],
+  ['th2dlogx_2',['TH2DLogX',['../classTH2DLogX.html',1,'']]],
+  ['the_20simulation_3',['Run the simulation',['../md_README.html#autotoc_md5',1,'']]]
 ];
