@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/data1/home/rnicolai/LEM_GDML_upgrade/PythonMacros/Monitoring_G4.py", line 214, in <module>
+    Monitoring(args.n_jobs, args.n_events_per_job, args.n_files,args.particles, args.directory)
+  File "/data1/home/rnicolai/LEM_GDML_upgrade/PythonMacros/Monitoring_G4.py", line 175, in Monitoring
+    evts_middle = np.append(evts_middle, (evts_avg[i+Delta_n] - evts_avg[i]) / (t[i+Delta_n] - t[i]))
+IndexError: index 54 is out of bounds for axis 0 with size 54

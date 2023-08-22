@@ -79,6 +79,8 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
     
     t = np.array([])
     evts = np.array([])
+    evts_avg = np.array([])
+    N_avg = 30
     
     
     TotalNumberEvents_monitored = 0
@@ -133,6 +135,7 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
             Checkpoint_Sampling = time.time()
             t = np.append(t, time.time() - start_time)
             evts = np.append(evts, TotalNumberEvents_monitored)
+            evts_avg = np.convolve(evts, np.ones(N_avg)/N_avg, mode='valid')
 
 
         
@@ -169,7 +172,7 @@ def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
             evts_middle = np.array([])
             for i in range(len(t)-Delta_n):
                 t_middle = np.append(t_middle, t[i+int(Delta_n/2)])
-                evts_middle = np.append(evts_middle, (evts[i+Delta_n] - evts[i]) / (t[i+Delta_n] - t[i]))
+                evts_middle = np.append(evts_middle, (evts_avg[i+Delta_n] - evts_avg[i]) / (t[i+Delta_n] - t[i]))
             
             # Plot only the last 50 points only if there are more than 50 points
             if len(t_middle) > 100:

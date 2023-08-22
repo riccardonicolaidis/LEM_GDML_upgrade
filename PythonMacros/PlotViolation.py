@@ -17,13 +17,42 @@ import plotly.express as px
 
 def PlotViolation(fName):
     df = pd.read_csv(fName, sep=',', header=None)
-    df.columns = ['X', 'Y', 'Z', 'E']
+    df.columns = ['ID','X', 'Y', 'Z', 'E']
+    
+    # Exclude all the points where E == 0
+    df = df[df['E'] != 0]
+    
+    
     
     # Take numpy arrays
     X = df['X'].values
     Y = df['Y'].values
     Z = df['Z'].values
     E = df['E'].values
+    ID = df['ID'].values
+    
+    MaxID =  500
+    
+    # ID may not be consecutive
+    # Build an ID2 that is consecutive
+    
+    ID2 = np.zeros(len(ID))
+    
+    currentID = 0
+    for i in range(len(ID)):
+        if i == 0:
+            ID2[i] = currentID
+        else:
+            if ID[i] != ID[i-1]:
+                currentID += 1
+            ID2[i] = currentID
+            
+    # Add a new column to the dataframe
+    df['ID2'] = ID2
+    
+            
+    # reduce the sample
+    df2 = df[df['ID2'] < MaxID]
 
     
     # I wan a scatter plot with colorbar guided by the energy E
@@ -52,47 +81,8 @@ def PlotViolation(fName):
     fig.write_html(fName.replace('.csv', '.html'))
     
     
-    # Make a clip with rotation of the figure
-    # I want to rotate the figure 360 degrees in 10 seconds
-    # I want to save the clip in the same folder of the picture
-
-    # # Define the number of frames
-    # nFrames = 10
-    # # Define the time of the clip
-    # clipTime = 4
-    # # Define the time of each frame
-    # frameTime = clipTime/nFrames
-    # # Define the number of frames per second
-    # fps = nFrames/clipTime
-    
-    # # make a subfolder with all the frames
-    # folderName = fName.replace('.csv', '') + '_frames'
-    
-    # if not os.path.exists(folderName):
-    #     os.makedirs(folderName)
-    # else:
-    #     shutil.rmtree(folderName)
-    #     os.makedirs(folderName)
-        
-    # # Make the frames
-    # # Use 
-
-    # for i in tqdm(range(nFrames)):
-    #     ax.view_init(azim=i, elev=(45 + 10*np.sin(3*i*np.pi/180)))
-    #     figName = folderName + '/f' + str(i) + '.png'
-    #     plt.savefig(figName)
-    
-    # # Make the gif with Pillow
-    # # Make a list with all the frames
-    # frames = []
-    # for i in tqdm(range(nFrames)):
-    #     figName = folderName + '/f' + str(i) + '.png'
-    #     frames.append(Image.open(figName))
-        
-    # # Save the gif
-    # gifName = fName.replace('.csv', '.gif')
-    # frames[0].save(gifName, format='GIF', append_images=frames[1:], save_all=True, duration=frameTime*1000, loop=0)
-    
-    
+    fig2 = px.scatter_3d(df2, x='X', y='Y', z='Z', color='ID2', opacity=0.7, width=1400, height=1000, range_color=[0, MaxID])
+    fig2.update_traces(marker_size=1.5)
+    fig2.write_html(fName.replace('.csv', '_ID.html'))
     
     

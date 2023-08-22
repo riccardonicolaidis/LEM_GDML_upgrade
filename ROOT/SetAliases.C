@@ -147,14 +147,16 @@ void SetAliases(TString filename,
     ofstream csv;
     csv.open(destination_Violation + "/" + filename_noExt + "_Hits.csv");
     double X, Y, Z, E;
+    int ID;
     Hits -> SetBranchAddress("X", &X);
     Hits -> SetBranchAddress("Y", &Y);
     Hits -> SetBranchAddress("Z", &Z);
     Hits -> SetBranchAddress("E", &E);
+    Hits -> SetBranchAddress("ID", &ID);
     for(int i = 0; i < Hits -> GetEntries(); i++)
     {
         Hits -> GetEntry(i);
-        csv << X << "," << Y << "," << Z << "," << E << endl;
+        csv << ID << "," << X << "," << Y << "," << Z << "," << E << endl;
         if(i%1000 == 0)
             std::cout << "i = " << i << endl;
     }
