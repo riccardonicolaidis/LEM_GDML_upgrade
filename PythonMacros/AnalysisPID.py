@@ -351,7 +351,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
                     exit(1)
                 
             
-    f_CMD.close()
+        f_CMD.close()
             
             
             
