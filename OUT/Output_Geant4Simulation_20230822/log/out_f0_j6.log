@@ -5,20 +5,18 @@ Output text folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Gean
 Output monitoring folder set to: /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/Progress_monitoring
 Job number set to: 6
 Update frequency set to: 10000
-G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/GDML_src/LEM_GAGG-worldVOL_Parsed.gdml'...
-G4GDML: VALIDATION ERROR! element 'materials' is not allowed for content model '(define,materials,solids,structure,userinfo?,setup+)' at line: 26322
-G4GDML: VALIDATION ERROR! ID attribute 'G4_PLASTIC_SC_VINYLTOLUENE' is referenced but was never declared at line: 26322
-G4GDML: VALIDATION ERROR! ID attribute 'G4_BAKELITE' is referenced but was never declared at line: 26322
-G4GDML: VALIDATION ERROR! ID attribute 'G4_Galactic' is referenced but was never declared at line: 26322
-G4GDML: VALIDATION ERROR! ID attribute 'G4_Al' is referenced but was never declared at line: 26322
-G4GDML: VALIDATION ERROR! ID attribute 'G4_Si' is referenced but was never declared at line: 26322
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/GDML_src/LEM_Plastic_Mirion_Ametek_Lamierino-worldVOL_DummyMaterials_Parsed.gdml'...
+G4GDML: VALIDATION ERROR! element 'materials' is not allowed for content model '(define,materials,solids,structure,userinfo?,setup+)' at line: 28021
+G4GDML: VALIDATION ERROR! ID attribute 'G4_PLASTIC_SC_VINYLTOLUENE' is referenced but was never declared at line: 28021
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Galactic' is referenced but was never declared at line: 28021
+G4GDML: VALIDATION ERROR! ID attribute 'G4_Si' is referenced but was never declared at line: 28021
 G4GDML: Reading definitions...
 G4GDML: Reading materials...
 G4GDML: Reading materials...
 G4GDML: Reading solids...
 G4GDML: Reading structure...
 G4GDML: Reading setup...
-G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/GDML_src/LEM_GAGG-worldVOL_Parsed.gdml' done!
+G4GDML: Reading '/data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/GDML_src/LEM_Plastic_Mirion_Ametek_Lamierino-worldVOL_DummyMaterials_Parsed.gdml' done!
 Stripping off GDML names of materials, solids and volumes ...
 
 
@@ -41,13 +39,25 @@ Stripping off GDML names of materials, solids and volumes ...
 
 Found 46 volume(s) with auxiliary information.
 
-Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
-Computing random points on LV_AlScrew_Thick_3
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_2
 	Type: Color Value: #ffff00ff
 	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
-Computing random points on LV_BakeliteBoardBottom
-	Type: Color Value: #33ff33cc
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_0
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_1
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_2
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_1
+	Type: Color Value: #00ffffb2
 	Type: SensDet Value: Calorimeter
 Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
 Computing random points on LV_AlFrame_Thick_0
@@ -57,149 +67,141 @@ Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary informatio
 Computing random points on LV_SiliconDetector_Thick_3
 	Type: Color Value: #ffffffff
 	Type: SensDet Value: Calorimeter
-Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
-Computing random points on LV_SiliconDetector_Thin_1
-	Type: Color Value: #ffffffff
-	Type: SensDet Value: Calorimeter
-Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
-Computing random points on LV_AlFrame_Thick_3
+Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_4
 	Type: Color Value: #00ffffb2
 	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
-Computing random points on LV_BakeliteBoardTop
-	Type: Color Value: #33ff33cc
-	Type: SensDet Value: Calorimeter
-Volume LV_AlScrew_1 has the following list of auxiliary information: 
-Computing random points on LV_AlScrew_1
-	Type: Color Value: #ffff00ff
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thin_3
+	Type: Color Value: #00ffffb2
 	Type: SensDet Value: Calorimeter
 Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
 Computing random points on LV_SiliconDetector_Thin_3
 	Type: Color Value: #ffffffff
 	Type: SensDet Value: Calorimeter
-Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
-Computing random points on LV_PlasticVetoBottom
-	Type: Color Value: #ffcc99b2
-	Type: SensDet Value: Calorimeter
-Volume LV_AlScrew_3 has the following list of auxiliary information: 
-Computing random points on LV_AlScrew_3
-	Type: Color Value: #ffff00ff
-	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteCable has the following list of auxiliary information: 
-Computing random points on LV_BakeliteCable
-	Type: Color Value: #33ff33cc
-	Type: SensDet Value: Calorimeter
-Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
-Computing random points on LV_AlFrame_Thick_2
-	Type: Color Value: #00ffffb2
-	Type: SensDet Value: Calorimeter
 Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
 Computing random points on LV_SiliconDetector_Thick_2
 	Type: Color Value: #ffffffff
 	Type: SensDet Value: Calorimeter
-Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
-Computing random points on LV_AlScrew_Thick_4
-	Type: Color Value: #ffff00ff
-	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
-Computing random points on LV_BakeliteBoardMiddleLower
-	Type: Color Value: #33ff33cc
-	Type: SensDet Value: Calorimeter
-Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
-Computing random points on LV_SiliconDetector_Thick_1
-	Type: Color Value: #ffffffff
-	Type: SensDet Value: Calorimeter
-Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
-Computing random points on LV_AlFrame_Thin_1
-	Type: Color Value: #00ffffb2
-	Type: SensDet Value: Calorimeter
 Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
 Computing random points on LV_SiliconDetector_Thin_0
+	Type: Color Value: #ffffffff
+	Type: SensDet Value: Calorimeter
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_1
 	Type: Color Value: #ffffffff
 	Type: SensDet Value: Calorimeter
 Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
 Computing random points on LV_SiliconDetector_Thin_2
 	Type: Color Value: #ffffffff
 	Type: SensDet Value: Calorimeter
-Volume LV_AlBottom has the following list of auxiliary information: 
-Computing random points on LV_AlBottom
-	Type: Color Value: #7f7f7f99
-	Type: SensDet Value: Calorimeter
-Volume LV_AlScrew has the following list of auxiliary information: 
-Computing random points on LV_AlScrew
-	Type: Color Value: #ffff00ff
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thin_4
+	Type: Color Value: #ffffffff
 	Type: SensDet Value: Calorimeter
 Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
 Computing random points on LV_AlFrame_Thin_0
 	Type: Color Value: #00ffffb2
 	Type: SensDet Value: Calorimeter
-Volume LV_AlTop has the following list of auxiliary information: 
-Computing random points on LV_AlTop
-	Type: Color Value: #7f7f7f99
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_SiliconDetector_Thick_4
+	Type: Color Value: #ffffffff
 	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteCable_4 has the following list of auxiliary information: 
-Computing random points on LV_BakeliteCable_4
+Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardTop
 	Type: Color Value: #33ff33cc
 	Type: SensDet Value: Calorimeter
-Volume LV_Calo has the following list of auxiliary information: 
-Computing random points on LV_Calo
-	Type: Color Value: #3333ffff
-	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteCable_3 has the following list of auxiliary information: 
-Computing random points on LV_BakeliteCable_3
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardBottom
 	Type: Color Value: #33ff33cc
 	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteCable_1 has the following list of auxiliary information: 
-Computing random points on LV_BakeliteCable_1
-	Type: Color Value: #33ff33cc
+Volume LV_AlCoverLower has the following list of auxiliary information: 
+Computing random points on LV_AlCoverLower
+	Type: Color Value: #ff00ffb2
 	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteCable_2 has the following list of auxiliary information: 
-Computing random points on LV_BakeliteCable_2
-	Type: Color Value: #33ff33cc
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_3
+	Type: Color Value: #ffff00ff
 	Type: SensDet Value: Calorimeter
-Volume LV_PlasticVetoTop has the following list of auxiliary information: 
-Computing random points on LV_PlasticVetoTop
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_5 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_5
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+Computing random points on LV_PlasticVetoBottom
 	Type: Color Value: #ffcc99b2
 	Type: SensDet Value: Calorimeter
-Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
-Computing random points on LV_BakeliteBoardMiddleUpper
+Volume LV_AlBottom has the following list of auxiliary information: 
+Computing random points on LV_AlBottom
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thick_0 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thick_0
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thick_2
 	Type: Color Value: #33ff33cc
 	Type: SensDet Value: Calorimeter
 Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
 Computing random points on LV_BakeliteBoardCalo
 	Type: Color Value: #3333ffff
 	Type: SensDet Value: Calorimeter
-Volume LV_AlScrew_2 has the following list of auxiliary information: 
-Computing random points on LV_AlScrew_2
-	Type: Color Value: #ffff00ff
-	Type: SensDet Value: Calorimeter
-Volume LV_AlCoverLower has the following list of auxiliary information: 
-Computing random points on LV_AlCoverLower
-	Type: Color Value: #ff00ffb2
-	Type: SensDet Value: Calorimeter
-Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
-Computing random points on LV_AlFrame_Thin_3
-	Type: Color Value: #00ffffb2
-	Type: SensDet Value: Calorimeter
-Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
-Computing random points on LV_SiliconDetector_Thin_4
-	Type: Color Value: #ffffffff
-	Type: SensDet Value: Calorimeter
-Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
-Computing random points on LV_AlFrame_Thin_4
-	Type: Color Value: #00ffffb2
-	Type: SensDet Value: Calorimeter
 Volume LV_AlCoverUpper has the following list of auxiliary information: 
 Computing random points on LV_AlCoverUpper
 	Type: Color Value: #ff00ffb2
 	Type: SensDet Value: Calorimeter
-Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
-Computing random points on LV_AlFrame_Thin_2
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardMiddleUpper
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+Computing random points on LV_BakeliteBoardMiddleLower
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thick_1
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_BakeliteCable_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thick_3
+	Type: Color Value: #33ff33cc
+	Type: SensDet Value: Calorimeter
+Volume LV_Calo has the following list of auxiliary information: 
+Computing random points on LV_Calo
+	Type: Color Value: #3333ffff
+	Type: SensDet Value: Calorimeter
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+Computing random points on LV_PlasticVetoTop
+	Type: Color Value: #ffcc99b2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlTop has the following list of auxiliary information: 
+Computing random points on LV_AlTop
+	Type: Color Value: #7f7f7f99
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_4
 	Type: Color Value: #00ffffb2
 	Type: SensDet Value: Calorimeter
-Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
-Computing random points on LV_SiliconDetector_Thick_0
-	Type: Color Value: #ffffffff
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_4
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_3
+	Type: Color Value: #00ffffb2
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_1
+	Type: Color Value: #ffff00ff
+	Type: SensDet Value: Calorimeter
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+Computing random points on LV_AlScrew_Thick_3
+	Type: Color Value: #ffff00ff
 	Type: SensDet Value: Calorimeter
 Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
 Computing random points on LV_AlScrew_Thick_0
@@ -209,115 +211,111 @@ Volume LV_AlScrew_Thick_2 has the following list of auxiliary information:
 Computing random points on LV_AlScrew_Thick_2
 	Type: Color Value: #ffff00ff
 	Type: SensDet Value: Calorimeter
-Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
-Computing random points on LV_AlScrew_Thick_1
-	Type: Color Value: #ffff00ff
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+Computing random points on LV_AlFrame_Thick_2
+	Type: Color Value: #00ffffb2
 	Type: SensDet Value: Calorimeter
-Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
-Computing random points on LV_SiliconDetector_Thick_4
-	Type: Color Value: #ffffffff
+Volume LV_BakeliteCable_Thick_4 has the following list of auxiliary information: 
+Computing random points on LV_BakeliteCable_Thick_4
+	Type: Color Value: #33ff33cc
 	Type: SensDet Value: Calorimeter
 Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
 Computing random points on LV_AlFrame_Thick_1
 	Type: Color Value: #00ffffb2
 	Type: SensDet Value: Calorimeter
-Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
-Computing random points on LV_AlFrame_Thick_4
-	Type: Color Value: #00ffffb2
-	Type: SensDet Value: Calorimeter
 
-Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_3
-Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardBottom
+Volume LV_AlScrew_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_2
+Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_0
+Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_1
+Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_2
+Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_1
 Volume LV_AlFrame_Thick_0 has the following list of auxiliary information: 
 Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_0
 Volume LV_SiliconDetector_Thick_3 has the following list of auxiliary information: 
 Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_3
-Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_1
-Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_3
-Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardTop
-Volume LV_AlScrew_1 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlScrew_1
-Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_3
-Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_PlasticVetoBottom
-Volume LV_AlScrew_3 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlScrew_3
-Volume LV_BakeliteCable has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteCable
-Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_2
-Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_2
-Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_4
-Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleLower
-Volume LV_SiliconDetector_Thick_1 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_1
-Volume LV_AlFrame_Thin_1 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_1
-Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_0
-Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_2
-Volume LV_AlBottom has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlBottom
-Volume LV_AlScrew has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlScrew
-Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_0
-Volume LV_AlTop has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlTop
-Volume LV_BakeliteCable_4 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_4
-Volume LV_Calo has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_Calo
-Volume LV_BakeliteCable_3 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_3
-Volume LV_BakeliteCable_1 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_1
-Volume LV_BakeliteCable_2 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_2
-Volume LV_PlasticVetoTop has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_PlasticVetoTop
-Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleUpper
-Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardCalo
-Volume LV_AlScrew_2 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlScrew_2
-Volume LV_AlCoverLower has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlCoverLower
-Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_3
-Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_4
 Volume LV_AlFrame_Thin_4 has the following list of auxiliary information: 
 Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_4
+Volume LV_AlFrame_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_3
+Volume LV_SiliconDetector_Thin_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_3
+Volume LV_SiliconDetector_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_2
+Volume LV_SiliconDetector_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_0
+Volume LV_SiliconDetector_Thin_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_1
+Volume LV_SiliconDetector_Thin_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_2
+Volume LV_SiliconDetector_Thin_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thin_4
+Volume LV_AlFrame_Thin_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_0
+Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_4
+Volume LV_BakeliteBoardTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardTop
+Volume LV_BakeliteBoardBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardBottom
+Volume LV_AlCoverLower has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlCoverLower
+Volume LV_AlScrew_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_3
+Volume LV_AlScrew_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_1
+Volume LV_AlScrew_5 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_5
+Volume LV_PlasticVetoBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoBottom
+Volume LV_AlBottom has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlBottom
+Volume LV_BakeliteCable_Thick_0 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thick_0
+Volume LV_BakeliteCable_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thick_2
+Volume LV_BakeliteBoardCalo has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardCalo
 Volume LV_AlCoverUpper has the following list of auxiliary information: 
 Attaching sensitive detector Calorimeter to volume LV_AlCoverUpper
-Volume LV_AlFrame_Thin_2 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thin_2
-Volume LV_SiliconDetector_Thick_0 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_0
+Volume LV_BakeliteBoardMiddleUpper has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleUpper
+Volume LV_BakeliteBoardMiddleLower has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteBoardMiddleLower
+Volume LV_BakeliteCable_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thick_1
+Volume LV_BakeliteCable_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thick_3
+Volume LV_Calo has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_Calo
+Volume LV_PlasticVetoTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_PlasticVetoTop
+Volume LV_AlTop has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlTop
+Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_4
+Volume LV_AlScrew_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_4
+Volume LV_AlFrame_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_3
+Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_1
+Volume LV_AlScrew_Thick_3 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_3
 Volume LV_AlScrew_Thick_0 has the following list of auxiliary information: 
 Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_0
 Volume LV_AlScrew_Thick_2 has the following list of auxiliary information: 
 Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_2
-Volume LV_AlScrew_Thick_1 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlScrew_Thick_1
-Volume LV_SiliconDetector_Thick_4 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_SiliconDetector_Thick_4
+Volume LV_AlFrame_Thick_2 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_2
+Volume LV_BakeliteCable_Thick_4 has the following list of auxiliary information: 
+Attaching sensitive detector Calorimeter to volume LV_BakeliteCable_Thick_4
 Volume LV_AlFrame_Thick_1 has the following list of auxiliary information: 
 Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_1
-Volume LV_AlFrame_Thick_4 has the following list of auxiliary information: 
-Attaching sensitive detector Calorimeter to volume LV_AlFrame_Thick_4
 
  hInelastic FTFP_BERT : threshold between BERT and FTFP is over the interval 
  for pions :   3 to 6 GeV
@@ -1176,37 +1174,16 @@ Index : 0     used in the geometry : Yes
     DefaultRegionForTheWorld
 
 Index : 1     used in the geometry : Yes
- Material : G4_Al
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 2     used in the geometry : Yes
- Material : G4_BAKELITE
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 3     used in the geometry : Yes
  Material : G4_Si
  Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
  Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
  Region(s) which use this couple : 
     DefaultRegionForTheWorld
 
-Index : 4     used in the geometry : Yes
+Index : 2     used in the geometry : Yes
  Material : G4_PLASTIC_SC_VINYLTOLUENE
  Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
  Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 5     used in the geometry : Yes
- Material : GAGG
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  34.9059 keV    e-  782.898 keV    e+  745.353 keV proton 70 keV
  Region(s) which use this couple : 
     DefaultRegionForTheWorld
 
@@ -1225,495 +1202,121 @@ G4WT0 > ... set ntuple merging row mode : row-wise - done
 G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/e-_j6_t0.root - done
 G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/e-_j6.root - done
 G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/e-_j6.root - done
-G4WT0 > Event 182 - Energy Confinement Anomaly Detected
-G4WT0 > Event 191 - Energy Confinement Anomaly Detected
-G4WT0 > Event 254 - Energy Confinement Anomaly Detected
-G4WT0 > Event 429 - Energy Confinement Anomaly Detected
-G4WT0 > Event 472 - Energy Confinement Anomaly Detected
-G4WT0 > Event 815 - Energy Confinement Anomaly Detected
-G4WT0 > Event 852 - Energy Confinement Anomaly Detected
-G4WT0 > Event 955 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 1000
-G4WT0 > Event 1276 - Energy Confinement Anomaly Detected
-G4WT0 > Event 1588 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 2000
-G4WT0 > Event 2077 - Energy Confinement Anomaly Detected
-G4WT0 > Event 2629 - Energy Confinement Anomaly Detected
-G4WT0 > Event 2830 - Energy Confinement Anomaly Detected
-G4WT0 > Event 2875 - Energy Confinement Anomaly Detected
-G4WT0 > Event 2950 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 3000
-G4WT0 > Event 3123 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 4000
-G4WT0 > Event 4033 - Energy Confinement Anomaly Detected
-G4WT0 > Event 4262 - Energy Confinement Anomaly Detected
-G4WT0 > Event 4378 - Energy Confinement Anomaly Detected
-G4WT0 > Event 4442 - Energy Confinement Anomaly Detected
-G4WT0 > Event 4697 - Energy Confinement Anomaly Detected
-G4WT0 > Event 4940 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 5000
-G4WT0 > Event 5454 - Energy Confinement Anomaly Detected
-G4WT0 > Event 5867 - Energy Confinement Anomaly Detected
-G4WT0 > Event 5880 - Energy Confinement Anomaly Detected
-G4WT0 > Event 5984 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 6000
-G4WT0 > Event 6005 - Energy Confinement Anomaly Detected
-G4WT0 > Event 6671 - Energy Confinement Anomaly Detected
-G4WT0 > Event 6936 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 7000
-G4WT0 > Event 7057 - Energy Confinement Anomaly Detected
-G4WT0 > Event 7482 - Energy Confinement Anomaly Detected
-G4WT0 > Event 7512 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 8000
-G4WT0 > Event 8616 - Energy Confinement Anomaly Detected
-G4WT0 > Event 8978 - Energy Confinement Anomaly Detected
-G4WT0 > Event 8979 - Energy Confinement Anomaly Detected
+G4WT0 > Event 8728 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 9000
-G4WT0 > Event 9090 - Energy Confinement Anomaly Detected
-G4WT0 > Event 9325 - Energy Confinement Anomaly Detected
-G4WT0 > Event 9326 - Energy Confinement Anomaly Detected
-G4WT0 > Event 9574 - Energy Confinement Anomaly Detected
-G4WT0 > Event 9693 - Energy Confinement Anomaly Detected
-G4WT0 > Event 9731 - Energy Confinement Anomaly Detected
-G4WT0 > Event 9762 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 10000
-G4WT0 > Event 10185 - Energy Confinement Anomaly Detected
-G4WT0 > Event 10548 - Energy Confinement Anomaly Detected
-G4WT0 > Event 10594 - Energy Confinement Anomaly Detected
-G4WT0 > Event 10640 - Energy Confinement Anomaly Detected
-G4WT0 > Event 10953 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 11000
-G4WT0 > Event 11431 - Energy Confinement Anomaly Detected
-G4WT0 > Event 11524 - Energy Confinement Anomaly Detected
-G4WT0 > Event 11732 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 12000
-G4WT0 > Event 12241 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12261 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12266 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12318 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12330 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12333 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12356 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12402 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 13000
-G4WT0 > Event 13883 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 14000
-G4WT0 > Event 14023 - Energy Confinement Anomaly Detected
-G4WT0 > Event 14087 - Energy Confinement Anomaly Detected
-G4WT0 > Event 14701 - Energy Confinement Anomaly Detected
-G4WT0 > Event 14723 - Energy Confinement Anomaly Detected
-G4WT0 > Event 14967 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 15000
-G4WT0 > Event 15125 - Energy Confinement Anomaly Detected
-G4WT0 > Event 15263 - Energy Confinement Anomaly Detected
-G4WT0 > Event 15401 - Energy Confinement Anomaly Detected
-G4WT0 > Event 15466 - Energy Confinement Anomaly Detected
-G4WT0 > Event 15554 - Energy Confinement Anomaly Detected
-G4WT0 > Event 15743 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 16000
-G4WT0 > Event 16449 - Energy Confinement Anomaly Detected
-G4WT0 > Event 16639 - Energy Confinement Anomaly Detected
-G4WT0 > Event 16675 - Energy Confinement Anomaly Detected
-G4WT0 > Event 16764 - Energy Confinement Anomaly Detected
-G4WT0 > Event 16879 - Energy Confinement Anomaly Detected
-G4WT0 > Event 16943 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 17000
-G4WT0 > Event 17363 - Energy Confinement Anomaly Detected
-G4WT0 > Event 17735 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 18000
-G4WT0 > Event 18400 - Energy Confinement Anomaly Detected
-G4WT0 > Event 18634 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 19000
-G4WT0 > Event 19011 - Energy Confinement Anomaly Detected
-G4WT0 > Event 19281 - Energy Confinement Anomaly Detected
-G4WT0 > Event 19454 - Energy Confinement Anomaly Detected
-G4WT0 > Event 19890 - Energy Confinement Anomaly Detected
-G4WT0 > Event 19991 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 20000
-G4WT0 > Event 20213 - Energy Confinement Anomaly Detected
-G4WT0 > Event 20260 - Energy Confinement Anomaly Detected
-G4WT0 > Event 20476 - Energy Confinement Anomaly Detected
-G4WT0 > Event 20676 - Energy Confinement Anomaly Detected
-G4WT0 > Event 20759 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 21000
-G4WT0 > Event 21085 - Energy Confinement Anomaly Detected
-G4WT0 > Event 21286 - Energy Confinement Anomaly Detected
-G4WT0 > Event 21409 - Energy Confinement Anomaly Detected
-G4WT0 > Event 21444 - Energy Confinement Anomaly Detected
-G4WT0 > Event 21849 - Energy Confinement Anomaly Detected
-G4WT0 > Event 21915 - Energy Confinement Anomaly Detected
-G4WT0 > Event 21940 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 22000
-G4WT0 > Event 22088 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 23000
-G4WT0 > Event 23430 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23514 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23550 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23650 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23732 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 24000
-G4WT0 > Event 24076 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24368 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24589 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24690 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24747 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24812 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 25000
-G4WT0 > Event 25159 - Energy Confinement Anomaly Detected
-G4WT0 > Event 25247 - Energy Confinement Anomaly Detected
-G4WT0 > Event 25360 - Energy Confinement Anomaly Detected
-G4WT0 > Event 25480 - Energy Confinement Anomaly Detected
-G4WT0 > Event 25556 - Energy Confinement Anomaly Detected
-G4WT0 > Event 25581 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 26000
-G4WT0 > Event 26228 - Energy Confinement Anomaly Detected
-G4WT0 > Event 26873 - Energy Confinement Anomaly Detected
-G4WT0 > Event 26916 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 27000
-G4WT0 > Event 27560 - Energy Confinement Anomaly Detected
-G4WT0 > Event 27568 - Energy Confinement Anomaly Detected
-G4WT0 > Event 27697 - Energy Confinement Anomaly Detected
-G4WT0 > Event 27721 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 28000
-G4WT0 > Event 28915 - Energy Confinement Anomaly Detected
+G4WT0 > Event 28522 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 29000
-G4WT0 > Event 29458 - Energy Confinement Anomaly Detected
-G4WT0 > Event 29600 - Energy Confinement Anomaly Detected
-G4WT0 > Event 29755 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 30000
 G4WT0 > Event N: 31000
-G4WT0 > Event 31099 - Energy Confinement Anomaly Detected
-G4WT0 > Event 31802 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 32000
-G4WT0 > Event 32456 - Energy Confinement Anomaly Detected
-G4WT0 > Event 32551 - Energy Confinement Anomaly Detected
-G4WT0 > Event 32742 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 33000
-G4WT0 > Event 33369 - Energy Confinement Anomaly Detected
-G4WT0 > Event 33442 - Energy Confinement Anomaly Detected
-G4WT0 > Event 33508 - Energy Confinement Anomaly Detected
-G4WT0 > Event 33878 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 34000
-G4WT0 > Event 34239 - Energy Confinement Anomaly Detected
-G4WT0 > Event 34334 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 35000
-G4WT0 > Event 35049 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35522 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35604 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35810 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 36000
-G4WT0 > Event 36216 - Energy Confinement Anomaly Detected
-G4WT0 > Event 36970 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 37000
-G4WT0 > Event 37243 - Energy Confinement Anomaly Detected
-G4WT0 > Event 37370 - Energy Confinement Anomaly Detected
-G4WT0 > Event 37693 - Energy Confinement Anomaly Detected
-G4WT0 > Event 37796 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 38000
-G4WT0 > Event 38689 - Energy Confinement Anomaly Detected
-G4WT0 > Event 38739 - Energy Confinement Anomaly Detected
-G4WT0 > Event 38753 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 39000
-G4WT0 > Event 39681 - Energy Confinement Anomaly Detected
-G4WT0 > Event 39685 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 40000
-G4WT0 > Event 40031 - Energy Confinement Anomaly Detected
-G4WT0 > Event 40821 - Energy Confinement Anomaly Detected
-G4WT0 > Event 40931 - Energy Confinement Anomaly Detected
-G4WT0 > Event 40954 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 41000
-G4WT0 > Event 41156 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 42000
-G4WT0 > Event 42266 - Energy Confinement Anomaly Detected
-G4WT0 > Event 42531 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 43000
-G4WT0 > Event 43050 - Energy Confinement Anomaly Detected
-G4WT0 > Event 43076 - Energy Confinement Anomaly Detected
-G4WT0 > Event 43211 - Energy Confinement Anomaly Detected
-G4WT0 > Event 43342 - Energy Confinement Anomaly Detected
-G4WT0 > Event 43382 - Energy Confinement Anomaly Detected
-G4WT0 > Event 43778 - Energy Confinement Anomaly Detected
-G4WT0 > Event 43916 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 44000
-G4WT0 > Event 44009 - Energy Confinement Anomaly Detected
-G4WT0 > Event 44529 - Energy Confinement Anomaly Detected
-G4WT0 > Event 44656 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 45000
-G4WT0 > Event 45109 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 46000
-G4WT0 > Event 46580 - Energy Confinement Anomaly Detected
+G4WT0 > Event 46063 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 47000
-G4WT0 > Event 47402 - Energy Confinement Anomaly Detected
-G4WT0 > Event 47480 - Energy Confinement Anomaly Detected
-G4WT0 > Event 47609 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 48000
-G4WT0 > Event 48045 - Energy Confinement Anomaly Detected
-G4WT0 > Event 48347 - Energy Confinement Anomaly Detected
-G4WT0 > Event 48419 - Energy Confinement Anomaly Detected
-G4WT0 > Event 48567 - Energy Confinement Anomaly Detected
-G4WT0 > Event 48889 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 49000
 G4WT0 > Event N: 50000
-G4WT0 > Event 50589 - Energy Confinement Anomaly Detected
-G4WT0 > Event 50709 - Energy Confinement Anomaly Detected
-G4WT0 > Event 50790 - Energy Confinement Anomaly Detected
-G4WT0 > Event 50803 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 51000
-G4WT0 > Event 51101 - Energy Confinement Anomaly Detected
-G4WT0 > Event 51392 - Energy Confinement Anomaly Detected
-G4WT0 > Event 51652 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 52000
-G4WT0 > Event 52371 - Energy Confinement Anomaly Detected
-G4WT0 > Event 52416 - Energy Confinement Anomaly Detected
-G4WT0 > Event 52567 - Energy Confinement Anomaly Detected
-G4WT0 > Event 52625 - Energy Confinement Anomaly Detected
-G4WT0 > Event 52960 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 53000
 G4WT0 > Event 53109 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53254 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53399 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53547 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53604 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53846 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53930 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 54000
-G4WT0 > Event 54229 - Energy Confinement Anomaly Detected
-G4WT0 > Event 54278 - Energy Confinement Anomaly Detected
-G4WT0 > Event 54493 - Energy Confinement Anomaly Detected
-G4WT0 > Event 54777 - Energy Confinement Anomaly Detected
-G4WT0 > Event 54809 - Energy Confinement Anomaly Detected
-G4WT0 > Event 54964 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 55000
-G4WT0 > Event 55136 - Energy Confinement Anomaly Detected
-G4WT0 > Event 55317 - Energy Confinement Anomaly Detected
-G4WT0 > Event 55649 - Energy Confinement Anomaly Detected
-G4WT0 > Event 55867 - Energy Confinement Anomaly Detected
-G4WT0 > Event 55973 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 56000
-G4WT0 > Event 56011 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 57000
-G4WT0 > Event 57101 - Energy Confinement Anomaly Detected
-G4WT0 > Event 57250 - Energy Confinement Anomaly Detected
-G4WT0 > Event 57346 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 58000
-G4WT0 > Event 58026 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 59000
-G4WT0 > Event 59009 - Energy Confinement Anomaly Detected
-G4WT0 > Event 59105 - Energy Confinement Anomaly Detected
-G4WT0 > Event 59452 - Energy Confinement Anomaly Detected
-G4WT0 > Event 59469 - Energy Confinement Anomaly Detected
-G4WT0 > Event 59538 - Energy Confinement Anomaly Detected
-G4WT0 > Event 59754 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 60000
-G4WT0 > Event 60499 - Energy Confinement Anomaly Detected
-G4WT0 > Event 60502 - Energy Confinement Anomaly Detected
-G4WT0 > Event 60857 - Energy Confinement Anomaly Detected
+G4WT0 > Event 60897 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 61000
-G4WT0 > Event 61120 - Energy Confinement Anomaly Detected
-G4WT0 > Event 61228 - Energy Confinement Anomaly Detected
-G4WT0 > Event 61272 - Energy Confinement Anomaly Detected
-G4WT0 > Event 61376 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 62000
-G4WT0 > Event 62451 - Energy Confinement Anomaly Detected
-G4WT0 > Event 62590 - Energy Confinement Anomaly Detected
-G4WT0 > Event 62940 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 63000
-G4WT0 > Event 63207 - Energy Confinement Anomaly Detected
-G4WT0 > Event 63456 - Energy Confinement Anomaly Detected
-G4WT0 > Event 63654 - Energy Confinement Anomaly Detected
-G4WT0 > Event 63824 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 64000
-G4WT0 > Event 64063 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64084 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64319 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64692 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64880 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64978 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 65000
-G4WT0 > Event 65676 - Energy Confinement Anomaly Detected
-G4WT0 > Event 65879 - Energy Confinement Anomaly Detected
-G4WT0 > Event 65936 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 66000
-G4WT0 > Event 66243 - Energy Confinement Anomaly Detected
-G4WT0 > Event 66516 - Energy Confinement Anomaly Detected
-G4WT0 > Event 66588 - Energy Confinement Anomaly Detected
-G4WT0 > Event 66726 - Energy Confinement Anomaly Detected
-G4WT0 > Event 66743 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 67000
-G4WT0 > Event 67277 - Energy Confinement Anomaly Detected
-G4WT0 > Event 67749 - Energy Confinement Anomaly Detected
-G4WT0 > Event 67803 - Energy Confinement Anomaly Detected
-G4WT0 > Event 67882 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 68000
-G4WT0 > Event 68139 - Energy Confinement Anomaly Detected
-G4WT0 > Event 68172 - Energy Confinement Anomaly Detected
-G4WT0 > Event 68218 - Energy Confinement Anomaly Detected
-G4WT0 > Event 68293 - Energy Confinement Anomaly Detected
-G4WT0 > Event 68730 - Energy Confinement Anomaly Detected
-G4WT0 > Event 68760 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 69000
-G4WT0 > Event 69173 - Energy Confinement Anomaly Detected
-G4WT0 > Event 69290 - Energy Confinement Anomaly Detected
-G4WT0 > Event 69436 - Energy Confinement Anomaly Detected
-G4WT0 > Event 69717 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 70000
-G4WT0 > Event 70097 - Energy Confinement Anomaly Detected
-G4WT0 > Event 70204 - Energy Confinement Anomaly Detected
-G4WT0 > Event 70224 - Energy Confinement Anomaly Detected
-G4WT0 > Event 70321 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 71000
-G4WT0 > Event 71179 - Energy Confinement Anomaly Detected
-G4WT0 > Event 71406 - Energy Confinement Anomaly Detected
-G4WT0 > Event 71433 - Energy Confinement Anomaly Detected
-G4WT0 > Event 71669 - Energy Confinement Anomaly Detected
-G4WT0 > Event 71973 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 72000
-G4WT0 > Event 72106 - Energy Confinement Anomaly Detected
-G4WT0 > Event 72128 - Energy Confinement Anomaly Detected
-G4WT0 > Event 72274 - Energy Confinement Anomaly Detected
-G4WT0 > Event 72605 - Energy Confinement Anomaly Detected
-G4WT0 > Event 72647 - Energy Confinement Anomaly Detected
-G4WT0 > Event 72707 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 73000
-G4WT0 > Event 73103 - Energy Confinement Anomaly Detected
-G4WT0 > Event 73322 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 74000
-G4WT0 > Event 74081 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 75000
-G4WT0 > Event 75765 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75778 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75814 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 76000
-G4WT0 > Event 76458 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 77000
-G4WT0 > Event 77395 - Energy Confinement Anomaly Detected
-G4WT0 > Event 77531 - Energy Confinement Anomaly Detected
-G4WT0 > Event 77572 - Energy Confinement Anomaly Detected
-G4WT0 > Event 77899 - Energy Confinement Anomaly Detected
-G4WT0 > Event 77959 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 78000
-G4WT0 > Event 78259 - Energy Confinement Anomaly Detected
-G4WT0 > Event 78570 - Energy Confinement Anomaly Detected
-G4WT0 > Event 78574 - Energy Confinement Anomaly Detected
-G4WT0 > Event 78645 - Energy Confinement Anomaly Detected
-G4WT0 > Event 78696 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 79000
-G4WT0 > Event 79165 - Energy Confinement Anomaly Detected
-G4WT0 > Event 79200 - Energy Confinement Anomaly Detected
-G4WT0 > Event 79203 - Energy Confinement Anomaly Detected
-G4WT0 > Event 79677 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 80000
-G4WT0 > Event 80226 - Energy Confinement Anomaly Detected
-G4WT0 > Event 80647 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 81000
-G4WT0 > Event 81130 - Energy Confinement Anomaly Detected
-G4WT0 > Event 81217 - Energy Confinement Anomaly Detected
-G4WT0 > Event 81390 - Energy Confinement Anomaly Detected
-G4WT0 > Event 81464 - Energy Confinement Anomaly Detected
-G4WT0 > Event 81879 - Energy Confinement Anomaly Detected
-G4WT0 > Event 81943 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 82000
-G4WT0 > Event 82222 - Energy Confinement Anomaly Detected
-G4WT0 > Event 82789 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 83000
-G4WT0 > Event 83005 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83134 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83221 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83298 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83665 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83715 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83853 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 84000
-G4WT0 > Event 84135 - Energy Confinement Anomaly Detected
-G4WT0 > Event 84239 - Energy Confinement Anomaly Detected
-G4WT0 > Event 84495 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 85000
-G4WT0 > Event 85111 - Energy Confinement Anomaly Detected
-G4WT0 > Event 85472 - Energy Confinement Anomaly Detected
-G4WT0 > Event 85481 - Energy Confinement Anomaly Detected
-G4WT0 > Event 85742 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 86000
-G4WT0 > Event 86021 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86148 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86638 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86871 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86938 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 87000
-G4WT0 > Event 87227 - Energy Confinement Anomaly Detected
-G4WT0 > Event 87265 - Energy Confinement Anomaly Detected
-G4WT0 > Event 87342 - Energy Confinement Anomaly Detected
-G4WT0 > Event 87379 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 88000
-G4WT0 > Event 88224 - Energy Confinement Anomaly Detected
-G4WT0 > Event 88291 - Energy Confinement Anomaly Detected
-G4WT0 > Event 88333 - Energy Confinement Anomaly Detected
-G4WT0 > Event 88924 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 89000
-G4WT0 > Event 89087 - Energy Confinement Anomaly Detected
-G4WT0 > Event 89371 - Energy Confinement Anomaly Detected
-G4WT0 > Event 89537 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 90000
-G4WT0 > Event 90565 - Energy Confinement Anomaly Detected
-G4WT0 > Event 90586 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 91000
-G4WT0 > Event 90999 - Energy Confinement Anomaly Detected
-G4WT0 > Event 91085 - Energy Confinement Anomaly Detected
-G4WT0 > Event 91465 - Energy Confinement Anomaly Detected
-G4WT0 > Event 91536 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 92000
-G4WT0 > Event 92262 - Energy Confinement Anomaly Detected
-G4WT0 > Event 92429 - Energy Confinement Anomaly Detected
-G4WT0 > Event 92533 - Energy Confinement Anomaly Detected
-G4WT0 > Event 92851 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 93000
-G4WT0 > Event 93164 - Energy Confinement Anomaly Detected
-G4WT0 > Event 93746 - Energy Confinement Anomaly Detected
-G4WT0 > Event 93748 - Energy Confinement Anomaly Detected
-G4WT0 > Event 93884 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 94000
-G4WT0 > Event 94115 - Energy Confinement Anomaly Detected
-G4WT0 > Event 94476 - Energy Confinement Anomaly Detected
-G4WT0 > Event 94645 - Energy Confinement Anomaly Detected
-G4WT0 > Event 94686 - Energy Confinement Anomaly Detected
-G4WT0 > Event 94862 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 95000
-G4WT0 > Event 95043 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95271 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95440 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95490 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95572 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95673 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95744 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95821 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 96000
-G4WT0 > Event 96089 - Energy Confinement Anomaly Detected
-G4WT0 > Event 96143 - Energy Confinement Anomaly Detected
-G4WT0 > Event 96272 - Energy Confinement Anomaly Detected
-G4WT0 > Event 96386 - Energy Confinement Anomaly Detected
-G4WT0 > Event 96665 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 97000
-G4WT0 > Event 97025 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97302 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97474 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97831 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97893 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 98000
-G4WT0 > Event 98093 - Energy Confinement Anomaly Detected
-G4WT0 > Event 98216 - Energy Confinement Anomaly Detected
-G4WT0 > Event 98619 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 99000
-G4WT0 > Event 99303 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 100000
 G4WT0 > [thread 0] Thread-local run terminated.
 G4WT0 > [thread 0] Run Summary
 G4WT0 > [thread 0]   Number of events processed : 100000
-G4WT0 > [thread 0]   User=0.000000s Real=0.011140s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > [thread 0]   User=0.000000s Real=0.003548s Sys=0.000000s [Cpu=0.0%]
 G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/e-_j6_t0.root - done
 G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/e-_j6_t0.root - done
  Run terminated.
 Run Summary
   Number of events processed : 100000
-  User=78.930000s Real=80.119094s Sys=0.320000s [Cpu=98.9%]
+  User=108.440000s Real=114.840441s Sys=0.080000s [Cpu=94.5%]
 0 events have been kept for refreshing and/or reviewing.
   "/vis/reviewKeptEvents" to review them one by one.
   "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
@@ -1728,37 +1331,16 @@ Index : 0     used in the geometry : Yes
     DefaultRegionForTheWorld
 
 Index : 1     used in the geometry : Yes
- Material : G4_Al
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 2     used in the geometry : Yes
- Material : G4_BAKELITE
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 3     used in the geometry : Yes
  Material : G4_Si
  Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
  Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
  Region(s) which use this couple : 
     DefaultRegionForTheWorld
 
-Index : 4     used in the geometry : Yes
+Index : 2     used in the geometry : Yes
  Material : G4_PLASTIC_SC_VINYLTOLUENE
  Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
  Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 5     used in the geometry : Yes
- Material : GAGG
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  34.9059 keV    e-  782.898 keV    e+  745.353 keV proton 70 keV
  Region(s) which use this couple : 
     DefaultRegionForTheWorld
 
@@ -1774,291 +1356,117 @@ G4WT0 > ### Run 1 starts on worker thread 0.
 G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/proton_j6_t0.root - done
 G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/proton_j6.root - done
 G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/proton_j6.root - done
-G4WT0 > Event 268 - Energy Confinement Anomaly Detected
-G4WT0 > Event 639 - Energy Confinement Anomaly Detected
-G4WT0 > Event 799 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 1000
-G4WT0 > Event 1682 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 2000
-G4WT0 > Event 2441 - Energy Confinement Anomaly Detected
-G4WT0 > Event 2519 - Energy Confinement Anomaly Detected
-G4WT0 > Event 2791 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 3000
-G4WT0 > Event 3128 - Energy Confinement Anomaly Detected
-G4WT0 > Event 3427 - Energy Confinement Anomaly Detected
-G4WT0 > Event 3687 - Energy Confinement Anomaly Detected
-G4WT0 > Event 3896 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 4000
-G4WT0 > Event 4473 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 5000
 G4WT0 > Event N: 6000
 G4WT0 > Event N: 7000
-G4WT0 > Event 7044 - Energy Confinement Anomaly Detected
-G4WT0 > Event 7126 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 8000
-G4WT0 > Event 8832 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 9000
-G4WT0 > Event 9769 - Energy Confinement Anomaly Detected
-G4WT0 > Event 9858 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 10000
-G4WT0 > Event 10909 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 11000
-G4WT0 > Event 11308 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 12000
-G4WT0 > Event 12319 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12391 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 13000
-G4WT0 > Event 13132 - Energy Confinement Anomaly Detected
-G4WT0 > Event 13627 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 14000
-G4WT0 > Event 14653 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 15000
-G4WT0 > Event 15618 - Energy Confinement Anomaly Detected
-G4WT0 > Event 15941 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 16000
-G4WT0 > Event 16016 - Energy Confinement Anomaly Detected
-G4WT0 > Event 16109 - Energy Confinement Anomaly Detected
-G4WT0 > Event 16945 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 17000
-G4WT0 > Event 17748 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 18000
-G4WT0 > Event 18476 - Energy Confinement Anomaly Detected
-G4WT0 > Event 18549 - Energy Confinement Anomaly Detected
-G4WT0 > Event 18859 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 19000
 G4WT0 > Event N: 20000
-G4WT0 > Event 20638 - Energy Confinement Anomaly Detected
-G4WT0 > Event 20758 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 21000
-G4WT0 > Event 21108 - Energy Confinement Anomaly Detected
-G4WT0 > Event 21789 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 22000
-G4WT0 > Event 22213 - Energy Confinement Anomaly Detected
-G4WT0 > Event 22684 - Energy Confinement Anomaly Detected
-G4WT0 > Event 22813 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 23000
-G4WT0 > Event 23018 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23361 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23536 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23549 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 24000
 G4WT0 > Event N: 25000
-G4WT0 > Event 25256 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 26000
-G4WT0 > Event 26095 - Energy Confinement Anomaly Detected
-G4WT0 > Event 26375 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 27000
-G4WT0 > Event 27064 - Energy Confinement Anomaly Detected
-G4WT0 > Event 27208 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 28000
 G4WT0 > Event N: 29000
-G4WT0 > Event 29704 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 30000
-G4WT0 > Event 30204 - Energy Confinement Anomaly Detected
-G4WT0 > Event 30400 - Energy Confinement Anomaly Detected
-G4WT0 > Event 30831 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 31000
-G4WT0 > Event 31269 - Energy Confinement Anomaly Detected
-G4WT0 > Event 31556 - Energy Confinement Anomaly Detected
-G4WT0 > Event 31868 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 32000
-G4WT0 > Event 32186 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 33000
-G4WT0 > Event 33515 - Energy Confinement Anomaly Detected
-G4WT0 > Event 33833 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 34000
-G4WT0 > Event 34950 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 35000
-G4WT0 > Event 35055 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35251 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35401 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35794 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35933 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 36000
-G4WT0 > Event 36164 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 37000
-G4WT0 > Event 37065 - Energy Confinement Anomaly Detected
-G4WT0 > Event 37490 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 38000
-G4WT0 > Event 38639 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 39000
-G4WT0 > Event 39795 - Energy Confinement Anomaly Detected
-G4WT0 > Event 39924 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 40000
-G4WT0 > Event 40052 - Energy Confinement Anomaly Detected
-G4WT0 > Event 40202 - Energy Confinement Anomaly Detected
-G4WT0 > Event 40209 - Energy Confinement Anomaly Detected
-G4WT0 > Event 40223 - Energy Confinement Anomaly Detected
-G4WT0 > Event 40989 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 41000
-G4WT0 > Event 41160 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 42000
-G4WT0 > Event 42321 - Energy Confinement Anomaly Detected
-G4WT0 > Event 42749 - Energy Confinement Anomaly Detected
-G4WT0 > Event 42937 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 43000
-G4WT0 > Event 43094 - Energy Confinement Anomaly Detected
-G4WT0 > Event 43398 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 44000
 G4WT0 > Event N: 45000
-G4WT0 > Event 45627 - Energy Confinement Anomaly Detected
-G4WT0 > Event 45740 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 46000
 G4WT0 > Event N: 47000
-G4WT0 > Event 47080 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 48000
-G4WT0 > Event 48293 - Energy Confinement Anomaly Detected
-G4WT0 > Event 48564 - Energy Confinement Anomaly Detected
-G4WT0 > Event 48588 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 49000
-G4WT0 > Event 49071 - Energy Confinement Anomaly Detected
-G4WT0 > Event 49510 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 50000
-G4WT0 > Event 50524 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 51000
-G4WT0 > Event 51340 - Energy Confinement Anomaly Detected
-G4WT0 > Event 51385 - Energy Confinement Anomaly Detected
-G4WT0 > Event 51525 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 52000
-G4WT0 > Event 52480 - Energy Confinement Anomaly Detected
-G4WT0 > Event 52508 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 53000
-G4WT0 > Event 53262 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53340 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 54000
-G4WT0 > Event 54749 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 55000
-G4WT0 > Event 55653 - Energy Confinement Anomaly Detected
-G4WT0 > Event 55739 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 56000
 G4WT0 > Event N: 57000
 G4WT0 > Event N: 58000
-G4WT0 > Event 58065 - Energy Confinement Anomaly Detected
-G4WT0 > Event 58444 - Energy Confinement Anomaly Detected
-G4WT0 > Event 58612 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 59000
-G4WT0 > Event 59542 - Energy Confinement Anomaly Detected
-G4WT0 > Event 59684 - Energy Confinement Anomaly Detected
+G4WT0 > Event 59955 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 60000
-G4WT0 > Event 60113 - Energy Confinement Anomaly Detected
-G4WT0 > Event 60397 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 61000
 G4WT0 > Event N: 62000
-G4WT0 > Event 62062 - Energy Confinement Anomaly Detected
-G4WT0 > Event 62320 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 63000
-G4WT0 > Event 63018 - Energy Confinement Anomaly Detected
-G4WT0 > Event 63437 - Energy Confinement Anomaly Detected
-G4WT0 > Event 63955 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 64000
-G4WT0 > Event 64587 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64691 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 65000
-G4WT0 > Event 65200 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 66000
-G4WT0 > Event 66956 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 67000
-G4WT0 > Event 67874 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 68000
 G4WT0 > Event N: 69000
 G4WT0 > Event N: 70000
-G4WT0 > Event 70107 - Energy Confinement Anomaly Detected
-G4WT0 > Event 70273 - Energy Confinement Anomaly Detected
-G4WT0 > Event 70362 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 71000
-G4WT0 > Event 71060 - Energy Confinement Anomaly Detected
-G4WT0 > Event 71166 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 72000
-G4WT0 > Event 72200 - Energy Confinement Anomaly Detected
-G4WT0 > Event 72542 - Energy Confinement Anomaly Detected
-G4WT0 > Event 72686 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 73000
-G4WT0 > Event 73162 - Energy Confinement Anomaly Detected
-G4WT0 > Event 73923 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 74000
-G4WT0 > Event 74167 - Energy Confinement Anomaly Detected
-G4WT0 > Event 74401 - Energy Confinement Anomaly Detected
-G4WT0 > Event 74512 - Energy Confinement Anomaly Detected
-G4WT0 > Event 74814 - Energy Confinement Anomaly Detected
-G4WT0 > Event 74956 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 75000
-G4WT0 > Event 75005 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75033 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75761 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75940 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 76000
-G4WT0 > Event 76703 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 77000
-G4WT0 > Event 77110 - Energy Confinement Anomaly Detected
-G4WT0 > Event 77877 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 78000
-G4WT0 > Event 78758 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 79000
-G4WT0 > Event 79013 - Energy Confinement Anomaly Detected
-G4WT0 > Event 79919 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 80000
-G4WT0 > Event 80150 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 81000
-G4WT0 > Event 81087 - Energy Confinement Anomaly Detected
-G4WT0 > Event 81559 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 82000
-G4WT0 > Event 82554 - Energy Confinement Anomaly Detected
-G4WT0 > Event 82651 - Energy Confinement Anomaly Detected
-G4WT0 > Event 82844 - Energy Confinement Anomaly Detected
-G4WT0 > Event 82958 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 83000
-G4WT0 > Event 83138 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83659 - Energy Confinement Anomaly Detected
-G4WT0 > Event 83765 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 84000
-G4WT0 > Event 84875 - Energy Confinement Anomaly Detected
-G4WT0 > Event 84919 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 85000
-G4WT0 > Event 85745 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 86000
-G4WT0 > Event 86711 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 87000
-G4WT0 > Event 87704 - Energy Confinement Anomaly Detected
-G4WT0 > Event 87927 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 88000
 G4WT0 > Event N: 89000
-G4WT0 > Event 89198 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 90000
-G4WT0 > Event 90152 - Energy Confinement Anomaly Detected
-G4WT0 > Event 90604 - Energy Confinement Anomaly Detected
-G4WT0 > Event 90718 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 91000
-G4WT0 > Event 91200 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 92000
-G4WT0 > Event 92058 - Energy Confinement Anomaly Detected
-G4WT0 > Event 92977 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 93000
 G4WT0 > Event N: 94000
-G4WT0 > Event 94054 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 95000
-G4WT0 > Event 95087 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95341 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95719 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 96000
 G4WT0 > Event N: 97000
-G4WT0 > Event 97081 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97462 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97592 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97810 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 98000
-G4WT0 > Event 98741 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 99000
 G4WT0 > Event N: 100000
 G4WT0 > [thread 0] Thread-local run terminated.
 G4WT0 > [thread 0] Run Summary
 G4WT0 > [thread 0]   Number of events processed : 100000
-G4WT0 > [thread 0]   User=0.000000s Real=0.011046s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > [thread 0]   User=0.010000s Real=0.011087s Sys=0.000000s [Cpu=90.2%]
 G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/proton_j6_t0.root - done
 G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/proton_j6_t0.root - done
  Run terminated.
 Run Summary
   Number of events processed : 100000
-  User=47.350000s Real=47.683382s Sys=0.050000s [Cpu=99.4%]
+  User=88.260000s Real=92.673918s Sys=0.050000s [Cpu=95.3%]
 0 events have been kept for refreshing and/or reviewing.
   "/vis/reviewKeptEvents" to review them one by one.
   "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
@@ -2073,37 +1481,16 @@ Index : 0     used in the geometry : Yes
     DefaultRegionForTheWorld
 
 Index : 1     used in the geometry : Yes
- Material : G4_Al
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  5.84707 keV    e-  461.19 keV    e+  445.1 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 2     used in the geometry : Yes
- Material : G4_BAKELITE
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  2.38497 keV    e-  311.339 keV    e+  303.255 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 3     used in the geometry : Yes
  Material : G4_Si
  Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
  Energy thresholds :  gamma  5.85415 keV    e-  423.338 keV    e+  409.013 keV proton 70 keV
  Region(s) which use this couple : 
     DefaultRegionForTheWorld
 
-Index : 4     used in the geometry : Yes
+Index : 2     used in the geometry : Yes
  Material : G4_PLASTIC_SC_VINYLTOLUENE
  Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
  Energy thresholds :  gamma  2.09715 keV    e-  281.883 keV    e+  275.044 keV proton 70 keV
- Region(s) which use this couple : 
-    DefaultRegionForTheWorld
-
-Index : 5     used in the geometry : Yes
- Material : GAGG
- Range cuts        :  gamma  700 um     e-  700 um     e+  700 um  proton 700 um 
- Energy thresholds :  gamma  34.9059 keV    e-  782.898 keV    e+  745.353 keV proton 70 keV
  Region(s) which use this couple : 
     DefaultRegionForTheWorld
 
@@ -2119,349 +1506,127 @@ G4WT0 > ### Run 2 starts on worker thread 0.
 G4WT0 > ... create file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/alpha_j6_t0.root - done
 G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/alpha_j6.root - done
 G4WT0 > ... open analysis file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/alpha_j6.root - done
-G4WT0 > Event 11 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 1000
-G4WT0 > Event 1185 - Energy Confinement Anomaly Detected
-G4WT0 > Event 1288 - Energy Confinement Anomaly Detected
-G4WT0 > Event 1762 - Energy Confinement Anomaly Detected
-G4WT0 > Event 1789 - Energy Confinement Anomaly Detected
-G4WT0 > Event 1863 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 2000
-G4WT0 > Event 2396 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 3000
-G4WT0 > Event 3843 - Energy Confinement Anomaly Detected
-G4WT0 > Event 3851 - Energy Confinement Anomaly Detected
-G4WT0 > Event 3935 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 4000
-G4WT0 > Event 4221 - Energy Confinement Anomaly Detected
-G4WT0 > Event 4249 - Energy Confinement Anomaly Detected
-G4WT0 > Event 4690 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 5000
-G4WT0 > Event 5248 - Energy Confinement Anomaly Detected
-G4WT0 > Event 5716 - Energy Confinement Anomaly Detected
-G4WT0 > Event 5887 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 6000
+G4WT0 > Event 6466 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 7000
-G4WT0 > Event 7021 - Energy Confinement Anomaly Detected
-G4WT0 > Event 7657 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 8000
-G4WT0 > Event 8021 - Energy Confinement Anomaly Detected
-G4WT0 > Event 8255 - Energy Confinement Anomaly Detected
-G4WT0 > Event 8432 - Energy Confinement Anomaly Detected
-G4WT0 > Event 8458 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 9000
 G4WT0 > Event N: 10000
-G4WT0 > Event 10151 - Energy Confinement Anomaly Detected
-G4WT0 > Event 10581 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 11000
-G4WT0 > Event 11066 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 12000
-G4WT0 > Event 12249 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12272 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12455 - Energy Confinement Anomaly Detected
-G4WT0 > Event 12936 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 13000
-G4WT0 > Event 13084 - Energy Confinement Anomaly Detected
-G4WT0 > Event 13559 - Energy Confinement Anomaly Detected
-G4WT0 > Event 13905 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 14000
-G4WT0 > Event 14180 - Energy Confinement Anomaly Detected
-G4WT0 > Event 14245 - Energy Confinement Anomaly Detected
-G4WT0 > Event 14396 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 15000
-G4WT0 > Event 15331 - Energy Confinement Anomaly Detected
-G4WT0 > Event 15990 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 16000
 G4WT0 > Event N: 17000
-G4WT0 > Event 17605 - Energy Confinement Anomaly Detected
-G4WT0 > Event 17657 - Energy Confinement Anomaly Detected
-G4WT0 > Event 17742 - Energy Confinement Anomaly Detected
-G4WT0 > Event 17887 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 18000
-G4WT0 > Event 18091 - Energy Confinement Anomaly Detected
-G4WT0 > Event 18177 - Energy Confinement Anomaly Detected
-G4WT0 > Event 18299 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 19000
-G4WT0 > Event 19208 - Energy Confinement Anomaly Detected
-G4WT0 > Event 19900 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 20000
-G4WT0 > Event 20227 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 21000
-G4WT0 > Event 21444 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 22000
-G4WT0 > Event 22185 - Energy Confinement Anomaly Detected
-G4WT0 > Event 22205 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 23000
-G4WT0 > Event 23231 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23450 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23611 - Energy Confinement Anomaly Detected
-G4WT0 > Event 23695 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 24000
-G4WT0 > Event 24173 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24856 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24925 - Energy Confinement Anomaly Detected
-G4WT0 > Event 24998 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 25000
-G4WT0 > Event 25415 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 26000
-G4WT0 > Event 26280 - Energy Confinement Anomaly Detected
-G4WT0 > Event 26419 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 27000
-G4WT0 > Event 27647 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 28000
-G4WT0 > Event 28300 - Energy Confinement Anomaly Detected
-G4WT0 > Event 28358 - Energy Confinement Anomaly Detected
-G4WT0 > Event 28414 - Energy Confinement Anomaly Detected
-G4WT0 > Event 28590 - Energy Confinement Anomaly Detected
-G4WT0 > Event 28749 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 29000
-G4WT0 > Event 29012 - Energy Confinement Anomaly Detected
-G4WT0 > Event 29456 - Energy Confinement Anomaly Detected
-G4WT0 > Event 29631 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 30000
-G4WT0 > Event 30436 - Energy Confinement Anomaly Detected
-G4WT0 > Event 30559 - Energy Confinement Anomaly Detected
-G4WT0 > Event 30668 - Energy Confinement Anomaly Detected
-G4WT0 > Event 30847 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 31000
-G4WT0 > Event 31545 - Energy Confinement Anomaly Detected
-G4WT0 > Event 31704 - Energy Confinement Anomaly Detected
-G4WT0 > Event 31840 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 32000
-G4WT0 > Event 32153 - Energy Confinement Anomaly Detected
-G4WT0 > Event 32492 - Energy Confinement Anomaly Detected
-G4WT0 > Event 32824 - Energy Confinement Anomaly Detected
-G4WT0 > Event 32827 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 33000
-G4WT0 > Event 33114 - Energy Confinement Anomaly Detected
-G4WT0 > Event 33501 - Energy Confinement Anomaly Detected
-G4WT0 > Event 33655 - Energy Confinement Anomaly Detected
-G4WT0 > Event 33680 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 34000
-G4WT0 > Event 34559 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 35000
-G4WT0 > Event 35103 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35128 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35260 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35539 - Energy Confinement Anomaly Detected
-G4WT0 > Event 35757 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 36000
-G4WT0 > Event 36314 - Energy Confinement Anomaly Detected
-G4WT0 > Event 36781 - Energy Confinement Anomaly Detected
-G4WT0 > Event 36884 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 37000
-G4WT0 > Event 37144 - Energy Confinement Anomaly Detected
-G4WT0 > Event 37977 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 38000
-G4WT0 > Event 38075 - Energy Confinement Anomaly Detected
-G4WT0 > Event 38147 - Energy Confinement Anomaly Detected
-G4WT0 > Event 38790 - Energy Confinement Anomaly Detected
-G4WT0 > Event 38871 - Energy Confinement Anomaly Detected
-G4WT0 > Event 38911 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 39000
-G4WT0 > Event 39796 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 40000
-G4WT0 > Event 40237 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 41000
-G4WT0 > Event 41758 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 42000
-G4WT0 > Event 42171 - Energy Confinement Anomaly Detected
-G4WT0 > Event 42669 - Energy Confinement Anomaly Detected
-G4WT0 > Event 42882 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 43000
-G4WT0 > Event 43538 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 44000
-G4WT0 > Event 44109 - Energy Confinement Anomaly Detected
-G4WT0 > Event 44807 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 45000
-G4WT0 > Event 45555 - Energy Confinement Anomaly Detected
-G4WT0 > Event 45618 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 46000
-G4WT0 > Event 46778 - Energy Confinement Anomaly Detected
-G4WT0 > Event 46810 - Energy Confinement Anomaly Detected
-G4WT0 > Event 46904 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 47000
-G4WT0 > Event 47075 - Energy Confinement Anomaly Detected
-G4WT0 > Event 47212 - Energy Confinement Anomaly Detected
-G4WT0 > Event 47469 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 48000
 G4WT0 > Event N: 49000
-G4WT0 > Event 49590 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 50000
-G4WT0 > Event 50447 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 51000
-G4WT0 > Event 51206 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 52000
-G4WT0 > Event 52273 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 53000
-G4WT0 > Event 53187 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53424 - Energy Confinement Anomaly Detected
-G4WT0 > Event 53568 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 54000
-G4WT0 > Event 54713 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 55000
 G4WT0 > Event N: 56000
-G4WT0 > Event 56072 - Energy Confinement Anomaly Detected
-G4WT0 > Event 56623 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 57000
-G4WT0 > Event 57378 - Energy Confinement Anomaly Detected
-G4WT0 > Event 57449 - Energy Confinement Anomaly Detected
-G4WT0 > Event 57598 - Energy Confinement Anomaly Detected
-G4WT0 > Event 57939 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 58000
-G4WT0 > Event 58127 - Energy Confinement Anomaly Detected
-G4WT0 > Event 58801 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 59000
 G4WT0 > Event N: 60000
 G4WT0 > Event N: 61000
-G4WT0 > Event 61198 - Energy Confinement Anomaly Detected
-G4WT0 > Event 61249 - Energy Confinement Anomaly Detected
-G4WT0 > Event 61458 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 62000
-G4WT0 > Event 62582 - Energy Confinement Anomaly Detected
-G4WT0 > Event 62830 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 63000
-G4WT0 > Event 63815 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 64000
-G4WT0 > Event 64266 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64345 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64543 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64544 - Energy Confinement Anomaly Detected
-G4WT0 > Event 64890 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 65000
-G4WT0 > Event 65595 - Energy Confinement Anomaly Detected
-G4WT0 > Event 65746 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 66000
-G4WT0 > Event 66408 - Energy Confinement Anomaly Detected
-G4WT0 > Event 66586 - Energy Confinement Anomaly Detected
-G4WT0 > Event 66892 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 67000
-G4WT0 > Event 67064 - Energy Confinement Anomaly Detected
-G4WT0 > Event 67119 - Energy Confinement Anomaly Detected
-G4WT0 > Event 67694 - Energy Confinement Anomaly Detected
-G4WT0 > Event 67701 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 68000
 G4WT0 > Event N: 69000
-G4WT0 > Event 69241 - Energy Confinement Anomaly Detected
-G4WT0 > Event 69806 - Energy Confinement Anomaly Detected
-G4WT0 > Event 69869 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 70000
-G4WT0 > Event 70517 - Energy Confinement Anomaly Detected
-G4WT0 > Event 70605 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 71000
-G4WT0 > Event 71504 - Energy Confinement Anomaly Detected
-G4WT0 > Event 71828 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 72000
-G4WT0 > Event 72853 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 73000
 G4WT0 > Event N: 74000
-G4WT0 > Event 74064 - Energy Confinement Anomaly Detected
-G4WT0 > Event 74069 - Energy Confinement Anomaly Detected
-G4WT0 > Event 74234 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 75000
-G4WT0 > Event 75241 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75425 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75530 - Energy Confinement Anomaly Detected
-G4WT0 > Event 75941 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 76000
-G4WT0 > Event 76818 - Energy Confinement Anomaly Detected
-G4WT0 > Event 76913 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 77000
-G4WT0 > Event 77175 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 78000
-G4WT0 > Event 78349 - Energy Confinement Anomaly Detected
-G4WT0 > Event 78771 - Energy Confinement Anomaly Detected
-G4WT0 > Event 78911 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 79000
-G4WT0 > Event 79346 - Energy Confinement Anomaly Detected
-G4WT0 > Event 79598 - Energy Confinement Anomaly Detected
-G4WT0 > Event 79741 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 80000
-G4WT0 > Event 80186 - Energy Confinement Anomaly Detected
-G4WT0 > Event 80380 - Energy Confinement Anomaly Detected
-G4WT0 > Event 80551 - Energy Confinement Anomaly Detected
-G4WT0 > Event 80655 - Energy Confinement Anomaly Detected
-G4WT0 > Event 80764 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 81000
-G4WT0 > Event 81296 - Energy Confinement Anomaly Detected
-G4WT0 > Event 81670 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 82000
-G4WT0 > Event 82869 - Energy Confinement Anomaly Detected
-G4WT0 > Event 82955 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 83000
-G4WT0 > Event 83355 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 84000
-G4WT0 > Event 84796 - Energy Confinement Anomaly Detected
-G4WT0 > Event 84800 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 85000
-G4WT0 > Event 85298 - Energy Confinement Anomaly Detected
-G4WT0 > Event 85871 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 86000
-G4WT0 > Event 86131 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86277 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86491 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86558 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86723 - Energy Confinement Anomaly Detected
-G4WT0 > Event 86742 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 87000
-G4WT0 > Event 87380 - Energy Confinement Anomaly Detected
-G4WT0 > Event 87390 - Energy Confinement Anomaly Detected
-G4WT0 > Event 87545 - Energy Confinement Anomaly Detected
-G4WT0 > Event 87803 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 88000
-G4WT0 > Event 88735 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 89000
-G4WT0 > Event 89184 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 90000
-G4WT0 > Event 90627 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 91000
-G4WT0 > Event 91198 - Energy Confinement Anomaly Detected
-G4WT0 > Event 91412 - Energy Confinement Anomaly Detected
-G4WT0 > Event 91674 - Energy Confinement Anomaly Detected
-G4WT0 > Event 91743 - Energy Confinement Anomaly Detected
-G4WT0 > Event 91960 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 92000
-G4WT0 > Event 92358 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 93000
-G4WT0 > Event 93764 - Energy Confinement Anomaly Detected
-G4WT0 > Event 93905 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 94000
-G4WT0 > Event 94319 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 95000
-G4WT0 > Event 95140 - Energy Confinement Anomaly Detected
-G4WT0 > Event 95291 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 96000
 G4WT0 > Event N: 97000
-G4WT0 > Event 97561 - Energy Confinement Anomaly Detected
-G4WT0 > Event 97625 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 98000
-G4WT0 > Event 98081 - Energy Confinement Anomaly Detected
-G4WT0 > Event 98436 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 99000
-G4WT0 > Event 99309 - Energy Confinement Anomaly Detected
-G4WT0 > Event 99616 - Energy Confinement Anomaly Detected
-G4WT0 > Event 99750 - Energy Confinement Anomaly Detected
 G4WT0 > Event N: 100000
 G4WT0 > [thread 0] Thread-local run terminated.
 G4WT0 > [thread 0] Run Summary
 G4WT0 > [thread 0]   Number of events processed : 100000
-G4WT0 > [thread 0]   User=0.000000s Real=0.011019s Sys=0.000000s [Cpu=0.0%]
+G4WT0 > [thread 0]   User=0.010000s Real=0.000754s Sys=0.000000s [Cpu=1327.0%]
 G4WT0 > ... write file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/alpha_j6_t0.root - done
 G4WT0 > ... close file : /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230822/DST/GDML_file_0/alpha_j6_t0.root - done
  Run terminated.
 Run Summary
   Number of events processed : 100000
-  User=47.920000s Real=48.306571s Sys=0.070000s [Cpu=99.3%]
+  User=84.240000s Real=85.682731s Sys=0.040000s [Cpu=98.4%]
 0 events have been kept for refreshing and/or reviewing.
   "/vis/reviewKeptEvents" to review them one by one.
   "/vis/enable", then "/vis/viewer/flush" or "/vis/viewer/rebuild" to see them accumulated.
 Graphics systems deleted.
 Visualization Manager deleting...
-G4WT0 > Destroying WorkerRunManager (0x2b4900049d70)
+G4WT0 > Destroying WorkerRunManager (0x2b7cdc049d70)
 G4WT0 > G4 kernel has come to Quit state.
 G4WT0 > ================== Deleting memory pools ===================
 G4WT0 > Number of memory pools allocated: 14; of which, static: 0
-G4WT0 > Dynamic pools deleted: 14 / Total memory freed: 0.059 MB
+G4WT0 > Dynamic pools deleted: 14 / Total memory freed: 0.042 MB
 G4WT0 > ============================================================
 G4WT0 > Thread-local UImanager is to be deleted.
 G4WT0 > There should not be any thread-local G4cout/G4cerr hereafter.
@@ -2469,6 +1634,6 @@ ThreadPool destroyed
 G4 kernel has come to Quit state.
 ================== Deleting memory pools ===================
 Number of memory pools allocated: 5; of which, static: 0
-Dynamic pools deleted: 5 / Total memory freed: 0.016 MB
+Dynamic pools deleted: 5 / Total memory freed: 0.013 MB
 ============================================================
 RunManagerKernel is deleted. Good bye :)

@@ -20,7 +20,7 @@ def Geant4Simulation():
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 10
+    N_jobs = 70
     N_evjob = 100000
 
     # Run directory for the run
