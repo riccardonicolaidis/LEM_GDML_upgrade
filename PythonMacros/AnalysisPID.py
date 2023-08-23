@@ -4,6 +4,7 @@ import sys
 import time
 import subprocess
 import argparse
+import requests
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -17,12 +18,54 @@ import re
 
 
 
-
-def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval):
+def GetToken(TokenFile):
+    FilePath = os.path.dirname(os.path.abspath(__file__))
+    if os.path.exists(os.path.join(FilePath,'token',TokenFile)):
+        f_token = open(os.path.join(FilePath,'token',TokenFile), 'r')
+        TOKEN = f_token.read()
+        TOKEN = TOKEN.replace('\n', '')
+        f_token.close()
+        return TOKEN
+    else:
+        print('Token file does not exist')
+        return None
     
-    E_thr_Thin = 0.04
-    E_thr_Thick = 0.04
-    E_thr_Plastic = 0.1
+    
+TOKEN_global = GetToken('token.token')    
+
+def SendMessage(message):
+    chatID = '-1001921335158'
+    apiURL = 'https://api.telegram.org/bot{}/sendMessage'.format(TOKEN_global)
+    try:
+        response = requests.post(apiURL, json={'chat_id': chatID, 'text': message, 'parse_mode': 'HTML'})
+        print(response.text)
+    except Exception as e:
+        print(e)
+
+
+
+def SendPhoto(photo_path):
+    chatID = '-1001921335158'        
+    apiURL = 'https://api.telegram.org/bot{}/sendPhoto'.format(TOKEN_global)
+    print(apiURL)
+    
+    try:
+        params = {'chat_id': chatID}
+        files = {'photo': open(photo_path, 'rb')}
+        response = requests.post(apiURL, params=params, files=files)
+        print(response.text)
+    except Exception as e:
+        print(e)
+
+
+
+
+
+def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage):
+    
+    E_thr_Thin = 0.02
+    E_thr_Thick = 0.02
+    E_thr_Plastic = 0.05
     
     actual_dir = os.getcwd()
     print('Actual directory: {}'.format(actual_dir))
@@ -717,7 +760,7 @@ if __name__ == "__main__":
     parser.add_argument('-L', '--latex-only', action='store_true', help='Only the latex report is generated')
     parser.add_argument('-R', '--root-only', action='store_true', help='Only the root files are analyzed')
     parser.add_argument('-b', '--bypass-removal', action='store_true', help='Bypass the removal of the Analysis_output directory')
-
+    parser.add_argument('-t', '--telegram', action='store_true', help='Send a telegram message when the analysis is finished')
 
     args = parser.parse_args()
     actual_dir = os.getcwd()
@@ -740,4 +783,4 @@ if __name__ == "__main__":
     print('Input directory: ' + input_dir)
         
     
-    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval)
+    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, args.telegram)

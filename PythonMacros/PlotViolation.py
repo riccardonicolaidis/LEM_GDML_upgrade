@@ -51,13 +51,18 @@ def PlotViolation(fName):
     df['ID2'] = ID2
     
             
-    # reduce the sample
-    df2 = df[df['ID2'] < MaxID]
 
+    # I want to plot only the events without hits above a certain zDiscard
     
-    # I wan a scatter plot with colorbar guided by the energy E
-    # Figure is 3D and I want to see the scene from the polar vector (1,1,1)
+    zDiscard = 80
     
+    df3 = df
+    # Loop over ID2
+    for i in tqdm(range(int(max(ID2)))):
+        if max(df3[df3['ID2'] == i]['Z']) > zDiscard:
+            df3 = df3[df3['ID2'] != i]
+    
+
     
     # Plot the figure high resolution
     plt.figure(figsize=(14,12), dpi=300)
@@ -71,18 +76,41 @@ def PlotViolation(fName):
     sm = plt.cm.ScalarMappable(cmap='plasma', norm=plt.Normalize(vmin=min(E), vmax=max(E)))
     sm._A = []
     plt.colorbar(sm)
-    
     # Take the path and save the picture 
     figName = fName.replace('.csv', '.png')
     plt.savefig(figName)
+    
+    # Same plot but for df3
+    
+    plt.figure(figsize=(14,12), dpi=300)
+    ax = plt.axes(projection='3d')  
+    ax.scatter(df3['X'].values, df3['Y'].values, df3['Z'].values, c=df3['E'].values, cmap='plasma', s=1.5)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.view_init(azim=35, elev=60)
+    # Retrieve the colorbar
+    sm = plt.cm.ScalarMappable(cmap='plasma', norm=plt.Normalize(vmin=min(E), vmax=max(E)))
+    sm._A = []
+    plt.colorbar(sm)
+
+    figName = fName.replace('.csv', '_noHitsAbove8.png')
+    plt.savefig(figName)    
+    
+    
+    
+    
     
     fig = px.scatter_3d(df, x='X', y='Y', z='Z', color='E', opacity=0.7, width=1400, height=1000, range_color=[min(E), max(E)])
     fig.update_traces(marker_size=1.5)
     fig.write_html(fName.replace('.csv', '.html'))
     
+    # Same plot but for df3
+    fig = px.scatter_3d(df3, x='X', y='Y', z='Z', color='E', opacity=0.7, width=1400, height=1000, range_color=[min(E), max(E)])
+    fig.update_traces(marker_size=1.5)
+    fig.write_html(fName.replace('.csv', '_noHitsAbove8.html'))
     
-    fig2 = px.scatter_3d(df2, x='X', y='Y', z='Z', color='ID2', opacity=0.7, width=1400, height=1000, range_color=[0, MaxID])
-    fig2.update_traces(marker_size=1.5)
-    fig2.write_html(fName.replace('.csv', '_ID.html'))
+    
+    
     
     
