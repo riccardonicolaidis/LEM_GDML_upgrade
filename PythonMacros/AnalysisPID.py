@@ -392,6 +392,31 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage)
                 if return_code != 0:
                     print("Error in PID.C")
                     exit(1)
+                    
+                if SendTelegramMessage:
+                    DirectoryWithPictures_startWalk = os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_' + str(number))
+                    ###### GET THE NAME OF THE GDML FILE ####
+                    f_Report = open(os.path.join(global_input_dir,'report.txt'))
+                    
+                    lineOld = ''
+                    for line in f_Report:
+                        if ("File "+str(number)) in lineOld:
+                            FileNameGDML = line.rstrip('\n')
+                            break                
+                        lineOld = line
+                    MSG_txt = "Analysis of the GDML file: " + FileNameGDML + " completed.\nSending plots to Telegram."
+                    SendMessage(MSG_txt)
+                    
+                    for root2, dir2, files2 in os.walk(DirectoryWithPictures_startWalk):
+                        # If in the actual folder there are pictures send a message with the directory  and then the plots
+                        if len(files2) > 0:
+                            MSG_txt = "Directory: " + root2
+                            SendMessage(MSG_txt)
+                            for file in files2:
+                                if file.endswith(".pdf") or file.endswith(".png"):
+                                    SendPhoto(os.path.join(root2, file))
+                                    time.sleep(0.2)                
+                    
                 
             
         f_CMD.close()
@@ -760,7 +785,7 @@ if __name__ == "__main__":
     parser.add_argument('-L', '--latex-only', action='store_true', help='Only the latex report is generated')
     parser.add_argument('-R', '--root-only', action='store_true', help='Only the root files are analyzed')
     parser.add_argument('-b', '--bypass-removal', action='store_true', help='Bypass the removal of the Analysis_output directory')
-    parser.add_argument('-t', '--telegram', action='store_true', help='Send a telegram message when the analysis is finished')
+    parser.add_argument('-T', '--telegram', action='store_true', help='Send a telegram message when the analysis is finished')
 
     args = parser.parse_args()
     actual_dir = os.getcwd()
