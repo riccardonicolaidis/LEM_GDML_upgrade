@@ -68,7 +68,8 @@ def Build_AuxiliaryLine_SensDet():
 
 
 
-def GDML_Retrieve_Names(input_file):
+def GDML_Retrieve_Names(input_file, N_characters_to_remove):
+    N_characters_to_remove = int(N_characters_to_remove)
     
     RelativePath = os.path.dirname(input_file)
     FileName_GDML = os.path.basename(input_file)
@@ -121,7 +122,11 @@ def GDML_Retrieve_Names(input_file):
     f_VolumeNameRef = open(os.path.join(AbsolutePath,FileName_VolNameRef), "w")
     
     for VolumeName in VolumeName_List:
-        VolumeName_2 = VolumeName.replace("__","_")
+        
+        if N_characters_to_remove > 0:
+            VolumeName_2 = VolumeName[:-N_characters_to_remove]
+        
+        VolumeName_2 = VolumeName_2.replace("__","_")
         # If ends with _ remove it
         # This is a FreeCAD issue
         if VolumeName_2[-1] == "_":
@@ -133,7 +138,9 @@ def GDML_Retrieve_Names(input_file):
         f_VolumeName.write(VolumeName + " "*(maxLen_VolumeName + 5 - len(VolumeName)) + VolumeName_2 + "\n")
     
     for VolumeNameRef in VolumeNameRef_List:
-        VolumeNameRef_2 = VolumeNameRef.replace("__","_")
+        if N_characters_to_remove > 0:
+            VolumeNameRef_2 = VolumeNameRef[:-N_characters_to_remove]
+        VolumeNameRef_2 = VolumeNameRef_2.replace("__","_")
         # If ends with _ remove it
         # This is a FreeCAD issue
         if VolumeNameRef_2[-1] == "_":
@@ -331,12 +338,14 @@ if __name__ == "__main__":
     argparser.add_argument( "-s", "--step-of-process", help = "Step of process: 0 or 1", required = False )
     argparser.add_argument( "-d", "--dummy-materials", help = "Dummy materials: If inserted all the Non-SensDet will be assigned to G4_Galactic", action="store_true", required = False)
     argparser.add_argument( "-a", "--all-sensitive", help = "All sensitive: If inserted all the volumes will be assigned to G4_Galactic", action="store_true", required = False)
+    argparser.add_argument( "-r", "--remove-n-characters", help = "Remove N characters from the end of the VolumeName", required = False, default = 0)
+    
     
     args = argparser.parse_args()
     
     if args.step_of_process == "0":
         print("Step 0")
-        GDML_Retrieve_Names(args.input)
+        GDML_Retrieve_Names(args.input, args.remove_n_characters)
     elif args.step_of_process == "1":
         print("Step 1")
         GDML_Parser(args.input, args.dummy_materials, args.all_sensitive)
