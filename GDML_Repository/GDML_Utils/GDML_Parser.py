@@ -71,6 +71,8 @@ def Build_AuxiliaryLine_SensDet():
 def GDML_Retrieve_Names(input_file, N_characters_to_remove):
     N_characters_to_remove = int(N_characters_to_remove)
     
+    Keys_No_Mod = ["Assembly", "worldVOL"]
+    
     RelativePath = os.path.dirname(input_file)
     FileName_GDML = os.path.basename(input_file)
     ActualPath = os.getcwd()
@@ -122,33 +124,50 @@ def GDML_Retrieve_Names(input_file, N_characters_to_remove):
     f_VolumeNameRef = open(os.path.join(AbsolutePath,FileName_VolNameRef), "w")
     
     for VolumeName in VolumeName_List:
+        VolumeName_2 = VolumeName
         
-        if N_characters_to_remove > 0:
-            VolumeName_2 = VolumeName[:-N_characters_to_remove]
+        SkipMod = False
+        for Key_No_Mod in Keys_No_Mod:
+            if Key_No_Mod in VolumeName:
+                SkipMod = True
+                break        
         
-        VolumeName_2 = VolumeName_2.replace("__","_")
-        # If ends with _ remove it
-        # This is a FreeCAD issue
-        if VolumeName_2[-1] == "_":
-            VolumeName_2 = VolumeName_2[:-1]
+        if not SkipMod:
+            if N_characters_to_remove > 0:
+                VolumeName_2 = VolumeName_2[:-N_characters_to_remove]
             
-        if VolumeName_2.endswith("Thin") or VolumeName_2.endswith("Thick"):
-            VolumeName_2 = VolumeName_2 + "_0"
+            VolumeName_2 = VolumeName_2.replace("__","_")
+            # If ends with _ remove it
+            # This is a FreeCAD issue
+            if VolumeName_2[-1] == "_":
+                VolumeName_2 = VolumeName_2[:-1]
+                
+            if VolumeName_2.endswith("Thin") or VolumeName_2.endswith("Thick"):
+                VolumeName_2 = VolumeName_2 + "_0"
     
         f_VolumeName.write(VolumeName + " "*(maxLen_VolumeName + 5 - len(VolumeName)) + VolumeName_2 + "\n")
     
     for VolumeNameRef in VolumeNameRef_List:
-        if N_characters_to_remove > 0:
-            VolumeNameRef_2 = VolumeNameRef[:-N_characters_to_remove]
-        VolumeNameRef_2 = VolumeNameRef_2.replace("__","_")
-        # If ends with _ remove it
-        # This is a FreeCAD issue
-        if VolumeNameRef_2[-1] == "_":
-            VolumeNameRef_2 = VolumeNameRef_2[:-1]
+        VolumeNameRef_2 = VolumeNameRef
+        SkipMod = False
         
-        if VolumeNameRef_2.endswith("Thin") or VolumeNameRef_2.endswith("Thick"):
-            VolumeNameRef_2 = VolumeNameRef_2 + "_0"
-    
+        for Key_No_Mod in Keys_No_Mod:
+            if Key_No_Mod in VolumeNameRef:
+                SkipMod = True
+                break
+        
+        if not SkipMod:
+            if N_characters_to_remove > 0:
+                VolumeNameRef_2 = VolumeNameRef_2[:-N_characters_to_remove]
+            VolumeNameRef_2 = VolumeNameRef_2.replace("__","_")
+            # If ends with _ remove it
+            # This is a FreeCAD issue
+            if VolumeNameRef_2[-1] == "_":
+                VolumeNameRef_2 = VolumeNameRef_2[:-1]
+            
+            if VolumeNameRef_2.endswith("Thin") or VolumeNameRef_2.endswith("Thick"):
+                VolumeNameRef_2 = VolumeNameRef_2 + "_0"
+        
         f_VolumeNameRef.write(VolumeNameRef + " "*(maxLen_VolumeNameRef + 5 - len(VolumeNameRef)) + VolumeNameRef_2 + "\n")
 
 

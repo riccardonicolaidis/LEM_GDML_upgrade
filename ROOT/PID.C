@@ -394,7 +394,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
     Condition[IndexHisto]   = ConditionGoodEvents.Data();
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID";
 
     // Histo 1
     IndexHisto++;
@@ -402,7 +402,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "gPID:(gTotThick + gTotThin + gEd_LV_Calo)";
     Condition[IndexHisto]   = ConditionGoodEvents.Data();
-    SaveAsPath[IndexHisto]  = destination_PID + "/gPID.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/gPID";
 
     // Histo 2
     IndexHisto++;
@@ -410,7 +410,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick + TotThin)";
     Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NoCalo.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NoCalo";
 
     // Histo 3
     IndexHisto++;
@@ -418,7 +418,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "gPID:(gTotThick + gTotThin)";
     Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/gPID_NoCalo.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/gPID_NoCalo";
 
     // Histo 4
     IndexHisto++;
@@ -426,7 +426,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:RandEnergy";
     Condition[IndexHisto]   = ConditionGoodEvents.Data();
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID2.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID2";
 
     // Histo 5
     IndexHisto++;
@@ -434,7 +434,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "gPID:RandEnergy";
     Condition[IndexHisto]   = ConditionGoodEvents.Data();
-
+    SaveAsPath[IndexHisto]  = destination_PID + "/gPID2";
 
     // Histo 6
     IndexHisto++;
@@ -442,7 +442,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:RandEnergy";
     Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID2_NoCalo.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID2_NoCalo";
 
     // Histo 7
     IndexHisto++;
@@ -450,7 +450,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "gPID:RandEnergy";
     Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/gPID2_NoCalo.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/gPID2_NoCalo";
 
 
     // Histo 8
@@ -459,7 +459,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
     Condition[IndexHisto]   = Form("(%s)&&(NCVF > %g)", ConditionGoodEvents.Data(), NCVF_threshold);
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_NOK.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_NOK";
 
     // Histo 9
     IndexHisto++;
@@ -467,7 +467,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
     Condition[IndexHisto]   = Form("(%s)&&(NCVF > %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_NOK_NoCalo.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_NOK_NoCalo";
 
     // Histo 10
     IndexHisto++;
@@ -475,7 +475,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
     Condition[IndexHisto]   = Form("(%s)&&(NCVF < %g)", ConditionGoodEvents.Data(), NCVF_threshold);
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_OK.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_OK";
 
     // Histo 11
     IndexHisto++;
@@ -483,7 +483,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick + TotThin + Ed_LV_Calo)";
     Condition[IndexHisto]   = Form("(%s)&&(NCVF < %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_OK_NoCalo.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_NCVF_OK_NoCalo";
     
     // Histo 12
     IndexHisto++;
@@ -491,7 +491,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick / TotThin)";
     Condition[IndexHisto]   = Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID_ThickThin_NoCalo.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_ThickThin_NoCalo";
 
     // Histo 13
     IndexHisto++;
@@ -499,7 +499,7 @@ int PID(
     hPID_YTitle[IndexHisto] = "PID";
     DrawRule[IndexHisto]    = "PID:(TotThick / TotThin)";
     Condition[IndexHisto]   = Form("(%s)", ConditionGoodEvents.Data());
-    SaveAsPath[IndexHisto]  = destination_PID + "/PID_ThickThin.pdf";
+    SaveAsPath[IndexHisto]  = destination_PID + "/PID_ThickThin";
 
 
 
@@ -545,7 +545,12 @@ int PID(
         gPad -> SetLogz();
         gPad -> SetGridx();
         gPad -> SetGridy();
-        cPID[i] -> SaveAs(SaveAsPath[i].Data());
+
+
+        TString PathPDF = SaveAsPath[i] + ".pdf";
+        TString PathPNG = SaveAsPath[i] + ".png";
+        cPID[i] -> SaveAs(PathPDF.Data());
+        cPID[i] -> SaveAs(PathPNG.Data());
     }
 
     cout << "Done: Saved all the plots" << endl;
@@ -764,6 +769,7 @@ int PID(
 
 
         cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".pdf");
+        cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".png");
         cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".root");
 
 
@@ -818,6 +824,7 @@ int PID(
             gPad -> SetGridy();
             gPad -> SetLogy();
             c[j] -> SaveAs(Form("%s/%s_%s.pdf", destination_DeadMaterial.Data(), FileNames_noPath[i].Data(),BranchesToPlot[j].Data()));
+            c[j] -> SaveAs(Form("%s/%s_%s.png", destination_DeadMaterial.Data(), FileNames_noPath[i].Data(),BranchesToPlot[j].Data()));
 
         }
     }
@@ -968,6 +975,7 @@ int PID(
     gPad -> SetGrid();
     legPID -> Draw();
     cgraphPID -> SaveAs(destination_PID + "/graph_PID_lateral.pdf");
+    cgraphPID -> SaveAs(destination_PID + "/graph_PID_lateral.png");    
     delete cgraphPID;
 
 
@@ -997,6 +1005,7 @@ int PID(
     gPad -> SetGrid();
     legPID -> Draw();
     cgraphPID -> SaveAs(destination_PID + "/graph_PID_center.pdf");
+    cgraphPID -> SaveAs(destination_PID + "/graph_PID_center.png");
     delete cgraphPID;
 
 

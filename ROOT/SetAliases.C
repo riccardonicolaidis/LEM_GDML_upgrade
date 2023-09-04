@@ -243,7 +243,7 @@ void SetAliases(TString filename,
     Edep -> SetAlias("gTotThickCalo", gTotThickCalo.Data());
     Edep -> SetAlias("TotalEnergy", TotalEnergy.Data());
     Edep -> SetAlias("gTotalEnergy", gTotalEnergy.Data());
-    Edep -> SetAlias("NCVF", "(1 - ((TotalEnergy)/RandEnergy))");    
+    Edep -> SetAlias("NCVF", "(RandEnergy - Ed_LV_AlTop - TotalEnergy)/(RandEnergy - Ed_LV_AlTop)");      
     Edep -> SetAlias("PID", PID.Data());
     Edep -> SetAlias("gPID", gPID.Data());
     Edep -> SetAlias("PID_noCalo", PID_noCalo.Data());
@@ -257,7 +257,7 @@ void SetAliases(TString filename,
     Edep_old -> SetAlias("gTotThickCalo", gTotThickCalo.Data());
     Edep_old -> SetAlias("TotalEnergy", TotalEnergy.Data());
     Edep_old -> SetAlias("gTotalEnergy", gTotalEnergy.Data());
-    Edep_old -> SetAlias("NCVF", "(RandEnergy - TotalEnergy)/RandEnergy");    
+    Edep_old -> SetAlias("NCVF", "(RandEnergy - Ed_LV_AlTop - TotalEnergy)/(RandEnergy - Ed_LV_AlTop)");    
     Edep_old -> SetAlias("PID", PID.Data());
     Edep_old -> SetAlias("gPID", gPID.Data());
     Edep_old -> SetAlias("PID_noCalo", PID_noCalo.Data());
@@ -276,7 +276,7 @@ void SetAliases(TString filename,
     std::cout << "gPID = " << gPID << endl;
     std::cout << "PID_noCalo = " << PID_noCalo << endl;
     std::cout << "gPID_noCalo = " << gPID_noCalo << endl;
-    std::cout << "NCVF = " << "(RandEnergy - TotalEnergy)/RandEnergy" << endl;
+    std::cout << "NCVF = " << "(RandEnergy - Ed_LV_AlTop - TotalEnergy)/(RandEnergy - Ed_LV_AlTop)" << endl;
 
 
 
@@ -479,6 +479,8 @@ void SetAliases(TString filename,
         hAngles -> GetXaxis() -> SetTitle("Angle projection X [deg]");
         hAngles -> GetYaxis() -> SetTitle("Angle projection Y [deg]");
         cAngles -> SaveAs(destination+"/"+"2DAngHistoFigure_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".pdf");
+        cAngles -> SaveAs(destination+"/"+"2DAngHistoFigure_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".png");
+
         cAngles -> Close();
 
         Edep -> Draw(Form("Ygen:Xgen>>hGenPosition_%d", k), ConditionGoodEventsSinglePair[k].Data(), "colz");
@@ -487,6 +489,7 @@ void SetAliases(TString filename,
         hGenPosition -> GetXaxis() -> SetTitle("X [mm]");
         hGenPosition -> GetYaxis() -> SetTitle("Y [mm]");
         cGenPosition -> SaveAs(destination+"/"+"GenPosition_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".pdf");
+        cGenPosition -> SaveAs(destination+"/"+"GenPosition_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".png");
         cGenPosition -> Close();
         
         Edep -> Draw("ProjY:ProjX", ConditionGoodEventsSinglePair[k].Data(), "");
@@ -523,6 +526,7 @@ void SetAliases(TString filename,
     mgAngles -> Draw("AP");
 
     cAngleGraphs -> SaveAs( destination+"/"+"Angles_"+filename_noExt+".pdf");
+    cAngleGraphs -> SaveAs( destination+"/"+"Angles_"+filename_noExt+".png");
 
 
 
@@ -539,6 +543,8 @@ void SetAliases(TString filename,
         gPad -> SetGrid();
     }
     c2 -> SaveAs(destination+"/" + "Montecarlo_" + filename_noExt+ ".pdf");
+    c2 -> SaveAs(destination+"/" + "Montecarlo_" + filename_noExt+ ".png");
+
     // Energy deposition plots
     TCanvas *c3 = new TCanvas("c3", "c3", 5000, 4000);
     c3 -> Divide(4,3);
@@ -558,7 +564,7 @@ void SetAliases(TString filename,
         gPad -> SetGrid();
     }
     c3 -> SaveAs(destination+"/" + "Energies_" + filename_noExt+ ".pdf");
-    
+    c3 -> SaveAs(destination+"/" + "Energies_" + filename_noExt+ ".png");    
 
 
 

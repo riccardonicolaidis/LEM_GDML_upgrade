@@ -61,11 +61,11 @@ def SendPhoto(photo_path):
 
 
 
-def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage):
+def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage, CleanROOTFiles):
     
-    E_thr_Thin = 0.02
-    E_thr_Thick = 0.02
-    E_thr_Plastic = 0.05
+    E_thr_Thin = 0.08
+    E_thr_Thick = 0.07
+    E_thr_Plastic = 0.00001
     
     actual_dir = os.getcwd()
     print('Actual directory: {}'.format(actual_dir))
@@ -264,7 +264,7 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage)
                         break
                 
                 # Ok, but if there is already a file called particle_t0.root, I don't need to merge anything
-                if HADD_to_apply:
+                if HADD_to_apply and not CleanROOTFiles:
                     CounterFilesMerged = 0
                     for particle in ParticleName:
                         if os.path.exists(os.path.join(root, particle + '_t0.root')):
@@ -413,9 +413,9 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage)
                             MSG_txt = "Directory: " + root2
                             SendMessage(MSG_txt)
                             for file in files2:
-                                if file.endswith(".pdf") or file.endswith(".png"):
+                                if file.endswith(".png"):
                                     SendPhoto(os.path.join(root2, file))
-                                    time.sleep(0.2)                
+                                    time.sleep(2)                
                     
                 
             
@@ -786,6 +786,8 @@ if __name__ == "__main__":
     parser.add_argument('-R', '--root-only', action='store_true', help='Only the root files are analyzed')
     parser.add_argument('-b', '--bypass-removal', action='store_true', help='Bypass the removal of the Analysis_output directory')
     parser.add_argument('-T', '--telegram', action='store_true', help='Send a telegram message when the analysis is finished')
+    parser.add_argument('-C', '--clean', action='store_true', help='Clean the Analysis_output directory')
+
 
     args = parser.parse_args()
     actual_dir = os.getcwd()
@@ -808,4 +810,4 @@ if __name__ == "__main__":
     print('Input directory: ' + input_dir)
         
     
-    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, args.telegram)
+    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, args.telegram, args.clean)

@@ -21,7 +21,7 @@ def Geant4Simulation():
     print("Date: ", Date)
 
     N_jobs = 70
-    N_evjob = 100000
+    N_evjob = 20000
 
     # Run directory for the run
     if IsTest:
@@ -47,14 +47,14 @@ def Geant4Simulation():
     gps_pos_centre_cm = [0, 0, 12]
     
     if IsTest:
-        gps_pos_radius_cm = 0.1
+        gps_pos_radius_cm = 0.01
     else:
         gps_pos_radius_cm = 2.3
     gps_ang_type = "iso"
     gps_ang_mintheta_deg = 0
     
     if IsTest:
-        gps_ang_maxtheta_deg = 45
+        gps_ang_maxtheta_deg = 0.1
     else:
         gps_ang_maxtheta_deg = 50
     
@@ -307,28 +307,39 @@ def Geant4Simulation():
             bash_script.write("#! /bin/bash\n")
             bash_script.write('cd /data1/home/rnicolai\n')
             bash_script.write('cd /data1/home/rnicolai/LEM_GDML_upgrade\n')
-            # bash_script.write('pip3 install matplotlib --user\n')
-            # bash_script.write('pip3 install numpy --user\n')
-            # bash_script.write('pip3 install scipy --user\n')
-            # bash_script.write('pip3 install pandas --user\n')
-            # bash_script.write('pip3 install seaborn --user\n\n\n')
-            
-            # bash_script.write("rm -rf " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            # bash_script.write("mkdir " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            # bash_script.write("chmod -R 777 " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            # bash_script.write("cd " + os.path.join(HomeDirectorySimulation, "build_f"+str(index)+"_j"+str(n)) + "\n")
-            # bash_script.write("sleep 0.5 \n")
-            # bash_script.write("cmake .. \n")
-            # bash_script.write("sleep 0.5 \n")
-            # bash_script.write("make -j1 \n")
-            # bash_script.write("sleep 0.5 \n")
-            # bash_script.write("chmod -R 777 . \n")
-            # bash_script.write('echo "Version of Geant"\ngeant4-config --version\necho "Prefix"\ngeant4-config --prefix\n')
-            # for jj in range(10):
-            #     bash_script.write("echo  \n")
             
             
-            bash_script.write(ExecutablePath + " " + os.path.join(out_paths["GDML"], file) + " " + macro_file_name + " " + steering_file_name + "\n")
+            # Write bash code in the file for trying to launch the executable untill the executions is successful
+            
+            TextToWrite = '''
+MAX_ATTEMPTS=5
+ATTEMPT=1
+
+while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
+    # Esegui il comando qui
+'''
+
+            TextToWrite += ExecutablePath + " " + os.path.join(out_paths["GDML"], file) + " " + macro_file_name + " " + steering_file_name + "\n\n"
+
+
+            TextToWrite += '''
+
+    if [ $? -eq 0 ]; then
+        echo "Comando eseguito correttamente alla tentativo $ATTEMPT"
+        break
+    else
+        echo "Errore nell'esecuzione del comando alla tentativo $ATTEMPT. Riprovo..."
+        ATTEMPT=$((ATTEMPT + 1))
+        sleep 5  # Attendi un po' prima del prossimo tentativo
+    fi
+done
+
+if [ $ATTEMPT -gt $MAX_ATTEMPTS ]; then
+    echo "Il comando non è stato eseguito correttamente dopo $MAX_ATTEMPTS tentativi."
+fi
+
+'''            
+            bash_script.write(TextToWrite)
             bash_script.close()
             
             # Write a condor configuration file for submitting job

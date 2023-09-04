@@ -31,7 +31,6 @@ def PlotViolation(fName):
     E = df['E'].values
     ID = df['ID'].values
     
-    MaxID =  500
     
     # ID may not be consecutive
     # Build an ID2 that is consecutive
