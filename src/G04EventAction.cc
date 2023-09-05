@@ -206,6 +206,7 @@ void G04EventAction::EndOfEventAction(const G4Event *Event)
                 man -> FillNtupleDColumn(1,2,Position.getZ());
                 man -> FillNtupleDColumn(1,3,Edep);
                 man -> FillNtupleIColumn(1,4,Event -> GetEventID());
+                man -> FillNtupleIColumn(1,5,fSteering -> GetJobNumber());
                 man -> AddNtupleRow(1);
             }
         }

@@ -17,11 +17,16 @@ import plotly.express as px
 
 def PlotViolation(fName):
     df = pd.read_csv(fName, sep=',', header=None)
-    df.columns = ['ID','X', 'Y', 'Z', 'E']
     
+    df_NCVF = pd.read_csv(fName.replace('.csv', '_NCVF.csv'), sep=',', header=None)
+    
+    
+    df.columns = ['ID','JobNumber','X', 'Y', 'Z', 'E']
+    df_NCVF.columns = ['ID','JobNumber','X', 'Y', 'Z', 'E']
+        
     # Exclude all the points where E == 0
     df = df[df['E'] != 0]
-    
+    df_NCVF = df_NCVF[df_NCVF['E'] != 0]
     
     
     # Take numpy arrays
@@ -79,6 +84,24 @@ def PlotViolation(fName):
     figName = fName.replace('.csv', '.png')
     plt.savefig(figName)
     
+    
+    # Plot for df_NCVF
+    plt.figure(figsize=(14,12), dpi=300)
+    ax = plt.axes(projection='3d')
+    ax.scatter(df_NCVF['X'].values, df_NCVF['Y'].values, df_NCVF['Z'].values, c=df_NCVF['E'].values, cmap='plasma', s=1.5)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Y')
+    ax.set_zlabel('Z')
+    ax.view_init(azim=35, elev=60)
+    # Retrieve the colorbar
+    sm = plt.cm.ScalarMappable(cmap='plasma', norm=plt.Normalize(vmin=min(E), vmax=max(E)))
+    sm._A = []
+    plt.colorbar(sm)
+    # Take the path and save the picture
+    figName = fName.replace('.csv', '_NCVF.png')
+    plt.savefig(figName)
+    
+    
     # Same plot but for df3
     
     plt.figure(figsize=(14,12), dpi=300)
@@ -103,6 +126,11 @@ def PlotViolation(fName):
     fig = px.scatter_3d(df, x='X', y='Y', z='Z', color='E', opacity=0.7, width=1400, height=1000, range_color=[min(E), max(E)])
     fig.update_traces(marker_size=1.5)
     fig.write_html(fName.replace('.csv', '.html'))
+    
+    fig = px.scatter_3d(df_NCVF, x='X', y='Y', z='Z', color='E', opacity=0.7, width=1400, height=1000, range_color=[min(E), max(E)])
+    fig.update_traces(marker_size=1.5)
+    fig.write_html(fName.replace('.csv', '_NCVF.html'))
+    
     
     # Same plot but for df3
     fig = px.scatter_3d(df3, x='X', y='Y', z='Z', color='E', opacity=0.7, width=1400, height=1000, range_color=[min(E), max(E)])

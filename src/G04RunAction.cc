@@ -88,6 +88,7 @@ G04RunAction::G04RunAction(G04DetectorConstruction* detector,
     man -> CreateNtupleDColumn("Z");
     man -> CreateNtupleDColumn("E");
     man -> CreateNtupleIColumn("ID");
+    man -> CreateNtupleIColumn("JobNumber");
     man -> FinishNtuple(1);
 
     ReportFile << "##############################################" << G4endl;

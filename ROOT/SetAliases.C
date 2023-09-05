@@ -1,3 +1,4 @@
+// C++ include
 #include <iostream>
 #include <string>
 #include <vector>
@@ -5,6 +6,7 @@
 #include <map>
 #include <algorithm>
 
+// ROOT include
 #include "TFile.h"
 #include "TTree.h"
 #include "TChain.h"
@@ -21,9 +23,6 @@
 #include "TGraphErrors.h"
 #include "TMultiGraph.h"
 #include "TMath.h"
-#include "./TH1DLog.h"
-#include "./TH2DLog.h"
-#include "./TH2DLogX.h"
 #include "TList.h"
 #include "TKey.h"
 #include "TObject.h"
@@ -32,10 +31,18 @@
 #include "TTreeFormula.h"
 #include "TGraph2D.h"
 
+// Custom include
+#include "./TH1DLog.h"
+#include "./TH2DLog.h"
+#include "./TH2DLogX.h"
+
 
 using namespace std;
 
-// root SetAliases.C\(\"ciao\"\)
+// ######################################################## //
+
+
+
 
 void SetAliases(TString filename,
                 TString filename_noExt,
@@ -142,21 +149,21 @@ void SetAliases(TString filename,
     TString destination_Violation          = destination + "/EnergyViolation3D";
     gSystem -> mkdir(destination_Violation.Data(), true);
 
-    Hits -> Draw("X:Y:Z:E", "", "goff");
     // Dump X Y Z E in a .csv file so I can read it with python
     ofstream csv;
     csv.open(destination_Violation + "/" + filename_noExt + "_Hits.csv");
     double X, Y, Z, E;
-    int ID;
+    int ID, JobNumber_Hit;
     Hits -> SetBranchAddress("X", &X);
     Hits -> SetBranchAddress("Y", &Y);
     Hits -> SetBranchAddress("Z", &Z);
     Hits -> SetBranchAddress("E", &E);
     Hits -> SetBranchAddress("ID", &ID);
+    Hits -> SetBranchAddress("JobNumber", &JobNumber_Hit);
     for(int i = 0; i < Hits -> GetEntries(); i++)
     {
         Hits -> GetEntry(i);
-        csv << ID << "," << X << "," << Y << "," << Z << "," << E << endl;
+        csv << ID << "," << JobNumber_Hit << "," << X << "," << Y << "," << Z << "," << E << endl;
         if(i%1000 == 0)
             std::cout << "i = " << i << endl;
     }
@@ -358,20 +365,24 @@ void SetAliases(TString filename,
     TTreeFormula *fConditionGoodEvents_Calo = new TTreeFormula("fConditionGoodEvents", Form("(%s) && !(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), Edep_old);
     TTreeFormula *fConditionGoodEvents_NoCalo = new TTreeFormula("fConditionGoodEvents", Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), Edep_old);
 
+
     TEntryList *SkimmingList_Calo = new TEntryList("SkimmingList_Calo", "SkimmingList_Calo", Edep_old);
     TEntryList *SkimmingList_NoCalo = new TEntryList("SkimmingList_NoCalo", "SkimmingList_NoCalo", Edep_old);
     TEntryList *Skimming_OR = new TEntryList("Skimming_OR", "Skimming_OR", Edep_old);
 
+
     Edep_old -> Draw(">>SkimmingList_Calo", Form("(%s) && !(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "entrylist");
     Edep_old -> Draw(">>SkimmingList_NoCalo", Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), "entrylist");
-
-
+    
     Skimming_OR -> Add(SkimmingList_Calo);
     Skimming_OR -> Add(SkimmingList_NoCalo);
 
     cout << "SkimmingList_Calo->GetN() = " << SkimmingList_Calo->GetN() << endl;
     cout << "SkimmingList_NoCalo->GetN() = " << SkimmingList_NoCalo->GetN() << endl;
     cout << "Skimming_OR->GetN() = " << Skimming_OR->GetN() << endl;
+
+
+
 
 
 
@@ -384,6 +395,55 @@ void SetAliases(TString filename,
         Edep_old -> GetEntry(Skimming_OR -> GetEntry(i));
         Edep -> Fill();
     }
+
+    // Now the TTree Edep is filled
+    TEntryList *NCVF_Violation = new TEntryList("NCVF_Violation", "NCVF_Violation", Edep);
+    Edep -> Draw(">>NCVF_Violation", Form("(%s) && (NCVF > 0.05)", ConditionGoodEvents.Data()), "entrylist");
+
+
+    ofstream csv_NCVF;
+    csv_NCVF.open(destination_Violation + "/" + filename_noExt + "_Hits_NCVF.csv");
+    int EventID, JobNumber_Edep;
+    Edep -> SetBranchAddress("EventID", &EventID);
+    Edep -> SetBranchAddress("JobNumber", &JobNumber_Edep);
+    // Variables availables from previous trees
+    // Hits -> SetBranchAddress("X", &X);
+    // Hits -> SetBranchAddress("Y", &Y);
+    // Hits -> SetBranchAddress("Z", &Z);
+    // Hits -> SetBranchAddress("E", &E);
+    // Hits -> SetBranchAddress("ID", &ID);
+
+
+    int index_Edep = 0;
+    int index_Hits = 0;
+    for(int i = 0; i < NCVF_Violation -> GetN(); ++i)
+    {
+        int Entry = NCVF_Violation -> GetEntry(i);
+        Edep -> GetEntry(Entry);
+        index_Hits = 0;
+
+        while((EventID != ID) && (JobNumber_Hit != JobNumber_Edep) && (index_Hits < Hits -> GetEntries()) )
+        {
+            index_Hits++;
+            Hits -> GetEntry(index_Hits);            
+        }
+
+        while((EventID == ID) && (JobNumber_Hit == JobNumber_Edep) && (index_Hits < Hits -> GetEntries()))
+        {
+            csv_NCVF << ID << "," << JobNumber_Hit << "," << X << "," << Y << "," << Z << "," << E << endl;
+            index_Hits++;
+            Hits -> GetEntry(index_Hits);
+        }
+    }
+
+    csv_NCVF.close();
+
+
+
+
+
+
+
 
 
     /* Files with the computed angles from MonteCarlo Momentum direction */
