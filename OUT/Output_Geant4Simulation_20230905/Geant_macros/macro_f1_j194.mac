@@ -1,0 +1,49 @@
+# Date of creation: 20230905 UNIX Time :1693909921.2101247
+# File GDML : LEM_LargerCalo-worldVOL_Parsed.gdml
+
+
+/control/verbose 0
+/run/verbose 1
+/event/verbose 0
+
+
+/run/initialize
+
+
+/random/setSeeds 194 194
+
+
+/gps/pos/type Plane
+/gps/pos/shape Circle
+/gps/pos/centre 0 0 12 cm
+/gps/pos/radius 2.3 cm
+/gps/ang/type iso
+/gps/ang/mintheta 0 deg
+/gps/ang/maxtheta 50 deg
+
+
+
+/NameOfFile/NameOfFile /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/DST/GDML_file_1/e-_j194
+/gps/particle e-
+/gps/ene/type Lin
+/gps/ene/gradient 0
+/gps/ene/intercept 1
+/gps/ene/min 0.08 MeV
+/gps/ene/max 8 MeV
+/run/beamOn 20000
+/NameOfFile/NameOfFile /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/DST/GDML_file_1/proton_j194
+/gps/particle proton
+/gps/ene/type Lin
+/gps/ene/gradient 0
+/gps/ene/intercept 1
+/gps/ene/min 1 MeV
+/gps/ene/max 50 MeV
+/run/beamOn 20000
+/NameOfFile/NameOfFile /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/DST/GDML_file_1/alpha_j194
+/gps/particle alpha
+/gps/ene/type Lin
+/gps/ene/gradient 0
+/gps/ene/intercept 1
+/gps/ene/min 10 MeV
+/gps/ene/max 200 MeV
+/run/beamOn 20000
