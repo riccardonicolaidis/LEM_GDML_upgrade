@@ -424,7 +424,7 @@ int PID(
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto]    = "PID:RandEnergy";
+    DrawRule[IndexHisto]    = "PID:(RandEnergy - Ed_LV_AlTop)";
     Condition[IndexHisto]   = ConditionGoodEvents.Data();
     SaveAsPath[IndexHisto]  = destination_PID + "/PID2";
 
@@ -432,7 +432,7 @@ int PID(
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto]    = "gPID:RandEnergy";
+    DrawRule[IndexHisto]    = "gPID:(RandEnergy - Ed_LV_AlTop)";
     Condition[IndexHisto]   = ConditionGoodEvents.Data();
     SaveAsPath[IndexHisto]  = destination_PID + "/gPID2";
 
@@ -440,7 +440,7 @@ int PID(
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto]    = "PID:RandEnergy";
+    DrawRule[IndexHisto]    = "PID:(RandEnergy - Ed_LV_AlTop)";
     Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
     SaveAsPath[IndexHisto]  = destination_PID + "/PID2_NoCalo";
 
@@ -448,7 +448,7 @@ int PID(
     IndexHisto++;
     hPID_XTitle[IndexHisto] = "E_{tot} MC [MeV]";
     hPID_YTitle[IndexHisto] = "PID";
-    DrawRule[IndexHisto]    = "gPID:RandEnergy";
+    DrawRule[IndexHisto]    = "gPID:(RandEnergy - Ed_LV_AlTop)";
     Condition[IndexHisto]   = Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data());
     SaveAsPath[IndexHisto]  = destination_PID + "/gPID2_NoCalo";
 
