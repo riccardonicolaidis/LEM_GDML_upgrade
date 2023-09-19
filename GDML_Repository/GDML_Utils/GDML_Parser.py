@@ -172,7 +172,58 @@ def GDML_Retrieve_Names(input_file, N_characters_to_remove):
 
 
 
+
+def Get_Name_Of_File(input_file):
+    input_file_check = False
+    
+    # Check if input file is a file or is a directory
+    if os.path.isfile(input_file):
+        input_file_check = True
+    else:
+        input_file_check = False
+        Directory = input_file
+    
+    if not input_file_check:
+        # Search a .gdml file without the word Parsed inside
+        for file in os.listdir(Directory):
+            if file.endswith(".gdml") and "Parsed" not in file:
+                input_file = os.path.join(Directory, file)
+                input_file_check = True
+                break
+        
+        answer = ''
+        while answer not in ['y','n']:
+            answer = input("The found file is: " + input_file + "\n Is it ok? [y/n]  ").lower()
+
+        if answer == 'n':
+            # List all the .gdml files with a number menu
+            print("List of .gdml files:")
+            ListOfFiles = []
+            for file in os.listdir(Directory):
+                if file.endswith(".gdml"):
+                    ListOfFiles.append(file)
+            for i in range(len(ListOfFiles)):
+                print("[" + str(i) + "]  --> " + ListOfFiles[i])
+
+            # Ask for the number
+            answer = ''
+            while not (answer.isdigit() and  int(answer) < len(ListOfFiles)):
+                answer = input("Select the number of the file: ")
+            
+            input_file = os.path.join(Directory, ListOfFiles[int(answer)])  
+            
+        
+    return input_file
+
+
+
+
 def GDML_Parser(input_file, dummy_materials, all_sensitive_det):
+    
+    
+    
+    
+    
     
     RelativePath = os.path.dirname(input_file)
     FileName_GDML = os.path.basename(input_file)
@@ -260,9 +311,9 @@ def GDML_Parser(input_file, dummy_materials, all_sensitive_det):
     
     FileGDML_Parsed = os.path.join(AbsolutePath,FileName_GDML)
     if dummy_materials:
-        FileGDML_Parsed = FileGDML_Parsed.replace(".gdml", "_DummyMaterials_Parsed.gdml")
+        FileGDML_Parsed = FileGDML_Parsed.replace(".gdml", "_B_DummyMaterials_Parsed.gdml")
     else:
-        FileGDML_Parsed = FileGDML_Parsed.replace(".gdml", "_Parsed.gdml")   
+        FileGDML_Parsed = FileGDML_Parsed.replace(".gdml", "_A_Parsed.gdml")   
     
     f_GDML_Parsed = open(os.path.join(AbsolutePath,FileGDML_Parsed), "w")
     
@@ -362,9 +413,12 @@ if __name__ == "__main__":
     
     args = argparser.parse_args()
     
+    
+    input_file = Get_Name_Of_File(args.input)
+    
     if args.step_of_process == "0":
         print("Step 0")
-        GDML_Retrieve_Names(args.input, args.remove_n_characters)
+        GDML_Retrieve_Names(input_file, args.remove_n_characters)
     elif args.step_of_process == "1":
         print("Step 1")
-        GDML_Parser(args.input, args.dummy_materials, args.all_sensitive)
+        GDML_Parser(input_file, args.dummy_materials, args.all_sensitive)
