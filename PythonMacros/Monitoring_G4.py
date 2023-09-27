@@ -28,14 +28,24 @@ TOKEN_global = GetToken('token.token')
     
 
     
-def SendMessage(message):
+def SendMessage(message_text):
     chatID = '-1001921335158'
     apiURL = 'https://api.telegram.org/bot{}/sendMessage'.format(TOKEN_global)
-    try:
-        response = requests.post(apiURL, json={'chat_id': chatID, 'text': message, 'parse_mode': 'HTML'})
-        print(response.text)
-    except Exception as e:
-        print(e)
+    
+    MAX_LENGTH = 4096
+    
+    Messages = []
+    if len(message_text) > MAX_LENGTH:
+        Messages = [message_text[i:i+MAX_LENGTH] for i in range(0, len(message_text), MAX_LENGTH)]
+    else:
+        Messages = [message_text]
+     
+    for message in Messages:    
+        try:
+            response = requests.post(apiURL, json={'chat_id': chatID, 'text': message, 'parse_mode': 'HTML'})
+            print(response.text)
+        except Exception as e:
+            print(e)
 
 
 
@@ -54,6 +64,8 @@ def SendPhoto(photo_path):
 
 
 def Monitoring(N_Jobs, N_EventsPerJob, N_Files ,Particles, DirectoryToMonitor):
+    
+    SendMessage("Starting Simulation")
     
     print('Entering in Monitoring')
     start_time = time.time()

@@ -7,7 +7,7 @@ ATTEMPT=1
 
 while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
     # Esegui il comando qui
-/data1/home/rnicolai/LEM_GDML_upgrade/build/gdml_det /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/GDML_src/LEM_LargerCalo-worldVOL_DummyMaterials_Parsed.gdml /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/Geant_macros/macro_f0_j47.mac /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/steering_files/steering_f0_j47.txt
+/data1/home/rnicolai/LEM_GDML_upgrade/build/gdml_det /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/GDML_src/LEM_Flip-worldVOL_Parsed.gdml /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/Geant_macros/macro_f0_j47.mac /data1/home/rnicolai/LEM_GDML_upgrade/OUT/Output_Geant4Simulation_20230905/steering_files/steering_f0_j47.txt
 
 
 

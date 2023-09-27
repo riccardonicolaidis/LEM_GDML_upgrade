@@ -20,8 +20,8 @@ def Geant4Simulation():
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 400
-    N_evjob = 50000
+    N_jobs = 100
+    N_evjob = 500000
 
     # Run directory for the run
     if IsTest:
@@ -44,19 +44,19 @@ def Geant4Simulation():
     gps_ene_intercept = 1
     gps_pos_type = "Plane"
     gps_pos_shape = "Circle"
-    gps_pos_centre_cm = [0, 0, 12]
+    gps_pos_centre_cm = [0, 0, 11]
     
     if IsTest:
         gps_pos_radius_cm = 0.01
     else:
-        gps_pos_radius_cm = 2.3
+        gps_pos_radius_cm = 4
     gps_ang_type = "iso"
     gps_ang_mintheta_deg = 0
     
     if IsTest:
         gps_ang_maxtheta_deg = 0.1
     else:
-        gps_ang_maxtheta_deg = 50
+        gps_ang_maxtheta_deg = 80
     
     run_beamOn = N_evjob
 
@@ -371,7 +371,8 @@ fi
             print("Path: ", os.path.join(out_paths["condor_scripts"],files))
 
     for files in CondorSubmtFiles:
-        os.system("condor_submit " + files)
+        if not "monitoring" in files:
+            os.system("condor_submit " + files)
         #sleep(0.1)
         #os.system("sleep 0.001")    
 

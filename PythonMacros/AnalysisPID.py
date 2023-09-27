@@ -63,8 +63,8 @@ def SendPhoto(photo_path):
 
 def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage, CleanROOTFiles):
     
-    E_thr_Thin = 0.08
-    E_thr_Thick = 0.07
+    E_thr_Thin = 0.01
+    E_thr_Thick = 0.01
     E_thr_Plastic = 0.00001
     
     actual_dir = os.getcwd()
@@ -768,7 +768,33 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                 for files in os.listdir(LatexReportDir):
                     if files.endswith('.pdf'):
                         shutil.copy(os.path.join(LatexReportDir, files), os.path.join(global_input_dir,'LatexReport'))
-                        
+    
+    
+    
+    # In the end reorder the pictures creating subforlders with the name of the extension
+    for root, dirs, files in os.walk(os.path.join(global_input_dir, 'Analysis_output')):
+        FoundImages = False
+        for file in files:
+            if file.endswith(".png") or file.endswith(".pdf") or file.endswith(".root"):
+                FoundImages = True
+                break                    
+        
+        if FoundImages:
+            # Make dirs Png, Pdf, Root
+            if not os.path.exists(os.path.join(root, 'Png')):
+                os.makedirs(os.path.join(root, 'Png'))
+            if not os.path.exists(os.path.join(root, 'Pdf')):
+                os.makedirs(os.path.join(root, 'Pdf'))
+            if not os.path.exists(os.path.join(root, 'Root')):
+                os.makedirs(os.path.join(root, 'Root'))
+
+            for file in files:
+                if file.endswith(".png"):
+                    shutil.move(os.path.join(root, file), os.path.join(root, 'Png'))
+                if file.endswith(".pdf"):
+                    shutil.move(os.path.join(root, file), os.path.join(root, 'Pdf'))
+                if file.endswith(".root"):
+                    shutil.move(os.path.join(root, file), os.path.join(root, 'Root'))
                     
                 
             
