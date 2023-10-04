@@ -46,7 +46,8 @@ void  CreateHistogram2D(
     TString DrawRule,
     TString CutRule,
     TString SaveAsPath,
-    bool YLog
+    bool YLog,
+    bool All_Linear
 )
 {
     cout << "CreateTheHistogram2D" << endl;
@@ -57,6 +58,7 @@ void  CreateHistogram2D(
     cout << "CutRule: " << CutRule << endl;
     cout << "SaveAsPath: " << SaveAsPath << endl;
     cout << "YLog: " << YLog << endl;
+    cout << "All_Linear: " << All_Linear << endl;
 
     // Create the histogram
 
@@ -90,7 +92,12 @@ void  CreateHistogram2D(
     int NbinsX = 200;
     int NbinsY = 200;
 
-    if(YLog)
+
+    if(All_Linear)
+    {
+        histogram = new TH2D("hLog", Title, NbinsX, minXAll, maxXAll, NbinsY, minYAll, maxYAll);
+    }
+    else if(YLog)
     {
         histogramLog = new TH2DLog();
         histogramLog -> SetXAxis(minXAll, maxXAll, NbinsX);
@@ -131,11 +138,17 @@ void  CreateHistogram2D(
     TCanvas *canvas = new TCanvas("c", "c", 1000, 1000);
 
     histogram -> Draw("colz");
-    gPad -> SetLogx();
-    if(YLog)
+    
+    if(!All_Linear)
     {
-        gPad -> SetLogy();
+        gPad -> SetLogx();
+        if(YLog)
+        {
+            gPad -> SetLogy();
+        }
     }
+    
+    
     gPad -> SetLogz();
     gPad -> SetGrid();
 

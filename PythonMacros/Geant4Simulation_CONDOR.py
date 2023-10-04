@@ -14,8 +14,9 @@ def Geant4Simulation():
     
     
     IsTest = False
+    RunName = "Geant4Simulation_Isotopes"
     
-    RunName = "Geant4Simulation"
+    
     Date = time.strftime("%Y%m%d")
     print("RunName: ", RunName)
     print("Date: ", Date)
@@ -34,9 +35,9 @@ def Geant4Simulation():
     #                      GEANT4 SETTINGS                     #
     # ######################################################## #
 
-    gps_particle = ["e-", "proton", "alpha"]
-    gps_ene_min = [0.08, 1       , 10]
-    gps_ene_max = [8  , 50     , 200]
+    gps_particle = ["e-", "proton", "alpha", "triton", "deuteron", "He3"]
+    gps_ene_min  = [0.08, 1       , 10,      1 ,       1,          10]
+    gps_ene_max  = [11  , 100     , 400,     100,      100,        10]
 
 
     gps_ene_type = "Lin"
@@ -49,14 +50,14 @@ def Geant4Simulation():
     if IsTest:
         gps_pos_radius_cm = 0.01
     else:
-        gps_pos_radius_cm = 4
+        gps_pos_radius_cm = 10
     gps_ang_type = "iso"
     gps_ang_mintheta_deg = 0
     
     if IsTest:
         gps_ang_maxtheta_deg = 0.1
     else:
-        gps_ang_maxtheta_deg = 80
+        gps_ang_maxtheta_deg = 90
     
     run_beamOn = N_evjob
 

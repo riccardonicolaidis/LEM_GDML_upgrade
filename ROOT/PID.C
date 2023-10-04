@@ -30,6 +30,10 @@ using namespace std;
 #include "TTreeFormula.h"
 #include "TEllipse.h"
 #include "TObjString.h"
+#include "THStack.h"
+#include "TColor.h"
+#include "TRandom2.h"
+#include "TH1.h"
 
 // Custom include
 #include "./TH1DLog.h"
@@ -51,6 +55,8 @@ int PID(
         double  E_thr_Thick             = 0.04,
         double  E_thr_Plastic           = 0.05,
         TString PathSiliconPositionFile = "",
+        TString pathConfigurationFile   = "",
+        double  AreaGeneration_cm2      = 0.1,
         int     NumberPairsSensors      = 5, 
         double  ResSilicon              = 0.01,
         double  ResPlastic              = 0.05,
@@ -409,60 +415,61 @@ int PID(
 
 
     // Histo 0
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", ConditionGoodEvents.Data(), destination_PID + "/PID", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", ConditionGoodEvents.Data(), destination_PID + "/PID", false, false);
 
     // Histo 1
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco", "E_{tot} Reco [MeV]", "PID", "gPID:(gTotThick + gTotThin + gEd_LV_Calo)", ConditionGoodEvents.Data(), destination_PID + "/gPID", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco", "E_{tot} Reco [MeV]", "PID", "gPID:(gTotThick + gTotThin + gEd_LV_Calo)", ConditionGoodEvents.Data(), destination_PID + "/gPID", false, false);
 
     // Histo 2
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco No Calo", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/PID_NoCalo", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco No Calo", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/PID_NoCalo", false, false);
 
     // Histo 3
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco No Calo", "E_{tot} Reco [MeV]", "PID", "gPID:(gTotThick + gTotThin)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/gPID_NoCalo", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco No Calo", "E_{tot} Reco [MeV]", "PID", "gPID:(gTotThick + gTotThin)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/gPID_NoCalo", false, false);
 
     // Histo 4
-    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", ConditionGoodEvents.Data(), destination_PID + "/PID2", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", ConditionGoodEvents.Data(), destination_PID + "/PID2", false, false);
 
     // Histo 5
-    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "gPID:(RandEnergy - Ed_LV_AlTop)", ConditionGoodEvents.Data(), destination_PID + "/gPID2", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "gPID:(RandEnergy - Ed_LV_AlTop)", ConditionGoodEvents.Data(), destination_PID + "/gPID2", false, false);
 
     // Histo 6
-    CreateHistogram2D(Edep, "PID Vs E_{tot} MC No Calo", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/PID2_NoCalo", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} MC No Calo", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/PID2_NoCalo", false, false);
 
     // Histo 7
-    CreateHistogram2D(Edep, "PID Vs E_{tot} MC No Calo", "E_{tot} MC [MeV]", "PID", "gPID:(RandEnergy - Ed_LV_AlTop)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/gPID2_NoCalo", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} MC No Calo", "E_{tot} MC [MeV]", "PID", "gPID:(RandEnergy - Ed_LV_AlTop)", Form("(%s)&&(%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/gPID2_NoCalo", false, false);
 
     // Histo 8
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF OK", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF > %g)", ConditionGoodEvents.Data(), NCVF_threshold), destination_PID + "/PID_NCVF_NOK", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF OK", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF > %g)", ConditionGoodEvents.Data(), NCVF_threshold), destination_PID + "/PID_NCVF_NOK", false, false);
 
     // Histo 9
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF OK No Calo", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF > %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data()), destination_PID + "/PID_NCVF_NOK_NoCalo", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF OK No Calo", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF > %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data()), destination_PID + "/PID_NCVF_NOK_NoCalo", false, false);
 
     // Histo 10
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF NOK", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF < %g)", ConditionGoodEvents.Data(), NCVF_threshold), destination_PID + "/PID_NCVF_OK", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF NOK", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF < %g)", ConditionGoodEvents.Data(), NCVF_threshold), destination_PID + "/PID_NCVF_OK", false, false);
 
     // Histo 11
-    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF NOK No Calo", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF < %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data()), destination_PID + "/PID_NCVF_OK_NoCalo", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} Reco NCVF NOK No Calo", "E_{tot} Reco [MeV]", "PID", "PID:(TotThick + TotThin + Ed_LV_Calo)", Form("(%s)&&(NCVF < %g) && (%s)", ConditionGoodEvents.Data(), NCVF_threshold, ConditionNoCalo.Data()), destination_PID + "/PID_NCVF_OK_NoCalo", false, false);
 
     // Histo 12
-    CreateHistogram2D(Edep, "PID Vs E_{Thick} / E_{Thin} No Calo", "E_{Thick} / E_{Thin}", "PID", "PID:(TotThick / TotThin)", Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/PID_ThickThin_NoCalo", false);
+    CreateHistogram2D(Edep, "PID Vs E_{Thick} / E_{Thin} No Calo", "E_{Thick} / E_{Thin}", "PID", "PID:(TotThick / TotThin)", Form("(%s) && (%s)", ConditionGoodEvents.Data(), ConditionNoCalo.Data()), destination_PID + "/PID_ThickThin_NoCalo", false, false);
 
     // Histo 13
-    CreateHistogram2D(Edep, "PID Vs E_{Thick} / E_{Thin}", "E_{Thick} / E_{Thin}", "PID", "PID:(TotThick / TotThin)", Form("(%s)", ConditionGoodEvents.Data()), destination_PID + "/PID_ThickThin", false);
+    CreateHistogram2D(Edep, "PID Vs E_{Thick} / E_{Thin}", "E_{Thick} / E_{Thin}", "PID", "PID:(TotThick / TotThin)", Form("(%s)", ConditionGoodEvents.Data()), destination_PID + "/PID_ThickThin", false, false);
 
     // Histo 14
-    CreateHistogram2D(Edep, "Delta E (Thin) Vs E (Thick) NCVF NOK", "E (Thick) [MeV]", "Delta E (Thin) [MeV]", "TotThin:TotThick", Form("(%s) && (NCVF < 0.4)", ConditionGoodEvents.Data()), destination_PID + "/DE-E_NCVF_OK", true);
+    CreateHistogram2D(Edep, "Delta E (Thin) Vs E (Thick) NCVF NOK", "E (Thick) [MeV]", "Delta E (Thin) [MeV]", "TotThin:TotThick", Form("(%s) && (NCVF < 0.4)", ConditionGoodEvents.Data()), destination_PID + "/DE-E_NCVF_OK", true, false);
 
     // Histo 15
-    CreateHistogram2D(Edep, "Delta E (Thin) Vs E (Thick) NCVF NOK", "E (Thick) [MeV]", "Delta E (Thin) [MeV]", "TotThin:TotThick", Form("(%s) && (NCVF > 0.4)", ConditionGoodEvents.Data()), destination_PID + "/DE-E_NCVF_NOK", true);
+    CreateHistogram2D(Edep, "Delta E (Thin) Vs E (Thick) NCVF NOK", "E (Thick) [MeV]", "Delta E (Thin) [MeV]", "TotThin:TotThick", Form("(%s) && (NCVF > 0.4)", ConditionGoodEvents.Data()), destination_PID + "/DE-E_NCVF_NOK", true, false);
 
     // Histo 16
-    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", Form("(%s)", ConditionGoodEventsSinglePair[0].Data()), destination_PID + "/PID2_Central", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", Form("(%s)", ConditionGoodEventsSinglePair[0].Data()), destination_PID + "/PID2_Central", false, false);
 
     // Histo 17
-    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", Form("(%s) && !(%s)", ConditionGoodEvents.Data(), ConditionPairSilicon[0].Data()), destination_PID + "/PID2_Central_NoPair", false);
+    CreateHistogram2D(Edep, "PID Vs E_{tot} MC", "E_{tot} MC [MeV]", "PID", "PID:(RandEnergy - Ed_LV_AlTop)", Form("(%s) && !(%s)", ConditionGoodEvents.Data(), ConditionPairSilicon[0].Data()), destination_PID + "/PID2_Central_NoPair", false, false);
 
-    
+    // Histo 18
+    CreateHistogram2D(Edep, "PID Vs PID3", "PID3", "PID", "PID:PID3", Form("(%s) && (Ed_LV_Calo > %g)", ConditionGoodEvents.Data(), E_thr_Plastic), destination_PID + "/PID_PID3", false, true);
 
     vector<TObjArray*> ListOfBranches;
     ListOfBranches.resize(NFiles);
@@ -675,8 +682,7 @@ int PID(
             }        
             vEllipse[j+2*NumberPairsSensors] -> Draw("same");
         }
-
-
+        
         cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".pdf");
         cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".png");
         cNCVF -> SaveAs(destination_DeadMaterial + "/NCVF_" + FileNames_noPath[i] + ".root");
@@ -738,7 +744,9 @@ int PID(
         }
     }
 
-
+    /* ###################################################### */
+    /*              TGRAPH PARTICLE IDENTIFICATOR             */
+    /* ###################################################### */
 
 
     vector<TGraph*> grPID;
@@ -811,7 +819,6 @@ int PID(
 
     for(int i = 0; i < NFiles; ++i)
     {
-
         TString ConditionGoodEvents_PID2 = Form("(%s) && (Ed_LV_Calo > %g)", ConditionGoodEvents.Data(), E_thr_Plastic);
         if(i == 0)
         {
@@ -867,46 +874,157 @@ int PID(
 
 
 
+    /* ###################################################### */
+    /*               YIELD AND GEOMETRIC FACTOR               */
+    /* ###################################################### */
+
+
+
     vector<TH1DLog*> hYield;
     vector<TH1D*> hYield_Log;
     hYield.resize(NFiles);
     hYield_Log.resize(NFiles);
 
+    vector<TH1DLog*> hGeomFactor_Thin;
+    vector<TH1D*> hGeomFactor_Thin_Log;
+    hGeomFactor_Thin.resize(NFiles);
+    hGeomFactor_Thin_Log.resize(NFiles);
 
-    vector<TH1DLog*> hGen;
-    vector<TH1D*> hGen_Log;
-    hGen.resize(NFiles);
-    hGen_Log.resize(NFiles);
+
+    THStack *hsYield = new THStack("hsYield", "hsYield");
+    TLegend *legYield = new TLegend(0.1, 0.7, 0.4, 0.9);
+
+    // Retrieve info from the configuration file
+    // Take the path stored into pathFileEnergies in the header of the function and remove the final part of the path after /
+
+    // Read the configuration file
+    vector<TString> ParticleName_conf;
+    vector<double> Emin_conf;
+    vector<double> Emax_conf;
+    vector<int> EvNumber_conf;
+    vector<int> JobNumber_conf;
+    vector<TColor*> Color_conf;
+
+    Color_conf.resize(NFiles);
+    Color_conf[0] = new TColor(1756, 242./255., 53./255, 141./255);
+    Color_conf[1] = new TColor(1757, 4./255., 104./255, 191./255);
+    Color_conf[2] = new TColor(1758, 242./255., 152./255, 73./255);
+
+    // If NFiles > 3 Generate random colors
+    TRandom2 *gRandom = new TRandom2();
+    if(NFiles > 3)
+    {
+        for(int i = 3; i < NFiles; ++i)
+        {
+            Color_conf[i] = new TColor(1759+i, gRandom -> Uniform(0, 1), gRandom -> Uniform(0, 1), gRandom -> Uniform(0, 1));
+        }
+    }
+
+
+
+
+    ifstream fileConf;
+    fileConf.open(pathConfigurationFile.Data());
+
+    if(fileConf.is_open())
+    {
+        std::cout << "Reading configuration file " << pathConfigurationFile.Data() << std::endl;
+        while(!fileConf.eof())
+        {
+            string line;
+            getline(fileConf, line);
+            if(line[0] != '#')
+            {
+                istringstream iss(line);
+                TString ParticleName;
+                double Emin;
+                double Emax;
+                int EvNumber;
+                int JobNumber;
+                iss >> ParticleName >> Emin >> Emax >> EvNumber >> JobNumber;
+                ParticleName_conf.push_back(ParticleName);
+                Emin_conf.push_back(Emin);
+                Emax_conf.push_back(Emax);
+                EvNumber_conf.push_back(EvNumber);
+                JobNumber_conf.push_back(JobNumber);
+            
+                cout << "ParticleName = " << ParticleName << endl;
+                cout << "Emin = " << Emin << endl;
+                cout << "Emax = " << Emax << endl;
+                cout << "EvNumber = " << EvNumber << endl;
+                cout << "JobNumber = " << JobNumber << endl;
+
+            }
+        }
+    }
+    else
+    {
+        std::cout << "Error: configuration file " << pathConfigurationFile.Data() << " not found" << std::endl;
+        return 1;
+    }
 
 
     for(int i =0 ; i < NFiles; ++i)
     {
         hYield[i] = new TH1DLog();
         hYield[i] -> SetName(Form("hYield_%d", i));
-        hYield[i] -> SetTitle(Form("Yield %d", i));
+        hYield[i] -> SetTitle(Form("Geometric Factor %d", i));
         hYield[i] -> SetXTitle("E_{kin} [MeV]");
-        hYield[i] -> SetYTitle("Yield [a.u.]");
-        hYield[i] -> SetXAxis(Emins[i], Emaxs[i], 200);
+        hYield[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");
+        hYield[i] -> SetXAxis(Emin_conf[i], Emax_conf[i], 200);
         hYield[i] -> GenerateHistogram();
         hYield_Log[i] = hYield[i] -> GetHistogram();
 
-        hGen[i] = new TH1DLog();
-        hGen[i] -> SetName(Form("hGen_%d", i));
-        hGen[i] -> SetTitle(Form("Gen %d", i));
-        hGen[i] -> SetXTitle("E_{kin} [MeV]");
-        hGen[i] -> SetYTitle("Gen [a.u.]");
-        hGen[i] -> SetXAxis(Emins[i], Emaxs[i], 200);
-        hGen[i] -> GenerateHistogram();
-        hGen_Log[i] = hGen[i] -> GetHistogram();
-
-        Edep[i] -> Draw(Form("%s>>hGen_%d", BranchName[0].Data(), i),"", "goff");
+        // Draw good events
         Edep[i] -> Draw(Form("%s>>hYield_%d", BranchName[0].Data(), i), ConditionGoodEvents.Data(), "goff");
-    
-
+        legYield -> AddEntry(hYield_Log[i], ParticleName_conf[i].Data(), "l");
         hYield_Log[i] -> Sumw2();
-        hGen_Log[i] -> Sumw2();
 
-        hYield_Log[i] -> Divide(hGen_Log[i]);
+
+        hGeomFactor_Thin[i] = new TH1DLog();
+        hGeomFactor_Thin[i] -> SetName(Form("hGeomFactor_Thin_%d", i));
+        hGeomFactor_Thin[i] -> SetTitle(Form("Geometric Factor %d", i));
+        hGeomFactor_Thin[i] -> SetXTitle("E_{kin} [MeV]");
+        hGeomFactor_Thin[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");
+        hGeomFactor_Thin[i] -> SetXAxis(Emin_conf[i], Emax_conf[i], 200);
+        hGeomFactor_Thin[i] -> GenerateHistogram();
+        hGeomFactor_Thin_Log[i] = hGeomFactor_Thin[i] -> GetHistogram();
+
+        Edep[i] -> Draw(Form("%s>>hGeomFactor_Thin_%d", BranchName[0].Data(), i), "(TotThin > 0.)", "goff");
+        hGeomFactor_Thin_Log[i] -> Sumw2();
+
+
+        // Now I want to normalize the histogram to the number of events simulated
+        // The binning is logarithmic so I have to loop over the bins and divide by the dN/dE * BinWidth
+
+        double dN_dE = (double)EvNumber_conf[i] * (double)JobNumber_conf[i] / (Emax_conf[i] - Emin_conf[i]) ;
+
+        for(int j = 0; j < hYield_Log[i] -> GetNbinsX(); ++j)
+        {
+            double BinWidth = hYield_Log[i] -> GetBinWidth(j+1);
+            double Yield = hYield_Log[i] -> GetBinContent(j+1);
+            double YieldError = hYield_Log[i] -> GetBinError(j+1);
+            hYield_Log[i] -> SetBinContent(j+1, Yield / (dN_dE * BinWidth));
+            hYield_Log[i] -> SetBinError(j+1, YieldError / (dN_dE * BinWidth));
+        
+            Yield = hGeomFactor_Thin_Log[i] -> GetBinContent(j+1);
+            YieldError = hGeomFactor_Thin_Log[i] -> GetBinError(j+1);
+            hGeomFactor_Thin_Log[i] -> SetBinContent(j+1, Yield / (dN_dE * BinWidth));
+            hGeomFactor_Thin_Log[i] -> SetBinError(j+1, YieldError / (dN_dE * BinWidth));
+        
+        }
+
+        hYield_Log[i] -> SetLineColor(Color_conf[i] -> GetNumber());
+        hYield_Log[i] -> SetLineWidth(2);
+        hYield_Log[i] -> Scale(AreaGeneration_cm2 * TMath::Pi());
+
+        hGeomFactor_Thin_Log[i] -> SetLineColor(Color_conf[i] -> GetNumber());
+        hGeomFactor_Thin_Log[i] -> SetLineWidth(2);
+        hGeomFactor_Thin_Log[i] -> Scale(AreaGeneration_cm2 * TMath::Pi());
+
+
+        hsYield -> Add(hYield_Log[i]);
+
 
         TCanvas *cYield = new TCanvas(Form("cYield_%d", i), Form("cYield_%d", i), 800, 600);
         hYield_Log[i] -> Draw();
@@ -916,8 +1034,78 @@ int PID(
         gPad -> SetGridy();
         gPad -> SetLogy();
         cYield -> SaveAs(destination_PID + Form("/Yield_%s.pdf", ParticleNames[i].Data()));
+        cYield -> SaveAs(destination_PID + Form("/Yield_%s.png", ParticleNames[i].Data()));
+        cYield -> SaveAs(destination_PID + Form("/Yield_%s.root", ParticleNames[i].Data()));
+
+
+        TCanvas *cGeomFactor_Thin = new TCanvas(Form("cGeomFactor_Thin_%d", i), Form("cGeomFactor_Thin_%d", i), 800, 600);
+        hGeomFactor_Thin_Log[i] -> Draw();
+        hGeomFactor_Thin_Log[i] -> SetStats(0);
+        gPad -> SetLogx();
+        gPad -> SetGridx();
+        gPad -> SetGridy();
+        gPad -> SetLogy();
+
+        cGeomFactor_Thin -> SaveAs(destination_PID + Form("/GeomFactor_Thin_%s.pdf", ParticleNames[i].Data()));
+        cGeomFactor_Thin -> SaveAs(destination_PID + Form("/GeomFactor_Thin_%s.png", ParticleNames[i].Data()));
+        cGeomFactor_Thin -> SaveAs(destination_PID + Form("/GeomFactor_Thin_%s.root", ParticleNames[i].Data()));
+
     
     }
+
+
+    // TODO: Use method DrawFrame to draw the histogram with the correct axis
+
+
+
+    TCanvas *csYield = new TCanvas("csYield", "csYield", 800, 600);
+    
+    // Use DrawFrame to draw the histogram with the correct axis
+    TH1 *hFrame = csYield -> DrawFrame(Emin_conf[0], 1e-3, Emax_conf[NFiles-1], 1);
+    hFrame -> SetTitle("Geometric Factor");
+    hFrame -> SetXTitle("E_{kin} [MeV]");
+    hFrame -> SetYTitle("Geometric Factor [cm^{2} sr]");
+    hFrame -> SetStats(0);
+
+    for(int i = 0; i < NFiles; ++i)
+    {
+        hYield_Log[i] -> Draw("same");
+    }
+
+    gPad -> SetLogx();
+    gPad -> SetGridx();
+    gPad -> SetGridy();
+    gPad -> SetLogy();
+
+    csYield -> SaveAs(destination_PID + "/YieldStack.pdf");
+    csYield -> SaveAs(destination_PID + "/YieldStack.png");
+    csYield -> SaveAs(destination_PID + "/YieldStack.root");
+
+
+    TCanvas *csGeomFactor_Thin = new TCanvas("csGeomFactor_Thin", "csGeomFactor_Thin", 800, 600);
+    TH1 *hFrame_Thin = csGeomFactor_Thin -> DrawFrame(Emin_conf[0], 1e-3, Emax_conf[NFiles-1], 1);
+    hFrame_Thin -> SetTitle("Geometric Factor Thin For hitting silicon");
+    hFrame_Thin -> SetXTitle("E_{kin} [MeV]");
+    hFrame_Thin -> SetYTitle("Geometric Factor [cm^{2} sr]");
+    hFrame_Thin -> SetStats(0);
+
+    for(int i = 0; i < NFiles; ++i)
+    {
+        hGeomFactor_Thin_Log[i] -> Draw("same");
+    }
+
+    gPad -> SetLogx();
+    gPad -> SetGridx();
+    gPad -> SetGridy();
+    gPad -> SetLogy();
+
+
+
+    csGeomFactor_Thin -> SaveAs(destination_PID + "/GeomFactor_Thin_Stack.pdf");
+    csGeomFactor_Thin -> SaveAs(destination_PID + "/GeomFactor_Thin_Stack.png");
+    csGeomFactor_Thin -> SaveAs(destination_PID + "/GeomFactor_Thin_Stack.root");
+    
+    
 
 
     TH2DLog *correlation = new TH2DLog();

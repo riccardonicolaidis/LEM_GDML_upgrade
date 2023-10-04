@@ -30,6 +30,7 @@
 #include "TEntryList.h"
 #include "TTreeFormula.h"
 #include "TGraph2D.h"
+#include "TMath.h"
 
 // Custom include
 #include "./TH1DLog.h"
@@ -53,13 +54,37 @@ using namespace std;
 void SetAliases(TString filename,
                 TString filename_noExt,
                 TString destination,
-                double  E_thr_Thin         = 0.04,
-                double  E_thr_Thick        = 0.04,
-                double  E_thr_Plastic      = 0.1,
-                int     NumberPairsSensors = 5,
-                double  ResSilicon         = 0.01,
-                double  ResPlastic         = 0.2)
+                TString pathConfigurationFile   = "",
+                TString ParticleName            = "",
+                TString indexParticleFile_str   = "",
+                TString AreaGeneration_cm2_str  = "",
+                double  E_thr_Thin              = 0.04,
+                double  E_thr_Thick             = 0.04,
+                double  E_thr_Plastic           = 0.1,
+                int     NumberPairsSensors      = 5,
+                double  ResSilicon              = 0.01,
+                double  ResPlastic              = 0.2)
 {
+    int indexParticleFile = atoi(indexParticleFile_str.Data());
+    double AreaGeneration_cm2 = AreaGeneration_cm2_str.Atof();
+
+    // Print all the input parameters
+    cout << "filename = " << filename << endl;
+    cout << "filename_noExt = " << filename_noExt << endl;
+    cout << "destination = " << destination << endl;
+    cout << "pathConfigurationFile = " << pathConfigurationFile << endl;
+    cout << "ParticleName = " << ParticleName << endl;
+    cout << "indexParticleFile_str = " << indexParticleFile_str << endl;
+    cout << "indexParticleFile = " << indexParticleFile << endl;
+    cout << "AreaGeneration_cm2_str = " << AreaGeneration_cm2_str << endl; 
+    cout << "AreaGeneration_cm2 = " << AreaGeneration_cm2 << endl;
+    cout << "E_thr_Thin = " << E_thr_Thin << endl;
+    cout << "E_thr_Thick = " << E_thr_Thick << endl;
+    cout << "E_thr_Plastic = " << E_thr_Plastic << endl;
+    cout << "NumberPairsSensors = " << NumberPairsSensors << endl;
+    cout << "ResSilicon = " << ResSilicon << endl;
+    cout << "ResPlastic = " << ResPlastic << endl;
+
 
     /* ###################################################### */
     /*                    MANAGING FOLDERS                    */
@@ -208,6 +233,9 @@ void SetAliases(TString filename,
     TString gTotThin  = "(";
     TString gTotThick = "(";
 
+
+    TString TotThin_NoThreshold  = "(";
+
     for(int i = 0; i < NumberPairsSensors; i++)
     {
         if(i == 0)
@@ -216,6 +244,7 @@ void SetAliases(TString filename,
             TotThick  += Form("(%s)*(%s > %g)",   BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
             gTotThin  += Form("(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thin].Data(),  BranchName[i + iStartSensors_Thin].Data(),  E_thr_Thin);
             gTotThick += Form("(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
+            TotThin_NoThreshold  += Form("(%s)",   BranchName[i + iStartSensors_Thin].Data());
         }
         else
         {
@@ -223,6 +252,7 @@ void SetAliases(TString filename,
             TotThick  += Form("+(%s)*(%s > %g)",   BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
             gTotThin  += Form("+(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thin].Data(),  BranchName[i + iStartSensors_Thin].Data(),  E_thr_Thin);
             gTotThick += Form("+(g%s)*(g%s > %g)", BranchName[i + iStartSensors_Thick].Data(), BranchName[i + iStartSensors_Thick].Data(), E_thr_Thick);
+            TotThin_NoThreshold  += Form("+(%s)",   BranchName[i + iStartSensors_Thin].Data());
         }
     }
 
@@ -230,7 +260,7 @@ void SetAliases(TString filename,
     TotThick  += ")";
     gTotThin  += ")";
     gTotThick += ")";
-
+    TotThin_NoThreshold  += ")";
 
     TString TotalEnergy   = Form("((%s) + (%s) + (%s)*(%s > %g))", TotThin.Data(), TotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
     TString gTotalEnergy  = Form("((%s) + (%s) + (g%s)*(%s > %g))", gTotThin.Data(), gTotThick.Data(), BranchName[iBranchEnergies_Calo].Data(), BranchName[iBranchEnergies_Calo].Data(), E_thr_Plastic);
@@ -258,6 +288,7 @@ void SetAliases(TString filename,
 
     /* ------------------- SETTING ALIASES ------------------ */
     Edep -> SetAlias("TotThin",       TotThin.Data());
+    Edep -> SetAlias("TotThin_NoThreshold",       TotThin_NoThreshold.Data());
     Edep -> SetAlias("TotThick",      TotThick.Data());
     Edep -> SetAlias("gTotThin",      gTotThin.Data());
     Edep -> SetAlias("gTotThick",     gTotThick.Data());
@@ -269,11 +300,11 @@ void SetAliases(TString filename,
     Edep -> SetAlias("gPID",          gPID.Data());
     Edep -> SetAlias("PID_noCalo",    PID_noCalo.Data());
     Edep -> SetAlias("gPID_noCalo",   gPID_noCalo.Data());
-//  Edep -> SetAlias("NCVF",          "(RandEnergy - Ed_LV_AlTop - TotalEnergy)/(RandEnergy - Ed_LV_AlTop)");      
     Edep -> SetAlias("NCVF",          "(1.0 - (TotalEnergy)/(RandEnergy - Ed_LV_AlTop))");      
-
+    Edep -> SetAlias("PID3", "TMath::Log10((Ed_LV_Calo + (TotThick)) * (TotThick))");
 
     Edep_old -> SetAlias("TotThin",       TotThin.Data());
+    Edep_old -> SetAlias("TotThin_NoThreshold",       TotThin_NoThreshold.Data());
     Edep_old -> SetAlias("TotThick",      TotThick.Data());
     Edep_old -> SetAlias("gTotThin",      gTotThin.Data());
     Edep_old -> SetAlias("gTotThick",     gTotThick.Data());
@@ -285,8 +316,10 @@ void SetAliases(TString filename,
     Edep_old -> SetAlias("gPID",          gPID.Data());
     Edep_old -> SetAlias("PID_noCalo",    PID_noCalo.Data());
     Edep_old -> SetAlias("gPID_noCalo",   gPID_noCalo.Data());
-//  Edep_old -> SetAlias("NCVF",          "(RandEnergy - Ed_LV_AlTop - TotalEnergy)/(RandEnergy - Ed_LV_AlTop)");
     Edep_old -> SetAlias("NCVF",          "(1.0 - (TotalEnergy)/(RandEnergy - Ed_LV_AlTop))");
+    Edep_old -> SetAlias("PID3", "TMath::Log10((Ed_LV_Calo + (TotThick)) * (TotThick))");
+
+
 
     cout << "TotThin = " << TotThin << endl;
     cout << "TotThick = " << TotThick << endl;
@@ -300,7 +333,6 @@ void SetAliases(TString filename,
     cout << "gPID = " << gPID << endl;
     cout << "PID_noCalo = " << PID_noCalo << endl;
     cout << "gPID_noCalo = " << gPID_noCalo << endl;
-//  cout << "NCVF = " << "(RandEnergy - Ed_LV_AlTop - TotalEnergy)/(RandEnergy - Ed_LV_AlTop)" << endl;
     cout << "NCVF = " << "(1.0 - (TotalEnergy)/(RandEnergy - Ed_LV_AlTop))" << endl;
 
 
@@ -533,46 +565,49 @@ void SetAliases(TString filename,
     cout << "Copy No \t Std X \t Std Y \t # Events " << endl;
     for(int k = 0 ; k < NumberPairsSensors; ++k)
     {
+        int idx = (k+1)%NumberPairsSensors;
+        // The 0 has to be plotted last
+
         TH2D *hAngles;
-        TH2D *hGenPosition = new TH2D(Form("hGenPosition_%d", k), Form("hGenPosition_%d", k), 100, -35, 35, 100, -35, 35);
+        TH2D *hGenPosition = new TH2D(Form("hGenPosition_%d", idx), Form("hGenPosition_%d", idx), 100, -35, 35, 100, -35, 35);
         if(NameFile.Contains("e-"))
         {
-            hAngles = new TH2D(Form("h2DAngles_%d", k), Form("hAngles_%d", k), 100, -45, 45, 100, -45, 45);
+            hAngles = new TH2D(Form("h2DAngles_%d", idx), Form("hAngles_%d", idx), 100, -45, 45, 100, -45, 45);
         }
         else
         {
-            hAngles = new TH2D(Form("h2DAngles_%d", k), Form("hAngles_%d", k), 100, -45, 45, 100, -45, 45);
+            hAngles = new TH2D(Form("h2DAngles_%d", idx), Form("hAngles_%d", idx), 100, -45, 45, 100, -45, 45);
         }
 
-        Edep -> Draw(Form("ProjY:ProjX>>h2DAngles_%d", k), ConditionGoodEventsSinglePair[k].Data(), "colz");
-        TCanvas *cAngles = new TCanvas(Form("cAngles_%d", k), Form("cAngles_%d", k), 900, 700);
+        Edep -> Draw(Form("ProjY:ProjX>>h2DAngles_%d", idx), ConditionGoodEventsSinglePair[idx].Data(), "colz");
+        TCanvas *cAngles = new TCanvas(Form("cAngles_%d", idx), Form("cAngles_%d", idx), 900, 700);
         hAngles -> Draw("colz");
-        hAngles -> SaveAs(destination + "/" + "2DAngHisto_" + Form("%d_", k)  + filename_noExt + ".root");
+        hAngles -> SaveAs(destination + "/" + "2DAngHisto_" + Form("%d_", idx)  + filename_noExt + ".root");
         hAngles -> GetXaxis() -> SetTitle("Angle projection X [deg]");
         hAngles -> GetYaxis() -> SetTitle("Angle projection Y [deg]");
-        cAngles -> SaveAs(destination+"/"+"2DAngHistoFigure_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".pdf");
-        cAngles -> SaveAs(destination+"/"+"2DAngHistoFigure_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".png");
+        cAngles -> SaveAs(destination+"/"+"2DAngHistoFigure_" + Form("%d_", idx) +filename_noExt + "_" + filename_noExt + ".pdf");
+        cAngles -> SaveAs(destination+"/"+"2DAngHistoFigure_" + Form("%d_", idx) +filename_noExt + "_" + filename_noExt + ".png");
 
         cAngles -> Close();
 
-        Edep -> Draw(Form("Ygen:Xgen>>hGenPosition_%d", k), ConditionGoodEventsSinglePair[k].Data(), "colz");
-        TCanvas *cGenPosition = new TCanvas(Form("cGenPosition_%d", k), Form("cGenPosition_%d", k), 900, 700);
+        Edep -> Draw(Form("Ygen:Xgen>>hGenPosition_%d", idx), ConditionGoodEventsSinglePair[idx].Data(), "colz");
+        TCanvas *cGenPosition = new TCanvas(Form("cGenPosition_%d", idx), Form("cGenPosition_%d", idx), 900, 700);
         hGenPosition -> Draw("colz");
         hGenPosition -> GetXaxis() -> SetTitle("X [mm]");
         hGenPosition -> GetYaxis() -> SetTitle("Y [mm]");
-        cGenPosition -> SaveAs(destination+"/"+"GenPosition_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".pdf");
-        cGenPosition -> SaveAs(destination+"/"+"GenPosition_" + Form("%d_", k) +filename_noExt + "_" + filename_noExt + ".png");
+        cGenPosition -> SaveAs(destination+"/"+"GenPosition_" + Form("%d_", idx) +filename_noExt + "_" + filename_noExt + ".pdf");
+        cGenPosition -> SaveAs(destination+"/"+"GenPosition_" + Form("%d_", idx) +filename_noExt + "_" + filename_noExt + ".png");
         cGenPosition -> Close();
         
-        Edep -> Draw("ProjY:ProjX", ConditionGoodEventsSinglePair[k].Data(), "");
+        Edep -> Draw("ProjY:ProjX", ConditionGoodEventsSinglePair[idx].Data(), "");
 
-        gAngles[k] = new TGraph(Edep->GetSelectedRows(), Edep->GetV2(), Edep->GetV1());
-        gAngles[k] -> SetMarkerColor(ColorsPlot[k]);
-        gAngles[k] -> SetMarkerStyle(8);
-        gAngles[k] -> SetMarkerSize(0.6);
+        gAngles[idx] = new TGraph(Edep->GetSelectedRows(), Edep->GetV2(), Edep->GetV1());
+        gAngles[idx] -> SetMarkerColor(ColorsPlot[idx]);
+        gAngles[idx] -> SetMarkerStyle(8);
+        gAngles[idx] -> SetMarkerSize(0.6);
 
-        cout << Form("%d \t%g \t%g", k, gAngles[k]-> GetRMS(1), gAngles[k]-> GetRMS(2)) << " " << Edep->GetSelectedRows()<< endl;
-        mgAngles -> Add(gAngles[k]);
+        cout << Form("%d \t%g \t%g", idx, gAngles[idx]-> GetRMS(1), gAngles[idx]-> GetRMS(2)) << " " << Edep->GetSelectedRows()<< endl;
+        mgAngles -> Add(gAngles[idx]);
     }
 
     gPad -> SetGrid();
@@ -636,9 +671,187 @@ void SetAliases(TString filename,
 
 
 
+
+    // Transfer function Edep vs Egen
+    // Silicon Thin detector
+
+
+    Edep_old -> SetEntryList(0);
+
+    TCanvas *c4 = new TCanvas("c4", "c4", 1000, 1000);
+
+    
+
+    Edep_old -> Draw("TotThin:RandEnergy", "(TotThin>0.)", "goff");
+    double Egen_min = TMath::MinElement(Edep_old->GetSelectedRows(), Edep_old->GetV2());
+    double Egen_max = TMath::MaxElement(Edep_old->GetSelectedRows(), Edep_old->GetV2());
+    double Edep_min = TMath::MinElement(Edep_old->GetSelectedRows(), Edep_old->GetV1());
+    double Edep_max = TMath::MaxElement(Edep_old->GetSelectedRows(), Edep_old->GetV1());
+
+
+    TH2DLog *h2D_EdepGen_log = new TH2DLog();
+
+    h2D_EdepGen_log -> SetName("h2D_EdepGen");
+    h2D_EdepGen_log -> SetXAxis(Egen_min, Egen_max, 200);
+    h2D_EdepGen_log -> SetYAxis(Edep_min, Edep_max, 200);
+    h2D_EdepGen_log -> SetTitle("Edep vs Egen");
+    h2D_EdepGen_log -> SetXTitle("Egen [MeV]");
+    h2D_EdepGen_log -> SetYTitle("Edep [MeV]");
+
+    h2D_EdepGen_log -> GenerateHistogram();
+
+    TH2D *h2D_EdepGen = (TH2D*) h2D_EdepGen_log -> GetHistogram();
+
+    Edep_old -> Draw("TotThin_NoThreshold:RandEnergy>>h2D_EdepGen", "(TotThin>0.)", "colz");
+
+    gPad -> SetLogx();
+    gPad -> SetLogy();
+    gPad -> SetLogz();
+    gPad -> SetGrid();
+
+
+    c4 -> SaveAs(destination+"/" + "EdepEgen_" + filename_noExt+ ".pdf");
+    c4 -> SaveAs(destination+"/" + "EdepEgen_" + filename_noExt+ ".png");
+    c4 -> SaveAs(destination+"/" + "EdepEgen_" + filename_noExt+ ".root");
+
+
+
+    /* ###################################################### */
+    /*                 CONFIGURATION FILE INFO                */
+    /* ###################################################### */
+
+    // Read the configuration file
+    vector<TString> ParticleName_conf;
+    vector<double> Emin_conf;
+    vector<double> Emax_conf;
+    vector<int> EvNumber_conf;
+    vector<int> JobNumber_conf;
+
+
+
+    ifstream fileConf;
+    fileConf.open(pathConfigurationFile.Data());
+
+    if(fileConf.is_open())
+    {
+        std::cout << "Reading configuration file " << pathConfigurationFile.Data() << std::endl;
+        while(!fileConf.eof())
+        {
+            string line;
+            getline(fileConf, line);
+            if(line[0] != '#')
+            {
+                istringstream iss(line);
+                TString ParticleName;
+                double Emin;
+                double Emax;
+                int EvNumber;
+                int JobNumber;
+                iss >> ParticleName >> Emin >> Emax >> EvNumber >> JobNumber;
+                ParticleName_conf.push_back(ParticleName);
+                Emin_conf.push_back(Emin);
+                Emax_conf.push_back(Emax);
+                EvNumber_conf.push_back(EvNumber);
+                JobNumber_conf.push_back(JobNumber);
+            
+                cout << "ParticleName = " << ParticleName << endl;
+                cout << "Emin = " << Emin << endl;
+                cout << "Emax = " << Emax << endl;
+                cout << "EvNumber = " << EvNumber << endl;
+                cout << "JobNumber = " << JobNumber << endl;
+            }
+        }
+    }
+    else
+    {
+        std::cout << "Error: configuration file " << pathConfigurationFile.Data() << " not found" << std::endl;
+        return;
+    }
+
+
+    TH1DLog *hGeomFactor_Thin = new TH1DLog();
+    hGeomFactor_Thin -> SetName(Form("hGeomFactor_Thin_%d", indexParticleFile));
+    hGeomFactor_Thin -> SetTitle(Form("Geometric Factor %d", indexParticleFile));
+    hGeomFactor_Thin -> SetXTitle("E_{kin} [MeV]");
+    hGeomFactor_Thin -> SetYTitle("Geometric Factor [cm^{2} sr]");
+    hGeomFactor_Thin -> SetXAxis(Emin_conf[indexParticleFile], Emax_conf[indexParticleFile], 80);
+    hGeomFactor_Thin -> GenerateHistogram();
+    TH1D* hGeomFactor_Thin_Log = hGeomFactor_Thin -> GetHistogram();
+
+    TH1DLog *hGeomFactor_Test = new TH1DLog();
+    hGeomFactor_Test -> SetName(Form("hGeomFactor_Test_%d", indexParticleFile));
+    hGeomFactor_Test -> SetTitle(Form("Geometric Factor %d", indexParticleFile));
+    hGeomFactor_Test -> SetXTitle("E_{kin} [MeV]");
+    hGeomFactor_Test -> SetYTitle("Geometric Factor [cm^{2} sr]");
+    hGeomFactor_Test -> SetXAxis(Emin_conf[indexParticleFile], Emax_conf[indexParticleFile], 80);
+    hGeomFactor_Test -> GenerateHistogram();
+    TH1D* hGeomFactor_Test_Log = hGeomFactor_Test -> GetHistogram();
+
+
+    Edep_old -> Draw(Form("RandEnergy>>hGeomFactor_Thin_%d", indexParticleFile), "(TotThin_NoThreshold > 0.)", "goff");
+    Edep_old -> Draw(Form("RandEnergy>>hGeomFactor_Test_%d", indexParticleFile), "", "goff");
+
+
+    double dN_dE = (double)EvNumber_conf[indexParticleFile] * (double)JobNumber_conf[indexParticleFile] / (Emax_conf[indexParticleFile] - Emin_conf[indexParticleFile]);
+
+    for(int j = 0; j < hGeomFactor_Thin_Log -> GetNbinsX(); ++j)
+    {
+        double BinWidth = hGeomFactor_Thin_Log -> GetBinWidth(j+1);
+        double Yield = hGeomFactor_Thin_Log -> GetBinContent(j+1);
+        double YieldError = hGeomFactor_Thin_Log -> GetBinError(j+1);
+        hGeomFactor_Thin_Log -> SetBinContent(j+1, Yield / (dN_dE * BinWidth));
+        hGeomFactor_Thin_Log -> SetBinError(j+1, YieldError / (dN_dE * BinWidth));
+
+        Yield = hGeomFactor_Test_Log -> GetBinContent(j+1);
+        YieldError = hGeomFactor_Test_Log -> GetBinError(j+1);
+        hGeomFactor_Test_Log -> SetBinContent(j+1, Yield / (dN_dE * BinWidth));
+        hGeomFactor_Test_Log -> SetBinError(j+1, YieldError / (dN_dE * BinWidth));
+    }
+
+
+
+    hGeomFactor_Thin_Log -> SetLineColor(kRed);
+    hGeomFactor_Thin_Log -> SetLineWidth(2);
+    hGeomFactor_Thin_Log -> SetMarkerColor(kRed);
+    hGeomFactor_Thin_Log -> Scale(AreaGeneration_cm2 * TMath::Pi());
+
+    hGeomFactor_Test_Log -> SetLineColor(kBlue);
+    hGeomFactor_Test_Log -> SetLineWidth(2);
+    hGeomFactor_Test_Log -> SetMarkerColor(kBlue);
+    hGeomFactor_Test_Log -> Scale(AreaGeneration_cm2 * TMath::Pi());
+
+
+
+    TCanvas *cGeomFactor_Thin = new TCanvas("cGeomFactor_Thin", "cGeomFactor_Thin", 900, 700);
+    hGeomFactor_Thin_Log -> Draw("E1same");
+    
+    gPad -> SetLogx();
+    gPad -> SetLogy();
+    gPad -> SetGrid();
+
+    cGeomFactor_Thin -> SaveAs(destination+"/" + "GeomFactor_Thin_SetAlias_" + filename_noExt+ ".pdf");
+    cGeomFactor_Thin -> SaveAs(destination+"/" + "GeomFactor_Thin_SetAlias_" + filename_noExt+ ".png");
+    cGeomFactor_Thin -> SaveAs(destination+"/" + "GeomFactor_Thin_SetAlias_" + filename_noExt+ ".root");
+
+
+    TCanvas *cGeomFactor_Test = new TCanvas("cGeomFactor_Test", "cGeomFactor_Test", 900, 700);
+    hGeomFactor_Test_Log -> Draw("E1same");
+
+    gPad -> SetLogx();
+    gPad -> SetLogy();
+    gPad -> SetGrid();
+
+    cGeomFactor_Test -> SaveAs(destination+"/" + "Test_GeomFactor_SetAlias_" + filename_noExt+ ".pdf");
+    
+
+
+
+
     file_alias -> cd();
     Edep       -> Write();
     file_alias -> Write();
+    h2D_EdepGen -> Write();
+    hGeomFactor_Thin_Log -> Write();
     file_alias -> Close();
     file       -> Close();
     delete file;

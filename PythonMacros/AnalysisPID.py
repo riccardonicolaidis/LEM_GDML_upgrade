@@ -58,10 +58,25 @@ def SendPhoto(photo_path):
         print(e)
 
 
+def ParseGeant_Length_2_SI(Number_Unit):
+    # remove all non numeric characters
+    Number = re.sub(r'\D', '', Number_Unit)
+    if 'mm' in Number_Unit:
+        return float(Number)*1e-3
+    elif 'cm' in Number_Unit:
+        return float(Number)*1e-2
+    elif 'm' in Number_Unit:
+        return float(Number)
+    else:
+        return float(Number)        
+    
+    
+    
 
 
 
-def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage, CleanROOTFiles):
+
+def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage, CleanROOTFiles, SkipPlotViolation):
     
     E_thr_Thin = 0.01
     E_thr_Thick = 0.01
@@ -291,6 +306,66 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                             #input('Press enter to continue')
                 
                 
+                # Retrieve the information about
+                # Number of jobs
+                # Number of events per job
+                # Particles
+                # Energies
+                
+                f_report = open(os.path.join(global_input_dir, 'report.txt'), 'r')
+                NJobs = -1
+                for line in f_report:
+                    if ('File' in line) and ('Job' in line):
+                        # Line is formatted in the following way
+                        # File <N> Job <N>
+                        # Retrieve the number of the job
+                        line_prov = line.replace('File ', '').replace('Job ', '').replace('\n', '')
+                        NJobs_prov = int(line_prov.split(' ')[1])
+                        if NJobs_prov > NJobs:
+                            NJobs = NJobs_prov 
+                            print('NJobs: {}'.format(NJobs))
+                f_report.close()
+                NJobs += 1
+                
+                
+                Particles   = [] # Array of strings
+                Energies    = [] # Array of arrays
+                EventNumber = [] # Array of arrays
+                Radius_gen  = 0  # Radius of the generation surface
+                Area_gen_cm2    = 0  # Area of the generation surface
+                
+                for files in os.listdir(os.path.join(global_input_dir, 'Geant_macros')):
+                    if ('macro_f' in files) and ('.mac' in files):
+                        macro_file_2_inspect = open(os.path.join(global_input_dir, 'Geant_macros', files), 'r')
+                        for line in macro_file_2_inspect:
+                            if '/gps/particle' in line:
+                                Particles.append(line.replace('/gps/particle ', '').replace('\n', ''))
+                            elif '/gps/ene' in line:
+                                if '/gps/ene/min' in line:
+                                    Energy_array_prov = []
+                                    Energy_array_prov.append(float(line.replace('/gps/ene/min ', '').replace('\n', '').replace('MeV', '')))
+                                elif '/gps/ene/max' in line:
+                                    Energy_array_prov.append(float(line.replace('/gps/ene/max ', '').replace('\n', '').replace('MeV', '')))
+                                    Energies.append(Energy_array_prov)
+                            elif '/run/beamOn' in line:
+                                EventNumber.append(int(line.replace('/run/beamOn ', '').replace('\n', '')))
+                            elif '/gps/pos/radius' in line:
+                                Radius_string = line.replace('/gps/pos/radius ', '').replace('\n', '')
+                                Radius_gen = ParseGeant_Length_2_SI(Radius_string) * 1e2 # cm
+                                Area_gen_cm2 = 3.14159265359 * Radius_gen * Radius_gen
+                            
+                        macro_file_2_inspect.close()
+                        break
+                    
+                f_config_GlobalRun = open(os.path.join(global_input_dir, 'config_GlobalRun.txt'), 'w')
+                for ii in range(len(Particles)):
+                    f_config_GlobalRun.write(Particles[ii] + ' ' )
+                    f_config_GlobalRun.write(str(Energies[ii][0]) + ' ' )
+                    f_config_GlobalRun.write(str(Energies[ii][1]) + ' ' )
+                    f_config_GlobalRun.write(str(EventNumber[ii]) + ' ' )
+                    f_config_GlobalRun.write(str(NJobs) + '\n' )
+                f_config_GlobalRun.close()
+                
                 
                 Command = ''
                 ROOT_MacroName = os.path.join(root_dir, 'SetAliases.C')
@@ -323,6 +398,10 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                     ArgVect.append(os.path.join(root,file.split('/')[-1]))
                     ArgVect.append(file.split('/')[-1].replace(".root", ""))
                     ArgVect.append(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number)))
+                    ArgVect.append(os.path.join(global_input_dir, 'config_GlobalRun.txt'))
+                    ArgVect.append(Particles[index])
+                    ArgVect.append(str(index))
+                    ArgVect.append(str(Area_gen_cm2))
                     ArgVect.append(E_thr_Thin)
                     ArgVect.append(E_thr_Thick)
                     ArgVect.append(E_thr_Plastic)
@@ -334,9 +413,10 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                         print("Error in SetAliases.C")
                         exit(1)
                     
-                    # Remove the extension from the file name
-                    fcsvName = file.split('/')[-1].replace(".root", "") + '_Hits.csv'
-                    PlotViolation(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number),'EnergyViolation3D',fcsvName))
+                    if not SkipPlotViolation:
+                        # Remove the extension from the file name
+                        fcsvName = file.split('/')[-1].replace(".root", "") + '_Hits.csv'
+                        PlotViolation(os.path.join(global_input_dir, 'Analysis_output', 'GDML_file_{}'.format(number),'EnergyViolation3D',fcsvName))
                     
                     
                 # Retrieve the information about the positions of the silicon detectors and dump them in a file in the AnalysisOutput/GDML_file_n directory
@@ -385,6 +465,8 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                 ArgVect.append(E_thr_Thick)
                 ArgVect.append(E_thr_Plastic)
                 ArgVect.append(os.path.join(PrefixRootFilesAlias, "SiliconPosition.txt"))
+                ArgVect.append(os.path.join(global_input_dir, 'config_GlobalRun.txt'))
+                ArgVect.append(Area_gen_cm2)
                 Command = ROOT_CMD(ROOT_MacroName, ArgVect)            
                 print(Command)
                 f_CMD.write(Command + '\n\n')
@@ -813,6 +895,7 @@ if __name__ == "__main__":
     parser.add_argument('-b', '--bypass-removal', action='store_true', help='Bypass the removal of the Analysis_output directory')
     parser.add_argument('-T', '--telegram', action='store_true', help='Send a telegram message when the analysis is finished')
     parser.add_argument('-C', '--clean', action='store_true', help='Clean the Analysis_output directory')
+    parser.add_argument('-s', '--skip-plot-violation', action='store_true', help='Skip the plot of the violation of the energy conservation')
 
 
     args = parser.parse_args()
@@ -836,4 +919,4 @@ if __name__ == "__main__":
     print('Input directory: ' + input_dir)
         
     
-    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, args.telegram, args.clean)
+    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, args.telegram, args.clean, args.skip_plot_violation)
