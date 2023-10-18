@@ -39,7 +39,8 @@ using namespace std;
 #include "./TH1DLog.h"
 #include "./TH2DLog.h"
 #include "./TH2DLogX.h"
-#include "./Histo2D.h"
+#include "./PID_Efficiency.h"
+
 
 
 
@@ -470,6 +471,11 @@ int PID(
 
     // Histo 18
     CreateHistogram2D(Edep, "PID Vs PID3", "PID3", "PID", "PID:PID3", Form("(%s) && (Ed_LV_Calo > %g)", ConditionGoodEvents.Data(), E_thr_Plastic), destination_PID + "/PID_PID3", false, true);
+
+    // Histo 18
+    CreateHistogram2D(Edep, "PID3 Vs E_{tot}", "E_{tot} [MeV]", "PID3 - PID", "((PID3) - (PID)):(TotThick + TotThin + Ed_LV_Calo)", Form("(%s) && (Ed_LV_Calo > %g)", ConditionGoodEvents.Data(), E_thr_Plastic), destination_PID + "/PID_minus_PID3_ETOT", false, false);
+
+
 
     vector<TObjArray*> ListOfBranches;
     ListOfBranches.resize(NFiles);
@@ -971,7 +977,7 @@ int PID(
         hYield[i] -> SetTitle(Form("Geometric Factor %d", i));
         hYield[i] -> SetXTitle("E_{kin} [MeV]");
         hYield[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");
-        hYield[i] -> SetXAxis(Emin_conf[i], Emax_conf[i], 200);
+        hYield[i] -> SetXAxis(Emin_conf[i], Emax_conf[i], 100);
         hYield[i] -> GenerateHistogram();
         hYield_Log[i] = hYield[i] -> GetHistogram();
 
@@ -986,7 +992,7 @@ int PID(
         hGeomFactor_Thin[i] -> SetTitle(Form("Geometric Factor %d", i));
         hGeomFactor_Thin[i] -> SetXTitle("E_{kin} [MeV]");
         hGeomFactor_Thin[i] -> SetYTitle("Geometric Factor [cm^{2} sr]");
-        hGeomFactor_Thin[i] -> SetXAxis(Emin_conf[i], Emax_conf[i], 200);
+        hGeomFactor_Thin[i] -> SetXAxis(Emin_conf[i], Emax_conf[i], 100);
         hGeomFactor_Thin[i] -> GenerateHistogram();
         hGeomFactor_Thin_Log[i] = hGeomFactor_Thin[i] -> GetHistogram();
 
@@ -1144,6 +1150,17 @@ int PID(
     gPad -> SetGridx();
     gPad -> SetGridy();
     cCorrelation -> SaveAs(destination_PID + "/Correlation.pdf");
+
+
+    /* ###################################################### */
+    /*                   CLASSIFICATION PLOT                  */
+    /* ###################################################### */
+
+    PID_Efficiency(Edep, "PID", "TotalEnergy", ConditionGoodEvents, ParticleNames, destination_PID, "Efficiency_PID");
+    PID_Efficiency(Edep, "(gPID)", "(TotalEnergy)", ConditionGoodEvents, ParticleNames, destination_PID, "Efficiency_gPID");
+
+
+
 
 
 

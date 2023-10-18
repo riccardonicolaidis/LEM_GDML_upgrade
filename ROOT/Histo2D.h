@@ -1,3 +1,6 @@
+#ifndef HISTO2D_H
+#define HISTO2D_H
+
 // C++ include
 #include <iostream>
 #include <string>
@@ -166,3 +169,5 @@ void  CreateHistogram2D(
 
     return;
 }
+
+#endif

@@ -21,23 +21,27 @@ def Geant4Simulation():
     print("RunName: ", RunName)
     print("Date: ", Date)
 
-    N_jobs = 100
+    N_jobs = 110
     N_evjob = 500000
 
     # Run directory for the run
     if IsTest:
-        RunDir = "OUT/Output_" + RunName + "_" + Date + "_test"
+        RunDir = "Output_" + RunName + "_" + Date + "_test"
     else:
-        RunDir = "OUT/Output_" + RunName + "_" + Date
+        RunDir = "Output_" + RunName + "_" + Date
 
 
     # ######################################################## #
     #                      GEANT4 SETTINGS                     #
     # ######################################################## #
 
-    gps_particle = ["e-", "proton", "alpha", "triton", "deuteron", "He3"]
-    gps_ene_min  = [0.08, 1       , 10,      1 ,       1,          10]
-    gps_ene_max  = [11  , 100     , 400,     100,      100,        10]
+    # gps_particle = ["e-", "proton", "alpha", "triton", "deuteron", "He3"]
+    # gps_ene_min  = [0.08, 1       , 10,      1 ,       1,          10]
+    # gps_ene_max  = [11  , 100     , 400,     100,      100,        10]
+
+    gps_particle = ["e-", "proton", "alpha"]
+    gps_ene_min  = [0.08, 1       , 10]
+    gps_ene_max  = [13  , 130     , 400]
 
 
     gps_ene_type = "Lin"
@@ -45,7 +49,7 @@ def Geant4Simulation():
     gps_ene_intercept = 1
     gps_pos_type = "Plane"
     gps_pos_shape = "Circle"
-    gps_pos_centre_cm = [0, 0, 11]
+    gps_pos_centre_cm = [0, 0, 10]
     
     if IsTest:
         gps_pos_radius_cm = 0.01
@@ -313,7 +317,7 @@ def Geant4Simulation():
             # Write bash code in the file for trying to launch the executable untill the executions is successful
             
             TextToWrite = '''
-MAX_ATTEMPTS=5
+MAX_ATTEMPTS=10
 ATTEMPT=1
 
 while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
@@ -331,7 +335,14 @@ while [ $ATTEMPT -le $MAX_ATTEMPTS ]; do
     else
         echo "Errore nell'esecuzione del comando alla tentativo $ATTEMPT. Riprovo..."
         ATTEMPT=$((ATTEMPT + 1))
-        sleep 5  # Attendi un po' prima del prossimo tentativo
+
+'''
+            TextToWrite += "head -n 10 " + os.path.join(out_paths["GDML"], file) + "\n"
+
+            TextToWrite += '''
+        
+        numero_casuale=$((RANDOM%8 + 3))
+        sleep $numero_casuale  # Attendi un po' prima del prossimo tentativo
     fi
 done
 

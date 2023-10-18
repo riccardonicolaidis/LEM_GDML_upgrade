@@ -76,14 +76,14 @@ def ParseGeant_Length_2_SI(Number_Unit):
 
 
 
-def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage, CleanROOTFiles, SkipPlotViolation):
+def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage, CleanROOTFiles, SkipPlotViolation, ExtensionOrdering):
     
     E_thr_Thin = 0.01
     E_thr_Thick = 0.01
     E_thr_Plastic = 0.00001
     
-    actual_dir = os.getcwd()
-    print('Actual directory: {}'.format(actual_dir))
+    starting_dir = os.getcwd()
+    print('Actual directory: {}'.format(starting_dir))
     os.chdir(input_dir)
     actual_dir = os.getcwd()
     print('Input directory: {}'.format(input_dir))
@@ -125,15 +125,16 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
     # 
     # The script assumes that the project directory is the parent directory of the input directory
     
-    if 'LEM_GDML_upgrade' in actual_dir:
-        while not os.getcwd().endswith('LEM_GDML_upgrade'):
+    os.chdir(starting_dir)
+    if 'LEM_GDML_upgrade' in starting_dir:
+        while not os.getcwd().endswith('LEM_GDML_upgrade') :
             print('Not in the project directory. Go up one level.')
             os.chdir('..')    
             print('Actual directory: {}'.format(os.getcwd()))
         project_dir = os.getcwd()
     else:
         project_dir = ''
-        for root, dirs, files in os.walk(actual_dir):
+        for root, dirs, files in os.walk(starting_dir):
             for dir in dirs:
                 if dir == 'LEM_GDML_upgrade':
                     os.chdir(os.path.join(root, dir))
@@ -839,11 +840,6 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                         Report.InsertFigure(os.path.join(PDF_images_dir, mcfile), "Geometric factors", ScalePicture)                         
                 Report.EndSlide()
                 
-                
-                
-                
-                
-                
                 print("Now compiling the report")
                 Report.Compile()
                 
@@ -852,32 +848,32 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                         shutil.copy(os.path.join(LatexReportDir, files), os.path.join(global_input_dir,'LatexReport'))
     
     
-    
-    # In the end reorder the pictures creating subforlders with the name of the extension
-    for root, dirs, files in os.walk(os.path.join(global_input_dir, 'Analysis_output')):
-        FoundImages = False
-        for file in files:
-            if file.endswith(".png") or file.endswith(".pdf") or file.endswith(".root"):
-                FoundImages = True
-                break                    
-        
-        if FoundImages:
-            # Make dirs Png, Pdf, Root
-            if not os.path.exists(os.path.join(root, 'Png')):
-                os.makedirs(os.path.join(root, 'Png'))
-            if not os.path.exists(os.path.join(root, 'Pdf')):
-                os.makedirs(os.path.join(root, 'Pdf'))
-            if not os.path.exists(os.path.join(root, 'Root')):
-                os.makedirs(os.path.join(root, 'Root'))
-
+    if ExtensionOrdering:
+        # In the end reorder the pictures creating subforlders with the name of the extension
+        for root, dirs, files in os.walk(os.path.join(global_input_dir, 'Analysis_output')):
+            FoundImages = False
             for file in files:
-                if file.endswith(".png"):
-                    shutil.move(os.path.join(root, file), os.path.join(root, 'Png'))
-                if file.endswith(".pdf"):
-                    shutil.move(os.path.join(root, file), os.path.join(root, 'Pdf'))
-                if file.endswith(".root"):
-                    shutil.move(os.path.join(root, file), os.path.join(root, 'Root'))
-                    
+                if file.endswith(".png") or file.endswith(".pdf") or file.endswith(".root"):
+                    FoundImages = True
+                    break                    
+            
+            if FoundImages:
+                # Make dirs Png, Pdf, Root
+                if not os.path.exists(os.path.join(root, 'Png')):
+                    os.makedirs(os.path.join(root, 'Png'))
+                if not os.path.exists(os.path.join(root, 'Pdf')):
+                    os.makedirs(os.path.join(root, 'Pdf'))
+                if not os.path.exists(os.path.join(root, 'Root')):
+                    os.makedirs(os.path.join(root, 'Root'))
+
+                for file in files:
+                    if file.endswith(".png"):
+                        shutil.move(os.path.join(root, file), os.path.join(root, 'Png'))
+                    if file.endswith(".pdf"):
+                        shutil.move(os.path.join(root, file), os.path.join(root, 'Pdf'))
+                    if file.endswith(".root"):
+                        shutil.move(os.path.join(root, file), os.path.join(root, 'Root'))
+                        
                 
             
                 
@@ -896,7 +892,7 @@ if __name__ == "__main__":
     parser.add_argument('-T', '--telegram', action='store_true', help='Send a telegram message when the analysis is finished')
     parser.add_argument('-C', '--clean', action='store_true', help='Clean the Analysis_output directory')
     parser.add_argument('-s', '--skip-plot-violation', action='store_true', help='Skip the plot of the violation of the energy conservation')
-
+    parser.add_argument('-e', '--extension-ordering', action='store_true', help='Order the pictures in subfolders with the extension name')
 
     args = parser.parse_args()
     actual_dir = os.getcwd()
@@ -904,7 +900,7 @@ if __name__ == "__main__":
     OnlyLatex = args.latex_only
     OnlyRoot = args.root_only
     BypassRemoval = args.bypass_removal
-
+    ExtensionOrdering = args.extension_ordering
     
     if OnlyLatex and OnlyRoot:
         print('You cannot select both -L and -R options')
@@ -919,4 +915,4 @@ if __name__ == "__main__":
     print('Input directory: ' + input_dir)
         
     
-    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, args.telegram, args.clean, args.skip_plot_violation)
+    Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, args.telegram, args.clean, args.skip_plot_violation, ExtensionOrdering)
