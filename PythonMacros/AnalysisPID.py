@@ -624,7 +624,6 @@ def Analysis(input_dir, OnlyLatex, OnlyRoot, BypassRemoval, SendTelegramMessage,
                 
 
                 Report.BeginSlide("Material Info")
-              
                 Report.BeginTable([" Volume ", " Material ", " Mass (g) "])
                 for line in f_MaterialInfo:
                     if "Volume " in line:
